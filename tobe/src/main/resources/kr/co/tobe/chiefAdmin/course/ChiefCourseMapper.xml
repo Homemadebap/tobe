@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.co.tobe.chiefAdmin.course.ChiefcourseMapper">
+	<insert id="insert" parameterType="kr.co.tobe.vo.CourseVO">
+		INSERT INTO class (
+		teacher_img_org, education, area, branch,
+		subject, level, timezone,
+		mon, tue, wed, thu, fri, sat, sun,
+		teacher1, teacher2, startday, endday, postday,
+		cname, detail, time, price
+		) VALUES (
+		#{teacher_img_org}, #{education},
+		#{area}, #{branch}, #{subject}, #{level}, #{timezone},
+		#{mon}, #{tue},
+		#{wed}, #{thu}, #{fri}, #{sat}, #{sun},
+		#{teacher1}, #{teacher2}, #{startday}, #{endday}, NOW(),
+		#{cname}, #{detail},
+		#{time}, #{price}
+		)
+		<selectKey keyProperty="course_no" order="AFTER"
+			resultType="int">
+			SELECT LAST_INSERT_ID()
+		</selectKey>
+	</insert>
+</mapper>

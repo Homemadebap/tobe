@@ -1,0 +1,85 @@
+@charset "UTF-8";
+
+
+.wrap {
+	width: 75rem;
+	height: 70rem;
+	margin: 0 auto;	
+	position: relative;
+}
+
+*{
+	box-sizing: border-box;
+}
+
+.header { 
+	width: 75rem;
+	height: 15rem;
+	position: absolute;
+	top: 0;
+}
+
+.header_memberBar {
+	position: absolute;
+	color: #000;
+	right: 0;
+	top:10%;
+	font-family: Inter;
+	text-align: center;
+	font-size: 1rem;
+	letter-spacing: 0;
+}
+
+.tobe_logo {
+	position: absolute;
+	top: 4.5rem;
+	width: 20rem;	
+}
+
+.menu_container{
+	position: absolute;
+	width: 50rem;
+	right: 0;
+	top: 6.5rem;
+}
+
+
+
+.menu {
+	width: 14rem;
+	height: 5rem;
+	font-size: 2rem;
+	text-align: center;
+}
+
+
+
+	
+.footer { 
+	background-color:#d3d3d3;
+	width:75rem;
+	height:12.5rem;
+	position:absolute;
+	top: 65rem;
+}
+
+.footer_content {
+	display: grid;
+  	place-items: center;
+}
+
+.footer_logo {
+	width: 6rem;
+	display: grid;
+  	place-items: center;
+  	float: left;
+	height: 5rem;
+}
+.footer_info{
+	width: 37.5rem;
+	display: grid;
+  	place-items: center;
+  	float: left;
+  	height: 5rem;
+	
+}

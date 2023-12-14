@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.co.tobe.user.member.UserMemberMapper">
+	
+	<resultMap type="HashMap" id="currentCourseIndexpMap">
+		<id column="teacher_img" property="teacher_img"/>
+		<id column="i_cname" property="i_cname"/>
+		<id column="i_startday" property="i_startday"/>
+		<id column="i_endday" property="i_endday"/>
+	</resultMap>
+	
+	<resultMap type="HashMap" id="pastCourseIndexpMap">
+		<id column="teacher_img" property="teacher_img"/>
+		<id column="pay_date" property="pay_date"/>
+		<id column="order_no" property="order_no"/>
+		<id column="i_cname" property="i_cname"/>
+		<id column="i_price" property="i_price"/>
+		<id column="i_startday" property="i_startday"/>
+		<id column="i_endday" property="i_endday"/>
+	</resultMap>
+
+	<resultMap type="HashMap" id="myCourseAskIndexMap">
+		<id column="teacher_img" property="teacher_img"/>
+		<id column="pay_date" property="pay_date"/>
+		<id column="order_no" property="order_no"/>
+		<id column="i_cname" property="i_cname"/>
+		<id column="i_price" property="i_price"/>
+		<id column="i_startday" property="i_startday"/>
+		<id column="i_endday" property="i_endday"/>
+	</resultMap>
+	
+	<resultMap type="HashMap" id="myReviewIndexMap">
+		<id column="r_cname" property="r_cname"/>
+		<id column="r_title" property="r_title"/>
+		<id column="r_writedate" property="r_writedate"/>
+	</resultMap>		
+	
+	<!-- 
+	<select id="myName" parameterType="kr.co.tobe.vo.MemberVO" resultType="String">
+		select
+			name
+		from member
+		where member_no = #{member_no}	
+	</select>
+	
+	<select id="myPoint" parameterType="kr.co.tobe.vo.MemberVO" resultType="Integer">
+		select
+			point
+		from member
+		where member_no = #{member_no}	
+	</select>
+	 -->
+	
+	<select id="currentCourseIndex" parameterType="kr.co.tobe.vo.MemberVO" resultMap="currentCourseIndexpMap">
+		select
+			(select teacher_img from course where course.course_no=pay_detail.course_no) as teacher_img,
+			 i_cname, i_startday, i_endday
+		from member m, class c, pay p, pay_detail pd,
+		where m.member_no = p.member_no
+			and p.order_no = pd.order_no
+			and m.member_no = #{member_no}
+		order by i_startday
+	</select>
+
+	<select id="pastCourseIndex" parameterType="kr.co.tobe.vo.MemberVO" resultMap="pastCourseIndexpMap">
+		select
+			(select teacher_img from course where course.course_no=pay_detail.course_no) as teacher_img,
+			pay_date, order_no, i_cname, i_price, i_startday, i_endday		
+		from member m, pay p, pay_detail pd,
+		where m.member_no = p.member_no
+			and p.order_no = pd.order_no
+			and m.member_no = #{member_no}
+		order by i_startday
+	</select>	
+	
+	<select id="myCourseAskIndex" parameterType="kr.co.tobe.vo.MemberVO" resultMap="myCourseAskIndexMap">
+		select
+			cname, q_title, q_writedate
+		from member m, course c, qna q
+		where m.member_no = q.member_no
+			and c.course_no = q.course_no
+			and m.member_no = #{member_no}
+		order by q_writedate
+	</select>	
+	
+	<select id="myReviewIndex" parameterType="kr.co.tobe.vo.MemberVO" resultMap="myReviewIndexMap">
+		select
+			cname, r_title, r_writedate
+		from member m, review r, course c
+		where m.member_no = r.member_no
+			and c.course_no = r.course_no
+			and m.member_no = #{member_no}
+		order by r_writedate
+	</select>
+
+
+</mapper>
