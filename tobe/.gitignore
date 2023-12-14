@@ -28,7 +28,7 @@ buildSrc/build
 spring-test/test-output/
 
 # Maven artifacts
-target
+/target/
 
 # Eclipse artifacts, including WTP generated manifests
 bin
