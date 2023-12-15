@@ -77,6 +77,18 @@
    	oEditors.getById['detail'].exec('UPDATE_CONTENTS_FIELD',[]); /*getById에 컬럼명또는 아이디*/
    	
    }
+   function readURL(input) {
+	   if (input.files && input.files[0]) {
+	     var reader = new FileReader();
+	     reader.onload = function(e) {
+	       document.getElementById('preview').src = e.target.result;
+	     };
+	     reader.readAsDataURL(input.files[0]);
+	   } else {
+	     document.getElementById('preview').src = "";
+	   }
+	 }
+   
    </script>
 <style>
 #in{
@@ -93,7 +105,6 @@
 }
 .filebox {
  	height: 200px;
- 	width: 
 }
 .filebox .upload-name {
     display: inline-block;
@@ -189,7 +200,7 @@
 	margin: -20px 0 0 300px;
 }
 #put{
-	margin: 50px 0 0 -520px;
+	margin: 30px 0 0 -520px;
 }
 #de{
 	margin: 100px 0 0 0;
@@ -204,9 +215,10 @@
 	  <div id="con">
 	    <div id="boxa">      
 	        <div class="filebox">
-			    <input class="upload-name" value="강사이미지" placeholder="첨부파일">
+	        <input type="file" onchange="readURL(this);"> 
+			<img id="preview" class="upload-name" value="강사이미지" />
 			    <label for="file">파일첨부</label> 
-			    <input type="file" id="file" name="file">
+			    <input type="file" id="file" name="file" onchange="readURL(this);">
 			</div>
 		</div>
 		<div id="boxb">
@@ -271,9 +283,31 @@
 					<label><input type="checkbox" name="level" value="1700"> 700</label> 
 					<label><input type="checkbox" name="level" value="1800"> 800</label> 
 					<label><input type="checkbox" name="level" value="1900"> 900</label><br>
-					<b>토플</b>
-					
-					
+					<b style="margin-left:37px">토플</b>
+					<label><input type="checkbox" name="level" value="360"> 60</label> 
+					<label><input type="checkbox" name="level" value="370"> 70</label> 
+					<label><input type="checkbox" name="level" value="380"> 80</label> 
+					<label><input type="checkbox" name="level" value="390"> 90</label><br>
+					<b style="margin-left:37px">ielts</b>
+					<label><input type="checkbox" name="level" value="45">5</label> 
+					<label><input type="checkbox" name="level" value="46">6</label>
+					<label><input type="checkbox" name="level" value="47">7</label><br>
+				    <b style="margin-left:37px">텝스</b>
+				    <label><input type="checkbox" name="level" value="5300"> 300</label>
+				    <label><input type="checkbox" name="level" value="5350"> 350</label> 
+				    <label><input type="checkbox" name="level" value="5400"> 400</label> 
+				    <label><input type="checkbox" name="level" value="5500"> 500</label><br>
+				    <b style="margin-left:37px">오픽</b>
+					<label><input type="checkbox" name="level" value="61">입문</label>
+					<label><input type="checkbox" name="level" value="62">기본</label>
+					<label><input type="checkbox" name="level" value="63">중급</label><br>
+				    <b style="margin-left:37px">gre</b>
+					<label><input type="checkbox" name="level"value="71"> 기본</label>
+					<label><input type="checkbox" name="level" value="72"> 정규</label> 
+					<label><input type="checkbox" name="level" value="73"> 실전</label><br>
+					<b style="margin-left:37px">g-telp</b>
+					<label><input type="checkbox" name="level"value="81"> 30</label> 
+					<label><input type="checkbox" name="level" value="82"> 40</label>
 				</div>
 			</div>
 			<div id="te">
