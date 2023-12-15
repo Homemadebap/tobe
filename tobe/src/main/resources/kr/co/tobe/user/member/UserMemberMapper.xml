@@ -100,7 +100,7 @@
 			#{name}, #{id}, MD5(#{pwd}), #{email}, #{gender}, #{birthday}, #{hp}, #{addr1}, #{addr2}, NOW(), #{zipcode}, 1, #{email_agree}
 		)
 		<selectKey keyProperty="member_no" order="AFTER" resultType="int">
-			SELECT LAST_INSERT_ID()
+			SELECT LAST_INSERT_ID()   
 		</selectKey>
  	</insert>
  	
