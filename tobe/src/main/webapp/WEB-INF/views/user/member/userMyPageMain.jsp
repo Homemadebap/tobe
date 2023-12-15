@@ -283,12 +283,12 @@ $(function(){
 
 			<div class="content_area">
 				<div class="currentCourseIndex">
-					<c:if test="${empty myPage.currentCourseIndex}">
+					<c:if test="${empty vo.currentCourseIndex}">
                         <tr>
                             <td class="noIndex">현재 수강 중인 강좌가 없습니다.</td>
                         </tr>
                     </c:if>
-                    <c:if test="${!empty myPage.currentCourseIndex }">
+                    <c:if test="${!empty vo.currentCourseIndex }">
                     	<table>
                     		<tr>
 								<td></td>
@@ -296,7 +296,7 @@ $(function(){
 								<td>개강일</td>
 								<td>종강일</td>
 							</tr>
-		                    <c:forEach var="vo" items="${myPage.currentCourseIndex}">
+		                    <c:forEach var="vo" items="${vo.currentCourseIndex}">
 		                        <tr>
 		                            <td id="teacherImg">${vo.teacher_img}</td>
 		                            <td id="courseName">${vo.cname}</td>    
@@ -309,12 +309,12 @@ $(function(){
 				</div>
 
 				<div class="pastCourseIndex">
-					<c:if test="${empty myPage.pastCourseIndex}">
+					<c:if test="${empty vo.pastCourseIndex}">
                         <tr>
                             <td class="noIndex">수강 신청한 내역이 없습니다.</td>
                         </tr>
                     </c:if>
-                    <c:if test="${!empty myPage.pastCourseIndex }">
+                    <c:if test="${!empty vo.pastCourseIndex }">
 	                    <table>
 							<tr>
 								<td>결제일</td>
@@ -325,7 +325,7 @@ $(function(){
 								<td></td>
 							</tr>
                     	
-		                    <c:forEach var="vo" items="${myPage.pastCourseIndex}">
+		                    <c:forEach var="vo" items="${vo.pastCourseIndex}">
 		                        <tr>
 		                            <td>${vo.pay_date}</td>
 		                            <td>${vo.order_no}</td>    
@@ -340,19 +340,19 @@ $(function(){
 				</div>
 
 				<div class="myCourseAskIndex">
-					<c:if test="${empty myPage.myCourseAskIndex}">
+					<c:if test="${empty vo.myCourseAskIndex}">
                         <tr>
                             <td class="noIndex">문의한 내역이 없습니다.</td>
                         </tr>
                     </c:if>
-                    <c:if test="${!empty myPage.myCourseAskIndex }">
+                    <c:if test="${!empty vo.myCourseAskIndex }">
 	                    <table>
 							<tr>
 								<td>강좌명</td>
 								<td>제목</td>
 								<td>작성일</td>
 							</tr>
-		                    <c:forEach var="vo" items="${myPage.myCourseAskIndex}">
+		                    <c:forEach var="vo" items="${vo.myCourseAskIndex}">
 		                        <tr>
 		                            <td>${vo.q_cname}</td>
 		                            <td>${vo.q_title}</td>    
@@ -365,19 +365,19 @@ $(function(){
 				</div>
 
 				<div class="myReviewIndex">
-					<c:if test="${empty myPage.myReviewIndex}">
+					<c:if test="${empty vo.myReviewIndex}">
                         <tr>
                             <td class="noIndex">작성한 후기 내역이 없습니다.</td>
                         </tr>
                     </c:if>
-                    <c:if test="${!empty myPage.myReviewIndex }">
+                    <c:if test="${!empty vo.myReviewIndex }">
 	                    <table>
 							<tr>
 								<td>강좌명</td>
 								<td>제목</td>
 								<td>작성일</td>
 							</tr>
-		                    <c:forEach var="vo" items="${myPage.myReviewIndex}">
+		                    <c:forEach var="vo" items="${vo.myReviewIndex}">
 		                        <tr>
 		                            <td>${vo.r_cname}</td>
 		                            <td>${vo.r_title}</td>    

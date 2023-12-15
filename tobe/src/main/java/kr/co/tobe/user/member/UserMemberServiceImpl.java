@@ -39,15 +39,10 @@ public class UserMemberServiceImpl implements UserMemberService {
 		return mapper.update(vo);
 	}
 	
-//	@Override // 마이페이지 - 사용자 이름 가져오기
-//	public String myName(MemberVO mvo) {
-//		return mapper.myName(mvo);
-//	}
-//	
-//	@Override // 마이페이지 - 사용자 포인트 가져오기
-//	public int myPoint(MemberVO mvo) {
-//		return mapper.myPoint(mvo);
-//	}
+	@Override
+	public int quit(MemberVO mvo) {
+		return mapper.quit(mvo);
+	}
 	
 	@Override // 마이페이지 - 현재 수강중인 강의 목록 뽑아오기
 	public List<Map<String, Object>> currentCourseIndex(MemberVO mvo) {

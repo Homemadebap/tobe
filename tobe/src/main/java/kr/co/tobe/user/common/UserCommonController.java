@@ -66,4 +66,15 @@ public class UserCommonController {
 	public String userCompareCourse() {
 		return "user/common/userCompareCourse";
 	}
+	
+	@GetMapping("/user/member/userQuit.do")
+	public String quit(HttpSession sess, Model model) {
+		return "user/member/userQuit";
+	}
+	
+	@GetMapping("/user/member/userQuitForm.do")
+	public String quitForm(HttpSession sess, Model model) {
+		return "user/member/userQuitForm";
+	}
+	
 }

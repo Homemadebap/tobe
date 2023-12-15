@@ -77,38 +77,48 @@ public class UserMemberController {
 		return "user/common/userAlert";
 	}
 	
-	@GetMapping("/user/member/userQuit.do")
-	public String quit(HttpSession sess, Model model) {
-		return "user/member/userQuit";
+	@PostMapping("/user/member/userQuit.do")
+	public String quit(MemberVO vo, Model model) {
+		int r = service.quit(vo);
+		String msg = "";
+		String url = "user/common/userIndex.do";
+		if (r > 0) {
+			msg = "회원탈퇴가 완료되었습니다.";
+		} else {
+			msg = "실행 오류";
+		}
+		model.addAttribute("msg",msg);
+		model.addAttribute("url",url);
+		model.addAttribute("cmd","move");
+		return "user/common/userAlert";
 	}
-	
 
 	
 	@GetMapping("/user/member/userMyPage/currentCourseIndex.do")  // 마이페이지 - 현재 수강중인 강의 목록 뽑아오기
 	public String currentCourseIndex(MemberVO mvo, HttpSession sess, Model model) {
 		mvo = (MemberVO)sess.getAttribute("loginInfo");
-		model.addAttribute("myPage", service.currentCourseIndex(mvo));
+		model.addAttribute("vo", service.currentCourseIndex(mvo));
 		return "ajax로 처리할거라 어떻게 해야 하는지 생각해보기";
 	}
 	
 	@GetMapping("/user/member/userMyPage/pastCourseIndex.do")  // 마이페이지 - 수강신청 내역 뽑아오기
 	public String pastCourseIndex(MemberVO mvo, HttpSession sess, Model model) {
 		mvo = (MemberVO)sess.getAttribute("loginInfo");
-		model.addAttribute("myPage", service.pastCourseIndex(mvo));
+		model.addAttribute("vo", service.pastCourseIndex(mvo));
 		return "ajax로 처리할거라 어떻게 해야 하는지 생각해보기";
 	}
 	
 	@GetMapping("/user/member/userMyPage/myCourseAskIndex.do")  // 마이페이지 - 나의후기 내역 뽑아오기
 	public String myCourseAskIndex(MemberVO mvo, HttpSession sess, Model model) {
 		mvo = (MemberVO)sess.getAttribute("loginInfo");
-		model.addAttribute("myPage", service.myCourseAskIndex(mvo));
+		model.addAttribute("vo", service.myCourseAskIndex(mvo));
 		return "ajax로 처리할거라 어떻게 해야 하는지 생각해보기";
 	}
 	
 	@GetMapping("/user/member/userMyPage/myReviewIndex.do")  // 마이페이지 - 나의문의 내역 뽑아오기
 	public String myReviewIndex(MemberVO mvo, HttpSession sess, Model model) {
 		mvo = (MemberVO)sess.getAttribute("loginInfo");
-		model.addAttribute("myPage", service.myReviewIndex(mvo));
+		model.addAttribute("vo", service.myReviewIndex(mvo));
 		return "ajax로 처리할거라 어떻게 해야 하는지 생각해보기";
 	}
 }

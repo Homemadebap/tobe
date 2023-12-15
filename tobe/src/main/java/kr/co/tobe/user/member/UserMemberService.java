@@ -11,11 +11,7 @@ public interface UserMemberService {
 	MemberVO login(MemberVO vo);
 	MemberVO detail(MemberVO vo);
 	int update(MemberVO vo);
-	
-//	// 마이페이지 - 사용자 이름 가져오기
-//	String myName(MemberVO mvo);
-//	// 마이페이지 - 포인트 가져오기
-//	int myPoint(MemberVO mvo);
+	int quit(MemberVO mvo);
 	
 	// 마이페이지 - 현재 수강중인 강의 목록 뽑아오기
 	List<Map<String, Object>> currentCourseIndex(MemberVO mvo);
