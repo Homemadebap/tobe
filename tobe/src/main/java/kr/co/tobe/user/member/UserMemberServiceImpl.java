@@ -31,7 +31,7 @@ public class UserMemberServiceImpl implements UserMemberService {
 
 	@Override
 	public MemberVO detail(MemberVO vo) {
-		return mapper.detail(vo.getMemberNo());
+		return mapper.detail(vo.getMember_no());
 	}
 
 	@Override

@@ -18,7 +18,7 @@
     			alert('아이디를 입력하세요');
     			$("#id").focus();
     			return;
-
+    		}
     		var isCon = true;
     		$.ajax({
 				url:'idCheck.do',
@@ -68,7 +68,7 @@
     					console.log(res);
     					if (res == 'true') {
     						alert('아이디가 중복되었습니다.');
-    						$("#id).val('');
+    						$("#id").val('');
     						$("#id").focus();
     					} else {
     						dupCheck = true;
@@ -133,10 +133,11 @@
 <body>
     <div class="wrap">
        <%@ include file="/WEB-INF/views/user/common/userHeader.jsp" %>
+       </div>
         <div class="sub">
             <div class="size">
                 <h2 class="sub_title">회원가입</h2>
-                <form name="frm" id="frm" action="regist.do" method="post">
+                <form name="frm" id="frm" action="userJoinForm.do" method="post">
                 <h4>필수입력</h4>
                 <table class="board_write" cellspacing = "0">
                     <!-- <caption style="float:left;">필수입력</caption> -->
@@ -152,7 +153,7 @@
                         <tr>
                             <th>아이디</th>
                             <td>
-                                <input type="text" name="email" id="email" class="inNextBtn" style="float:left;">
+                                <input type="text" name="id" id="id" class="inNextBtn" style="float:left;">
                                 <span class="email_check"><a href="javascript:;"  class="btn bgGray" style="float:left; width:auto; clear:none;" id="emailCheck">중복확인</a></span>
                             </td>
                         </tr>
@@ -164,6 +165,10 @@
                             <th>비밀번호<span>확인</span></th>
                             <td><input type="password" name="pw_check" id="pw_check" style="float:left;"></td>
                         </tr>
+                            <th>이메일</th>
+                            <td>
+                                <input type="text" name="email" id="email" style="float:left;">
+                            </td>
                         <tr>
                             <th>성별</th>
                             <td>
@@ -175,7 +180,7 @@
                         </tr>
                         <tr>
                             <th>생년월일</th>
-                            <td><input type="text" name="birth" id="birth" style="float:left;"> </td>
+                            <td><input type="text" name="birthday" id="birthday" style="float:left;"> </td>
                         </tr>
                         <tr>
                             <th>휴대폰 번호</th>
@@ -195,6 +200,7 @@
                      		<th>상세 주소</th>
                             <td>
                                 <input type="text" name="addr1" id="addr1" value=""  maxlength="15" style="float:left;" readonly>
+                                <input type="text" name="addr2" id="addr2" value=""  maxlength="15" style="float:left;" readonly>
                             </td>
                         </tr>
                     </tbody>

@@ -26,7 +26,7 @@ public class ChiefCourseController {
 	public String insert(CourseVO vo, Model model, MultipartFile file, HttpServletRequest request) {
 		boolean r = service.insert(vo, file, request);
 	      if (r) { // 정상적으로 DB에 insert 
-	          model.addAttribute("cmd", "move");
+	          model.addAttribute("cmd", "move");         
 	          model.addAttribute("msg", "수업등록이 완료되었습니다.");
 	          model.addAttribute("url", "/tobe/chiefAdmin/course/chiefCourseForm.do");
 	       } else { // 등록안됨
