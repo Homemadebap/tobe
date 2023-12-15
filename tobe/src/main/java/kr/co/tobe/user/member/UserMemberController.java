@@ -76,21 +76,13 @@ public class UserMemberController {
 		model.addAttribute("cmd","move");
 		return "user/common/userAlert";
 	}
-
 	
-//	@GetMapping("/user/member/userMyPage/myName.do")  // 마이페이지 - 사용자 이름 가져오기
-//	public String myName(MemberVO mvo, HttpSession sess, Model model) {
-//		mvo = (MemberVO)sess.getAttribute("loginInfo");
-//		model.addAttribute("myPage", service.myName(mvo));
-//		return "ajax로 처리할거라 어떻게 해야 하는지 생각해보기";
-//	}
-//	
-//	@GetMapping("/user/member/userMyPage/myPoint.do")  // 마이페이지 - 사용자 포인트 가져오기
-//	public String myPoint(MemberVO mvo, HttpSession sess, Model model) {
-//		mvo = (MemberVO)sess.getAttribute("loginInfo");
-//		model.addAttribute("myPage", service.myPoint(mvo));
-//		return "ajax로 처리할거라 어떻게 해야 하는지 생각해보기";
-//	}
+	@GetMapping("/user/member/userQuit.do")
+	public String quit(HttpSession sess, Model model) {
+		return "user/member/userQuit";
+	}
+	
+
 	
 	@GetMapping("/user/member/userMyPage/currentCourseIndex.do")  // 마이페이지 - 현재 수강중인 강의 목록 뽑아오기
 	public String currentCourseIndex(MemberVO mvo, HttpSession sess, Model model) {

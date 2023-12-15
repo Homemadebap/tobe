@@ -18,6 +18,7 @@
 <link rel="stylesheet" href="/tobe/css/user_Header_Footer.css" />
 
 <script type="text/javascript">
+
 /*
 $(document).ready(function(){
 	$("#menu1").click(function(){
@@ -33,6 +34,8 @@ $(document).ready(function(){
 })
 */
 $(function(){
+	
+	
 	$('.mainMenu').click(function(){
 		
 	    $('.mainMenu').removeClass('on');
@@ -227,7 +230,7 @@ $(function(){
 	left: 2rem;
 }
 
-.currentClassIndex, .pastClassIndex, .myClassAskIndex, .myReviewIndex {
+.currentCourseIndex, .pastCourseIndex, .myCourseAskIndex, .myReviewIndex {
 	display: none;
 }
 
@@ -240,26 +243,30 @@ $(function(){
 	<div class="wrap">
 		<%@include file="/WEB-INF/views/user/common/userHeader.jsp"%>
 		<div class="main">
-
+			
 			<div class="part1">
-				<p>!!!!사용자!!!!님</p>
+				<p>${user.name }님</p>
 				<p>안녕하세요</p>
 			</div>
 			<div class="part2">
 				<div id="set">
-					<img src="/tobe/img/set.png" id="setImg">
-					<span id="setText">회원정보수정</span>
+					<a href="/tobe/user/member/userModifyForm.do">
+						<img src="/tobe/img/set.png" id="setImg">
+						<span id="setText">회원정보수정</span>
+					</a>
 				</div>
 				<div id="quit">
-					<img src="/tobe/img/quit.png" id="quitImg">
-					<span id="quitText">회원탈퇴</span>
+					<a href="/tobe/user/member/userQuit.do">
+						<img src="/tobe/img/quit.png" id="quitImg">
+						<span id="quitText">회원탈퇴</span>
+					</a>
 				</div>
 			</div>
 			
 			<div class="pointContainer"><img src="/tobe/img/point.png" id="pointImg">
 				<span id="point">
-					<span id="userPointText">${loginInfo.name }님의 잔여포인트</span>
-					<span id="numPointText"> 얼마얼마얼마 포인트</span>
+					<span id="userPointText">${user.name }님의 잔여포인트</span>
+					<span id="numPointText"> ${user.point } 포인트</span>
 				</span>
 
 			</div>
@@ -383,8 +390,9 @@ $(function(){
 				</div>
 			</div>
 			
-			<%@include file="/WEB-INF/views/user/common/userFooter.jsp"%>
+			
 		</div>
+		<%@include file="/WEB-INF/views/user/common/userFooter.jsp"%>
 	</div>
 </body>
 </html>

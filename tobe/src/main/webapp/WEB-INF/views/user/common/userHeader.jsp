@@ -15,9 +15,15 @@ $(document).ready(function(){
   });
 });
 
-$("#goTop").click(function() {
-	$('html').animate({scrollTop:0}, 2000);
-});
+// $("#goTop").click(function() {
+// 	$('html').animate({scrollTop:0}, 2000);
+// });
+
+//document.querySelect("#goTop").onclick = () => {
+//	window.scroppTop({top:0, behavior:"smooth"});
+//};
+
+
 
 
 </script>
@@ -64,7 +70,7 @@ $("#goTop").click(function() {
 		<span><a href="/tobe/user/common/userCompareCourse.do"><img src="/tobe/img/compare.png" class="quick"></a></span>
 	</span>
 
-
+</div>
 
 </body>
 </html>
