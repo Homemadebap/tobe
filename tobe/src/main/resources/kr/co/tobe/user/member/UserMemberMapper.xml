@@ -88,10 +88,25 @@
 			cname, r_title, r_writedate
 		from member m, review r, course c
 		where m.member_no = r.member_no
-			and c.course_no = r.course_no
 			and m.member_no = #{member_no}
 		order by r_writedate
 	</select>
-
+	
+	<!-- 회원가입 -->
+ 	<insert id="regist" parameterType="kr.co.tobe.vo.MemberVO">
+		INSERT INTO member(
+			name, id, pwd, email, gender, birthday, hp, addr1, addr2, registdate, zipcode, user_validity, email_agree
+		) VALUES (
+			#{name}, #{id}, MD5(#{pwd}), #{email}, #{gender}, #{birthday}, #{hp}, #{addr1}, #{addr2}, NOW(), #{zipcode}, 1, #{email_agree}
+		)
+		<selectKey keyProperty="member_no" order="AFTER" resultType="int">
+			SELECT LAST_INSERT_ID()
+		</selectKey>
+ 	</insert>
+ 	
+ 	<!-- 로그인 -->
+ 	<select id="login" resultType="kr.co.tobe.vo.MemberVO" parameterType="kr.co.tobe.vo.MemberVO">
+ 		SELECT * FROM member WHERE id=#{id} AND pwd=MD5(#{pwd})
+ 	</select>
 
 </mapper>
