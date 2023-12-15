@@ -22,7 +22,7 @@ public class ChiefCourseController {
 		return "chiefAdmin/course/chiefCourseForm";
 	}
 	
-	@PostMapping ("/course/chiefCourseInsert.do")
+	@PostMapping ("/chiefAdmin/course/chiefCourseInsert.do")
 	public String insert(CourseVO vo, Model model, MultipartFile file, HttpServletRequest request) {
 		boolean r = service.insert(vo, file, request);
 	      if (r) { // 정상적으로 DB에 insert 
