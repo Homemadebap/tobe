@@ -7,7 +7,7 @@ import lombok.Data;
 @Data
 public class MemberVO {
 
-	private int memberNo;
+	private int member_no;
 	private String name;
 	private String id;
 	private String pwd;
@@ -20,8 +20,8 @@ public class MemberVO {
 	private String addr1;
 	private String addr2;
 	private int point;
-	private boolean emailAgree;
-	private boolean userValidity;
+	private boolean email_agree;
+	private boolean user_validity;
 	
 	private int startIdx;
 	private int page;
