@@ -43,7 +43,9 @@ public class UserCommonController {
 	}
 	
 	@GetMapping("/user/member/userMyPageMain.do")
-	public String userMyPageMain() {
+	public String userMyPageMain(HttpSession sess, Model model) {
+		MemberVO user = (MemberVO)sess.getAttribute("loginInfo");
+		model.addAttribute("user", user);
 		return "user/member/userMyPageMain";
 	}
 	
