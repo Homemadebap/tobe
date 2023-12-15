@@ -20,15 +20,7 @@ public class UserCommonController {
 		return "user/common/userIndex"; 
 	}
 	
-	@GetMapping("/user/member/userLogin.do")
-	public String userLogin() {
-		return "user/member/userLogin";
-	}
 	
-	@GetMapping("/user/member/userJoinForm.do")
-	public String userJoinForm() {
-		return "user/member/userJoinForm";
-	}
 	
 	@GetMapping("/user/course/userCourseIndex.do")
 	public String userCourseIndex() {

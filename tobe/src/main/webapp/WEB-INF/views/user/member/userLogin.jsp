@@ -10,10 +10,11 @@
     <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
-   	<!-- <link rel="stylesheet" href="/tobe/css/user_Header_Footer.css"/> -->
+   	<!--<link rel="stylesheet" href="/tobe/css/user_Header_Footer.css"/>-->
 
   
     <script>
+
     function loginCheck() {
     	if ($("#id").val() == '') {
     		alert("아이디를 입력해 주세요");

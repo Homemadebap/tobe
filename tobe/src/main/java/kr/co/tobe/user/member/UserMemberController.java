@@ -1,5 +1,7 @@
 package kr.co.tobe.user.member;
 
+import java.net.http.HttpRequest;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,7 +9,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import kr.co.tobe.vo.MemberVO;
 
@@ -17,7 +18,18 @@ public class UserMemberController {
 	@Autowired
 	private UserMemberService service;
 	
+	@GetMapping("/user/member/login.do")
+	public String userLogin() {
+		return "user/member/userLogin";
+	}
+	
+	@GetMapping("/user/member/userJoinForm.do")
+	public String userJoinForm() {
+		return "user/member/userJoinForm";
+	}
+	
 	@PostMapping("/user/member/userJoinForm.do")
+//	@GetMapping("/user/member/userJoinForm.do")
 	public String regist(MemberVO vo, Model model) {
 		boolean r = service.regist(vo); 
 		if (r) { 
@@ -37,10 +49,10 @@ public class UserMemberController {
 		if (login == null) { // 로그인실패
 			model.addAttribute("msg", "아이디 비밀번호가 올바르지 않습니다.");
 			model.addAttribute("cmd", "back");
-			return "common/alert";
+			return "user/common/userAlert";
 		} else { // 로그인성공
 			sess.setAttribute("loginInfo", login);
-			return "redirect:/user/common/userIndex.do";
+			return "redirect:user/common/userIndex.do";
 		}
 	}
 	
@@ -49,7 +61,7 @@ public class UserMemberController {
 //		sess.removeAttribute("loginInfo");
 		sess.invalidate();
 		model.addAttribute("msg", "로그아웃되었습니다.");
-		model.addAttribute("url", "/tobe/user/common/index.do");
+		model.addAttribute("url", "/tobe/user/common/userIndex.do");
 		model.addAttribute("cmd", "move");
 		return "user/common/userAlert";
 	}
