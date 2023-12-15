@@ -1,5 +1,7 @@
 package kr.co.tobe.user.course;
 
-public interface UserCourseService {
+import kr.co.tobe.vo.CourseVO;
 
+public interface UserCourseService {
+	CourseVO lectureSelect(CourseVO CVO);
 }
