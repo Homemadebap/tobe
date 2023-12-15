@@ -146,13 +146,13 @@
       </div>
       <div id="boxa">
          <div id="a">
-            <a href="/tobe/chiefAdmin/classes/chiefClassIndex.do" id="aa"><font size=1px;>강좌관리→</a></font>
+            <a href="/tobe/chiefAdmin/course/chiefCourseIndex.do" id="aa"><font size=1px;>강좌관리→</a></font>
             <div>
                <div id="class1">
-                  <img src="/tobe/img/cl_1.png" width=22% height=80%;><p>  강좌  리스트</p><a href="/tobe/chiefAdmin/classes/chiefClassIndex.do" id="w1">→</a>
+                  <img src="/tobe/img/cl_1.png" width=22% height=80%;><p>  강좌  리스트</p><a href="/tobe/chiefAdmin/course/chiefCourseIndex.do" id="w1">→</a>
                </div>
                <div id="class2">
-                  <img src="/tobe/img/cl_2.png" width=21% height=80%;><p>  강좌 등록하기</p><a href="/tobe/chiefAdmin/classes/chiefClassForm.do" id="w2">→</a>
+                  <img src="/tobe/img/cl_2.png" width=21% height=80%;><p>  강좌 등록하기</p><a href="/tobe/chiefAdmin/course/chiefCourseForm.do" id="w2">→</a>
                </div>
             </div>
          </div>
