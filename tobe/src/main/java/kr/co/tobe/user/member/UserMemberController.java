@@ -1,7 +1,5 @@
 package kr.co.tobe.user.member;
 
-import java.net.http.HttpRequest;
-
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,7 +33,7 @@ public class UserMemberController {
 		if (r) { 
 			model.addAttribute("cmd", "move");
 			model.addAttribute("msg", "회원가입되었습니다.");
-			model.addAttribute("url", "/user/common/userIndex.do");
+			model.addAttribute("url", "/tobe/user/common/userIndex.do");
 		} else {
 			model.addAttribute("cmd", "back");
 			model.addAttribute("msg", "회원가입실패");
@@ -52,7 +50,7 @@ public class UserMemberController {
 			return "user/common/userAlert";
 		} else { // 로그인성공
 			sess.setAttribute("loginInfo", login);
-			return "redirect:user/common/userIndex.do";
+			return "redirect:/user/common/userIndex.do";
 		}
 	}
 	
@@ -93,7 +91,7 @@ public class UserMemberController {
 	public String quit(MemberVO vo, Model model) {
 		int r = service.quit(vo);
 		String msg = "";
-		String url = "user/common/userIndex.do";
+		String url = "/user/common/userIndex.do";
 		if (r > 0) {
 			msg = "회원탈퇴가 완료되었습니다.";
 		} else {
@@ -104,6 +102,22 @@ public class UserMemberController {
 		model.addAttribute("cmd","move");
 		return "user/common/userAlert";
 	}
+	
+//	@PostMapping("/user/member/userQuitForm.do")
+//	public String quitForm(MemberVO vo, Model model) {
+//		int r = service.quitForm(vo);
+//		String msg = "";
+//		String url = "/user/member/userQuitForm.do";
+//		if (r > 0) {
+//			msg = "회원탈퇴가 완료되었습니다.";
+//		} else {
+//			msg = "실행 오류";
+//		}
+//		model.addAttribute("msg",msg);
+//		model.addAttribute("url",url);
+//		model.addAttribute("cmd","move");
+//		return "user/common/userAlert";
+//	}
 
 	
 	@GetMapping("/user/member/userMyPage/currentCourseIndex.do")  // 마이페이지 - 현재 수강중인 강의 목록 뽑아오기

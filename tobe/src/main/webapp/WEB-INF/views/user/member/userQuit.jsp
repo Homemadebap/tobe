@@ -202,7 +202,7 @@
 				
 				<div id="pwdCheckBox">
 					<input type="text" id="idCheck" value="${user.id }" disabled><br>
-					<input type="password" id="pwdCheck" maxlength="20" placeholder="비밀번호를 입력해주세요"><br>
+					<input type="password" id="pwdCheck" required maxlength="20" placeholder="비밀번호를 입력해주세요"><br>
 				</div>
 				
 				<a href="/tobe/user/member/userQuitForm.do"><input type="button" id="pwdCheckBtn" value="확인"></a>

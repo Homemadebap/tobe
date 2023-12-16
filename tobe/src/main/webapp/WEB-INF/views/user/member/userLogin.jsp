@@ -183,7 +183,6 @@
     <div class="wrap">
     <%@ include file="/WEB-INF/views/user/common/userHeader.jsp" %>
     </div>
-    </div>
     	<form action="userLogin.do" method="post" id="board1" name="board1" onsubmit="">
             <div class="sub">
                 <h3 class="sub_title">로그인</h3>
