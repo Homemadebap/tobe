@@ -7,7 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Tobe 회원탈퇴</title>
+<title>Tobe 회원정보 수정</title>
 
 <META name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, user-scalable=no">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
@@ -16,6 +16,7 @@
 <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
 <link rel="stylesheet" href="/tobe/css/user_Header_Footer.css" />
+
 
 <script type="text/javascript">
 
@@ -140,7 +141,7 @@
 #idCheck, #pwdCheck {
 	width: 15rem;
 	text-align: center;
-	font-size: 1rem;	
+	font-size: 1.15rem;	
 	padding: 0.5rem;
 	margin: 0.5rem auto;
 }
@@ -154,43 +155,13 @@
 	left: 16.5rem;
 	background-color: #000;
 	color: #fff;
-}
-
-.quitNotice {
-	position: absolute;
-	top: 12rem;
-	left: 1rem;
-}
-
-.quitBox {
-	position: absolute;
-	width: 71rem;
-	top: 32.5rem;
-	margin: 0 2rem;
-}
-
-.line {
-	position: absolute;
-	background-color: #49654E;
-	width: 70rem;
-	height: 2px;
-	top: 5rem;
-	
-}
-
-#quitAgree {
-	position: absolute;
-	width: 8rem;
-	height: 2rem;
-	font-size: 1.25rem;
-	background-color: #000;
-	color: #fff;
     cursor: pointer;
-    left: 31rem;
 }
+
 
 
 </style>
+
 
 
 </head>
@@ -205,14 +176,14 @@
 			</div>
 			<div class="part2">
 				<div id="set">
-					<a href="/tobe/user/member/userModifyForm.do">
-						<img src="/tobe/img/set.png" id="setImg">
-						<span id="setText">회원정보수정</span>
-					</a>
+					<img src="/tobe/img/set.png" id="setImg">
+					<span id="setText">회원정보수정</span>
 				</div>
 				<div id="quit">
-					<img src="/tobe/img/quit.png" id="quitImg">
-					<span id="quitText">회원탈퇴</span>
+					<a href="/tobe/user/member/userQuit.do">
+						<img src="/tobe/img/quit.png" id="quitImg">
+						<span id="quitText">회원탈퇴</span>
+					</a>
 				</div>
 			</div>
 			
@@ -223,55 +194,20 @@
 				</span>
 			</div>
 			
-			<div class="quitNotice">
-				<h1>그동안 Tobe를 이용해주셔서 감사합니다.</h1>
-				<p style="font-size: 1.3rem;">공영쇼핑 회원탈퇴 시 아래 사항을 확인하여 주시기 바랍니다.</p>
-				<ul style="font-size: 1.15rem;">
-					<li>고객님의 정보는 전자상거래 소비자보호법에 의거한 공영쇼핑 개인정보보호정책에 따라 관리됩니다.
-					<li>탈퇴 시 고객님께서 보유하셨던 포인트는 모두 삭제되며, 재가입 시에도 복원되지 않습니다.</li>
-					<li>탈퇴 후 <b>3개월</b>동안 재가입을 하실 수 없습니다.</li>
-					<li>탈퇴 <b>3개월</b> 이후 재가입 시 동일 ID 재사용이 가능합니다.</li>
-					<li>탈퇴 시 <b>예치금은 환불처리가 가능(반드시 본인명의의 계좌만 가능)하며</b>, 환불요청은 고객센터(02-1234-5678)로 연락 주시기 바랍니다.</li>
-					<li>탈퇴 시 받으신 혜택 제공은 모두 취소됩니다.</li>
-				</ul>
-			</div>
-			
-			<div class="quitBox">
-				<h1 id="q">회원 탈퇴 사유</h1>
-				<div class="line"></div>
-				<form class="quitForm" method="post" action="userQuit.do">
-					<table>
-						<tr>
-							<th style="width: 10rem; font-size: 1.25rem;" >회원 탈퇴 사유</th>
-							<td >
-								<select id="quitReason" style="width: 15rem; height: 2rem; font-size: 1rem;" required>
-									<option value="1">강의종류 불만</option>
-									<option value="2">강의가격 불만</option>
-									<option value="3">강의질 불만</option>
-									<option value="4">강사 불만</option>
-									<option value="5">환불 불만</option>
-									<option value="6">고객응대 불만</option>
-									<option value="7">시스템 불만</option>
-									<option value="8">이용빈도 낮음</option>
-									<option value="9">개인정보 유출 우려</option>
-									<option value="10">포인트 및 혜택 부족</option>
-									<option value="11">기타</option>
-								</select>
-							</td>
-						</tr>
-						<tr>
-							<th style="font-size: 1.25rem;">기타 불만 사항</th>
-							<td><textarea id="quitOpnion" cols="100" rows="15" placeholder="(선택입력)Tobe에 의견이 있으시면 작성해주세요." 
-									style="font-size:1rem;"></textarea></td>
-						</tr>					
-					</table>
-					<input type="checkbox" id="quitCheck" name="quitCheck" required>
-					<span style="font-size: 1rem;"><b>회원탈퇴 안내를 모두 확인하였으며 탈퇴에 동의합니다.</b></span><br><br>
-					<input type="submit" id="quitAgree" value="탈퇴하기">
+			<div class="quitMain">
+				<div id="pwdCheckText">
+					<h3 style="font-size: 1.75rem; text-align:center;">비밀번호 확인</h3>
+					<p style="font-size: 1.25em;">개인정보를 안전하게 보호하기 위해 비밀번호를 다시 한번 확인합니다.</p>
+				</div>
+					
+				<form method="post" action="userModifyForm.do" id="frm">
+					<div id="pwdCheckBox">
+						<input type="text" id="idCheck" value="${user.id }" disabled><br>
+						<input type="password" id="pwdCheck" name="pwd" maxlength="20" placeholder="비밀번호를 입력해주세요" required><br>
+					</div>
+					<input type="submit" id="pwdCheckBtn" value="확인">
 				</form>
 			</div>
-
-			
 			
 		</div>
 		<%@include file="/WEB-INF/views/user/common/userFooter.jsp"%>

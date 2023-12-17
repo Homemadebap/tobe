@@ -39,6 +39,7 @@
 	font-color: #49654E;
 	font-size: 1.5rem;
 	left: 1rem;
+	color: #49654E;
 }
 
 .part2 {
@@ -47,6 +48,7 @@
 	height: 10rem;
 	font-size: 1.5rem;
 	left: 15rem;
+	color: #49654E;
 }
 
 #set {
@@ -109,6 +111,7 @@
 	width: 13.5rem;
 	height: 10rem;
 	right: 0;
+	color: #49654E;
 }
 
 #userPointText {
@@ -168,7 +171,7 @@
 		<div class="main">
 			
 			<div class="part1">
-				<p>${user.name }님</p>
+				<p><b>${user.name }</b>님</p>
 				<p>안녕하세요</p>
 			</div>
 			<div class="part2">
@@ -179,16 +182,14 @@
 					</a>
 				</div>
 				<div id="quit">
-					<a href="/tobe/user/member/userQuit.do">
-						<img src="/tobe/img/quit.png" id="quitImg">
-						<span id="quitText">회원탈퇴</span>
-					</a>
+					<img src="/tobe/img/quit.png" id="quitImg">
+					<span id="quitText">회원탈퇴</span>
 				</div>
 			</div>
 			
 			<div class="pointContainer"><img src="/tobe/img/point.png" id="pointImg">
 				<span id="point">
-					<span id="userPointText">${user.name }님의 잔여포인트</span>
+					<span id="userPointText"><b>${user.name }</b>님의 잔여포인트</span>
 					<span id="numPointText"> ${user.point } 포인트</span>
 				</span>
 			</div>
@@ -202,7 +203,7 @@
 				<form method="post" action="userQuitForm.do" id="frm">
 					<div id="pwdCheckBox">
 						<input type="text" id="idCheck" value="${user.id }" disabled><br>
-						<input type="password" id="pwdCheck" name="pwdCheck" maxlength="20" placeholder="비밀번호를 입력해주세요" required><br>
+						<input type="password" id="pwdCheck" name="pwd" maxlength="20" placeholder="비밀번호를 입력해주세요" required><br>
 					</div>
 					<input type="submit" id="pwdCheckBtn" value="확인">
 				</form>

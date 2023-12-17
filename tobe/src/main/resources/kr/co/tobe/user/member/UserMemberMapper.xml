@@ -106,7 +106,7 @@
  	
  	<!-- 로그인 -->
  	<select id="login" resultType="kr.co.tobe.vo.MemberVO" parameterType="kr.co.tobe.vo.MemberVO">
- 		SELECT * FROM member WHERE id=#{id} AND pwd=MD5(#{pwd})
+ 		SELECT * FROM member WHERE id=#{id} AND pwd=MD5(#{pwd}) and user_validity=true;
  	</select>
 
 </mapper>

@@ -159,7 +159,7 @@
                         </tr>
                         <tr>
                             <th>비밀번호</th>
-                            <td><input type="password" name="pwd" id="pw" style="float:left;"> <span class="ptxt"></span> </td>
+                            <td><input type="password" name="pwd" id="pwd" style="float:left;"> <span class="ptxt"></span> </td>
                         </tr>
                         <tr>
                             <th>비밀번호<span>확인</span></th>

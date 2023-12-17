@@ -66,18 +66,47 @@ public class UserMemberController {
 		return "user/common/userAlert";
 	}
 	
-	@GetMapping("/user/member/userModifyForm.do")
-	public String edit(HttpSession sess, Model model) {
-		MemberVO uv = (MemberVO)sess.getAttribute("loginInfo");
-		model.addAttribute("vo", service.detail(uv));
-		return "user/member/userModifyForm";
+	@PostMapping("/user/member/userModifyForm.do")
+	public String userModifyForm(HttpSession sess, MemberVO mvo, Model model) {
+		MemberVO user = (MemberVO)sess.getAttribute("loginInfo");
+		MemberVO pwdCheck = service.pwdCheck(mvo);
+		if(user == null) {
+			return "redirect:/user/common/userIndex.do";
+		}
+		
+		if (pwdCheck == null) { // 비밀번호 확인 실패
+			model.addAttribute("msg", "비밀번호가 올바르지 않습니다.");
+			model.addAttribute("cmd", "back");
+			return "user/common/userAlert";
+		} else { // 비밀번호확인 성공
+			model.addAttribute("user", user);
+			return "user/member/userModifyForm";
+		}
 	}
 	
-	@PostMapping("/user/member/userModifyForm.do")
-	public String update(MemberVO vo, Model model) {
+	@PostMapping("/user/member/userQuitForm.do")
+	public String quitForm(HttpSession sess, MemberVO mvo, Model model) {
+		MemberVO user = (MemberVO)sess.getAttribute("loginInfo");
+		MemberVO pwdCheck = service.pwdCheck(mvo);
+		if(user == null) {
+			return "redirect:/user/common/userIndex.do";
+		}
+		
+		if (pwdCheck == null) { // 비밀번호 확인 실패
+			model.addAttribute("msg", "비밀번호가 올바르지 않습니다.");
+			model.addAttribute("cmd", "back");
+			return "user/common/userAlert";
+		} else { // 비밀번호확인 성공
+			model.addAttribute("user", user);
+			return "user/member/userQuitForm";
+		}
+	}
+
+	@PostMapping("/user/member/userModify.do")
+	public String userModify(MemberVO vo, Model model) {
 		int r = service.update(vo);
 		String msg = "";
-		String url = "userModifyForm.do";
+		String url = "userModify.do";
 		if (r > 0) {
 			msg = "정상적으로 수정되었습니다.";
 		} else {
@@ -87,20 +116,6 @@ public class UserMemberController {
 		model.addAttribute("url",url);
 		model.addAttribute("cmd","move");
 		return "user/common/userAlert";
-	}
-	
-	@PostMapping("/user/member/userQuitForm.do")
-	public String quitForm(HttpSession sess, Model model, MemberVO mvo) {
-		MemberVO user = (MemberVO)sess.getAttribute("loginInfo");
-		if(user == null) {
-			return "redirect:/user/common/userIndex.do";
-		}
-		MemberVO vo = service.pwdCheck(user);
-		// 널포인터 때문에 500에러 뜸. 그래서 이건 그냥 ajax로 해결하고 가는 게 좋을 듯!!!
-		if(vo.getPwd()!= user.getPwd() || vo == null) {
-			return "redirect:/user/member/userMyPageMain.do";
-		}
-		return "user/member/userQuitForm";
 	}
 	
 	@PostMapping("/user/member/userQuit.do")
@@ -121,7 +136,7 @@ public class UserMemberController {
 		model.addAttribute("cmd","move");
 		return "user/common/userAlert";
 	}
-
+	
 	
 	@GetMapping("/user/member/userMyPage/currentCourseIndex.do")  // 마이페이지 - 현재 수강중인 강의 목록 뽑아오기
 	public String currentCourseIndex(MemberVO mvo, HttpSession sess, Model model) {
