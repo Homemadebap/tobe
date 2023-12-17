@@ -20,7 +20,6 @@
 <script type="text/javascript">
 
 
-
 </script>
 
 <style>
@@ -199,18 +198,15 @@
 					<h3 style="font-size: 1.75rem; text-align:center;">비밀번호 확인</h3>
 					<p style="font-size: 1.25em;">개인정보를 안전하게 보호하기 위해 비밀번호를 다시 한번 확인합니다.</p>
 				</div>
-				
-				<div id="pwdCheckBox">
-					<input type="text" id="idCheck" value="${user.id }" disabled><br>
-					<input type="password" id="pwdCheck" required maxlength="20" placeholder="비밀번호를 입력해주세요"><br>
-				</div>
-				
-				<a href="/tobe/user/member/userQuitForm.do"><input type="button" id="pwdCheckBtn" value="확인"></a>
+					
+				<form method="post" action="userQuitForm.do" id="frm">
+					<div id="pwdCheckBox">
+						<input type="text" id="idCheck" value="${user.id }" disabled><br>
+						<input type="password" id="pwdCheck" name="pwdCheck" maxlength="20" placeholder="비밀번호를 입력해주세요" required><br>
+					</div>
+					<input type="submit" id="pwdCheckBtn" value="확인">
+				</form>
 			</div>
-			
-			
-			
-			
 			
 			
 		</div>

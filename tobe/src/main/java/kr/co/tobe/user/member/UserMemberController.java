@@ -7,6 +7,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import kr.co.tobe.vo.MemberVO;
 
@@ -87,37 +89,38 @@ public class UserMemberController {
 		return "user/common/userAlert";
 	}
 	
+	@PostMapping("/user/member/userQuitForm.do")
+	public String quitForm(HttpSession sess, Model model, MemberVO mvo) {
+		MemberVO user = (MemberVO)sess.getAttribute("loginInfo");
+		if(user == null) {
+			return "redirect:/user/common/userIndex.do";
+		}
+		MemberVO vo = service.pwdCheck(user);
+		// 널포인터 때문에 500에러 뜸. 그래서 이건 그냥 ajax로 해결하고 가는 게 좋을 듯!!!
+		if(vo.getPwd()!= user.getPwd() || vo == null) {
+			return "redirect:/user/member/userMyPageMain.do";
+		}
+		return "user/member/userQuitForm";
+	}
+	
 	@PostMapping("/user/member/userQuit.do")
-	public String quit(MemberVO vo, Model model) {
-		int r = service.quit(vo);
+	public String quit(MemberVO mvo, Model model, HttpSession sess) {
+		mvo = (MemberVO)sess.getAttribute("loginInfo");
+		System.out.println(mvo.getMember_no());
+		int r = service.quit(mvo);
 		String msg = "";
-		String url = "/user/common/userIndex.do";
+		String url = "/tobe/user/common/userIndex.do";
 		if (r > 0) {
+			sess.invalidate();
 			msg = "회원탈퇴가 완료되었습니다.";
 		} else {
-			msg = "실행 오류";
+			msg = "실행 오류. 회원탈퇴가 정상적으로 이루어지지 않았습니다.";
 		}
 		model.addAttribute("msg",msg);
 		model.addAttribute("url",url);
 		model.addAttribute("cmd","move");
 		return "user/common/userAlert";
 	}
-	
-//	@PostMapping("/user/member/userQuitForm.do")
-//	public String quitForm(MemberVO vo, Model model) {
-//		int r = service.quitForm(vo);
-//		String msg = "";
-//		String url = "/user/member/userQuitForm.do";
-//		if (r > 0) {
-//			msg = "회원탈퇴가 완료되었습니다.";
-//		} else {
-//			msg = "실행 오류";
-//		}
-//		model.addAttribute("msg",msg);
-//		model.addAttribute("url",url);
-//		model.addAttribute("cmd","move");
-//		return "user/common/userAlert";
-//	}
 
 	
 	@GetMapping("/user/member/userMyPage/currentCourseIndex.do")  // 마이페이지 - 현재 수강중인 강의 목록 뽑아오기

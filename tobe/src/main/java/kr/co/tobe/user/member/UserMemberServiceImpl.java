@@ -40,6 +40,11 @@ public class UserMemberServiceImpl implements UserMemberService {
 	}
 	
 	@Override
+	public MemberVO pwdCheck(MemberVO mvo) {
+		return mapper.pwdCheck(mvo);
+	}
+	
+	@Override
 	public int quit(MemberVO mvo) {
 		return mapper.quit(mvo);
 	}

@@ -45,6 +45,9 @@ public class UserCommonController {
 	@GetMapping("/user/member/userMyPageMain.do")
 	public String userMyPageMain(HttpSession sess, Model model) {
 		MemberVO user = (MemberVO)sess.getAttribute("loginInfo");
+		if(user == null) {
+			return "redirect:/user/common/userIndex.do";
+		}
 		model.addAttribute("user", user);
 		return "user/member/userMyPageMain";
 	}
@@ -61,12 +64,13 @@ public class UserCommonController {
 	
 	@GetMapping("/user/member/userQuit.do")
 	public String quit(HttpSession sess, Model model) {
+		MemberVO user = (MemberVO)sess.getAttribute("loginInfo");
+		if(user == null) {
+			return "redirect:/user/common/userIndex.do";
+		}
+		model.addAttribute("user", user);
 		return "user/member/userQuit";
 	}
 	
-	@GetMapping("/user/member/userQuitForm.do")
-	public String quitForm(HttpSession sess, Model model) {
-		return "user/member/userQuitForm";
-	}
 	
 }

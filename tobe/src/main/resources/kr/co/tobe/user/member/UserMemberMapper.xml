@@ -2,8 +2,14 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="kr.co.tobe.user.member.UserMemberMapper">
 	
+	<!-- 비밀번호 확인 -->
+ 	<select id="pwdCheck" resultType="kr.co.tobe.vo.MemberVO" parameterType="kr.co.tobe.vo.MemberVO">
+ 		SELECT * FROM member WHERE pwd=MD5(#{pwd})
+ 	</select>
+	
+	
 	<!-- 회원탈퇴 -->
-	<update id="userQuit" parameterType="kr.co.tobe.vo.MemberVO">
+	<update id="quit" parameterType="kr.co.tobe.vo.MemberVO">
 		UPDATE member
 		SET user_validity = false
 		where member_no= #{member_no}

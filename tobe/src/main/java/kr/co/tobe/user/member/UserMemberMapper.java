@@ -19,9 +19,10 @@ public interface UserMemberMapper {
 	MemberVO detail(int no);
 	// 회원수정
 	int update(MemberVO vo);
+	// 비밀번호 확인
+	MemberVO pwdCheck(MemberVO mvo);
 	// 회원탈퇴
-	int quit(MemberVO vo);
-	
+	int quit(MemberVO mvo);
 	
 	// 마이페이지 - 현재 수강중인 강의 목록 뽑아오기
 	List<Map<String, Object>> currentCourseIndex(MemberVO mvo);

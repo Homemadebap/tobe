@@ -241,14 +241,14 @@ $(function(){
 					<li>탈퇴 후 <b>3개월</b>동안 재가입을 하실 수 없습니다.</li>
 					<li>탈퇴 <b>3개월</b> 이후 재가입 시 동일 ID 재사용이 가능합니다.</li>
 					<li>탈퇴 시 <b>예치금은 환불처리가 가능(반드시 본인명의의 계좌만 가능)하며</b>, 환불요청은 고객센터(02-1234-5678)로 연락 주시기 바랍니다.</li>
-					<li>탈퇴 시 참여하신 이벤트 추첨 및 당첨에서 제외됩니다.</li>
+					<li>탈퇴 시 받으신 혜택 제공은 모두 취소됩니다.</li>
 				</ul>
 			</div>
 			
 			<div class="quitBox">
 				<h1 id="q">회원 탈퇴 사유</h1>
 				<div class="line"></div>
-				<form class="quitForm" method="post" action="user/member/userQuit.do">
+				<form class="quitForm" method="post" action="userQuit.do">
 					<table>
 						<tr>
 							<th style="width: 10rem; font-size: 1.25rem;" >회원 탈퇴 사유</th>
