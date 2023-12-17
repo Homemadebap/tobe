@@ -20,8 +20,6 @@ public class UserCommonController {
 		return "user/common/userIndex"; 
 	}
 	
-	
-	
 	@GetMapping("/user/course/userCourseIndex.do")
 	public String userCourseIndex() {
 		return "user/course/userCourseIndex";
@@ -45,6 +43,9 @@ public class UserCommonController {
 	@GetMapping("/user/member/userMyPageMain.do")
 	public String userMyPageMain(HttpSession sess, Model model) {
 		MemberVO user = (MemberVO)sess.getAttribute("loginInfo");
+		if(user == null) {
+			return "redirect:/user/common/userIndex.do";
+		}
 		model.addAttribute("user", user);
 		return "user/member/userMyPageMain";
 	}
@@ -58,4 +59,28 @@ public class UserCommonController {
 	public String userCompareCourse() {
 		return "user/common/userCompareCourse";
 	}
+	
+	@GetMapping("/user/member/userModify.do")
+	public String userModify(HttpSession sess, Model model) {
+		MemberVO user = (MemberVO)sess.getAttribute("loginInfo");
+		if(user == null) {
+			return "redirect:/user/member/userMyPageMain.do";
+		}
+		model.addAttribute("user", user);
+		return "user/member/userModify";
+	}
+	
+	@GetMapping("/user/member/userQuit.do")
+	public String quit(HttpSession sess, Model model) {
+		MemberVO user = (MemberVO)sess.getAttribute("loginInfo");
+		if(user == null) {
+			return "redirect:/user/common/userIndex.do";
+		}
+		model.addAttribute("user", user);
+		return "user/member/userQuit";
+	}
+	
+
+	
+	
 }

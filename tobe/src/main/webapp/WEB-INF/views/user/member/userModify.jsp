@@ -7,7 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Tobe 회원탈퇴</title>
+<title>Tobe 회원정보 수정</title>
 
 <META name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, user-scalable=no">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
@@ -17,8 +17,8 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
 <link rel="stylesheet" href="/tobe/css/user_Header_Footer.css" />
 
-<script type="text/javascript">
 
+<script type="text/javascript">
 
 </script>
 
@@ -141,7 +141,7 @@
 #idCheck, #pwdCheck {
 	width: 15rem;
 	text-align: center;
-	font-size: 1rem;	
+	font-size: 1.15rem;	
 	padding: 0.5rem;
 	margin: 0.5rem auto;
 }
@@ -176,14 +176,14 @@
 			</div>
 			<div class="part2">
 				<div id="set">
-					<a href="/tobe/user/member/userModifyForm.do">
-						<img src="/tobe/img/set.png" id="setImg">
-						<span id="setText">회원정보수정</span>
-					</a>
+					<img src="/tobe/img/set.png" id="setImg">
+					<span id="setText">회원정보수정</span>
 				</div>
 				<div id="quit">
-					<img src="/tobe/img/quit.png" id="quitImg">
-					<span id="quitText">회원탈퇴</span>
+					<a href="/tobe/user/member/userQuit.do">
+						<img src="/tobe/img/quit.png" id="quitImg">
+						<span id="quitText">회원탈퇴</span>
+					</a>
 				</div>
 			</div>
 			
@@ -200,7 +200,7 @@
 					<p style="font-size: 1.25em;">개인정보를 안전하게 보호하기 위해 비밀번호를 다시 한번 확인합니다.</p>
 				</div>
 					
-				<form method="post" action="userQuitForm.do" id="frm">
+				<form method="post" action="userModifyForm.do" id="frm">
 					<div id="pwdCheckBox">
 						<input type="text" id="idCheck" value="${user.id }" disabled><br>
 						<input type="password" id="pwdCheck" name="pwd" maxlength="20" placeholder="비밀번호를 입력해주세요" required><br>
@@ -208,7 +208,6 @@
 					<input type="submit" id="pwdCheckBtn" value="확인">
 				</form>
 			</div>
-			
 			
 		</div>
 		<%@include file="/WEB-INF/views/user/common/userFooter.jsp"%>

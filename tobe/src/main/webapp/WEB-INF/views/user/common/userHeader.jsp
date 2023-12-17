@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -33,11 +34,6 @@ $(document).ready(function(){
 
 <div class="header">
 	<span class="header_memberBar">
-		<!-- 
-		<a href="/tobe/user/member/login.do">로그인</a> |
-	    <a href="/tobe/user/member/userJoinForm.do">회원가입</a>
-	    -->
-	 
 		<c:if test="${empty loginInfo }">
 		    <a href="/tobe/user/member/login.do">로그인</a> |
 		    <a href="/tobe/user/member/userJoinForm.do">회원가입</a>
@@ -47,9 +43,6 @@ $(document).ready(function(){
 		    <a href="/tobe/user/member/userLogout.do">로그아웃</a> |
 		    <a href="/tobe/user/member/userMyPageMain.do">마이페이지</a>
 		</c:if>
-		
-	
-
 	</span>
 	
 	

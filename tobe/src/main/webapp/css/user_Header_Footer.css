@@ -3,7 +3,7 @@
 
 .wrap {
 	width: 85rem;
-	height: 70rem;
+	height: 80rem;
 	margin: 0 auto;	
 	position: relative;
 }
@@ -70,10 +70,6 @@ a:visited {
     cursor:pointer; 
 }
 
-
-
-
-
 .quickMenu {
 	position: absolute;
 	width: 4rem;
@@ -91,15 +87,12 @@ a:visited {
 }
 
 
-
-
-	
 .footer { 
 	background-color:#d3d3d3;
 	width:75rem;
 	height:12.5rem;
 	position:absolute;
-	top: 65rem;
+	top: 80rem;
 }
 
 .footer_content {

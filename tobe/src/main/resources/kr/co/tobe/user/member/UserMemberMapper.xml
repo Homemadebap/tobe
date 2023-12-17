@@ -2,6 +2,22 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="kr.co.tobe.user.member.UserMemberMapper">
 	
+	<!-- 비밀번호 확인 -->
+ 	<select id="pwdCheck" resultType="kr.co.tobe.vo.MemberVO" parameterType="kr.co.tobe.vo.MemberVO">
+ 		SELECT * FROM member WHERE pwd=MD5(#{pwd})
+ 	</select>
+	
+	
+	<!-- 회원탈퇴 -->
+	<update id="quit" parameterType="kr.co.tobe.vo.MemberVO">
+		UPDATE member
+		SET user_validity = false
+		where member_no= #{member_no}
+	</update>
+	
+	
+	<!-- 마이페이지의 main 메뉴들에 대한 select문 -->
+	
 	<resultMap type="HashMap" id="currentCourseIndexpMap">
 		<id column="teacher_img" property="teacher_img"/>
 		<id column="i_cname" property="i_cname"/>
@@ -34,23 +50,7 @@
 		<id column="r_title" property="r_title"/>
 		<id column="r_writedate" property="r_writedate"/>
 	</resultMap>		
-	
-	<!-- 
-	<select id="myName" parameterType="kr.co.tobe.vo.MemberVO" resultType="String">
-		select
-			name
-		from member
-		where member_no = #{member_no}	
-	</select>
-	
-	<select id="myPoint" parameterType="kr.co.tobe.vo.MemberVO" resultType="Integer">
-		select
-			point
-		from member
-		where member_no = #{member_no}	
-	</select>
-	 -->
-	
+
 	<select id="currentCourseIndex" parameterType="kr.co.tobe.vo.MemberVO" resultMap="currentCourseIndexpMap">
 		select
 			(select teacher_img from course where course.course_no=pay_detail.course_no) as teacher_img,
@@ -106,7 +106,7 @@
  	
  	<!-- 로그인 -->
  	<select id="login" resultType="kr.co.tobe.vo.MemberVO" parameterType="kr.co.tobe.vo.MemberVO">
- 		SELECT * FROM member WHERE id=#{id} AND pwd=MD5(#{pwd})
+ 		SELECT * FROM member WHERE id=#{id} AND pwd=MD5(#{pwd}) and user_validity=true;
  	</select>
 
 </mapper>
