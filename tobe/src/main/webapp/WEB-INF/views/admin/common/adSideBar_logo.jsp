@@ -39,7 +39,7 @@
 	<img src="/tobe/img/admin_logo.png" id="admin_logo">
 	<hr style="position: absolute; top: 5.5rem; border: solid 1px pink; width: 11.85rem;">
 	
-	<a class="admin_course" id="admin_course">
+	<a src="class="admin_course" id="admin_course">
 		<img src="/tobe/img/admin_course_img.png" style="width: 3rem;">
 		<span style="position: absolute; top: 0.75rem; left: 4rem; font-size: 1.23rem;"><b>강좌관리</b></span>
 	</a>
