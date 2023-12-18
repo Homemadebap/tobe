@@ -72,7 +72,7 @@
 	</resultMap>		
 
 	<select id="currentCourseIndex" parameterType="kr.co.tobe.vo.MemberVO" resultMap="currentCourseIndexpMap">
-		SELECT
+		<!--  SELECT
 			m.member_no, i_cname, i_startday, i_endday, 
 			(select teacher_img_org from course where course.course_no = pd.course_no) as teacher_img
 		FROM member m
@@ -82,6 +82,7 @@
     		AND STR_TO_DATE(i_startday, '%Y-%m-%d') <= CURDATE()
    			AND STR_TO_DATE(i_endday, '%Y-%m-%d') > CURDATE()
 		order by i_startday
+		-->
 	</select>
 
 	<select id="pastCourseIndex" parameterType="kr.co.tobe.vo.MemberVO" resultMap="pastCourseIndexpMap">

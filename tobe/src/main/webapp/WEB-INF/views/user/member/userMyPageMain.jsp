@@ -33,6 +33,37 @@ $(document).ready(function(){
 	}
 })
 */
+
+$.ajax({
+    type: "GET",
+    url: "/tobe/user/member/currentCourseIndex.do",
+    dataType: "json",
+    success: function(data) {
+        // 응답 데이터를 처리
+        if (data.length === 0) {
+            // 현재 수강 중인 강좌가 없을 때의 처리
+            $(".currentCourseIndex").html("<tr><td class='noIndex'>현재 수강 중인 강좌가 없습니다.</td></tr>");
+        } else {
+            // 강좌 목록을 테이블에 추가
+            var tableHtml = "<table><tr><td></td><td></td><td>개강일</td><td>종강일</td></tr>";
+            $.each(data, function(index, vo) {
+                tableHtml += "<tr><td id='teacherImg'>" + vo.teacher_img + "</td>" +
+                             "<td id='courseName'>" + vo.cname + "</td>" +
+                             "<td class='startDay'>" + vo.i_startday + "</td>" +
+                             "<td class='endDay'>" + vo.i_endday + "</td></tr>";
+            });
+            tableHtml += "</table>";
+            $(".currentCourseIndex").html(tableHtml);
+        }
+    },
+    error: function(xhr, status, error) {
+        console.error("AJAX Error: " + status + ", " + error);
+    }
+});
+
+
+
+
 $(function(){
 	
 	
