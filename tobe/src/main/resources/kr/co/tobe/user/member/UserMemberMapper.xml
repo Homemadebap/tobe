@@ -51,6 +51,7 @@
 		<id column="i_price" property="i_price"/>
 		<id column="i_startday" property="i_startday"/>
 		<id column="i_endday" property="i_endday"/>
+		<id column="member_no" property="member_no"/>
 	</resultMap>
 
 	<resultMap type="HashMap" id="myCourseAskIndexMap">
@@ -61,6 +62,7 @@
 		<id column="i_price" property="i_price"/>
 		<id column="i_startday" property="i_startday"/>
 		<id column="i_endday" property="i_endday"/>
+
 	</resultMap>
 	
 	<resultMap type="HashMap" id="myReviewIndexMap">
@@ -70,25 +72,26 @@
 	</resultMap>		
 
 	<select id="currentCourseIndex" parameterType="kr.co.tobe.vo.MemberVO" resultMap="currentCourseIndexpMap">
-		select
-			(select teacher_img from course where course.course_no=pay_detail.course_no) as teacher_img,
-			 i_cname, i_startday, i_endday
-		from member m, class c, pay p, pay_detail pd,
-		where m.member_no = p.member_no
-			and p.order_no = pd.order_no
-			and m.member_no = #{member_no}
+		SELECT
+			m.member_no, i_cname, i_startday, i_endday, 
+			(select teacher_img_org from course where course.course_no = pd.course_no) as teacher_img
+		FROM member m
+		JOIN pay p ON m.member_no = p.member_no
+		JOIN pay_detail pd ON p.order_no = pd.order_no
+		WHERE m.member_no = #{member_no}
+    		AND STR_TO_DATE(i_startday, '%Y-%m-%d') <= CURDATE()
+   			AND STR_TO_DATE(i_endday, '%Y-%m-%d') > CURDATE()
 		order by i_startday
 	</select>
 
 	<select id="pastCourseIndex" parameterType="kr.co.tobe.vo.MemberVO" resultMap="pastCourseIndexpMap">
-		select
-			(select teacher_img from course where course.course_no=pay_detail.course_no) as teacher_img,
-			pay_date, order_no, i_cname, i_price, i_startday, i_endday		
-		from member m, pay p, pay_detail pd,
-		where m.member_no = p.member_no
-			and p.order_no = pd.order_no
-			and m.member_no = #{member_no}
-		order by i_startday
+		SELECT 
+			m.member_no, pay_date, p.order_no, i_cname, i_price, i_startday, i_endday,
+			(select teacher_img_org from course where course.course_no = pd.course_no) as teacher_img
+		FROM member m
+		JOIN pay p ON m.member_no = p.member_no
+		JOIN pay_detail pd ON p.order_no = pd.order_no
+		WHERE m.member_no = #{member_no}
 	</select>	
 	
 	<select id="myCourseAskIndex" parameterType="kr.co.tobe.vo.MemberVO" resultMap="myCourseAskIndexMap">

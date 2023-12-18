@@ -30,4 +30,9 @@ public class AdCommonController {
 	public String adQnaIndex() {
 		return "admin/customer/adQnaIndex"; 
 	}
+	
+	@GetMapping("/admin/course/adCourseForm.do")
+	public String adCourseForm() {
+		return "admin/course/adCourseForm"; 
+	}
 }

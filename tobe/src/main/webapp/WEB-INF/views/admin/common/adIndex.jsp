@@ -44,6 +44,7 @@ body {
 	top: 6rem; 
 	left: 15.5rem;
 	border: 1px solid #ddd;
+	box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
 }
 
 .mbox {
@@ -58,6 +59,7 @@ body {
 	height: 16rem;
 	top: 29rem;
 	border: 1px solid #ddd;
+	box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
 }
 
 #mSales {
@@ -103,10 +105,35 @@ p {
 	position: absolute;
 	left: 1rem;
 	top: 5rem;
-	width: 8rem;
+	width: 15.5rem;
+	height: 2.5rem;
 	background-color: #F4F8F9;
 }
 
+#course_form {
+	position: absolute;
+	left: 1rem;
+	top: 10rem;
+	width: 15.5rem;
+	height: 2.5rem;
+	background-color: #F4F8F9;
+}
+
+#today_pay {
+	position: absolute;
+	top: 4rem;
+	left: 2rem;
+	width: 6rem;
+	height: 9rem;
+}
+
+#cancel_pay {
+	position: absolute;
+	top: 4rem;
+	right: 2rem;
+	width: 6rem;
+	height: 9rem;
+}
 </style>
 
 </head>
@@ -153,18 +180,54 @@ p {
 	<div class="sbox" id="course_box" style="left: 15.5rem;">
 		<a href="/tobe/admin/course/adCourseIndex.do">강좌관리 →</a>
 		<div id="course_list">
-			<img src="/tobe/img/cl_1.png" style="position: absolute; top: 0.25rem; width: 2rem;">
-			<span style="position: absolute; top: 0.5rem; left: 3rem; width: 7rem;">강좌 리스트</span>
+			<a href="/tobe/admin/course/adCourseIndex.do">
+				<img src="/tobe/img/cl_1.png" style="position: absolute; top: 0.35rem; width: 2rem;">
+				<span style="position: absolute; top: 0.5rem; left: 3rem; width: 7rem;">강좌 리스트</span>
+				<span style="position: absolute; top: 0.5rem; right: 1rem;">→</span>
+			</a>
 		</div>
-		
+		<div id="course_form">
+			<a href="/tobe/admin/course/adCourseForm.do">
+				<img src="/tobe/img/cl_2.png" style="position: absolute; top: 0.35rem; width: 2rem;">
+				<span style="position: absolute; top: 0.5rem; left: 3rem; width: 7rem;">강좌 등록하기</span>
+				<span style="position: absolute; top: 0.5rem; right: 1rem;">→</span>
+			</a>
+		</div>
 	</div>
 	
 	<div class="sbox" id="pay_box" style="position: absolute; left: 34.6rem;">
 		<a href="/tobe/admin/pay/adPayIndex.do">주문/결제관리 →</a>
+		<div id="today_pay">
+			<span style="position:absolute; left: 1.5rem; font-size: 5rem; color: #766CE8">5</span>
+			<span style="position:absolute; left: 1rem; bottom: 1rem;">금일결제</span>
+		</div>
+		<div id="cancel_pay">
+			<span style="position:absolute; left: 1.5rem; font-size: 5rem; color: #AFAFAF">0</span>
+			<span style="position:absolute; left: 1rem; bottom: 1rem;">결제취소</span>		
+		</div>
+		
 	</div>
 	
 	<div class="sbox" id="qna_box" style="position: absolute; left: 53.7rem;">
 		<a href="/tobe/admin/customer/adQnaIndex.do">문의관리 →</a>
+		<c:if test="${empty admin.qna}">
+                        <tr>
+                            <td class="noIndex">새로운 문의가 없습니다.</td>
+                        </tr>
+                    </c:if>
+		<c:if test="${!empty admin.qna }">
+	                    <table>
+		                    <c:forEach var="vo" items="${admin.qna}">
+		                        <tr>
+		                            <td>new!</td>
+		                            <td><a href"">${vo.q_title}</a></td>    
+		                            <td>${vo.q_writedate}</td>      		                            
+		                        </tr>
+		                    </c:forEach>
+	                    </table>
+                    </c:if>
+		
+		userReviewDetail.do?page=${map.startPage-1 }&searchType=${replyVO.searchType}&searchWord=${replyVO.searchWord}
 	</div>
 	
 	<div class="sbox" id="userHomePage_box" style="position: absolute; left: 72.8rem;">
