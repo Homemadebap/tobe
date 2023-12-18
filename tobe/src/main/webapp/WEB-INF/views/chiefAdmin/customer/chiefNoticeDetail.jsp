@@ -4,9 +4,10 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>공지사항 상세페이지</title>
 </head>
 <body>
+<%@include file="/WEB-INF/views/chiefAdmin/common/chiefSideBar_logo.jsp" %>
 
 </body>
 </html>
