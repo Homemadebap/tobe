@@ -1,5 +1,7 @@
 package kr.co.tobe.user.review;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -25,4 +27,5 @@ public class UserReviewServiceImpl implements UserReviewService {
 	public int updateCourseRating(String no, String rating) {
 		return mapper.updateCouse(no, rating);
 	}
+
 }

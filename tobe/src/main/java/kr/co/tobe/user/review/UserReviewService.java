@@ -1,5 +1,7 @@
 package kr.co.tobe.user.review;
 
+import java.util.List;
+
 import kr.co.tobe.vo.ReviewVO;
 
 public interface UserReviewService {

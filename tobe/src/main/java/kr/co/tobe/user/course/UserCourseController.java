@@ -18,9 +18,15 @@ public class UserCourseController {
 	@GetMapping("/user/course/userCourseIndex.do")
 	public String getLectureList(Model model, CourseVO courseVO) {
 		List<CourseVO> lectureList = service.getLectureList(courseVO);
-		System.out.println(lectureList.size());
 		model.addAttribute("lectureList", lectureList);
 		return "user/course/userCourseIndex";
+	}
+	
+	@GetMapping("/user/course/userCourseDetail.do")
+	public String Detail(Model model, CourseVO courseVO) {
+		List<CourseVO> lectureList = service.getLectureList(courseVO);
+		model.addAttribute("lectureList", lectureList);
+		return "user/course/userCourseDetail";
 	}
 	
 }

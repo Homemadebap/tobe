@@ -1,6 +1,8 @@
 package kr.co.tobe.user.review;
 
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -54,4 +56,5 @@ public class UserReviewController {
 	public String edit() {
 		return "/user/review/userModReviewForm";
 	}
+	
 }

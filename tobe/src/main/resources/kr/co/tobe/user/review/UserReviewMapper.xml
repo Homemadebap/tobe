@@ -21,5 +21,4 @@
 		SET course_rating = #{rating}
 		WHERE course_no = #{no};
 	</update>
-	
 </mapper>
