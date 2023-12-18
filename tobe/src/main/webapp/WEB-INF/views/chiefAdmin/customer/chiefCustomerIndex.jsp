@@ -9,15 +9,15 @@
 <style>
 #top{
 	position: relative;
-	margin: -580px 0 0 530px; 
+	margin: -580px 0 0 570px; 
 }
 #topb{
 	display: flex;
 }
 #f{
 	border: solid 0.5px;
-	width:200px; 
-	height:170px;
+	width:170px; 
+	height:140px;
 }
 
 #f> img{
@@ -31,8 +31,8 @@
 }
 #fi{
 	border: solid 0.5px;
-	width:200px; 
-	height:170px;
+	width:170px; 
+	height:140px;
 	background-color:#F1F8E0;
 }
 
@@ -252,18 +252,18 @@
 	<div id="topb">
 		<div id="fi">
 		<br>
-			<b style="margin-left:70px;">공지사항</b><br>
-			<img src="/tobe/img/chiefAdmin_notice.png" width=50%; style="margin-left:55px;">
+			<b style="margin-left:55px;">공지사항</b><br>
+			<img src="/tobe/img/chiefAdmin_notice.png" width=35%; style="margin-left:55px;">
 		</div>
 		<div id="f">
 		<br>
-			<b style="margin-left:70px;">1:1문의</b><br>
-			<img src="/tobe/img/chiefAdmin_qna.png" width=50%; style="margin-left:55px;">
+			<b style="margin-left:55px;">1:1문의</b><br>
+			<img src="/tobe/img/chiefAdmin_qna.png" width=35%; style="margin-left:55px;" onclick="location.href='/tobe/chiefAdmin/customer/chiefAskList.do';">
 		</div>
 		<div id="f">
 		<br>
-			<b style="margin-left:70px;">공지사항</b><br>
-			<img src="/tobe/img/chiefAdmin_faq.png" width=50%; style="margin-left:55px;">
+			<b style="margin-left:65px;">FAQ</b><br>
+			<img src="/tobe/img/chiefAdmin_faq.png" width=35%; style="margin-left:55px;" onclick="location.href='/tobe/chiefAdmin/customer/chiefFaqList.do';">
 		</div>
 	</div>
 </div>

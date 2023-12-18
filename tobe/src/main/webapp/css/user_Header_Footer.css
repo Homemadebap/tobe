@@ -88,30 +88,35 @@ a:visited {
 
 
 .footer { 
-	background-color:#d3d3d3;
-	width:75rem;
-	height:12.5rem;
-	position:absolute;
-	top: 80rem;
+   background-color:#d3d3d3;
+   width:75rem;
+   height:8rem;
+   position:absolute;
+   top: 65rem;
 }
 
 .footer_content {
-	display: grid;
-  	place-items: center;
+   display: grid;
+     place-items: center;
+     color: #A4A4A4;
+     display: inline-block;
+     margin: 40px 0 0 40px;
 }
 
 .footer_logo {
-	width: 6rem;
-	display: grid;
-  	place-items: center;
-  	float: left;
-	height: 5rem;
+   width: 6rem;
+   display: grid;
+     float: left;
+   height: 5rem;
+   font-size: 10px;
 }
 .footer_info{
-	width: 37.5rem;
-	display: grid;
-  	place-items: center;
-  	float: left;
-  	height: 5rem;
-	
+   width: 37.5rem;
+   display: grid;
+     place-items: center;
+     float: left;
+     height: 3rem;
+     color: #A4A4A4;
+     font-size: 12px;
+   
 }
