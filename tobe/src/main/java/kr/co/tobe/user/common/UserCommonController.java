@@ -21,10 +21,10 @@ public class UserCommonController {
 		return "user/common/userIndex"; 
 	}
 	
-	@GetMapping("/user/course/userCourseIndex.do")
-	public String userCourseIndex() {
-		return "user/course/userCourseIndex";
-	}
+//	@GetMapping("/user/course/userCourseIndex.do")
+//	public String userCourseIndex() {
+//		return "user/course/userCourseIndex";
+//	}
 	
 	@GetMapping("/user/common/userTestSchedule.do")
 	public String userTestSchedule() {

@@ -42,11 +42,22 @@
 	color: #49654E;
 }
 
+#userName {
+	position: absolute;
+	top: 0.75rem;
+	left: 1.5rem;
+}
+#userId {
+	position: absolute;
+	top: 4rem;
+	left: 1.5rem;
+}
+
 .part2 {
 	position: absolute;
 	width: 20rem;
 	height: 10rem;
-	font-size: 1.5rem;
+	font-size: 1.25rem;
 	left: 15rem;
 	color: #49654E;
 }
@@ -57,7 +68,7 @@
 	height: 4rem;
 	margin: 0 auto;
 	padding: 0;
-	top: 0.75rem;
+	top: 1rem;
 
 }
 
@@ -65,39 +76,35 @@
 	position: absolute;
 	width: 20rem;
 	height: 4rem;
-	top: 4.25rem;
+	top: 4.5rem;
 	margin: 0 auto;
 	padding: 0;
 }
 
 #setImg, #quitImg {
 	position: absolute;
-	width: 3rem;
+	width: 2.5rem;
 	top: 1rem;
 }
 
 #setText{
 	position: absolute;
-	width: 10rem;
-	height: 3rem;
 	text-align: center;
 	left: 3.5rem;
-	top: 1.5rem;
+	top: 1.35rem;
 }
 #quitText {
 	position: absolute;
-	width: 10rem;
-	height: 3rem;
 	text-align: center;
-	left: 2rem;
-	top: 1.5rem;
+	left: 3.5rem;
+	top: 1.25rem;
 }
 
 .pointContainer {
 	position: absolute;
 	width: 20rem;
 	height: 10rem;
-	right: 0;
+	right: 0rem;
 }
 
 #pointImg {
@@ -108,7 +115,7 @@
 
 #point {
 	position: absolute;
-	width: 13.5rem;
+	width: 15rem;
 	height: 10rem;
 	right: 0;
 	color: #49654E;
@@ -116,15 +123,17 @@
 
 #userPointText {
 	position: absolute;
-	width: 11.5rem;
+	width: 13rem;
 	top: 3rem;
 	left: 1rem;
+	font-size: 1.25rem;
 }
 #numPointText {
 	position: absolute;
 	width: 11.5rem;
 	top: 6rem;
 	left: 1rem;
+	font-size: 1.25rem;
 }
 
 .quitMain {
@@ -141,7 +150,7 @@
 #idCheck, #pwdCheck {
 	width: 15rem;
 	text-align: center;
-	font-size: 1rem;	
+	font-size: 1.15rem;	
 	padding: 0.5rem;
 	margin: 0.5rem auto;
 }
@@ -171,19 +180,19 @@
 		<div class="main">
 			
 			<div class="part1">
-				<p><b>${user.name }</b>님</p>
-				<p>안녕하세요</p>
+				<p id="userName"><b>${user.name }</b>님</p>
+				<p id="userId">${user.id }</p>
 			</div>
 			<div class="part2">
 				<div id="set">
-					<a href="/tobe/user/member/userModifyForm.do">
+					<a href="/tobe/user/member/userModify.do">
 						<img src="/tobe/img/set.png" id="setImg">
 						<span id="setText">회원정보수정</span>
 					</a>
 				</div>
 				<div id="quit">
 					<img src="/tobe/img/quit.png" id="quitImg">
-					<span id="quitText">회원탈퇴</span>
+					<span id="quitText"><b>회원탈퇴</b></span>
 				</div>
 			</div>
 			
