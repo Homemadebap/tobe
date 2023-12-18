@@ -36,4 +36,5 @@ public class CourseVO {
 	private int price;
 	private String teacher_img_org;
 	private String teacher_img_real;
+	private double course_rating; 
 }
