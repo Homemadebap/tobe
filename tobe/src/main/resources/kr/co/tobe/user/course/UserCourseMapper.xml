@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="kr.co.tobe.user.course.UserCourseMapper">
-
+	<select id="lectureSelect" parameterType="kr.co.tobe.vo.CourseVO" resultType="kr.co.tobe.vo.CourseVO">
+		SELECT teacher_img_org, cname, time, price 
+		FROM course
+		WHERE course_no = 11;
+	</select>
 </mapper>
