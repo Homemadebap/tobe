@@ -320,12 +320,12 @@ $(function() {
 	                    <tbody>
 	                    	<tr>
 	                    		<th>이름</th>
-	                    		<td><input type="text" name="name" id="name" class="input" style="float:left;" value="${user.name }"></td>
+	                    		<td><input type="text" name="name" id="name" class="input" style="float:left;" value="${user.name }" readonly><td></</td>
 	                    	</tr>
 	                        <tr>
 	                            <th>아이디</th>
 	                            <td>
-	                                <input type="text" name="id" id="id" class="input" style="float:left;" value="${user.id }">
+	                                <input type="text" name="id" id="id" class="input" style="float:left;" value="${user.id }" disabled>
 	                                <span class="id_check"><a href="javascript:;"  class="btn bgGray" style="float:left; width:auto; clear:none;" id="idCheck">중복확인</a></span>
 	                            </td>
 	                        </tr>

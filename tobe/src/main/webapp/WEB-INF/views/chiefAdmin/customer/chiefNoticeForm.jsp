@@ -29,6 +29,10 @@ $(function() {
         fCreator: "createSEditor2"
     });
 })
+function goSave() {
+    	oEditors.getById['content'].exec('UPDATE_CONTENTS_FIELD',[]);
+    	$("#frm").submit();
+    }
 </script>
 <style>
  #detail{
@@ -38,11 +42,16 @@ $(function() {
 </style>
 <body>
 <%@include file="/WEB-INF/views/chiefAdmin/common/chiefSideBar_logo.jsp" %>
-   <form name="noticeinsert" method="post" action="chiefNoticeInsert.do" enctype="multipart/form-data" >   
-	<textarea name="detail" id="detail"></textarea>
-		<div colspan="2" id="put">
-            <input type="submit" value="등록하기"> 
-            <input type="button" value="목록보기" onclick="backToList(this.form)">
-           </div>
+
+<form name="frm" method="post" action="chiefNoticeInsert.do" enctype="multipart/form-data" >   
+	제목 : <input name="n_title" tpye="text" />
+	<textarea name="n_content" id="detail">  </textarea>
+		  <div colspan="2" id="put">
+            <input type="submit" value="등록하기" /> 
+            <input type="button" value="목록보기" onclick="backToList(this.form)" />
+        </div>
+  </form>
+
+   
 </body>
 </html>
