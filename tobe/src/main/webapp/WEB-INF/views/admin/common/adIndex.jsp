@@ -4,9 +4,10 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>학원 관리자 페이지</title>
 </head>
 <body>
+<%@include file="/WEB-INF/views/admin/common/adSideBar_logo.jsp" %>
 
 </body>
 </html>
