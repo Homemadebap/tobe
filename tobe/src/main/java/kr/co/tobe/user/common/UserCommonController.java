@@ -35,10 +35,10 @@ public class UserCommonController {
 		return "user/common/userTestSchedule";
 	}
 	
-	@GetMapping("/user/review/userReviewIndex.do")
-	public String userReviewIndex() {
-		return "user/review/userReviewIndex";
-	}
+//	@GetMapping("/user/review/userReviewIndex.do")
+//	public String userReviewIndex() {
+//		return "user/review/userReviewIndex";
+//	}
 	
 	@GetMapping("/user/customer/userCustomer.do")
 	public String userCustomer() {

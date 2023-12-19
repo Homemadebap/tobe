@@ -3,13 +3,13 @@
 <mapper namespace="kr.co.tobe.chiefAdmin.course.ChiefCourseMapper">
 	<insert id="insert" parameterType="kr.co.tobe.vo.CourseVO">
 		INSERT INTO course (
-		teacher_img_org, education, area, branch,
+		teacher_img_org, teacher_img_real, education, area, branch,
 		subject, level, timezone,
 		mon, tue, wed, thu, fri, sat, sun,
 		teacher1, teacher2, startday, endday, postday,
 		cname, detail, time, price
 		) VALUES (
-		#{teacher_img_org}, #{education},
+		#{teacher_img_org}, #{teacher_img_real}, #{education},
 		#{area}, #{branch}, #{subject}, #{level}, #{timezone},
 		#{mon}, #{tue},
 		#{wed}, #{thu}, #{fri}, #{sat}, #{sun},

@@ -108,6 +108,13 @@
                             </td>
                         </tr>
                         <tr>
+                        	<th>작성자</th>
+                            <td>
+                                <!-- <input type="text" name="course" id="course" style="width:100%;"value="${infoCourseName } "/> -->
+                                ${loginInfo.name }
+                            </td>
+                        </tr>
+                        <tr>
                         	<th>강좌명</th>
                             <td>
                                 <!-- <input type="text" name="course" id="course" style="width:100%;"value="${infoCourseName } "/> -->
@@ -148,6 +155,7 @@
                         	<td>
                          	<div class="btnSet"  style="text-align:right;">
                         	<a class="btn" href="javascript:goSave();">저장</a>
+                        	<a href="javascript:;" class="btn" onclick="history.back();">취소</a></div>
                         	</div></td>
                         </tr>
                         </tbody>

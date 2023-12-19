@@ -12,6 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import kr.co.tobe.vo.CourseVO;
 import kr.co.tobe.vo.MemberVO;
 import kr.co.tobe.vo.ReviewVO;
 
@@ -55,6 +56,13 @@ public class UserReviewController {
 	@GetMapping("/user/review/edit.do")
 	public String edit() {
 		return "/user/review/userModReviewForm";
+	}
+	
+	@GetMapping("/user/review/userReviewIndex.do")
+	public String getSelectReviewNo(Model model, ReviewVO rvo) {
+		List<ReviewVO> ReviewList = service.getSelectReviewNo(rvo);
+		model.addAttribute("ReviewList", ReviewList);
+		return "user/review/userReviewIndex";
 	}
 	
 }
