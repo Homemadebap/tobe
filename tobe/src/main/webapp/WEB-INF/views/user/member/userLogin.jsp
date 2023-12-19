@@ -196,7 +196,7 @@
                                     <li><input type="text" id="id" name="id" placeholder="아이디" style="width:200px"></li>
                                     <li><input type="password" id="pwd" name="pwd" placeholder="비밀번호" style="width:200px"></li>
                                     <li><label><input type="checkbox" name="reg1" id="reg1" style="width:10px;height:10px"/><font size="1px">아이디저장</font></label></li>
-                                    <li><a href="idsearch.do" class="btn" style="font-size:10px">아이디|비밀번호 찾기</a></li>
+                                    <li><a href="userFindMember.do" class="btn" style="font-size:10px">아이디|비밀번호 찾기</a></li>
                                 </ul>
                                 <div class="login_btn"><input type="submit" value="로그인"/></div>
                             </fieldset>
