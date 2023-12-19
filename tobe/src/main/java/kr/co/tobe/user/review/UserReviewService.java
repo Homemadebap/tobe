@@ -9,4 +9,5 @@ public interface UserReviewService {
 	double selectCourseRating(int no);
 	int updateCourseRating(String no, String rating);
 	List<ReviewVO> getSelectReviewNo(ReviewVO rvo);
+	ReviewVO getReviewDetail(int reviewNo);
 }

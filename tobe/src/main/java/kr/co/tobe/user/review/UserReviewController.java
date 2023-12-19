@@ -90,4 +90,11 @@ public class UserReviewController {
 		return "user/review/userReviewIndex";
 	}
 	
+	@GetMapping("/user/review/userReviewDetail.do")
+    public String getReviewDetail(Model model, @RequestParam("reviewNo") int reviewNo) {
+        ReviewVO review = service.getReviewDetail(reviewNo);
+        model.addAttribute("review", review);
+        return "user/review/userReviewDetail";
+    }
+	
 }
