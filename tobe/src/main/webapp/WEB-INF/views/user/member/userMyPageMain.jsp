@@ -19,50 +19,6 @@
 
 <script type="text/javascript">
 
-/*
-$(document).ready(function(){
-	$("#menu1").click(function(){
-		$.ajax({
-			url: "user/member/currentClassIndex",
-			type:"GET",
-			dataType="json",
-			success: function(data){
-				
-			}
-		})
-	}
-})
-*/
-
-$.ajax({
-    type: "GET",
-    url: "/tobe/user/member/currentCourseIndex.do",
-    dataType: "json",
-    success: function(data) {
-        // 응답 데이터를 처리
-        if (data.length === 0) {
-            // 현재 수강 중인 강좌가 없을 때의 처리
-            $(".currentCourseIndex").html("<tr><td class='noIndex'>현재 수강 중인 강좌가 없습니다.</td></tr>");
-        } else {
-            // 강좌 목록을 테이블에 추가
-            var tableHtml = "<table><tr><td></td><td></td><td>개강일</td><td>종강일</td></tr>";
-            $.each(data, function(index, vo) {
-                tableHtml += "<tr><td id='teacherImg'>" + vo.teacher_img + "</td>" +
-                             "<td id='courseName'>" + vo.cname + "</td>" +
-                             "<td class='startDay'>" + vo.i_startday + "</td>" +
-                             "<td class='endDay'>" + vo.i_endday + "</td></tr>";
-            });
-            tableHtml += "</table>";
-            $(".currentCourseIndex").html(tableHtml);
-        }
-    },
-    error: function(xhr, status, error) {
-        console.error("AJAX Error: " + status + ", " + error);
-    }
-});
-
-
-
 
 $(function(){
 	
@@ -93,6 +49,8 @@ $(function(){
 	        $('.myReviewIndex').show();
 	    }
 	})
+	
+	
 })
 
 
@@ -328,25 +286,27 @@ $(function(){
 
 			<div class="content_area">
 				<div class="currentCourseIndex">
-					<c:if test="${empty vo.currentCourseIndex}">
+					<c:if test="${empty cci}">
                         <tr>
                             <td class="noIndex">현재 수강 중인 강좌가 없습니다.</td>
                         </tr>
                     </c:if>
-                    <c:if test="${!empty vo.currentCourseIndex }">
+                    <c:if test="${!empty cci}">
                     	<table>
                     		<tr>
 								<td></td>
 								<td></td>
 								<td>개강일</td>
 								<td>종강일</td>
+								<td>강의진행현황</td>
 							</tr>
-		                    <c:forEach var="vo" items="${vo.currentCourseIndex}">
+		                    <c:forEach var="vo" items="${cci}">
 		                        <tr>
 		                            <td id="teacherImg">${vo.teacher_img}</td>
-		                            <td id="courseName">${vo.cname}</td>    
+		                            <td id="courseName">${vo.i_cname}</td>    
 		                            <td class="startDay"><fmt:formatDate pattern="yyyy-MM-dd HH:mm" value="${vo.i_startday}" /></td>
 		                            <td class="endDay"><fmt:formatDate pattern="yyyy-MM-dd HH:mm" value="${vo.i_endday}" /></td>
+		                            <td></td>
 		                        </tr>
 		                    </c:forEach>
                     	</table>
@@ -354,30 +314,30 @@ $(function(){
 				</div>
 
 				<div class="pastCourseIndex">
-					<c:if test="${empty vo.pastCourseIndex}">
+					<c:if test="${empty pci}">
                         <tr>
                             <td class="noIndex">수강 신청한 내역이 없습니다.</td>
                         </tr>
                     </c:if>
-                    <c:if test="${!empty vo.pastCourseIndex }">
+                    <c:if test="${!empty pci}">
 	                    <table>
 							<tr>
 								<td>결제일</td>
 								<td>주문번호</td>
 								<td>강좌명</td>
 								<td>가격</td>
-								<td>진행상황</td>
+								<td>강의진행현황</td>
 								<td></td>
 							</tr>
                     	
-		                    <c:forEach var="vo" items="${vo.pastCourseIndex}">
+		                    <c:forEach var="vo" items="${pci}">
 		                        <tr>
 		                            <td>${vo.pay_date}</td>
 		                            <td>${vo.order_no}</td>    
 		                            <td>${vo.teacher_img}${vo.i_cname}</td> 
-		                            <td>${vo.i_price}</td>    
-		                            <td>상태바 같은 거 넣어야 할 듯</td>    
-		                            <td><input type="button" value="후기작성"/></td>    		                            
+		                            <td>${vo.i_price}</td>
+		                            <td></td>
+		                            <td><input type="button" onclick="goReview" id="reviewBtn" value="후기작성"/></td>    		                            
 		                        </tr>
 		                    </c:forEach>
 	                    </table>
@@ -385,21 +345,21 @@ $(function(){
 				</div>
 
 				<div class="myCourseAskIndex">
-					<c:if test="${empty vo.myCourseAskIndex}">
+					<c:if test="${empty mcai}">
                         <tr>
                             <td class="noIndex">문의한 내역이 없습니다.</td>
                         </tr>
                     </c:if>
-                    <c:if test="${!empty vo.myCourseAskIndex }">
+                    <c:if test="${!empty mcai}">
 	                    <table>
 							<tr>
 								<td>강좌명</td>
 								<td>제목</td>
 								<td>작성일</td>
 							</tr>
-		                    <c:forEach var="vo" items="${vo.myCourseAskIndex}">
+		                    <c:forEach var="vo" items="${mcai}">
 		                        <tr>
-		                            <td>${vo.q_cname}</td>
+		                            <td>${vo.cname}</td>
 		                            <td>${vo.q_title}</td>    
 		                            <td>${vo.q_writedate}</td>      
 		                            <td><input type="button" value="수정하기"/></td>    		                            
@@ -410,21 +370,21 @@ $(function(){
 				</div>
 
 				<div class="myReviewIndex">
-					<c:if test="${empty vo.myReviewIndex}">
+					<c:if test="${empty mri}">
                         <tr>
                             <td class="noIndex">작성한 후기 내역이 없습니다.</td>
                         </tr>
                     </c:if>
-                    <c:if test="${!empty vo.myReviewIndex }">
+                    <c:if test="${!empty mri }">
 	                    <table>
 							<tr>
 								<td>강좌명</td>
 								<td>제목</td>
 								<td>작성일</td>
 							</tr>
-		                    <c:forEach var="vo" items="${vo.myReviewIndex}">
+		                    <c:forEach var="vo" items="${mri}">
 		                        <tr>
-		                            <td>${vo.r_cname}</td>
+		                            <td>${vo.cname}</td>
 		                            <td>${vo.r_title}</td>    
 		                            <td>${vo.r_writedate}</td>      
 		                            <td><input type="button" value="수정하기"/></td>    		                            
