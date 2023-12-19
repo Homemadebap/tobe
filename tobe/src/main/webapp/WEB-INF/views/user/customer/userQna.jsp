@@ -137,6 +137,10 @@
 		            </tbody>
 
 		        </table>
+		            <div class="btnSet"  style="text-align:right;">
+                    <c:if test="${!empty loginInfo}">
+                        <a class="btn" href="userAskForm.do">작성하기</a>
+                    </c:if>
 		 
 					<div class="pagenate clear">
                         <ul class='paging'>
@@ -157,7 +161,7 @@
                         </ul> 
                     </div>
                     
-		 	    <div style="text-align:right;"><button onClick="location.href='userAskForm.do'">작성하기</button></div>
+		 	    <!--<div style="text-align:right;"><button onClick="location.href='userAskForm.do'">작성하기</button></div>-->
 		    </div>
 			<%@include file="/WEB-INF/views/user/common/userFooter.jsp"%>
 		</div>
