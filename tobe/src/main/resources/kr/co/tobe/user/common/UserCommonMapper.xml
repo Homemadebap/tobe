@@ -37,31 +37,30 @@
 	</resultMap>
 	
 	<resultMap type="HashMap" id="pastCourseIndexpMap">
-		<id column="teacher_img" property="teacher_img"/>
-		<id column="pay_date" property="pay_date"/>
-		<id column="order_no" property="order_no"/>
-		<id column="i_cname" property="i_cname"/>
-		<id column="i_price" property="i_price"/>
-		<id column="i_startday" property="i_startday"/>
-		<id column="i_endday" property="i_endday"/>
-		<id column="member_no" property="member_no"/>
+	    <id column="teacher_img" property="teacher_img"/>
+	    <id column="order_no" property="order_no"/>
+	    <id column="i_cname" property="i_cname"/>
+	    <id column="i_price" property="i_price"/>
+	    <id column="member_no" property="member_no"/>
+	    <result column="pay_date" property="pay_date" javaType="java.util.Date" typeHandler="kr.co.tobe.util.StringToDateTypeHandler"/>
+	    <result column="i_startday" property="i_startday" javaType="java.util.Date" typeHandler="kr.co.tobe.util.StringToDateTypeHandler"/>
+	    <result column="i_endday" property="i_endday" javaType="java.util.Date" typeHandler="kr.co.tobe.util.StringToDateTypeHandler"/>
 	</resultMap>
 
 	<resultMap type="HashMap" id="myCourseAskIndexMap">
 		<id column="teacher_img" property="teacher_img"/>
-		<id column="pay_date" property="pay_date"/>
 		<id column="order_no" property="order_no"/>
 		<id column="i_cname" property="i_cname"/>
 		<id column="i_price" property="i_price"/>
-		<id column="i_startday" property="i_startday"/>
-		<id column="i_endday" property="i_endday"/>
-
+	    <result column="pay_date" property="pay_date" javaType="java.util.Date" typeHandler="kr.co.tobe.util.StringToDateTypeHandler"/>
+	    <result column="i_startday" property="i_startday" javaType="java.util.Date" typeHandler="kr.co.tobe.util.StringToDateTypeHandler"/>
+	    <result column="i_endday" property="i_endday" javaType="java.util.Date" typeHandler="kr.co.tobe.util.StringToDateTypeHandler"/>
 	</resultMap>
 	
 	<resultMap type="HashMap" id="myReviewIndexMap">
 		<id column="r_cname" property="r_cname"/>
 		<id column="r_title" property="r_title"/>
-		<id column="r_writedate" property="r_writedate"/>
+		<result column="r_writedate" property="r_writedate" javaType="java.util.Date" typeHandler="kr.co.tobe.util.StringToDateTypeHandler"/>
 	</resultMap>		
 
 		 

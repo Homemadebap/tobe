@@ -16,6 +16,7 @@ $(document).ready(function(){
   });
 });
 
+
 // $("#goTop").click(function() {
 // 	$('html').animate({scrollTop:0}, 2000);
 // });
@@ -58,10 +59,11 @@ $(document).ready(function(){
 
 
 	<span class="quickMenu">
-		<span><img src="/tobe/img/goTop.png" class="quick" id="goTop"></span>
-		<span><a href="/tobe/user/customer/userCustomer.do"><img src="/tobe/img/customer.png" class="quick"></a></span>
-		<span><a href="/tobe/user/common/userBasket.do"><img src="/tobe/img/basket.png" class="quick"></a></span>
-		<span><a href="/tobe/user/common/userCompareCourse.do"><img src="/tobe/img/compare.png" class="quick"></a></span>
+		<span><img src="/tobe/img/top.png" class="quick" id="goTop" style="width: 27px; height: 20px; margin-left: 17px;"></span>
+		<span><a href="/tobe/user/customer/userCustomer.do"><img src="/tobe/img/customer.png" class="quick" style="width: 55px; margin-left: 5px;"></a></span>
+		<span><a href="/tobe/user/common/userBasket.do"><img src="/tobe/img/basket.png" class="quick" style="width: 55px; margin-left: 5px;"></a></span>
+		<span><a href="/tobe/user/common/userCompareCourse.do"><img src="/tobe/img/compare.png" class="quick" style="width: 50px; margin-left: 8px;"></a></span>
+		<span><img src="/tobe/img/bottom.png" class="quick" id="goBottom" style="width: 28px; height: 20px; margin-left: 18px;"></span>
 	</span>
 
 </div>

@@ -33,8 +33,9 @@
 
 .tobe_logo {
 	position: absolute;
-	top: 4.5rem;
-	width: 20rem;	
+	top: 6rem;
+	width: 15rem;	
+	margin: 0 0 0 50px;
 }
 
 .menu_container{
@@ -42,6 +43,7 @@
 	width: 50rem;
 	right: 0;
 	top: 6.5rem;
+	font-size: 
 }
 
 a:link {
@@ -86,6 +88,9 @@ a:visited {
     cursor: pointer;
 }
 
+#goBottom {
+    cursor: pointer;
+}
 
 .footer { 
    background-color:#d3d3d3;
