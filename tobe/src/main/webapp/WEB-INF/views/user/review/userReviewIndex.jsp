@@ -6,7 +6,7 @@
 <html lang="ko">
 <head> 
     <meta charset="utf-8">
-    <title></title>
+    <title>수강후기</title>
     <link rel="stylesheet" href="/tobe/css/user_Header_Footer.css" />
     <META name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, user-scalable=no"> 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
@@ -452,6 +452,7 @@
 <body>
     <div class="wrap">
         <%@include file="/WEB-INF/views/user/common/userHeader.jsp" %>
+        
         <!-- 페이지처리 -->
         <div class="bbsSearch">
             <form method="get" name="searchForm" id="searchForm" action="index.do">
@@ -500,7 +501,10 @@
                         <c:forEach var="review" items="${ReviewList}">       
                             <tr>
                                 <td>${review.review_no}</td>
-                                <td>${review.r_title}</td>
+                                <td><button type="button" onclick="location.href='/tobe/user/review/userReviewDetail.do'" class="SelectBtn">${review.r_title}</button></td>
+								<td>
+									${review.member_no }
+								</td>
                                 <td>
 						            <fmt:formatDate value="${review.r_writedate}" pattern="yyyy-MM-dd" />
 						        </td>
@@ -508,6 +512,24 @@
                         </c:forEach>
                     </tbody>
                 </table>
+                <div class="pagenate clear">
+                   		<ul class='paging'>
+		                    <c:if test="${map.prev }">
+		                    	<li><a href="index.do?page=${map.startPage-1 }&searchType=${ReviewVO.searchType}&searchWord=${ReviewVO.searchWord}"> << </a></li>
+		                    </c:if>
+		                    <c:forEach var="p" begin="${map.startPage}" end="${map.endPage}">
+		                    	<c:if test="${p == ReviewVO.page}">
+		                        <li><a href='#;' class='current'>${p}</a></li>
+		                        </c:if>
+		                        <c:if test="${p != ReviewVO.page}">
+		                        <li><a href='index.do?page=${p}&searchType=${ReviewVO.searchType}&searchWord=${ReviewVO.searchWord}'>${p}</a></li>
+		                        </c:if>
+		                    </c:forEach>
+                   			<c:if test="${map.next }">
+                   				<li><a href="index.do?page=${map.endPage+1 }&searchType=${ReviewVO.searchType}&searchWord=${ReviewVO.searchWord}"> >> </a></li>
+                   			</c:if>
+                   		</ul> 
+             	</div>
             </div>
         </div>
         <%@include file="/WEB-INF/views/user/common/userFooter.jsp" %>
