@@ -23,6 +23,7 @@ public interface UserMemberMapper {
 	MemberVO pwdCheck(MemberVO mvo);
 	// 회원탈퇴
 	int quit(MemberVO mvo);
+
 	// 아이디 찾기
 	int searchID(MemberVO vo);
 	
@@ -34,4 +35,5 @@ public interface UserMemberMapper {
 	List<Map<String, Object>> myCourseAskIndex(MemberVO mvo);
 	// 마이페이지 - 나의문의 내역 뽑아오기
 	List<Map<String, Object>> myReviewIndex(MemberVO mvo);
+
 }

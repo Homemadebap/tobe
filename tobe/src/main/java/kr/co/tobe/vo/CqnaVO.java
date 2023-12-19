@@ -5,14 +5,14 @@ import java.sql.Timestamp;
 import lombok.Data;
 
 @Data
-public class QnaVO {
+public class CqnaVO {
 
-	private int qna_no;
+	private int cqna_no;
 	private int course_no;
 	private int member_no;
-	private String q_title;
-	private String q_content;
-	private Timestamp q_writedate;
+	private String cq_title;
+	private String cq_content;
+	private Timestamp cq_writedate;
 	private int gno;
 	private int ono;
 	private int nested;
