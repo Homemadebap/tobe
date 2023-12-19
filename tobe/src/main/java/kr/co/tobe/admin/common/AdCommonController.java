@@ -11,8 +11,28 @@ public class AdCommonController {
 	AdCommonService service;
 	
 	@GetMapping("/admin/common/adIndex.do")
-	public String index() {
+	public String adIndex() {
 		return "admin/common/adIndex"; 
 	}
 	
+	@GetMapping("/admin/course/adCourseIndex.do")
+	public String adCourseIndex() {
+		return "admin/course/adCourseIndex"; 
+	}
+	
+	@GetMapping("/admin/pay/adPayIndex.do")
+	public String adPayIndex() {
+		return "admin/pay/adPayIndex"; 
+	}
+	
+	
+	@GetMapping("/admin/customer/adQnaIndex.do")
+	public String adQnaIndex() {
+		return "admin/customer/adQnaIndex"; 
+	}
+	
+	@GetMapping("/admin/course/adCourseForm.do")
+	public String adCourseForm() {
+		return "admin/course/adCourseForm"; 
+	}
 }

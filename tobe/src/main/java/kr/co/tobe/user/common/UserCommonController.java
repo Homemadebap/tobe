@@ -1,5 +1,6 @@
 package kr.co.tobe.user.common;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,10 +21,10 @@ public class UserCommonController {
 		return "user/common/userIndex"; 
 	}
 	
-	@GetMapping("/user/course/userCourseIndex.do")
-	public String userCourseIndex() {
-		return "user/course/userCourseIndex";
-	}
+//	@GetMapping("/user/course/userCourseIndex.do")
+//	public String userCourseIndex() {
+//		return "user/course/userCourseIndex";
+//	}
 	
 	@GetMapping("/user/common/userTestSchedule.do")
 	public String userTestSchedule() {
@@ -51,8 +52,40 @@ public class UserCommonController {
 	}
 	
 	@GetMapping("/user/common/userBasket.do")
-	public String userBasket() {
+	public String userBasket(Model model, HttpServletRequest request) {
+		HttpSession sess = request.getSession();
+		MemberVO login = (MemberVO)sess.getAttribute("loginInfo");
+		
+		if(login == null) {
+			model.addAttribute("cmd", "back");
+			model.addAttribute("msg", "로그인 후 다시 시도해주세요");
+			return "user/common/userAlert";
+		}
+
+		model.addAttribute("cart", service.cartList(login.getMember_no()) );
+		//model.addAttribute("cart", service.cartList(4));
+		//test
 		return "user/common/userBasket";
+	}
+	
+	//장바구니 삭제
+	@GetMapping("/user/common/userBasketDelete.do")
+	public String delete(Model model, int[] cartNo) {
+		int r = 0;
+		
+		for(int i=0; i<cartNo.length; i++) {
+			//System.out.println(cartNo[0]+"입니다!!!!!!!!!!!");
+			r = service.cartDelete(cartNo[i]);
+			if(r < 1) {
+				model.addAttribute("cmd", "back");
+				model.addAttribute("msg", "등록 오류");
+				return "user/common/userAlert";
+			}
+		}
+			model.addAttribute("cmd", "move");
+			model.addAttribute("msg", "정상적으로 삭제되었습니다.");
+			model.addAttribute("url", "userBasket.do");
+		return "user/common/userAlert";
 	}
 	
 	@GetMapping("/user/common/userCompareCourse.do")

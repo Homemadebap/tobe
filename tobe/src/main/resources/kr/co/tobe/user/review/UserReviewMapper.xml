@@ -2,4 +2,23 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="kr.co.tobe.user.review.UserReviewMapper">
 
+	<insert id="insert" parameterType="kr.co.tobe.vo.ReviewVO">
+		insert into review (
+			member_no, course_no, detail_no, r_title, r_content, r_writedate, r_rating
+		) values (
+			#{member_no}, #{course_no}, #{detail_no}, #{r_title}, #{r_content}, now(), #{r_rating}
+		)
+	</insert>
+	
+	<select id="selectCourse" parameterType ="int" resultType="double">
+		select course_rating
+		from course
+		where course_no = #{no}
+	</select>
+	
+	<update id="updateCouse" parameterType="String">
+		UPDATE course
+		SET course_rating = #{rating}
+		WHERE course_no = #{no};
+	</update>
 </mapper>

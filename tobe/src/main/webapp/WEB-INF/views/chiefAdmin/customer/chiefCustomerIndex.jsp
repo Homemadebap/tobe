@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -273,8 +274,8 @@
                 <span class="srchSelect">
                     <select id="stype" name="searchType" class="dSelect" title="검색분류 선택">
                         <option value="all">전체</option>
-                        <option value="title" <c:if test="${NoticeVO.searchType == 'title'}"></c:if>> 제목</option>
-                        <option value="content" <c:if test="${NoticeVO.searchType == 'content'}"></c:if>> 내용</option>
+                        <option value="title" <c:if test="${NoticeVO.searchType == 'n_title'}"></c:if>> 제목</option>
+                        <option value="content" <c:if test="${NoticeVO.searchType == 'n_content'}"></c:if>> 내용</option>
                     </select>
                 </span>
                 <span class="searchWord">
@@ -302,7 +303,6 @@
                         <tr>
                             <th>번호</th>
                             <th>제목</th>
-                            <th>작성자</th>
                             <th>작성일</th>
                         </tr>
                     </thead>
@@ -314,30 +314,25 @@
 					</c:if>
                     <c:forEach var="vo" items="${map.list }">       
                         <tr>
-                            <td>${vo.no }</td>
+                            <td>${NoticeVo.notice_no }</td>
                             <td style="text-align:left;">
-                            	<c:forEach begin="1" end="${vo.nested }">
+                            	<c:forEach begin="1" end="${NoticeVo.nested }">
                             	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                             	</c:forEach>
-                            	<c:if test="${vo.nested > 0 }">
+                            	<c:if test="${Noticevo.nested > 0 }">
                             		<img src="/project/img/ico_re.png">
                             	</c:if>
-                                <a href="view.do?no=${vo.no}">${vo.title } [${vo.comment_count}]</a>
-                            </td>
-                            <td class="writer">
-                                ${vo.user_name }
-                            </td>
-                            <td>${vo.viewcnt }</td>
-                            <td class="date"><fmt:formatDate value="${vo.writedate }" pattern="YYYY-MM-dd"/></td>
+                                <a href="view.do?no=${vo.no}">${NoticeVo.n_title } [${vo.comment_count}]</a>
+                            </td>                       
+                            <td>${NoticeVo.viewcnt }</td>
+                            <td class="date"><fmt:formatDate value="${NoticeVo.writedate }" pattern="YYYY-MM-dd"/></td>
                         </tr>
                    </c:forEach>
                    </tbody>
                 </table>
                 <div class="btnSet"  style="text-align:right;">
-                <c:if test="${!empty loginInfo}">
-                    <a class="btn" href="write.do">글작성 </a>
-                </c:if>
-                		</div>
+                    <a class="btn" href="/tobe/chiefAdmin/customer/chiefNoticeForm.do">글작성 </a>
+           		</div>
                 		<div class="pagenate clear">
                     		<ul class='paging'>
 			                    <c:if test="${map.prev }">

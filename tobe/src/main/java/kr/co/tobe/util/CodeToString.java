@@ -1,7 +1,7 @@
 package kr.co.tobe.util;
 
 public class CodeToString {
-	public static String educationToStirng (int i) {
+	public static String educationToString (int i) {
 		if(i ==1) {
 			return "해커스";
 		}else if(i== 2) {
@@ -12,7 +12,7 @@ public class CodeToString {
 		return null;
 	}
 	
-	public static String areaToStirng (int i) {
+	public static String areaToString (int i) {
 		if(i ==1) {
 			return "서울";
 		}else if(i== 32) {
@@ -25,7 +25,7 @@ public class CodeToString {
 		return null;
 	}
 	
-	public static String branchToStirng (int i) {
+	public static String branchToString (int i) {
 		if(i ==1) {
 			return "강남";
 		}else if(i== 2) {
@@ -52,7 +52,7 @@ public class CodeToString {
 		return null;
 	}
 	
-	public static String subjectToStirng (int i) {
+	public static String subjectToString (int i) {
 		if(i ==1) {
 			return "토익";
 		}else if(i== 2) {
@@ -73,7 +73,7 @@ public class CodeToString {
 		return null;
 	}
 
-	public static String levelToStirng (int i) {
+	public static String levelToString (int i) {
 		return Integer.toString(i).substring(1);
 	}
 	
@@ -85,4 +85,31 @@ public class CodeToString {
 		}
 		return null;
 	}
+
+	public static String dateToStirng (int mon, int tue, int wed, int thu, int fri, int sat, int sun ) {
+		String date ="";
+		if(mon > 0) {
+			date += "월 ";
+		}
+		if(tue > 0) {
+			date += "화 ";
+		}
+		if(wed > 0) {
+			date += "수 ";
+		}
+		if(thu > 0) {
+			date += "목 ";
+		}
+		if(fri > 0) {
+			date += "금 ";
+		}
+		if(sat > 0) {
+			date += "토 ";
+		}
+		if(sun > 0) {
+			date += "일 ";
+		}
+		return date;
+	}
+
 }

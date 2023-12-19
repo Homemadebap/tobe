@@ -104,31 +104,7 @@
             float: left;
             height: 5rem;
         }
-        /* 게시판 */
-		.board_write {border-top:2px solid #221f1f; border-bottom:1px solid #999;}
-		.board_write thead th{text-align:center;}
-		.board_write th{padding:10px; background:#f4f4f5; color:#000000; border-bottom:1px solid #ebebeb; border-right:1px solid #ebebeb; font-size:15px;}
-		.board_write th br{display:none;}
-		.board_write td{padding:10px; border-bottom:1px solid #ebebeb; font-size:15px; color:#2f3134; font-weight:300; box-sizing:border-box;}
-		.board_write td .tx{display:inline-block;float:left;width:25px;line-height:32px;text-align:center;}
-		.board_write td.email{position:relative;}
-		.board_write td.email input[type=text]{float:left;width:30%;}
-		.board_write td.email .selectric-dSelect{float:left;width:166px;margin:0 0 0 10px;}
-		.board_write td.phone input[type=text]{float:left;width:94px;}
-		.board_write td.phone .selectric-dSelect{float:left;width:94px;}
-		.board_write td textarea{width:100%; height:200px; box-sizing:border-box; }
-		.board_write td input[type=text]{box-sizing:border-box; }
-		.board_write .fileBox{display:table;width:100%;}
-		.board_write .fileBox .inputBox{float:none;display:table-cell;width:100%;}
-		.board_write .fileBox .inputBox input{width:100%;}
-		.board_write .fileBox .fileBtn{display:table-cell;width:125px;}
-		.board_write p.help{text-align:left;font-size:12px;line-height:26px;letter-spacing:-1px; color:#999;}
-		.board_write p.help:before{content:'※ ';}
-		.board_write tr:last-child th, .board_write tr:last-child td{border-bottom:1px solid #dadada;}
-		.board_write .ptxt {
-			line-height: 30px;
-		    margin-left: 5px;
-		}
+        
 		/* button */
 		.btnSet {position:relative; margin:20px 0; text-align:center; overflow:hidden;}
 		.btnSet .right {position:absolute; top:0; right:0;}
@@ -145,31 +121,6 @@
 		.btn.bgGreen{background:#87b350 !important; border:none !important; color:#fff !important;  text-decoration:none !important; height:32px;}
 		.btn.bgGreen:hover{ text-decoration:none !important;}
 		.tdBtn .btn{display:block; margin-bottom:3px;}
-		
-		.member .box{position:relative; margin:30px auto; max-width:500px;}
-		.member .box p{text-align:center; font-size:20px;}
-		.member .box .tab{position:relative; margin:0 auto 20px; overflow:hidden;}
-		.member .box .tab li{border:1px solid #e1e1e1; width:50%; float:left; text-align:center; background:#f5f5f5;}
-		.member .box .tab li.on{border-top:2px solid #87b350; border-left:2px solid #87b350; border-right:2px solid #87b350; border-bottom:1px solid #fff; color:#87b350; font-weight:bold; background:#fff;}
-		.member .box .tab li:last-child.on{border-left:2px solid #87b350;}
-		.member .box .tab li:last-child {border-left:none;}
-		.member .box .tab li a{padding:10px 0; width:100%; display:block;}
-		.member .login_form{border-top:2px solid #cad0d1; border-bottom:1px solid #cad0d1; position:relative; margin:20px auto; padding:20px 0; width:100%;}
-		.member .login_form li{padding:5px 0; width:100%;}
-		.member .login_form input[type=text], .member .login_form input[type=password]{height:40px; width:70%;}
-		.member .login_form .login_btn{position:absolute; width:25%; height:90px;  right:0; top:25px;}
-		.member .login_form .login_btn input[type=submit]{background: #221f1f;color:#fff;width:100%;height:100%;border:none;font-size: 18px;font-weight: 500;border-radius: 5px;}
-		.member .box .btn{width: 48%;padding:10px 0 !important;margin:0;background:#221f1f !important;border:none;color:#fff !important;font-weight: 400;}
-		.member .login_form dl{}
-		.member .login_form dt{padding:5px 0; float:left; width:15%; line-height:40px; vertical-align:middle; font-weight:bold;}
-		.member .login_form dd{padding:5px 0; float:left; width:85%;}
-		.member .login_form dd input[type=text]{width:100%;}
-		.member .login_form dd .tx{display:inline-block;float:left;width:25px;line-height:32px;text-align:center;}
-		.member .login_form dd.email{position:relative;}
-		.member .login_form dd.email input[type=text]{float:left;width:30%;}
-		.member .login_form dd.email .selectric-dSelect{float:left;width:134px;margin:0 0 0 10px; height:40px;}
-		.member .login_form dd.email .selectric-dSelect .selectric{height:40px; line-height:40px;}
-		.member .login_form .search_btn input[type=submit]{background:#87b350; color:#fff; width:100%; border:none; font-size:18px; font-weight:bold; padding:10px 0; margin-top:20px;}
 		
 		
 		/* ==================================================
@@ -236,32 +187,6 @@
 		.bbs .write tbody tr th{padding:15px 10px; font-size:13px; height:20px; line-height:14px; color:#333;}
 		.bbs .write input[type=text] {width:100%;}
 		.bbs .write textarea {width:100%; height:300px;}
-		
-		
-		.bbs .postSection {width:100%; }
-		.bbs .postSection .postList {width:100%; margin-left:-2%; margin-top:-2%; }
-		.bbs .postSection .postList li {float:left; width:100%; margin-left:2%; margin-top:2%; }
-		.bbs .postSection .postList li .postObj {display:block; width:100%; height:350px; box-sizing:border-box; padding:10px; border:1px solid #dadada; position:relative; overflow:hidden; transition:all .2s; -webkit-transition:all .2s; letter-spacing:-.5px;}
-		.bbs .postSection .postList li .postObj .reserveNum {width:100%; font-size:16px; padding:10px 0;}
-		.bbs .postSection .postList li .postObj .imgs {display:block; position:absolute; left:0; top:50; vertical-align:middle; width:220px; height:100%;  }
-		.bbs .postSection .postList li .postObj .imgs img { width:195px; height:280px; margin:10px;}
-		.bbs .postSection .postList li .postObj .imgs i {display:block; position:absolute; left:0; top:0px; }
-		.bbs .postSection .postList li .postObj .txt {display:block; width:100%; padding-left:220px;  padding-top:10px; box-sizing:border-box;  vertical-align:top; position:relative;  padding-right:15px; padding-bottom:25px;}
-		.bbs .postSection .postList li .postObj .txt .category {font-size:18px; color:#1091ff; font-weight:600; position:relative; height:30px; line-height:30px;  margin-bottom:5px;}
-		.bbs .postSection .postList li .postObj .txt .category:after {clear:both; content:''; ;display:block; position:absolute; left:0; bottom:-.5px; width:25px; height:1px; background:#1091ff; }
-		.bbs .postSection .postList li .postObj .txt .title {font-size:18px; color:#333; height:25px; line-height:25px; overflow:hidden; display:block; -webkit-line-clamp:1; white-space:nowrap; text-overflow:ellipsis;  word-break:keep-all; max-width:100%; margin-bottom:10px;}
-		.bbs .postSection .postList li .postObj .txt .detail {width:100%; margin-right:10px;}
-		.bbs .postSection .postList li .postObj .txt .detail table {border-collapse:collapse; border-spacing:0; box-sizing:border-box;}
-		.bbs .postSection .postList li .postObj .txt .detail table tr {height:50px;border-top:1px solid #221f1f; border-bottom:1px solid #221f1f;}
-		.bbs .postSection .postList li .postObj .txt .detail table tr th {width:100px;font-size:14px;}
-		.bbs .postSection .postList li .postObj .txt .btn_area {display:block; position:absolute; height:100px; width:100%; text-align:right; top:250px; right:0px; bottom:0;}
-		.bbs .postSection .postList li .postObj .wdate { box-sizing:border-box; position:absolute; bottom:0; left:32%; color:#999; font-size:15px; overflow:hidden;}
-		.bbs .postSection .postList li .postObj .wdate span {display:block; float:left; line-height:20px; height:20px; position:relative; padding:0 7.5px;}
-		.bbs .postSection .postList li .postObj .wdate span:first-child {padding-left:0;}
-		.bbs .postSection .postList li .postObj .wdate span:before {position:absolute; width:1px; height:12px; margin-top:-6px; top:50%; left:-.5px; background:#ccc; clear:both; content:''; display:block; }
-		.bbs .postSection .postList li .postObj .wdate span:first-child:before {display:none; }
-		
-		
 		
 		/* 페이징처리 */
 		.pagenate {width:100%; clear:both;}

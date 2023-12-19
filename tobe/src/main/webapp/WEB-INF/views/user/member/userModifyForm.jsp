@@ -285,13 +285,13 @@
 	                    <tbody>
 	                    	<tr>
 	                    		<th>이름</th>
-	                	        <td><input type="text" name="name" id="name" style="float:left;" value="${vo.name }"></td>
-	                	        <!--<td>${vo.name }</td>-->                    		
+	                    		<td><input type="text" name="name" id="name" class="input" style="float:left;" value="${user.name }" readonly><td></</td>
 	                    	</tr>
 	                        <tr>
 	                            <th>아이디</th>
 	                            <!--<td><input type="text" name="id" id="id" style="float:left;" value="${vo.id }"></td>-->
 	                            <td>${vo.id }</td>
+
 	                        </tr>
 	                        <tr>
 	                            <th>비밀번호</th>

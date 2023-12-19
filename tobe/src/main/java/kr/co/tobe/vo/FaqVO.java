@@ -7,7 +7,7 @@ import lombok.Data;
 @Data
 public class FaqVO {
 
-	private int fqa_no;
+	private int faq_no;
 	private String f_title;
 	private String f_content;
 	
