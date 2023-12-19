@@ -19,7 +19,6 @@
 
 <script type="text/javascript">
 
-
 $(function(){
 	
 	$('.mainMenu').click(function(){
@@ -48,10 +47,9 @@ $(function(){
 	        $('.myReviewIndex').show();
 	    }
 	})
-
-	
 	
 })
+
 
 
 </script>
@@ -234,6 +232,10 @@ $(function(){
 	display: none;
 }
 
+.url {
+	cursor: pointer;
+}
+
 </style>
 
 
@@ -294,18 +296,18 @@ $(function(){
                     <c:if test="${!empty cci}">
                     	<table>
                     		<tr>
+                    			<td>강좌번호</td>
 								<td colspan="2">강좌명</td>
 								<td>개강일</td>
 								<td>종강일</td>
-								<td>강의진행현황</td>
 							</tr>
 		                    <c:forEach var="vo" items="${cci}">
-		                        <tr>
-		                            <td>${vo.teacher_img}</td>
-		                            <td>${vo.i_cname}</td>    
-		                            <td><fmt:formatDate pattern="yyyy-MM-dd" value="${vo.i_startday}" /></td>
-		                            <td><fmt:formatDate pattern="yyyy-MM-dd" value="${vo.i_endday}" /></td>
-		                            <td></td>
+								<tr>
+	                        		<td>${vo.course_no }</td>
+		                            <td class="url" onclick="location.href='/tobe/user/course/userCourseDetail.do?course_no=${vo.course_no}'">${vo.teacher_img}</td>
+		                            <td class="url" onclick="location.href='/tobe/user/course/userCourseDetail.do?course_no=${vo.course_no}'">${vo.i_cname}</td>    
+		                            <td>${vo.i_startday}</td>
+		                            <td>${vo.i_endday}</td>
 		                        </tr>
 		                    </c:forEach>
                     	</table>
@@ -325,18 +327,26 @@ $(function(){
 								<td>주문번호</td>
 								<td>강좌명</td>
 								<td>가격</td>
-								<td>강좌진행현황</td>
+								<td>강좌개강일</td>
+								<td>강좌종강일</td>
 								<td>비고</td>
 							</tr>
                     	
 		                    <c:forEach var="vo" items="${pci}">
 		                        <tr>
-									<td>${vo.pay_date }</td>		                       
-		                            <td>${vo.order_no}</td>    
-		                            <td>${vo.teacher_img}${vo.i_cname}</td> 
+									<td>${vo.pay_date }</td>    
+		                            <td>${vo.detail_no}<input type="button" onclick="location.href='/tobe/user/pay/userPayCompleteDetail.do?detail_no=${vo.detail_no}'" value="주문상세보기"/></td>    
+		                            <td class="url" onclick="location.href='/tobe/user/course/userCourseDetail.do?course_no=${vo.course_no}'">${vo.teacher_img}${vo.i_cname}</td> 
 		                            <td>${vo.i_price}</td>
-		                            <td></td>
-		                            <td><input type="button" onclick="goReview" id="reviewBtn" value="후기작성"/></td>    		                            
+		                            <td>${vo.i_startday}</td>
+		                            <td>${vo.i_endday}</td>
+		                            <td><form action="/tobe/user/review/write.do" method="get">
+		                            	<input type="hidden" name="infoCourse_no" value="${vo.course_no }">
+		                            	<input type="hidden" name="infoDetail_no" value="${vo.detail_no }">
+		                            	<input type="hidden" name="infoCourseName" value="${vo.i_cname }">
+		                            	<input type="submit" value="후기작성">
+		                            </form></td>
+		                            <!-- <td><input type="button" onclick="location.href='/tobe/user/review/write.do?infoCourse_no=${vo.course_no}'" value="후기작성"/></td> -->    		                            
 		                        </tr>
 		                    </c:forEach>
 	                    </table>
@@ -352,18 +362,27 @@ $(function(){
                     <c:if test="${!empty mcai}">
 	                    <table>
 							<tr>
-								<td>강좌명</td>
+								<td>문의번호</td>
 								<td>제목</td>
 								<td>작성일</td>
 							</tr>
 		                    <c:forEach var="vo" items="${mcai}">
 		                        <tr>
-		                            <td>${vo.cname}</td>
-		                            <td>${vo.cq_title}</td>    
-		                            <td><fmt:formatDate pattern="yyyy-MM-dd" value="${vo.cq_writedate}" /></td>  
-		                            <td><input type="button" value="수정하기"/></td>    		                            
+		                            <td>${vo.cqna_no}</td>
+		                            <td class="url" onclick="location.href='/tobe/user/customer/userAskForm.do?cqna_no=${vo.cqna_no}'">${vo.cq_title}</td>    
+		                            <td>${vo.cq_writedate}</td>
+		                            <td><input type="button" onclick="location.href='/tobe/user/customer/userModAskFrom.do?cqna_no=${vo.cqna_no}'" value="수정하기"/></td>    		                            
 		                        </tr>
 		                    </c:forEach>
+		                    <tr></tr>
+		                    <c:forEach var="vo" items="${ai}">
+		                        <tr>
+		                            <td>${vo.qna_no}</td>
+		                            <td class="url" onclick="location.href='/tobe/user/customer/userAskForm.do?qna_no=${vo.qna_no}'">${vo.q_title}</td>    
+		                            <td>${vo.q_writedate}</td>
+		                            <td><input type="button" onclick="location.href='/tobe/user/customer/userModAskFrom.do?qna_no=${vo.qna_no}'" value="수정하기"/></td>    		                            
+		                        </tr>
+	                        </c:forEach>
 	                    </table>
                     </c:if>
 				</div>
@@ -377,16 +396,17 @@ $(function(){
                     <c:if test="${!empty mri }">
 	                    <table>
 							<tr>
+								<td>후기번호</td>
 								<td>강좌명</td>
 								<td>제목</td>
 								<td>작성일</td>
 							</tr>
 		                    <c:forEach var="vo" items="${mri}">
 		                        <tr>
+		                            <td>${vo.review_no}</td>
 		                            <td>${vo.cname}</td>
-		                            <td>${vo.r_title}</td>    
-		                            <td><fmt:formatDate pattern="yyyy-MM-dd" value="${vo.r_writedate}" /></td>     
-		                            <td><input type="button" value="수정하기"/></td>    		                            
+		                            <td class="url" onclick="location.href='/tobe/user/review/userReviewDetail.do?review_no=${vo.review_no}'">${vo.r_title}</td>   
+		                            <td>${vo.r_writedate}</td>  
 		                        </tr>
 		                    </c:forEach>
 	                    </table>
