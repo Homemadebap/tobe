@@ -1,5 +1,7 @@
 package kr.co.tobe.user.common;
 
+import java.util.Map;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -31,10 +33,10 @@ public class UserCommonController {
 		return "user/common/userTestSchedule";
 	}
 	
-	@GetMapping("/user/review/userReviewIndex.do")
-	public String userReviewIndex() {
-		return "user/review/userReviewIndex";
-	}
+//	@GetMapping("/user/review/userReviewIndex.do")
+//	public String userReviewIndex() {
+//		return "user/review/userReviewIndex";
+//	}
 	
 	@GetMapping("/user/customer/userCustomer.do")
 	public String userCustomer() {
@@ -47,7 +49,20 @@ public class UserCommonController {
 		if(user == null) {
 			return "redirect:/user/common/userIndex.do";
 		}
-		model.addAttribute("user", user);
+		
+		model.addAttribute("user", user); // 사용자 정보 넘기기
+		model.addAttribute("cci", service.currentCourseIndex(user)); // 현재수강중인강의에 들어갈 정보
+		model.addAttribute("pci", service.pastCourseIndex(user)); // 수강신청내역에 들어갈 정보
+		model.addAttribute("mcai", service.myCourseAskIndex(user)); // 나의문의에 들어갈 정보
+		model.addAttribute("mri", service.myReviewIndex(user)); // 나의후기에 들어갈 정보
+		
+		Map<String, Object> day = service.currentCourseIndex(user).get(user.getMember_no());
+		String i_startday = (String)day.get("i_startday");
+		String i_endday = (String)day.get("i_endday");
+		
+		
+		
+		
 		return "user/member/userMyPageMain";
 	}
 	
