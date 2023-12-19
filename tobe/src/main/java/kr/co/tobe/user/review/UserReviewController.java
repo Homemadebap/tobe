@@ -13,11 +13,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-<<<<<<< HEAD
-=======
 import kr.co.tobe.vo.CourseVO;
 import kr.co.tobe.vo.CqnaVO;
->>>>>>> branch 'master' of https://github.com/Homemadebap/tobe.git
 import kr.co.tobe.vo.MemberVO;
 import kr.co.tobe.vo.ReviewVO;
 
