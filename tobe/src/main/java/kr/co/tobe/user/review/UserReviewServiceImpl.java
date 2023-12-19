@@ -27,5 +27,10 @@ public class UserReviewServiceImpl implements UserReviewService {
 	public int updateCourseRating(String no, String rating) {
 		return mapper.updateCouse(no, rating);
 	}
+	
+	@Override
+	public List<ReviewVO> getSelectReviewNo (ReviewVO rvo){
+		return mapper.selectReviewNo(rvo);
+	}
 
 }

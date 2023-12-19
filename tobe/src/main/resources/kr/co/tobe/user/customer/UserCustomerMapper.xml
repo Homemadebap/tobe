@@ -13,4 +13,42 @@
 		    )
 	</insert>
 
+	<update id="qnaUpdate" parameterType="kr.co.tobe.vo.QnaVO">
+		UPDATE qna SET 
+			q_title=#{q_title},
+			q_content=#{q_content}
+		WHERE qna_no=#{qna_no}
+	</update>
+	<insert id="qnaInsert" parameterType="kr.co.tobe.vo.QnaVO">
+		INSERT INTO qna (
+			`member_no`,
+			`q_title`,
+			`q_content`,
+			`q_writedate`,
+			`gno`,
+			`ono`,
+			`nested`
+		) VALUES (
+			#{member_no},
+			#{q_title},
+			#{q_content},
+			NOW(),
+			0,
+			0,
+			0
+		)
+		<selectKey keyProperty="qna_no" order="AFTER" resultType="int">
+			SELECT LAST_INSERT_ID()
+		</selectKey>
+	</insert>
+	
+	<update id="updateGno" parameterType="int">
+		UPDATE qna SET gno=#{no} WHERE qna_no=#{no}
+	</update>
+	
+	<delete id="qnaDelete" parameterType="int">
+		DELETE FROM qna WHERE qna_no=#{no}
+	</delete>
+
+
 </mapper>

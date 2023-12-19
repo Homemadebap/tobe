@@ -72,7 +72,7 @@
 		    <table class="select">
 		        <div>
 		            <tr>
-		                <td style="text-align: center; width: 250px;"><div class="text"><p>공지사항</p></div><img src="/img/notice.png" width="80" height="80"></td>
+		                <td style="text-align: center; width: 250px;"><div class="text"><p>공지사항</p></div><a href="/tobe/user/customer/userCustomer.do"><img src="/img/notice.png" width="80" height="80"></a></td>
 		                <td style="text-align: center; width: 250px;"><div class="text"><p>1:1 문의사항</p></div><a href="/tobe/user/customer/userQna.do"><img src="/img/qna.png" width="80" height="80"></a></td>
 		                <td style="text-align: center; width: 250px;"><div class="text"><p>FAQ</p></div><a href="/tobe/user/customer/userFaq.do"><img src="/img/faq.png" width="80" height="80"></a></td>   
 		            </tr>

@@ -21,4 +21,9 @@
 		SET course_rating = #{rating}
 		WHERE course_no = #{no};
 	</update>
+	
+	<select id="selectReviewNo" parameterType="kr.co.tobe.vo.ReviewVO" resultType="kr.co.tobe.vo.ReviewVO">
+      	SELECT review_no, r_title, r_writedate
+      	FROM review
+   	</select>
 </mapper>

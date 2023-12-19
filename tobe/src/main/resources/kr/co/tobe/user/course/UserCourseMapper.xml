@@ -6,4 +6,43 @@
 		FROM course
 		WHERE course_no = 12;
 	</select>
+	<update id="qnaUpdate" parameterType="kr.co.tobe.vo.CqnaVO">
+		UPDATE cqna SET 
+			cq_title=#{cq_title},
+			cq_content=#{cq_content}
+		WHERE cqna_no=#{cqna_no}
+	</update>
+	<insert id="qnaInsert" parameterType="kr.co.tobe.vo.QnaVO">
+		INSERT INTO cqna (
+			`course_no`,
+			`member_no`,
+			`cq_title`,
+			`cq_content`,
+			`cq_writedate`,
+			`gno`,
+			`ono`,
+			`nested`
+		) VALUES (
+			#{course_no},
+			#{member_no},
+			#{cq_title},
+			#{cq_content},
+			NOW(),
+			0,
+			0,
+			0
+		)
+		<selectKey keyProperty="cqna_no" order="AFTER" resultType="int">
+			SELECT LAST_INSERT_ID()
+		</selectKey>
+	</insert>
+	
+	<update id="updateGno" parameterType="int">
+		UPDATE cqna SET gno=#{no} WHERE cqna_no=#{no}
+	</update>
+	
+	<delete id="qnaDelete" parameterType="int">
+		DELETE FROM cqna WHERE cqna_no=#{no}
+	</delete>
+	
 </mapper>

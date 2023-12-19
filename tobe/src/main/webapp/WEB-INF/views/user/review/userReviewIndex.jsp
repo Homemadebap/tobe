@@ -6,7 +6,7 @@
 <html lang="ko">
 <head> 
     <meta charset="utf-8">
-    <title></title>
+    <title>수강후기</title>
     <link rel="stylesheet" href="/tobe/css/user_Header_Footer.css" />
     <META name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, user-scalable=no"> 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
@@ -105,24 +105,6 @@
             height: 5rem;
         }
         
-		/* button */
-		.btnSet {position:relative; margin:20px 0; text-align:center; overflow:hidden;}
-		.btnSet .right {position:absolute; top:0; right:0;}
-		.btnSet .left {position:absolute; top:0; left:0;}
-		.btn {font-size:14px; text-decoration:none !important; white-space:nowrap; display:inline-block; vertical-align:baseline; position:relative; cursor:pointer; padding:4px 20px; min-width:64px; border:2px solid #221f1f; color:#fff !important; margin:0 2px; text-align:center; font-weight:bold; border-radius:5px; background-color:#221f1f;}
-		.btnSet .btn:hover{background:#313234; color:#fff !important;  text-decoration:none !important;}
-		.btn.point{border:3px solid #579408 !important; color:#579408 !important;}
-		.btn.point:hover{background:#579408 !important;}
-		.big{font-size:16px !important; padding:10px 40px !important; border:3px solid #1d7ab3; border-radius:5px; background-color:#1d7ab3;}
-		
-		.btn.bgGray{background:#a8a8aa !important; border:none !important; color:#fff !important;  text-decoration:none !important; height:28px; line-height:28px; padding: 2px 10px;}
-		.btn.bgGray:hover{ text-decoration:none !important;}
-		
-		.btn.bgGreen{background:#87b350 !important; border:none !important; color:#fff !important;  text-decoration:none !important; height:32px;}
-		.btn.bgGreen:hover{ text-decoration:none !important;}
-		.tdBtn .btn{display:block; margin-bottom:3px;}
-		
-		
 		/* ==================================================
 			board
 		================================================== */
@@ -469,8 +451,9 @@
 </style>
 <body>
     <div class="wrap">
-		<%@include file="/WEB-INF/views/user/common/userHeader.jsp" %>
-		<!-- 페이지처리 -->
+        <%@include file="/WEB-INF/views/user/common/userHeader.jsp" %>
+        
+        <!-- 페이지처리 -->
         <div class="bbsSearch">
             <form method="get" name="searchForm" id="searchForm" action="index.do">
                 <span class="srchSelect">
@@ -483,12 +466,12 @@
                 <span class="searchWord">
                     <input type="text" id="sval" name="searchWord" value="${replyVO.searchWord}"  title="검색어 입력">
                 </span>
-                <!-- <input type="button" id="" value="검색" title="검색"> -->
+                <input type="button" id="" value="검색" title="검색"> 
                 <span class = "btnSearch">
-                	<button name = "reviewSearch" id = "reviewSeachMain">
-                		검색
-                	</button>
-                </span>
+                    <button name = "reviewSearch" id = "reviewSeachMain">
+                        검색
+                    </button>
+                </span> 
             </form>
         </div>
         <div class="size">
@@ -510,58 +493,45 @@
                         </tr>
                     </thead>
                     <tbody>
-					<c:if test="${empty map.list }">
-                        <tr>
-                            <td class="first" colspan="8">등록된 글이 없습니다.</td>
-                        </tr>
-					</c:if>
-                    <c:forEach var="vo" items="${map.list }">       
-                        <tr>
-                            <td>${vo.no }</td>
-                            <td style="text-align:left;">
-                            	<c:forEach begin="1" end="${vo.nested }">
-                            	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                            	</c:forEach>
-                            	<c:if test="${vo.nested > 0 }">
-                            		<img src="/project/img/ico_re.png">
-                            	</c:if>
-                                <a href="view.do?no=${vo.no}">${vo.title } [${vo.comment_count}]</a>
-                            </td>
-                            <td class="writer">
-                                ${vo.user_name }
-                            </td>
-                            <td>${vo.viewcnt }</td>
-                            <td class="date"><fmt:formatDate value="${vo.writedate }" pattern="YYYY-MM-dd"/></td>
-                        </tr>
-                   </c:forEach>
-                   </tbody>
+                        <c:if test="${empty ReviewList}">
+                            <tr>
+                                <td class="first" colspan="8">등록된 글이 없습니다.</td>
+                            </tr>
+                        </c:if>
+                        <c:forEach var="review" items="${ReviewList}">       
+                            <tr>
+                                <td>${review.review_no}</td>
+                                <td><button type="button" onclick="location.href='/tobe/user/review/userReviewDetail.do'" class="SelectBtn">${review.r_title}</button></td>
+								<td>
+									${review.member_no }
+								</td>
+                                <td>
+						            <fmt:formatDate value="${review.r_writedate}" pattern="yyyy-MM-dd" />
+						        </td>
+                            </tr>
+                        </c:forEach>
+                    </tbody>
                 </table>
-                <div class="btnSet"  style="text-align:right;">
-                <c:if test="${!empty loginInfo}">
-                    <a class="btn" href="write.do">글작성 </a>
-                </c:if>
-                		</div>
-                		<div class="pagenate clear">
-                    		<ul class='paging'>
-			                    <c:if test="${map.prev }">
-			                    	<li><a href="index.do?page=${map.startPage-1 }&searchType=${replyVO.searchType}&searchWord=${replyVO.searchWord}"> << </a></li>
-			                    </c:if>
-			                    <c:forEach var="p" begin="${map.startPage}" end="${map.endPage}">
-			                    	<c:if test="${p == replyVO.page}">
-			                        <li><a href='#;' class='current'>${p}</a></li>
-			                        </c:if>
-			                        <c:if test="${p != replyVO.page}">
-			                        <li><a href='index.do?page=${p}&searchType=${replyVO.searchType}&searchWord=${replyVO.searchWord}'>${p}</a></li>
-			                        </c:if>
-			                    </c:forEach>
-                    			<c:if test="${map.next }">
-                    				<li><a href="index.do?page=${map.endPage+1 }&searchType=${replyVO.searchType}&searchWord=${replyVO.searchWord}"> >> </a></li>
-                    			</c:if>
-                    		</ul> 
-                		</div>
-               		</div>
-        		</div>
-        	</div>
-		<%@include file="/WEB-INF/views/user/common/userFooter.jsp" %>
-	</body> 
+                <div class="pagenate clear">
+                   		<ul class='paging'>
+		                    <c:if test="${map.prev }">
+		                    	<li><a href="index.do?page=${map.startPage-1 }&searchType=${ReviewVO.searchType}&searchWord=${ReviewVO.searchWord}"> << </a></li>
+		                    </c:if>
+		                    <c:forEach var="p" begin="${map.startPage}" end="${map.endPage}">
+		                    	<c:if test="${p == ReviewVO.page}">
+		                        <li><a href='#;' class='current'>${p}</a></li>
+		                        </c:if>
+		                        <c:if test="${p != ReviewVO.page}">
+		                        <li><a href='index.do?page=${p}&searchType=${ReviewVO.searchType}&searchWord=${ReviewVO.searchWord}'>${p}</a></li>
+		                        </c:if>
+		                    </c:forEach>
+                   			<c:if test="${map.next }">
+                   				<li><a href="index.do?page=${map.endPage+1 }&searchType=${ReviewVO.searchType}&searchWord=${ReviewVO.searchWord}"> >> </a></li>
+                   			</c:if>
+                   		</ul> 
+             	</div>
+            </div>
+        </div>
+        <%@include file="/WEB-INF/views/user/common/userFooter.jsp" %>
+    </body> 
 </html>
