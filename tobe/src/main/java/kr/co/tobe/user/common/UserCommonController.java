@@ -1,5 +1,6 @@
 package kr.co.tobe.user.common;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -60,18 +61,20 @@ public class UserCommonController {
 		model.addAttribute("mri", service.myReviewIndex(user)); // 나의후기에 들어갈 정보
 		
 		// db에는 문자열로 있는 날짜들을 Date 타입으로 바꾸는 것
-		List<Map<String, Object>> result = service.myReviewIndex(user);
+		List<Map<String, Object>> result = service.pastCourseIndex(user);
 		for (Map<String, Object> map : result) {
 		    // 특정 키를 사용하여 값을 가져오기
-		    Object value = map.get("r_writedate");
+		    Object value = map.get("pay_date1");
 			if (value instanceof String) {
 			    System.out.println("데이터는 String 타입입니다.");
 			} else if (value instanceof Integer) {
 			    System.out.println("데이터는 Integer 타입입니다.");
 			} else if (value instanceof List) {
 			    System.out.println("데이터는 List 타입입니다.");
-			} else if (value instanceof Date){
-			    System.out.println("데이터는 Date 타입입니다.");
+			} else if (value instanceof LocalDateTime){
+			    System.out.println("데이터는 LocalDateTime 타입입니다.");
+			} else if(value instanceof Date){
+				System.out.println("데이터는 Date 타입입니다.");
 			} else {
 				System.out.println("데이터 타입을 알 수 없습니다.");
 			}
