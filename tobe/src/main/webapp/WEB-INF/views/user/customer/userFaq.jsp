@@ -83,7 +83,7 @@
 		    <!-- <h3 class="sub_title" style="border-bottom:1px solid; width: 200px;">공지사항</h3> -->
 
     
-    		
+    
 	        <div class="container">
 	          <div class="search-window">
 	            <form action="">
@@ -111,57 +111,41 @@
 		                    <th>작성일</th>
 		                </tr>
 		            </thead>
-		            
-		            <tbody>
-		            <c:if test="${empty map.list }">
-                            <tr>
-                                <td class="first" colspan="8">등록된 글이 없습니다.</td>
-                            </tr>
-					</c:if>
-					<c:forEach var="vo" items="${map.list }">       
-                            <tr>
-                                <td>${vo.member_no }</td>
-                                <td style="text-align:left;">
-                                	<c:forEach begin="1" end="${vo.nested }">
-                                	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                	</c:forEach>
-                                	<c:if test="${vo.nested > 0 }">
-                                		<img src="">
-                                	</c:if>
-                              
-                                </td>
-                                <td>${vo.q_title }</td>                     
-                                <td class="date"><fmt:formatDate value="${vo.q_writedate }" pattern="YYYY-MM-dd"/></td>
-                            </tr>
-                       </c:forEach>
+		
+		            <tbody class="context">
+		                <tr>
+		                    <td>3</td>
+		                    <td class="txt">
+		                        <a href="userNoticeDetail.html">사용자들은 보시오!!!</a>
+		                    </td>
+		                    <td class="date">2023.12.11</td>
+		                </tr>
+		                <tr>
+		                    <td>2</td>
+		                    <td class="txt">
+		                        <a href="userNoticeDetail.html">제목</a>
+		                    </td>
+		                    <td class="date">날짜</td>
+		                </tr>
+		                <tr>
+		                    <td>1</td>
+		                    <td class="txt">
+		                        <a href="userNoticeDetail.html">제목</a>
+		                    </td>
+		                    <td class="date">날짜</td>
+		                </tr>
 		            </tbody>
-
+		
 		        </table>
-		            <div class="btnSet"  style="text-align:right;">
-                    <c:if test="${!empty loginInfo}">
-                        <a class="btn" href="userAskForm.do">작성하기</a>
-                    </c:if>
 		 
-					<div class="pagenate clear">
-                        <ul class='paging'>
-                        <c:if test="${map.prev }">
-                        	<li><a href="index.do?page=${map.startPage-1 }&searchType=${QnaVO.searchType}&searchWord=${QnaVO.searchWord}"> << </a></li>
-                        </c:if>
-                        <c:forEach var="p" begin="${map.startPage}" end="${map.endPage}">
-                        	<c:if test="${p == QnaVO.page}">
-                            <li><a href='#;' class='current'>${p}</a></li>
-                            </c:if>
-                            <c:if test="${p != QnaVO.page}">
-                            <li><a href='userQna.do?page=${p}&searchType=${QnaVO.searchType}&searchWord=${QnaVO.searchWord}'>${p}</a></li>
-                            </c:if>
-                        </c:forEach>
-                        <c:if test="${map.next }">
-                        	<li><a href="userQna.do?page=${map.endPage+1 }&searchType=${QnaVO.searchType}&searchWord=${QnaVO.searchWord}"> >> </a></li>
-                        </c:if>
-                        </ul> 
-                    </div>
-                    
-		 	    <!--<div style="text-align:right;"><button onClick="location.href='userAskForm.do'">작성하기</button></div>-->
+		        <ul class="page">
+		            <li class="prev"><</li>
+		            <li><a href="" class="current">1</a></li>
+		            <li><a href="">2</a></li>
+		            <li><a href="">3</a></li>
+		            <li class="prev">></li>
+		
+		        </ul>
 		    </div>
 			<%@include file="/WEB-INF/views/user/common/userFooter.jsp"%>
 		</div>

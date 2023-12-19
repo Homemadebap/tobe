@@ -4,7 +4,6 @@
 	<select id="lectureSelect" parameterType="kr.co.tobe.vo.CourseVO" resultType="kr.co.tobe.vo.CourseVO">
 		SELECT teacher_img_org, cname, time, price 
 		FROM course
-		WHERE course_no = 12;
 	</select>
 	<update id="qnaUpdate" parameterType="kr.co.tobe.vo.CqnaVO">
 		UPDATE cqna SET 

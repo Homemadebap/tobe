@@ -5,6 +5,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -16,7 +17,23 @@ import kr.co.tobe.vo.QnaVO;
 public class UserCustomerController {
 
 	@Autowired
-	UserCustomerService service;
+	private UserCustomerService service;
+	
+	@GetMapping("/user/customer/userQna.do")
+	public String userQna(Model model, QnaVO vo) {
+		model.addAttribute("map", service.list(vo));
+		return "user/customer/userQna";
+	}
+	
+	@GetMapping("/user/customer/userFaq.do")
+	public String userFaq() {
+		return "user/customer/userFaq";
+	}
+	
+	@GetMapping("/user/customer/userAskForm.do")
+	public String userAskForm() {
+		return "user/customer/userAskForm";
+	}
 	
 	//강좌 문의 등록 
 		@PostMapping("/user/customer/qna/insert.do")

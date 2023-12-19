@@ -18,7 +18,11 @@ public class QnaVO {
 	
 	private int startIdx;
 	private int page;
+	private String searchType;
+	private String searchWord;
 	
+	private String member_name;
+	   
 	public QnaVO() {
 		this.page = 1;
 	}

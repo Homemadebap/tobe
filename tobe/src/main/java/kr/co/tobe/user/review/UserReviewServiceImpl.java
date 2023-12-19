@@ -33,4 +33,9 @@ public class UserReviewServiceImpl implements UserReviewService {
 		return mapper.selectReviewNo(rvo);
 	}
 
+	@Override
+	public ReviewVO getReviewDetail(int reviewNo) {
+		return mapper.ReviewDetail(reviewNo);
+	}
+
 }
