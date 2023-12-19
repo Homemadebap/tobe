@@ -103,7 +103,7 @@
       </div>
    <div>
       <button id="btn" onclick="location.href='/tobe/chiefAdmin/course/chiefCourseIndex.do';">
-         <img src="/tobe/img/admin_class.png">
+         <img src="/tobe/img/admin_course.png">
       </button>
    </div>
    <div>
