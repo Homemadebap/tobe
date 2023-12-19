@@ -52,14 +52,11 @@ public class UserCommonController {
 			return "redirect:/user/common/userIndex.do";
 		}
 		
-		
-		
-		
-		
 		model.addAttribute("user", user); // 사용자 정보 넘기기
 		model.addAttribute("cci", service.currentCourseIndex(user)); // 현재수강중인강의에 들어갈 정보
 		model.addAttribute("pci", service.pastCourseIndex(user)); // 수강신청내역에 들어갈 정보
 		model.addAttribute("mcai", service.myCourseAskIndex(user)); // 나의문의에 들어갈 정보
+		model.addAttribute("ai", service.askIndex(user)); // 나의문의에 들어갈 정보
 		model.addAttribute("mri", service.myReviewIndex(user)); // 나의후기에 들어갈 정보
 		
 		// db에는 문자열로 있는 날짜들을 Date 타입으로 바꾸는 것

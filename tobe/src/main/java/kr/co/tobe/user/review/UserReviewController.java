@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import kr.co.tobe.vo.CourseVO;
 import kr.co.tobe.vo.CqnaVO;
@@ -24,10 +25,18 @@ public class UserReviewController {
 	UserReviewService service;
 
 	@GetMapping("/user/review/write.do")
-	public String write(Model model) {
-		model.addAttribute("infoCourse_no", 13);
-		model.addAttribute("infoDetail_no", 1);
-		model.addAttribute("infoCourseName", "안녕 나는 강좌명이애" );
+	public String write( @RequestParam("infoCourse_no") String infoCourse_no,
+						 @RequestParam("infoDetail_no") String infoDetail_no,
+						 @RequestParam("infoCourseName") String infoCourseName,
+						 Model model, HttpSession sess ) {
+		MemberVO user = (MemberVO)sess.getAttribute("loginInfo");
+		if(user == null) {
+			return "redirect:/user/common/userIndex.do";
+		}
+		
+		model.addAttribute("infoCourse_no", infoCourse_no);
+		model.addAttribute("infoDetail_no", infoDetail_no);
+		model.addAttribute("infoCourseName", infoCourseName );
 		
 		return "/user/review/userReviewForm";
 	}
