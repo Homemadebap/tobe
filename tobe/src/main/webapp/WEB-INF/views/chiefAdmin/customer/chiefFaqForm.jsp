@@ -30,8 +30,8 @@ $(function() {
     });
 })
 function goSave() {
-    	oEditors.getById['content'].exec('UPDATE_CONTENTS_FIELD',[]);
-    	$("#frm").submit();
+    	oEditors.getById['detail'].exec('UPDATE_CONTENTS_FIELD',[]);
+    	
     }
 </script>
 <style>
@@ -42,7 +42,7 @@ function goSave() {
 </style>
 <body>
 <%@include file="/WEB-INF/views/chiefAdmin/common/chiefSideBar_logo.jsp" %>
-   <form name="frm" method="post" action="chiefFaqInsert.do" enctype="multipart/form-data" >   
+   <form name="frm" method="post" action="chiefFaqInsert.do" enctype="multipart/form-data" onsubmit="return goSave()" >   
     제목 <input name="f_title" tpye="text" width="70%"/>
 	<textarea name="f_content" id="detail"></textarea>
 		<div colspan="2" id="put">
