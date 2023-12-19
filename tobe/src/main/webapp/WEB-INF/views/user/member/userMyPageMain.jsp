@@ -306,6 +306,7 @@ $(function(){
 		                            <td id="courseName">${vo.i_cname}</td>    
 		                            <td class="startDay"><fmt:formatDate pattern="yyyy-MM-dd HH:mm" value="${vo.i_startday}" /></td>
 		                            <td class="endDay"><fmt:formatDate pattern="yyyy-MM-dd HH:mm" value="${vo.i_endday}" /></td>
+		                            <td></td>
 		                        </tr>
 		                    </c:forEach>
                     	</table>
@@ -325,7 +326,8 @@ $(function(){
 								<td>주문번호</td>
 								<td>강좌명</td>
 								<td>가격</td>
-								<td id="comPercent2"></td>
+								<td>강의진행현황</td>
+								<td></td>
 							</tr>
                     	
 		                    <c:forEach var="vo" items="${pci}">
@@ -334,6 +336,7 @@ $(function(){
 		                            <td>${vo.order_no}</td>    
 		                            <td>${vo.teacher_img}${vo.i_cname}</td> 
 		                            <td>${vo.i_price}</td>
+		                            <td></td>
 		                            <td><input type="button" onclick="goReview" id="reviewBtn" value="후기작성"/></td>    		                            
 		                        </tr>
 		                    </c:forEach>
