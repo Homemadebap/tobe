@@ -8,7 +8,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import kr.co.tobe.vo.AdminVO;
-import kr.co.tobe.vo.MemberVO;
 
 @Controller
 public class AdCustomerController {
@@ -19,12 +18,13 @@ public class AdCustomerController {
 	@GetMapping("/admin/common/adIndex.do")
 	public String adIndex(HttpSession sess, Model model) {
 		AdminVO admin = (AdminVO)sess.getAttribute("loginInfo");
-//		if(admin == null) {
-//			return "redirect:/user/member/userLogin.do";
-//		}
+		if(admin == null) {
+			return "redirect:/user/member/userLogin.do";
+		}
 		
 		model.addAttribute("admin", admin);
-//		model.addAttribute("", service.)
+		model.addAttribute("tpc", service.todayPayCnt(admin));
+		model.addAttribute("tpcc", service.todayPayCancelCnt(admin));
 		
 		
 		

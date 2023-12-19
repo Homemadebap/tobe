@@ -3,7 +3,7 @@
 <mapper namespace="kr.co.tobe.admin.customer.AdCustomerMapper">
 
 	<resultMap type="HashMap" id="coursePayMap">
-	
+		
 		<id column="ad_type" property="ad_type"/>
 		<id column="order_no" property="order_no"/>
 		<id column="pay_complete " property="pay_complete "/>
@@ -41,19 +41,31 @@
 		<id column="i_price" property="i_price"/>
 		<id column="start_idx" property="start_idx"/>
 		<id column="page" property="page"/>
+		<result column="count" property="count"/>
 	</resultMap>
 	
-	<select id="todayPay" parameterType="kr.co.tobe.vo.AdminVO" resultMap="coursePayMap">
+	
+	<select id="todayPayCnt" parameterType="kr.co.tobe.vo.AdminVO" resultMap="coursePayMap">
 	    <![CDATA[
-		    SELECT
-		        pd.course_no, i_cname, i_startday, i_endday, 
-		        (SELECT teacher_img_org FROM course WHERE course.course_no = pd.course_no) as teacher_img
-		    FROM member m
-		    JOIN pay p ON m.member_no = p.member_no
-		    JOIN pay_detail pd ON p.order_no = pd.order_no
-		    WHERE a.ad_type = #{ad_type}
-		        AND STR_TO_DATE(pay_date, '%Y-%m-%d') = CURDATE()
-		    ORDER BY i_startday
+			select count(*) as count
+			from admin a JOIN course c ON a.admin_no=c.admin_no
+				JOIN pay_detail pd ON c.course_no=pd.course_no
+				JOIN pay p ON pd.order_no=p.order_no
+			    JOIN member m ON p.member_no=m.member_no
+			WHERE a.ad_type= #{ad_type}
+			 AND STR_TO_DATE(pay_date, '%Y-%m-%d') = CURDATE();
+	    ]]>
+	</select>
+	
+	<select id="todayPayCancelCnt" parameterType="kr.co.tobe.vo.AdminVO" resultMap="coursePayMap">
+	    <![CDATA[
+			select count(*) as count
+			from admin a JOIN course c ON a.admin_no=c.admin_no
+				JOIN pay_detail pd ON c.course_no=pd.course_no
+				JOIN pay p ON pd.order_no=p.order_no
+			    JOIN member m ON p.member_no=m.member_no
+			WHERE a.ad_type= #{ad_type}
+			 AND STR_TO_DATE(pay_cancel_date, '%Y-%m-%d') = CURDATE();
 	    ]]>
 	</select>
 	
