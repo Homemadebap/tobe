@@ -23,13 +23,5 @@ public interface UserMemberMapper {
 	MemberVO pwdCheck(MemberVO mvo);
 	// 회원탈퇴
 	int quit(MemberVO mvo);
-	
-	// 마이페이지 - 현재 수강중인 강의 목록 뽑아오기
-	List<Map<String, Object>> currentCourseIndex(MemberVO mvo);
-	// 마이페이지 - 수강신청 내역 뽑아오기
-	List<Map<String, Object>> pastCourseIndex(MemberVO mvo);
-	// 마이페이지 - 나의후기 내역 뽑아오기
-	List<Map<String, Object>> myCourseAskIndex(MemberVO mvo);
-	// 마이페이지 - 나의문의 내역 뽑아오기
-	List<Map<String, Object>> myReviewIndex(MemberVO mvo);
+
 }
