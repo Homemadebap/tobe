@@ -290,7 +290,7 @@
 	                        <tr>
 	                            <th>아이디</th>
 	                            <!--<td><input type="text" name="id" id="id" style="float:left;" value="${vo.id }"></td>-->
-	                            <td>${vo.id }</td>
+	                            <td>${user.id }</td>
 
 	                        </tr>
 	                        <tr>
@@ -345,7 +345,7 @@
 	                    </tbody>
 	                </table>
 	                    <input type="hidden" name="cmd" value="write.do"/>
-	                    <input type="hidden" name="member_no" id="member_no" value="${user.member_no }"/>
+	                    <input type="hidden" name="member_no" id="member_no" value="${user.member_no }"/> <!-- 강사님 수정해주심 -->
 	                    
 	                    <!-- 이메일 부분 해야함 -->
 	                    <!-- input type="reset" id="resetBtn" value="취소"/> -->
