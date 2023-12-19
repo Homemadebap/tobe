@@ -499,17 +499,17 @@
                             </tr>
                         </c:if>
                         <c:forEach var="review" items="${ReviewList}">       
-                            <tr>
-                                <td>${review.review_no}</td>
-                                <td><button type="button" onclick="location.href='/tobe/user/review/userReviewDetail.do'" class="SelectBtn">${review.r_title}</button></td>
-								<td>
-									${review.member_no }
-								</td>
-                                <td>
+						    <tr>
+						        <td>${review.review_no}</td>
+						        <td>
+						            <a href="/tobe/user/review/userReviewDetail.do?reviewNo=${review.review_no}" class="SelectBtn">${review.r_title}</a>
+						        </td>
+						        <td>${review.member_no}</td>
+						        <td>
 						            <fmt:formatDate value="${review.r_writedate}" pattern="yyyy-MM-dd" />
 						        </td>
-                            </tr>
-                        </c:forEach>
+						    </tr>
+						</c:forEach>
                     </tbody>
                 </table>
                 <div class="pagenate clear">

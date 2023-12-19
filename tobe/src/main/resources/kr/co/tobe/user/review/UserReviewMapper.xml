@@ -26,4 +26,10 @@
       	SELECT review_no, r_title, r_writedate
       	FROM review
    	</select>
+   	
+    <select id="ReviewDetail" parameterType="kr.co.tobe.vo.ReviewVO" resultType="kr.co.tobe.vo.ReviewVO">
+        SELECT r_title, r_writedate, r_content
+        FROM review
+        WHERE review_no = #{reviewNo};
+    </select>
 </mapper>

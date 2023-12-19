@@ -11,8 +11,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
-import kr.co.tobe.vo.CourseVO;
 import kr.co.tobe.vo.MemberVO;
 import kr.co.tobe.vo.ReviewVO;
 
@@ -64,5 +64,12 @@ public class UserReviewController {
 		model.addAttribute("ReviewList", ReviewList);
 		return "user/review/userReviewIndex";
 	}
+	
+	@GetMapping("/user/review/userReviewDetail.do")
+    public String getReviewDetail(Model model, @RequestParam("reviewNo") int reviewNo) {
+        ReviewVO review = service.getReviewDetail(reviewNo);
+        model.addAttribute("review", review);
+        return "user/review/userReviewDetail";
+    }
 	
 }
