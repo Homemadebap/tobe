@@ -20,7 +20,8 @@ public class UserCustomerController {
 	private UserCustomerService service;
 	
 	@GetMapping("/user/customer/userQna.do")
-	public String userQna() {
+	public String userQna(Model model, QnaVO vo) {
+		model.addAttribute("map", service.list(vo));
 		return "user/customer/userQna";
 	}
 	

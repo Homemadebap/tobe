@@ -21,18 +21,19 @@ public class UserCustomerServiceImpl implements UserCustomerService {
 	
 	@Override
 	public Map<String, Object> list(QnaVO param) {
-		int count = mapper.count(param); // 총개수
-        // 총페이지수
-        int totalPage = count / 10;
+		int count = mapper.count(param); //총개수
+        int totalPage = count / 10; //총 페이지
         if (count % 10 > 0) totalPage++;
-        List<QnaVO> list = mapper.list(param); // 목록
+        System.out.println(param.getPage());
+        System.out.println(param.getStartIdx());
+        List<QnaVO> list = mapper.list(param); //목록
         
         Map<String, Object> map = new HashMap<>();
         map.put("count", count);
         map.put("totalPage", totalPage);
         map.put("list", list);
         
-        // 하단에 페이징처리
+        //페이징
         int endPage = (int)(Math.ceil(param.getPage()/10.0)*10);
         int startPage = endPage - 9;
         if (endPage > totalPage) endPage = totalPage;
@@ -45,36 +46,7 @@ public class UserCustomerServiceImpl implements UserCustomerService {
 		return map;
 	}
 
-	@Override
-	public int insert(QnaVO vo, MultipartFile file, HttpServletRequest request) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
 
-	@Override
-	public QnaVO view(QnaVO vo, boolean isViewcntIncrease) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public int update(QnaVO vo, MultipartFile file, HttpServletRequest request) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public int delete(QnaVO vo, HttpServletRequest request) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public int Qna(QnaVO vo, MultipartFile file, HttpServletRequest request) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-	
 	@Override
 	public int qnaInsert(QnaVO vo) {
 		int r = mapper.qnaInsert(vo);
@@ -92,4 +64,5 @@ public class UserCustomerServiceImpl implements UserCustomerService {
 	public int qnaDelete(QnaVO vo) {
 		return mapper.qnaDelete(vo.getQna_no());
 	}
+
 }
