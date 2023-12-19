@@ -27,6 +27,13 @@ public class UserMemberController {
 	public String userJoinForm() {
 		return "user/member/userJoinForm";
 	}
+	 
+//	아이디 비밀번호 찾기
+	@GetMapping("user/member/userFindMember.do")
+	public String userFindMember() {
+		return "user/member/userFindMember";
+	}
+
 	
 	@PostMapping("/user/member/userJoinForm.do")
 //	@GetMapping("/user/member/userJoinForm.do")
@@ -83,6 +90,12 @@ public class UserMemberController {
 			return "user/member/userModifyForm";
 		}
 	}
+//	@GetMapping("/user/member/userModifyForm.do")
+//	public String edit (HttpSession sess, Model model) {
+//		MemberVO mv = (MemberVO)sess.getAttribute("loginInfo");
+//		model.addAttribute("vo", service.detail(mv));
+//		return "user/member/userModifyForm";
+//	}
 	
 	@PostMapping("/user/member/userQuitForm.do")
 	public String quitForm(HttpSession sess, MemberVO mvo, Model model) {
