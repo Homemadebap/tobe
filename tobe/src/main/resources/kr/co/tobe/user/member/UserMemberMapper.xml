@@ -18,6 +18,22 @@
 			SELECT LAST_INSERT_ID()   
 		</selectKey>
  	</insert>
+ 	
+ 	<!-- 회원정보수정 -->
+ 		<update id="update" parameterType="kr.co.tobe.vo.MemberVO">
+			UPDATE member SET
+				<if test="pwd != ''">
+				pwd = MD5(#{pwd}),
+				</if>
+				<!--name = #{name}-->
+				gender = #{gender},
+				birthday = #{birthday},
+				hp = #{hp},
+				zipcode = #{zipcode},
+				addr1 = #{addr1},
+				addr2 = #{addr2}	
+			WHERE member_no = #{member_no}
+		</update>
 	
 	
 	<!-- 비밀번호 확인 -->

@@ -16,266 +16,231 @@
 <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
 <link rel="stylesheet" href="/tobe/css/user_Header_Footer.css" />
-<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 
-<script type="text/javascript">
-var dupCheck = false;
-function goSave() {
-	if ($("#id").val() == '') {
-		alert('아이디를 입력하세요');
-		$("#id").focus();
-		return;
-	}
-	var isCon = true;
-	$.ajax({
-		url:'idCheck.do',
-		data:{id:$('#id').val()},
-		async:false,
-		success:function(res) {
-			console.log(res);
-			if (res == 'true') {
-				alert('아이디가 중복되었습니다.');
-				$("#id").val('');
+	<script>
+		var dupCheck = false;
+		function goSave() {
+			if ($("#id").val() == '') {
+				alert('아이디를 입력하세요');
 				$("#id").focus();
-				isCon = false;
 				return;
 			}
-		}
-	})
-	if (!isCon) return;
-	if ($("#pw").val() == '') {
-		alert('비밀번호를 입력하세요');
-		$("#pw").focus();
-		return;
-	}
-	if ($("#pw").val() != $("#pw_check").val()) {
-		alert('비밀번호를 확인하세요');
-		return;
-	}
-	var reg = /^[A-Za-z0-9]{8,}$/;
-	var txt = $("#pw").val();
-	if( txt.match(reg) == null ) {
-	    alert("비밀번호는 영문+숫자 조합해서 8자이상 입력하세요");
-	    return false;
-	}
-	if ($("#name").val() == '') {
-		alert('이름을 입력하세요');
-		$("#name").focus();
-		return;
-	}
-	// 전송
-	$("#frm").submit();
-}
-$(function() {
-	$("#idCheck").click(function() {
-		$.ajax({
-			url:'idCheck.do',
-			data:{id:$('#id').val()},
-			success:function(res) {
-				console.log(res);
-				if (res == 'true') {
-					alert('아이디가 중복되었습니다.');
-					$("#id").val('');
-					$("#id").focus();
-				} else {
-					dupCheck = true;
-					alert('사용가능한 아이디입니다.');
-					$("#id").attr('readonly','readonly');
-				}
+			
+			if ($("#pwd").val() == '') {
+				alert('비밀번호를 입력하세요');
+				$("#pwd").focus();
+				return;
 			}
-		})
-	})
-})
+			
+			if ($("#pwd").val() != $("#pwd_check").val()) {
+				alert('비밀번호를 확인하세요');
+				return;
+			}
+			
+			var reg = /^[A-Za-z0-9]{8,}$/;
+			var txt = $("#pwd").val();
+			if( txt.match(reg) == null ) {
+			    alert("비밀번호는 영문+숫자 조합해서 8자이상 입력하세요");
+			    return false;
+			}
+			if ($("#name").val() == '') {
+				alert('이름을 입력하세요');
+				$("#name").focus();
+				return;
+			}
+			// 전송
+			console.log("QKEFHKE");
+			$("#frm").submit();
+			}
+	</script>
 
-   function zipcode() {
-       new daum.Postcode({
-           oncomplete: function(data) {
-              
-               var roadAddr = data.roadAddress; 
-               var extraRoadAddr = ''; 
+	<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>  
+		<script>
+			   function zipcode() {
+			        new daum.Postcode({
+			            oncomplete: function(data) {
+			                var roadAddr = data.roadAddress;
+			                var extraRoadAddr = '';
+			                if(data.bname !== '' && /[동|로|가]$/g.test(data.bname)){
+			                    extraRoadAddr += data.bname;
+			                }
+			               
+			                if(data.buildingName !== '' && data.apartment === 'Y'){
+			                   extraRoadAddr += (extraRoadAddr !== '' ? ', ' + data.buildingName : data.buildingName);
+			                }
+			                
+			                if(extraRoadAddr !== ''){
+			                    extraRoadAddr = ' (' + extraRoadAddr + ')';
+			                }
+			                $('#zipcode').val(data.zonecode);
+			                $('#addr1').val(roadAddr);
+			            }
+			        }).open();
+			    }
+		</script>
 
-               if(data.bname !== '' && /[동|로|가]$/g.test(data.bname)){
-                   extraRoadAddr += data.bname;
-               }
-               if(data.buildingName !== '' && data.apartment === 'Y'){
-                  extraRoadAddr += (extraRoadAddr !== '' ? ', ' + data.buildingName : data.buildingName);
-               }
-            
-               if(extraRoadAddr !== ''){
-                   extraRoadAddr = ' (' + extraRoadAddr + ')';
-               }
-
-               $('#zipcode').val(data.zonecode);
-               $('#addr1').val(roadAddr);
-           }
-       }).open();
-   }
-</script>
-
-
-<style>
-
-.main {
-	position: absolute;
-	width: 75rem;
-	height: 10rem;
-	top: 12rem;
-	background-color: #E4E6D9;
-}
-
-.part1 {
-	position: absolute;
-	width: 10rem;
-	height: 10rem;
-	text-align: center;
-	font-color: #000;
-	font-size: 1.5rem;
-	left: 1rem;
-	color: #49654E;
-}
-
-#userName {
-	position: absolute;
-	top: 0.75rem;
-	left: 1.5rem;
-}
-#userId {
-	position: absolute;
-	top: 4rem;
-	left: 1.5rem;
-}
-
-.part2 {
-	position: absolute;
-	width: 20rem;
-	height: 10rem;
-	font-size: 1.25rem;
-	left: 15rem;
-	color: #49654E;
-}
-
-#set {
-	position: absolute;
-	width: 20rem;
-	height: 4rem;
-	margin: 0 auto;
-	padding: 0;
-	top: 1rem;
-
-}
-
-#quit {
-	position: absolute;
-	width: 20rem;
-	height: 4rem;
-	top: 4.5rem;
-	margin: 0 auto;
-	padding: 0;
-}
-
-#setImg, #quitImg {
-	position: absolute;
-	width: 2.5rem;
-	top: 1rem;
-}
-
-#setText{
-	position: absolute;
-	text-align: center;
-	left: 3.5rem;
-	top: 1.35rem;
-}
-#quitText {
-	position: absolute;
-	text-align: center;
-	left: 3.5rem;
-	top: 1.25rem;
-}
-
-.pointContainer {
-	position: absolute;
-	width: 20rem;
-	height: 10rem;
-	right: 0rem;
-}
-
-#pointImg {
-	position: absolute;
-	left: 0;
-	top: 1.75rem;
-}
-
-#point {
-	position: absolute;
-	width: 15rem;
-	height: 10rem;
-	right: 0;
-	color: #49654E;
-}
-
-#userPointText {
-	position: absolute;
-	width: 13rem;
-	top: 3rem;
-	left: 1rem;
-	font-size: 1.25rem;
-}
-#numPointText {
-	position: absolute;
-	width: 11.5rem;
-	top: 6rem;
-	left: 1rem;
-	font-size: 1.25rem;
-}
-
-.modifyForm {
-	position: absolute;
-	width: 40rem;
-	top: 13rem;
-	left: 19rem;
-	color: #49654E;
-}
-
-.frm {
-	width: 40rem;
-	font-size: 1.25rem;
-}
-
-.input {
-	width: 15rem;
-	text-align: center;
-	font-size: 1.15rem;	
-	padding: 0.5rem;
-	margin: 0.25rem auto;
-}
-
-#resetBtn {
-	position: absolute;
-    border: none;
-    background: none;
-    padding: 0;
-    margin: 0;
-    cursor: pointer;
-    font-size: 1.5rem;
-    top: 36rem;
-    left: 19rem;
-}
-
-#modBtn {
-	position: absolute;
-    border: none;
-    background: none;
-    padding: 0;
-    margin: 0;
-    cursor: pointer;
-    font-size: 1.5rem;
-    top: 36rem;
-    left: 15rem;
-    color: #49654E;
-}
-
-
-</style>
+	<style>
+	.main {
+		position: absolute;
+		width: 75rem;
+		height: 10rem;
+		top: 12rem;
+		background-color: #E4E6D9;
+	}
+	
+	.part1 {
+		position: absolute;
+		width: 10rem;
+		height: 10rem;
+		text-align: center;
+		font-color: #000;
+		font-size: 1.5rem;
+		left: 1rem;
+		color: #49654E;
+	}
+	
+	#userName {
+		position: absolute;
+		top: 0.75rem;
+		left: 1.5rem;
+	}
+	#userId {
+		position: absolute;
+		top: 4rem;
+		left: 1.5rem;
+	}
+	
+	.part2 {
+		position: absolute;
+		width: 20rem;
+		height: 10rem;
+		font-size: 1.25rem;
+		left: 15rem;
+		color: #49654E;
+	}
+	
+	#set {
+		position: absolute;
+		width: 20rem;
+		height: 4rem;
+		margin: 0 auto;
+		padding: 0;
+		top: 1rem;
+	
+	}
+	
+	#quit {
+		position: absolute;
+		width: 20rem;
+		height: 4rem;
+		top: 4.5rem;
+		margin: 0 auto;
+		padding: 0;
+	}
+	
+	#setImg, #quitImg {
+		position: absolute;
+		width: 2.5rem;
+		top: 1rem;
+	}
+	
+	#setText{
+		position: absolute;
+		text-align: center;
+		left: 3.5rem;
+		top: 1.35rem;
+	}
+	#quitText {
+		position: absolute;
+		text-align: center;
+		left: 3.5rem;
+		top: 1.25rem;
+	}
+	
+	.pointContainer {
+		position: absolute;
+		width: 20rem;
+		height: 10rem;
+		right: 0rem;
+	}
+	
+	#pointImg {
+		position: absolute;
+		left: 0;
+		top: 1.75rem;
+	}
+	
+	#point {
+		position: absolute;
+		width: 15rem;
+		height: 10rem;
+		right: 0;
+		color: #49654E;
+	}
+	
+	#userPointText {
+		position: absolute;
+		width: 13rem;
+		top: 3rem;
+		left: 1rem;
+		font-size: 1.25rem;
+	}
+	#numPointText {
+		position: absolute;
+		width: 11.5rem;
+		top: 6rem;
+		left: 1rem;
+		font-size: 1.25rem;
+	}
+	
+	.modifyForm {
+		position: absolute;
+		width: 40rem;
+		top: 13rem;
+		left: 19rem;
+		color: #49654E;
+	}
+	
+	.frm {
+		width: 40rem;
+		font-size: 1.25rem;
+	}
+	
+	.input {
+		width: 15rem;
+		text-align: center;
+		font-size: 1.15rem;	
+		padding: 0.5rem;
+		margin: 0.25rem auto;
+	}
+	
+	#resetBtn {
+		position: absolute;
+	    border: none;
+	    background: none;
+	    padding: 0;
+	    margin: 0;
+	    cursor: pointer;
+	    font-size: 1.5rem;
+	    top: 36rem;
+	    left: 19rem;
+	}
+	
+	#modBtn {
+		position: absolute;
+	    border: none;
+	    background: none;
+	    padding: 0;
+	    margin: 0;
+	    cursor: pointer;
+	    font-size: 1.5rem;
+	    top: 36rem;
+	    left: 15rem;
+	    color: #49654E;
+	}
+	
+	
+	</style>
 
 
 </head>
@@ -311,7 +276,7 @@ $(function() {
 	
 			<div class="modifyForm">
 				<h2 class="sub_title">회원정보 수정</h2>
-                <form class="frm" name="frm" method="post" action="userModify.do">
+                <form name="frm" id="frm" method="post" action="userModify.do">
 	                <table class="board_write">
 	                    <colgroup>
 	                        <col width="20%" />
@@ -320,29 +285,30 @@ $(function() {
 	                    <tbody>
 	                    	<tr>
 	                    		<th>이름</th>
-	                    		<td><input type="text" name="name" id="name" class="input" style="float:left;" value="${user.name }"></td>
+	                	        <td><input type="text" name="name" id="name" style="float:left;" value="${vo.name }"></td>
+	                	        <!--<td>${vo.name }</td>-->                    		
 	                    	</tr>
 	                        <tr>
 	                            <th>아이디</th>
-	                            <td>
-	                                <input type="text" name="id" id="id" class="input" style="float:left;" value="${user.id }">
-	                                <span class="id_check"><a href="javascript:;"  class="btn bgGray" style="float:left; width:auto; clear:none;" id="idCheck">중복확인</a></span>
-	                            </td>
+	                            <!--<td><input type="text" name="id" id="id" style="float:left;" value="${vo.id }"></td>-->
+	                            <td>${vo.id }</td>
 	                        </tr>
 	                        <tr>
 	                            <th>비밀번호</th>
-	                            <td><input type="password" name="pwd" id="pwd" class="input" style="float:left;" value="${user.pwd }"> <span class="ptxt"></span> </td>
+	                            <td><input type="password" name="pwd" id="pwd" class="input" style="float:left;"><span class="ptxt">비밀번호는 숫자, 영문 조합으로 8자 이상으로 입력해주세요.</span> </td>
 	                        </tr>
 	                        <tr>
-	                            <th>이메일</th>
-	                            <td>
-	                                <input type="text" name="email" id="email" class="input" style="float:left;" value="${user.email }">
-	                            </td>
+	                            <th>비밀번호 확인</th>
+	                            <td><input type="password" name="pwd_check" id="pwd_check" style="float:left;"></td>
+	                        </tr>
+	                        <tr>
+	                            <th>이메일</th> 
+                                <td><input type="text" name="email" id="email" style="float:left;"></td>
 	                        </tr>
 	                        <tr>
 	                            <th>성별</th>
 	                            <td>
-	                            <select name="gender" id="gender"  class="input">
+	                            <select name="gender" id="gender">
 	                            <option value="1">남성</option>
 	                            <option value="2">여성</option>
 	                            </select> 
@@ -350,36 +316,43 @@ $(function() {
 	                        </tr>
 	                        <tr>
 	                            <th>생년월일</th>
-	                            <td><input type="text" name="birthday" id="birthday" class="input" style="float:left;" value="${user.birthday }" disabled> </td>
+	                            <td><input type="text" name="birthday" id="birthday"style="float:left;" value="${vo.birthday }"> </td>
 	                        </tr>
 	                        <tr>
 	                            <th>휴대폰 번호</th>
 	                            <td>
-	                                <input type="text" name="hp" id="hp" class="input" maxlength="15" style="float:left;" value="${user.hp }">
+	                                <input type="text" name="hp" id="hp" maxlength="15" style="float:left;" value="${vo.hp }">
 	                            </td>
 	                        </tr>
 	                        <tr>
 	                            <th>주소</th>
 	                            
 	                            <td>
-	                                <input type="text" name="zipcode" id="zipcode" class="input" maxlength="6" style="float:left;" value="${user.zipcode }">
-	                                <span class="email_check"><a href="javascript:zipcode();"  class="input" style="float:left; width:auto; clear:none;">우편번호</a></span>
+	                                <input type="text" name="zipcode" id="zipcode" maxlength="6" style="float:left;" value="${user.zipcode }">
+	                                <span class="email_check"><a href="javascript:zipcode();"  class="btn" style="float:left; width:auto; clear:none;">우편번호</a></span>
 	                            </td>
 	                        </tr>
 	                     	<tr>
 	                     		<th>상세 주소</th>
 	                            <td>
-	                                <input type="text" name="addr1" id="addr1" maxlength="15" class="input" style="float:left;" value="${user.addr1 }">
-	                                <input type="text" name="addr2" id="addr2" maxlength="15" class="input" style="float:left;" value="${user.addr2 }">
+	                                <input type="text" name="addr1" id="addr1" maxlength="15" style="float:left;" value="${user.addr1 }">
+	                            </td>
+	                        </tr>
+	                        	<td>
+	                                <input type="text" name="addr2" id="addr2" maxlength="15" style="float:left;" value="${user.addr2 }">
 	                            </td>
 	                        </tr>
 	                    </tbody>
 	                </table>
-                    <input type="hidden" name="cmd" value="write.do"/>
-                    <input type="hidden" name="checkEmail" id="checkEmail" value="0"/>  <!-- 이메일 부분 해야함 -->
-                    <input type="reset" id="resetBtn" value="취소"/>
+	                    <input type="hidden" name="cmd" value="write.do"/>
+	                    <input type="hidden" name="member_no" id="member_no" value="${user.member_no }"/>
+	                    
+	                    <!-- 이메일 부분 해야함 -->
+	                    <!-- input type="reset" id="resetBtn" value="취소"/> -->
                 </form>
-            		<span id="modBtn"><a href="javascript:;" onclick="goSave();">수정</a></span>
+            		<div class="btnSet clear">
+                    	<div><a href="javascript:;" class="btn" onclick="goSave();">수정완료</a> <a href="javascript:;" class="btn" onclick="history.back();">취소</a></div>
+                	</div>
 			</div>
 			
 		</div>
