@@ -298,6 +298,7 @@ $(function(){
 								<td></td>
 								<td>개강일</td>
 								<td>종강일</td>
+								<td>강의진행현황</td>
 							</tr>
 		                    <c:forEach var="vo" items="${cci}">
 		                        <tr>

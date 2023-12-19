@@ -7,14 +7,12 @@ import lombok.Data;
 @Data
 public class QnaVO {
 
-	private int qna_no;
+	private int cqna_no;
 	private int course_no;
 	private int member_no;
-	private String q_title;
-	private String q_content;
-	private String q_filename_org;
-	private String q_filename_real;
-	private Timestamp q_writedate;
+	private String cq_title;
+	private String cq_content;
+	private Timestamp cq_writedate;
 	private int gno;
 	private int ono;
 	private int nested;
