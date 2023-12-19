@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="kr.co.tobe.user.common.UserCommonMapper">
+
 	<select id="list" resultType="java.util.Map" parameterType="int">
 		SELECT education, area, branch, subject, mon, tue, wed, thu, fri, sat, sun, time, price, cname, cart_no
 		FROM basket INNER JOIN course
@@ -21,53 +22,52 @@
 		<!-- WHERE member_no = #{no} -->
 		
 		<!-- 마이페이지의 main 메뉴들에 대한 select문 -->
-	<!-- 
+	
 	<resultMap type="HashMap" id="currentCourseIndexpMap">
 		<id column="teacher_img" property="teacher_img"/>
 		<id column="i_cname" property="i_cname"/>
 		<id column="i_startday" property="i_startday"/>
 		<id column="i_endday" property="i_endday"/>
-	</resultMap>   -->
-	
-	<resultMap type="HashMap" id="currentCourseIndexpMap">
-	    <id column="teacher_img" property="teacher_img"/>
-	    <result column="i_cname" property="i_cname"/>
-	    <result column="i_startday" property="i_startday" javaType="java.util.Date" typeHandler="kr.co.tobe.util.StringToDateTypeHandler"/>
-	    <result column="i_endday" property="i_endday" javaType="java.util.Date" typeHandler="kr.co.tobe.util.StringToDateTypeHandler"/>
-	</resultMap>
+	</resultMap>  
 	
 	<resultMap type="HashMap" id="pastCourseIndexpMap">
 	    <id column="teacher_img" property="teacher_img"/>
+	    <id column="pay_date" property="pay_date"/>
 	    <id column="order_no" property="order_no"/>
 	    <id column="i_cname" property="i_cname"/>
 	    <id column="i_price" property="i_price"/>
-	    <id column="member_no" property="member_no"/>
-	    <result column="pay_date" property="pay_date" javaType="java.util.Date" typeHandler="kr.co.tobe.util.StringToDateTypeHandler"/>
-	    <result column="i_startday" property="i_startday" javaType="java.util.Date" typeHandler="kr.co.tobe.util.StringToDateTypeHandler"/>
-	    <result column="i_endday" property="i_endday" javaType="java.util.Date" typeHandler="kr.co.tobe.util.StringToDateTypeHandler"/>
+	    <id column="i_startday" property="i_startday"/>
+	    <id column="i_endday" property="i_endday"/>
+	    <id column="detail_no" property="detail_no"/>
 	</resultMap>
 
 	<resultMap type="HashMap" id="myCourseAskIndexMap">
-		<id column="teacher_img" property="teacher_img"/>
 		<id column="order_no" property="order_no"/>
-		<id column="i_cname" property="i_cname"/>
-		<id column="i_price" property="i_price"/>
-	    <result column="pay_date" property="pay_date" javaType="java.util.Date" typeHandler="kr.co.tobe.util.StringToDateTypeHandler"/>
-	    <result column="i_startday" property="i_startday" javaType="java.util.Date" typeHandler="kr.co.tobe.util.StringToDateTypeHandler"/>
-	    <result column="i_endday" property="i_endday" javaType="java.util.Date" typeHandler="kr.co.tobe.util.StringToDateTypeHandler"/>
+		<id column="cname" property="cname"/>
+		<id column="cq_title" property="cq_title"/>
+		<id column="cq_writedate" property="cq_writedate"/>
+		<id column="cqna_no" property="cqna_no"/>
+	</resultMap>
+	
+	<resultMap type="HashMap" id="askIndexMap">
+		<id column="order_no" property="order_no"/>
+		<id column="q_title" property="q_title"/>
+		<id column="q_writedate" property="q_writedate"/>
+		<id column="qna_no" property="qna_no"/>
+		<id column="member_no" property="member_no"/>
 	</resultMap>
 	
 	<resultMap type="HashMap" id="myReviewIndexMap">
-		<id column="r_cname" property="r_cname"/>
+		<id column="cname" property="cname"/>
 		<id column="r_title" property="r_title"/>
-		<result column="r_writedate" property="r_writedate" javaType="java.util.Date" typeHandler="kr.co.tobe.util.StringToDateTypeHandler"/>
+		<id column="r_writedate" property="r_writedate"/>
 	</resultMap>		
 
 		 
 	<select id="currentCourseIndex" parameterType="kr.co.tobe.vo.MemberVO" resultMap="currentCourseIndexpMap">
 	    <![CDATA[
 		    SELECT
-		        m.member_no, i_cname, i_startday, i_endday, 
+		        pd.course_no, i_cname, i_startday, i_endday, 
 		        (SELECT teacher_img_org FROM course WHERE course.course_no = pd.course_no) as teacher_img
 		    FROM member m
 		    JOIN pay p ON m.member_no = p.member_no
@@ -81,31 +81,48 @@
 
 
 	<select id="pastCourseIndex" parameterType="kr.co.tobe.vo.MemberVO" resultMap="pastCourseIndexpMap">
-		SELECT 
-			m.member_no, pay_date, p.order_no, i_cname, i_price, i_startday, i_endday,
-			(select teacher_img_org from course where course.course_no = pd.course_no) as teacher_img
+       SELECT 
+		    m.member_no, pd.detail_no, c.course_no,
+		    DATE_FORMAT(pay_date, '%Y-%m-%d') AS pay_date,
+		    p.order_no, 
+		    i_cname, 
+		    i_price, 
+		    i_startday, 
+		    i_endday,
+		   teacher_img_org
 		FROM member m
 		JOIN pay p ON m.member_no = p.member_no
 		JOIN pay_detail pd ON p.order_no = pd.order_no
+        JOIN course c ON pd.course_no=c.course_no
 		WHERE m.member_no = #{member_no}
-		ORDER BY i_endday desc
+		ORDER BY i_endday DESC;
 	</select>	
 	
 	<select id="myCourseAskIndex" parameterType="kr.co.tobe.vo.MemberVO" resultMap="myCourseAskIndexMap">
-		SELECT
-		    c.cname, cq_title, cq_writedate
+  		SELECT
+		    cqna_no, m.member_no, cq_title, course_no,
+		    DATE_FORMAT(cq_writedate, '%Y-%m-%d') AS cq_writedate
 		FROM member m JOIN cqna cq ON m.member_no = cq.member_no
-			JOIN course c ON c.course_no = cq.course_no
-		WHERE m.member_no = 13
+		WHERE m.member_no = #{member_no}
 		ORDER BY cq_writedate;
 	</select>	
 	
-	<select id="myReviewIndex" parameterType="kr.co.tobe.vo.MemberVO" resultMap="myReviewIndexMap">
+	<select id="askIndex" parameterType="kr.co.tobe.vo.MemberVO" resultMap="askIndexMap">
 		SELECT
-		    c.cname, r.r_title, r.r_writedate
+		    q.qna_no, m.member_no, q_title, q_content,
+		    DATE_FORMAT(q_writedate, '%Y-%m-%d') AS q_writedate
+		FROM member m JOIN qna q ON m.member_no = q.member_no
+		WHERE m.member_no = #{member_no}
+		ORDER BY q_writedate
+	</select>
+	
+	<select id="myReviewIndex" parameterType="kr.co.tobe.vo.MemberVO" resultMap="myReviewIndexMap">
+        SELECT
+		    c.cname, r_title, review_no, m.member_no,
+		    DATE_FORMAT(r_writedate, '%Y-%m-%d') AS r_writedate
 		FROM member m JOIN review r ON m.member_no = r.member_no
 		JOIN course c ON c.course_no = r.course_no
-		WHERE m.member_no = #{member_no}
+		WHERE m.member_no = 13
 		ORDER BY r.r_writedate desc
 	</select>	
 		
