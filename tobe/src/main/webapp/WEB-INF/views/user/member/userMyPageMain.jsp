@@ -22,7 +22,6 @@
 
 $(function(){
 	
-	
 	$('.mainMenu').click(function(){
 		
 	    $('.mainMenu').removeClass('on');
@@ -49,6 +48,7 @@ $(function(){
 	        $('.myReviewIndex').show();
 	    }
 	})
+
 	
 	
 })
@@ -294,18 +294,17 @@ $(function(){
                     <c:if test="${!empty cci}">
                     	<table>
                     		<tr>
-								<td></td>
-								<td></td>
+								<td colspan="2">강좌명</td>
 								<td>개강일</td>
 								<td>종강일</td>
 								<td>강의진행현황</td>
 							</tr>
 		                    <c:forEach var="vo" items="${cci}">
 		                        <tr>
-		                            <td id="teacherImg">${vo.teacher_img}</td>
-		                            <td id="courseName">${vo.i_cname}</td>    
-		                            <td class="startDay"><fmt:formatDate pattern="yyyy-MM-dd HH:mm" value="${vo.i_startday}" /></td>
-		                            <td class="endDay"><fmt:formatDate pattern="yyyy-MM-dd HH:mm" value="${vo.i_endday}" /></td>
+		                            <td>${vo.teacher_img}</td>
+		                            <td>${vo.i_cname}</td>    
+		                            <td><fmt:formatDate pattern="yyyy-MM-dd" value="${vo.i_startday}" /></td>
+		                            <td><fmt:formatDate pattern="yyyy-MM-dd" value="${vo.i_endday}" /></td>
 		                            <td></td>
 		                        </tr>
 		                    </c:forEach>
@@ -326,13 +325,13 @@ $(function(){
 								<td>주문번호</td>
 								<td>강좌명</td>
 								<td>가격</td>
-								<td>강의진행현황</td>
-								<td></td>
+								<td>강좌진행현황</td>
+								<td>비고</td>
 							</tr>
                     	
 		                    <c:forEach var="vo" items="${pci}">
 		                        <tr>
-		                            <td>${vo.pay_date}</td>
+									<td>${vo.pay_date }</td>		                       
 		                            <td>${vo.order_no}</td>    
 		                            <td>${vo.teacher_img}${vo.i_cname}</td> 
 		                            <td>${vo.i_price}</td>
@@ -360,8 +359,8 @@ $(function(){
 		                    <c:forEach var="vo" items="${mcai}">
 		                        <tr>
 		                            <td>${vo.cname}</td>
-		                            <td>${vo.q_title}</td>    
-		                            <td>${vo.q_writedate}</td>      
+		                            <td>${vo.cq_title}</td>    
+		                            <td><fmt:formatDate pattern="yyyy-MM-dd" value="${vo.cq_writedate}" /></td>  
 		                            <td><input type="button" value="수정하기"/></td>    		                            
 		                        </tr>
 		                    </c:forEach>
@@ -386,7 +385,7 @@ $(function(){
 		                        <tr>
 		                            <td>${vo.cname}</td>
 		                            <td>${vo.r_title}</td>    
-		                            <td>${vo.r_writedate}</td>      
+		                            <td><fmt:formatDate pattern="yyyy-MM-dd" value="${vo.r_writedate}" /></td>     
 		                            <td><input type="button" value="수정하기"/></td>    		                            
 		                        </tr>
 		                    </c:forEach>

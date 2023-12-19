@@ -50,4 +50,15 @@ public class StringToDateTypeHandler extends BaseTypeHandler<Date> {
             return null; // 날짜 변환 실패
         }
     }
+    
+    private static Date parseDateString(String dateString) {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        try {
+            return dateFormat.parse(dateString);
+        } catch (ParseException e) {
+            e.printStackTrace();
+            return null; // 예외 처리 로직은 프로덕션 코드에서 더 강화해야 함
+        }
+    }
+    
 }

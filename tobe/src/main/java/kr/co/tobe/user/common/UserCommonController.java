@@ -1,5 +1,7 @@
 package kr.co.tobe.user.common;
 
+import java.util.Date;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -50,18 +52,33 @@ public class UserCommonController {
 			return "redirect:/user/common/userIndex.do";
 		}
 		
+		
+		
+		
+		
 		model.addAttribute("user", user); // 사용자 정보 넘기기
 		model.addAttribute("cci", service.currentCourseIndex(user)); // 현재수강중인강의에 들어갈 정보
 		model.addAttribute("pci", service.pastCourseIndex(user)); // 수강신청내역에 들어갈 정보
 		model.addAttribute("mcai", service.myCourseAskIndex(user)); // 나의문의에 들어갈 정보
 		model.addAttribute("mri", service.myReviewIndex(user)); // 나의후기에 들어갈 정보
 		
-		Map<String, Object> day = service.currentCourseIndex(user).get(user.getMember_no());
-		String i_startday = (String)day.get("i_startday");
-		String i_endday = (String)day.get("i_endday");
-		
-		
-		
+		// db에는 문자열로 있는 날짜들을 Date 타입으로 바꾸는 것
+		List<Map<String, Object>> result = service.myReviewIndex(user);
+		for (Map<String, Object> map : result) {
+		    // 특정 키를 사용하여 값을 가져오기
+		    Object value = map.get("r_writedate");
+			if (value instanceof String) {
+			    System.out.println("데이터는 String 타입입니다.");
+			} else if (value instanceof Integer) {
+			    System.out.println("데이터는 Integer 타입입니다.");
+			} else if (value instanceof List) {
+			    System.out.println("데이터는 List 타입입니다.");
+			} else if (value instanceof Date){
+			    System.out.println("데이터는 Date 타입입니다.");
+			} else {
+				System.out.println("데이터 타입을 알 수 없습니다.");
+			}
+		}		
 		
 		return "user/member/userMyPageMain";
 	}
