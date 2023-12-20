@@ -69,11 +69,29 @@ public class AdCommonController {
 			model.addAttribute("msg", "아이디 비밀번호가 올바르지 않습니다.");
 			model.addAttribute("cmd", "back");
 			return "admin/common/adAlert";
-		} else { // 로그인성공
+		} else if(login.getAd_type()== 999){ // 총관리자로 로그인
+			sess.setAttribute("loginInfo", login);
+			return "redirect:/chiefAdmin/common/chiefIndex.do";
+		} else if((login.getAd_type() == 1) && (login.getAd_type() == 2) && (login.getAd_type() == 3)){ // 학원관리자로 로그인
 			sess.setAttribute("loginInfo", login);
 			return "redirect:/admin/common/adIndex.do";
+		} else {
+			return "redirect:/user/common/userIndex.do";
 		}
 	}
+	
+//	@PostMapping("/admin/common/adLogin.do")
+//	public String loginProcess(AdminVO vo, HttpSession sess, Model model) {
+//		AdminVO login = service.login(vo);
+//		if (login == null) { // 로그인실패
+//			model.addAttribute("msg", "아이디 비밀번호가 올바르지 않습니다.");
+//			model.addAttribute("cmd", "back");
+//			return "admin/common/adAlert";
+//		} else { // 로그인성공
+//			sess.setAttribute("loginInfo", login);
+//			return "redirect:/admin/common/adIndex.do";
+//		}
+//	}
 	
 	@GetMapping("/admin/common/adLogout.do")
 	public String logout(Model model, HttpSession sess) {
