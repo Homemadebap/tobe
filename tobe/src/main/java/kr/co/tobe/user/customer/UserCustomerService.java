@@ -2,6 +2,7 @@ package kr.co.tobe.user.customer;
 
 import java.util.Map;
 
+import kr.co.tobe.vo.FaqVO;
 import kr.co.tobe.vo.NoticeVO;
 import kr.co.tobe.vo.QnaVO;
 
@@ -17,5 +18,11 @@ public interface UserCustomerService {
 	Map<String, Object> noticeList(NoticeVO vo);
 	
 	int noticeInsert (NoticeVO vo);
+	NoticeVO noticeDetail(NoticeVO vo);
+	
+	//faq
+	Map<String, Object> faqList(FaqVO vo);
+	
+	
 	
 }

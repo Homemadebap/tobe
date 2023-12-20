@@ -13,4 +13,11 @@ public class FaqVO {
 	
 	private int startIdx;
 	private int page;
+	
+	public FaqVO() {
+		this.page = 1;
+	}
+	public int getStartIdx() {
+		return (page-1) * 10;
+	}
 }
