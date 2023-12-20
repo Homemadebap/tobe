@@ -20,13 +20,13 @@ public class UserCustomerServiceImpl implements UserCustomerService {
 	private UserCustomerMapper mapper;
 	
 	@Override
-	public Map<String, Object> list(QnaVO param) {
-		int count = mapper.count(param); //총개수
+	public Map<String, Object> qnaList(QnaVO param) {
+		int count = mapper.qnaCount(param); //총개수
         int totalPage = count / 10; //총 페이지
         if (count % 10 > 0) totalPage++;
         System.out.println(param.getPage());
         System.out.println(param.getStartIdx());
-        List<QnaVO> list = mapper.list(param); //목록
+        List<QnaVO> list = mapper.qnaList(param); //목록
         
         Map<String, Object> map = new HashMap<>();
         map.put("count", count);
@@ -67,18 +67,18 @@ public class UserCustomerServiceImpl implements UserCustomerService {
 
 
 	@Override
-	public Map<String, Object> list(NoticeVO param) {
+	public Map<String, Object> noticeList(NoticeVO param) {
 		int count = mapper.noticeCount(param); //총개수
         int totalPage = count / 10; //총 페이지
         if (count % 10 > 0) totalPage++;
         System.out.println(param.getPage());
         System.out.println(param.getStartIdx());
-        List<NoticeVO> list = mapper.list(param); //목록
+        List<NoticeVO> noticeList = mapper.noticeList(param); //목록
         
         Map<String, Object> map = new HashMap<>();
         map.put("count", count);
         map.put("totalPage", totalPage);
-        map.put("list", list);
+        map.put("list", noticeList);
         
         //페이징
         int endPage = (int)(Math.ceil(param.getPage()/10.0)*10);

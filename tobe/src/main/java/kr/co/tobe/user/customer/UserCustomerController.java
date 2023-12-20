@@ -21,13 +21,13 @@ public class UserCustomerController {
 	
 	@GetMapping("/user/customer/userQna.do")
 	public String userQna(Model model, QnaVO vo) {
-		model.addAttribute("map", service.list(vo));
+		model.addAttribute("map", service.qnaList(vo));
 		return "user/customer/userQna";
 	}
 	
-	@GetMapping("/user/customer/customer.do")
+	@GetMapping("/user/customer/userCustomer.do")
 	public String userCustomer(Model model, NoticeVO vo) {
-		model.addAttribute("map", service.list(vo));
+		model.addAttribute("map", service.noticeList(vo));
 		return "user/customer/userCustomer";
 	}
 	
