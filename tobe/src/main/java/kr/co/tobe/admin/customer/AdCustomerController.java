@@ -25,6 +25,10 @@ public class AdCustomerController {
 		model.addAttribute("admin", admin);
 		model.addAttribute("tpc", service.todayPayCnt(admin));
 		model.addAttribute("tpcc", service.todayPayCancelCnt(admin));
+		model.addAttribute("tmpt", service.thisMonthPayTotal(admin));
+		model.addAttribute("lmpt", service.lastMonthPayTotal(admin));
+		model.addAttribute("lmct", service.lastMonthChargeTotal(admin));
+		model.addAttribute("typt", service.thisYearPayTotal(admin));
 		
 		
 		

@@ -62,7 +62,7 @@ body {
 	box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
 }
 
-#mSales {
+#tmpt {
 	position: absolute;
 	width: 30rem;
 	height: 8rem;
@@ -70,19 +70,19 @@ body {
 	left: 22.5rem;
 }
 
-#pSales {
+#lmpt {
 	position: absolute;
 	bottom: 2rem;
 	left: 12.5rem;
 }
 
-#pCommision {
+#lmct {
 	position: absolute;
 	bottom: 2rem;
 	left: 30rem;
 }
 
-#ySales {
+#typt {
 	position: absolute;
 	bottom: 2rem;
 	left: 47.5rem;
@@ -139,19 +139,19 @@ p {
 </head>
 <body>
 	<%@include file="/WEB-INF/views/admin/common/adSideBar_logo.jsp" %>
-
+	<c:if test="${admin.ad_type == 1}">
 		<div class="hackers_logo admin_logo">
 			<img src="/tobe/img/HACKERS_logo.png" style="width: 13rem;">
 			<span style="position: absolute; top: 0.5rem; left: 14rem; font-size: 2rem;"><b>관리자 페이지_해커스</b></span>
 		</div>
-
-	<c:if test="${admin.ad_type} == 2">
+	</c:if>
+	<c:if test="${admin.ad_type == 2}">
 		<div class="PAGODA_logo admin_logo">
 			<img src="/tobe/img/PAGODA_logo.png" style="position: absolute; width: 13rem; top:0.5rem;">
 			<span style="position: absolute; top: 0.5rem; left: 14rem; font-size: 2rem;"><b>관리자 페이지_파고다</b></span>
 		</div>
 	</c:if>
-	<c:if test="${admin.ad_type} == 3">
+	<c:if test="${admin.ad_type == 3}">
 		<div class="YBM_logo admin_logo">
 			<img src="/tobe/img/YBM_logo.png" style="position: absolute;  width: 13rem; top: -0.5rem;">
 			<span style="position: absolute; top: 0.5rem; left: 14rem; font-size: 2rem;"><b>관리자 페이지_YBM</b></span>
@@ -159,20 +159,24 @@ p {
 	</c:if>
 	
 	<div class="box" id="sales_box ">
-		<div class="mbox" id="mSales">
+		<div class="mbox" id="tmpt">
 			<p>이번 달 매출</p>
-			<span style="position: absolute; right: 3rem; bottom: 2rem;">"admin.mSales"<b style="font-size: 1.5rem;">원</b></span>
+			<span style="position: absolute; right: 8rem; bottom: 1rem; font-size: 4rem; color: #1578EC;">${tmpt.sum }</span>
+			<b style="position: absolute; right: 4rem; bottom: 2rem; font-size: 1.5rem; color: #848484;">원</b>
 		</div>
-		<div class="mbox" id="pSales">
-			<span style="position: absolute; right: 2rem; top: 2rem;">"admin.pSales"<b >원</b></span>
+		<div class="mbox" id="lmpt">
+			<span style="position: absolute; left: 3.5rem; top: 1rem; font-size: 2rem; color: #848484;">${lmpt.sum }</span>
+			<b style="position: absolute; right: 2.5rem; top: 1.4rem; font-size: 1.5rem; color: #848484;">원</b>
 			<p style="position: absolute; left: 4.5rem; bottom: 1rem;">지난 달 매출</p>
 		</div>
-		<div class="mbox" id="pCommision"> 
-			<span style="position: absolute; right: 2rem; top: 2rem;">"admin.pCommision"<b>원</b></span>
+		<div class="mbox" id="lmct"> 
+			<span style="position: absolute; left: 3.5rem; top: 1rem; font-size: 2rem; color: #848484;">${lmct.sum }</span>
+			<b style="position: absolute; right: 2.5rem; top: 1.4rem; font-size: 1.5rem; color: #848484;">원</b>
 			<p style="position: absolute; left: 4rem; bottom: 1rem;">지난 달 수수료</p>
 		</div>
-		<div class="mbox" id="ySales">
-			<span style="position: absolute; right: 2rem; top: 2rem;">"admin.ySales"<b>원</b></span>
+		<div class="mbox" id="typt">
+			<span style="position: absolute; left: 3.5rem; top: 1rem; font-size: 2rem; color: #848484;">${typt.sum }</span>
+			<b style="position: absolute; right: 2.5rem; top: 1.4rem; font-size: 1.5rem; color: #848484;">원</b>
 			<p style="position: absolute; left: 5.5rem; bottom: 1rem;">연 매출</p>
 		</div>
 	</div>
