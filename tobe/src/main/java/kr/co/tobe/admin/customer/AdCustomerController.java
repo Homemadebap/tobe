@@ -19,12 +19,16 @@ public class AdCustomerController {
 	public String adIndex(HttpSession sess, Model model) {
 		AdminVO admin = (AdminVO)sess.getAttribute("loginInfo");
 		if(admin == null) {
-			return "redirect:/user/member/userLogin.do";
+			return "redirect:/admin/common/adLogin.do";
 		}
 		
 		model.addAttribute("admin", admin);
 		model.addAttribute("tpc", service.todayPayCnt(admin));
 		model.addAttribute("tpcc", service.todayPayCancelCnt(admin));
+		model.addAttribute("tmpt", service.thisMonthPayTotal(admin));
+		model.addAttribute("lmpt", service.lastMonthPayTotal(admin));
+		model.addAttribute("lmct", service.lastMonthChargeTotal(admin));
+		model.addAttribute("typt", service.thisYearPayTotal(admin));
 		
 		
 		

@@ -42,8 +42,55 @@
 		<id column="start_idx" property="start_idx"/>
 		<id column="page" property="page"/>
 		<result column="count" property="count"/>
+		<result column="sum" property="sum"/>
 	</resultMap>
 	
+	<select id="thisMonthPayTotal" parameterType="kr.co.tobe.vo.AdminVO" resultMap="coursePayMap">
+	    <![CDATA[
+			SELECT SUM(pay_total) as sum
+			FROM pay p
+			JOIN pay_detail pd ON p.order_no = pd.order_no
+			JOIN course c ON pd.course_no = c.course_no
+			WHERE i_education = #{ad_type}
+			AND YEAR(pay_date) = YEAR(CURDATE())
+			AND MONTH(pay_date) = MONTH(CURDATE());
+	    ]]>
+	</select>
+	
+	<select id="lastMonthPayTotal" parameterType="kr.co.tobe.vo.AdminVO" resultMap="coursePayMap">
+	    <![CDATA[
+			SELECT SUM(pay_total) as sum
+			FROM pay p
+			JOIN pay_detail pd ON p.order_no = pd.order_no
+			JOIN course c ON pd.course_no = c.course_no
+			WHERE i_education = #{ad_type}
+			AND YEAR(pay_date) = YEAR(CURDATE())
+			AND MONTH(pay_date) = MONTH(CURDATE())-1;
+	    ]]>
+	</select>
+		
+	<select id="lastMonthChargeTotal" parameterType="kr.co.tobe.vo.AdminVO" resultMap="coursePayMap">
+	    <![CDATA[
+			SELECT SUM(charge_total) as sum
+			FROM pay p
+			JOIN pay_detail pd ON p.order_no = pd.order_no
+			JOIN course c ON pd.course_no = c.course_no
+			WHERE i_education = #{ad_type}
+			AND YEAR(pay_date) = YEAR(CURDATE())
+			AND MONTH(pay_date) = MONTH(CURDATE())-1;
+	    ]]>
+	</select>
+	
+	<select id="thisYearPayTotal" parameterType="kr.co.tobe.vo.AdminVO" resultMap="coursePayMap">
+	    <![CDATA[
+			SELECT SUM(pay_total) as sum
+			FROM pay p
+			JOIN pay_detail pd ON p.order_no = pd.order_no
+			JOIN course c ON pd.course_no = c.course_no
+			WHERE i_education = #{ad_type}
+			AND YEAR(pay_date) = YEAR(CURDATE());
+	    ]]>
+	</select>
 	
 	<select id="todayPayCnt" parameterType="kr.co.tobe.vo.AdminVO" resultMap="coursePayMap">
 	    <![CDATA[
@@ -68,6 +115,8 @@
 			 AND STR_TO_DATE(pay_cancel_date, '%Y-%m-%d') = CURDATE();
 	    ]]>
 	</select>
+	
+	
 	
 
 </mapper>

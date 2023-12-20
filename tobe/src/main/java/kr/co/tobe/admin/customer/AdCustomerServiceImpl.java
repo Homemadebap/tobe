@@ -20,6 +20,26 @@ public class AdCustomerServiceImpl implements AdCustomerService {
 		
 		@Override
 		public Map<String, Object> todayPayCancelCnt(AdminVO avo) {
-			return mapper.todayPayCnt(avo);
+			return mapper.todayPayCancelCnt(avo);
+		}
+		
+		@Override
+		public Map<String, Object> thisMonthPayTotal(AdminVO avo) {
+			return mapper.thisMonthPayTotal(avo);
+		}
+		
+		@Override
+		public Map<String, Object> lastMonthPayTotal(AdminVO avo) {
+			return mapper.lastMonthPayTotal(avo);
+		}
+		
+		@Override
+		public Map<String, Object> lastMonthChargeTotal(AdminVO avo) {
+			return mapper.lastMonthChargeTotal(avo);
+		}
+		
+		@Override
+		public Map<String, Object> thisYearPayTotal(AdminVO avo) {
+			return mapper.thisYearPayTotal(avo);
 		}
 }
