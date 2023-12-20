@@ -12,6 +12,12 @@ public class ChiefCommonController {
 	
 	@GetMapping ("/chiefAdmin/common/chiefIndex.do")
 	public String index() {
-	return "chiefAdmin/common/chiefIndex";
-}
+		return "chiefAdmin/common/chiefIndex";
+	}
+	
+	@GetMapping ("/chiefAdmin/sales/chiefSalesIndex.do")
+	public String chiefSalesIndex() {
+		return "chiefAdmin/sales/chiefSalesIndex";
+	}
+	
 }

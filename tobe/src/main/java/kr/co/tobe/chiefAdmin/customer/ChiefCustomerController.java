@@ -1,13 +1,18 @@
 package kr.co.tobe.chiefAdmin.customer;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import kr.co.tobe.vo.FaqVO;
 import kr.co.tobe.vo.NoticeVO;
+import kr.co.tobe.vo.QnaVO;
+import kr.co.tobe.vo.ReviewVO;
 
 @Controller
 public class ChiefCustomerController {
@@ -16,18 +21,35 @@ public class ChiefCustomerController {
 	ChiefCustomerService service;
 	
 	@GetMapping ("/chiefAdmin/customer/chiefCustomerIndex.do")
-	public String index() {
+	public String index(Model model, NoticeVO vo) {
+		List<NoticeVO> NoticeList = service.getlist(vo);
+		model.addAttribute("list", NoticeList);
 	return "chiefAdmin/customer/chiefCustomerIndex";
 	}
 	
 	@GetMapping ("/chiefAdmin/customer/chiefNoticeDetail.do")
-	public String Detail() {
+	public String Detail(Model model, @RequestParam("noticeNo") int noticeNo) {
+		NoticeVO notice = service.getNoticeDetail(noticeNo);
+	        model.addAttribute("notice", notice);
 	return "chiefAdmin/customer/chiefNoticeDetail";
 	}
 	
 	@GetMapping ("/chiefAdmin/customer/chiefNoticeForm.do")
 	public String Notice() {
 	return "chiefAdmin/customer/chiefNoticeForm";
+	}
+	
+	@GetMapping ("/chiefAdmin/customer/chiefQnaList.do")
+		public String QnaList(Model model, QnaVO vo) {
+			List<QnaVO> QnaList = service.getqnalist(vo);
+			model.addAttribute("list", QnaList);
+		return "chiefAdmin/customer/chiefQnaList";
+	}
+	@GetMapping ("/chiefAdmin/customer/chiefQnaDetail.do")
+	public String QnaDtail(Model model, @RequestParam("qnaNo") int qnaNo) {
+		QnaVO qna = service.getQnaDetail(qnaNo);
+		model.addAttribute("qna", qna);
+		return "chiefAdmin/customer/chiefQnaDetail";
 	}
 	
 	@PostMapping ("/chiefAdmin/customer/chiefNoticeInsert.do")
@@ -44,18 +66,15 @@ public class ChiefCustomerController {
 		return "chiefAdmin/common/alert";
 	}
 	
-	@GetMapping ("/chiefAdmin/customer/chiefAskList.do")
-	public String AskList() {
-	return "chiefAdmin/customer/chiefAskList";
-	}
-	
 	@GetMapping ("/chiefAdmin/customer/chiefReplyForm.do")
 	public String chiefReply() {
 	return "chiefAdmin/customer/chiefReplyForm";
 	}
 	
 	@GetMapping ("/chiefAdmin/customer/chiefFaqList.do")
-	public String FaqList() {
+	public String FaqList(Model model, FaqVO vo) {	
+		List<FaqVO> FaqList = service.getfaqlist(vo);
+		model.addAttribute("list", FaqList);
 	return "chiefAdmin/customer/chiefFaqList";
 	}
 	

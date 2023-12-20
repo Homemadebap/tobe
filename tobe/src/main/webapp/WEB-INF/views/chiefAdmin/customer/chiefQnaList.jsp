@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -43,22 +45,22 @@
 		.board_write thead th{text-align:center;}
 		.board_write th{padding:10px; background:#f4f4f5; color:#000000; border-bottom:1px solid #ebebeb; border-right:1px solid #ebebeb; font-size:15px;}
 		.board_write th br{display:none;}
-		.board_write td{padding:10px; border-bottom:1px solid #ebebeb; font-size:15px; color:#2f3134; font-weight:300; box-sizing:border-box;}
-		.board_write td .tx{display:inline-block;float:left;width:25px;line-height:32px;text-align:center;}
-		.board_write td.email{position:relative;}
-		.board_write td.email input[type=text]{float:left;width:30%;}
-		.board_write td.email .selectric-dSelect{float:left;width:166px;margin:0 0 0 10px;}
-		.board_write td.phone input[type=text]{float:left;width:94px;}
-		.board_write td.phone .selectric-dSelect{float:left;width:94px;}
-		.board_write td textarea{width:100%; height:200px; box-sizing:border-box; }
-		.board_write td input[type=text]{box-sizing:border-box; }
+		.board_write li{padding:10px; border-bottom:1px solid #ebebeb; font-size:15px; color:#2f3134; font-weight:300; box-sizing:border-box;}
+		.board_write li .tx{display:inline-block;float:left;width:25px;line-height:32px;text-align:center;}
+		.board_write li.email{position:relative;}
+		.board_write li.email input[type=text]{float:left;width:30%;}
+		.board_write li.email .selectric-dSelect{float:left;width:166px;margin:0 0 0 10px;}
+		.board_write li.phone input[type=text]{float:left;width:94px;}
+		.board_write li.phone .selectric-dSelect{float:left;width:94px;}
+		.board_write li textarea{width:100%; height:200px; box-sizing:border-box; }
+		.board_write li input[type=text]{box-sizing:border-box; }
 		.board_write .fileBox{display:table;width:100%;}
 		.board_write .fileBox .inputBox{float:none;display:table-cell;width:100%;}
 		.board_write .fileBox .inputBox input{width:100%;}
 		.board_write .fileBox .fileBtn{display:table-cell;width:125px;}
 		.board_write p.help{text-align:left;font-size:12px;line-height:26px;letter-spacing:-1px; color:#999;}
 		.board_write p.help:before{content:'※ ';}
-		.board_write tr:last-child th, .board_write tr:last-child td{border-bottom:1px solid #dadada;}
+		.board_write tr:last-child th, .board_write tr:last-child li{border-bottom:1px solid #dadada;}
 		.board_write .ptxt {
 			line-height: 30px;
 		    margin-left: 5px;
@@ -101,7 +103,7 @@
 		.bbs .list{border-collapse:collapse; border-spacing:0; box-sizing:border-box;}  /* tr에 shadow_down 클래스 사용하는 경우 border-collapse:separate; 으로 변경*/
 		.bbs .list thead{border-bottom:2px solid #221f1f;}
 		.bbs .list thead th{padding:15px 20px; font-size:13px; height:20px; line-height:14px; color:#333;}
-		.bbs .list td{text-align:center; padding:8px 10px; border-bottom:1px solid #d9d9d9;}
+		.bbs .list li{text-align:center; padding:8px 10px; border-bottom:1px solid #d9d9d9;}
 		.bbs .list tbody tr:hover{background:#f6f6f6;} /*마우스오버 배경칼라지정*/
 		.bbs .list .notice{background:#f9f9f9; } /*탑공지  배경칼라지정*/
 		.bbs .list span.comment{color:#999; font-size:12px !important; font-weight:normal !important;} /*댓글수*/
@@ -158,27 +160,27 @@
 		
 		
 		.bbs .postSection {width:100%; }
-		.bbs .postSection .postList {width:100%; margin-left:-2%; margin-top:-2%; }
-		.bbs .postSection .postList li {float:left; width:100%; margin-left:2%; margin-top:2%; }
-		.bbs .postSection .postList li .postObj {display:block; width:100%; height:350px; box-sizing:border-box; padding:10px; border:1px solid #dadada; position:relative; overflow:hidden; transition:all .2s; -webkit-transition:all .2s; letter-spacing:-.5px;}
-		.bbs .postSection .postList li .postObj .reserveNum {width:100%; font-size:16px; padding:10px 0;}
-		.bbs .postSection .postList li .postObj .imgs {display:block; position:absolute; left:0; top:50; vertical-align:middle; width:220px; height:100%;  }
-		.bbs .postSection .postList li .postObj .imgs img { width:195px; height:280px; margin:10px;}
-		.bbs .postSection .postList li .postObj .imgs i {display:block; position:absolute; left:0; top:0px; }
-		.bbs .postSection .postList li .postObj .txt {display:block; width:100%; padding-left:220px;  padding-top:10px; box-sizing:border-box;  vertical-align:top; position:relative;  padding-right:15px; padding-bottom:25px;}
-		.bbs .postSection .postList li .postObj .txt .category {font-size:18px; color:#1091ff; font-weight:600; position:relative; height:30px; line-height:30px;  margin-bottom:5px;}
-		.bbs .postSection .postList li .postObj .txt .category:after {clear:both; content:''; ;display:block; position:absolute; left:0; bottom:-.5px; width:25px; height:1px; background:#1091ff; }
-		.bbs .postSection .postList li .postObj .txt .title {font-size:18px; color:#333; height:25px; line-height:25px; overflow:hidden; display:block; -webkit-line-clamp:1; white-space:nowrap; text-overflow:ellipsis;  word-break:keep-all; max-width:100%; margin-bottom:10px;}
-		.bbs .postSection .postList li .postObj .txt .detail {width:100%; margin-right:10px;}
-		.bbs .postSection .postList li .postObj .txt .detail table {border-collapse:collapse; border-spacing:0; box-sizing:border-box;}
-		.bbs .postSection .postList li .postObj .txt .detail table tr {height:50px;border-top:1px solid #221f1f; border-bottom:1px solid #221f1f;}
-		.bbs .postSection .postList li .postObj .txt .detail table tr th {width:100px;font-size:14px;}
-		.bbs .postSection .postList li .postObj .txt .btn_area {display:block; position:absolute; height:100px; width:100%; text-align:right; top:250px; right:0px; bottom:0;}
-		.bbs .postSection .postList li .postObj .wdate { box-sizing:border-box; position:absolute; bottom:0; left:32%; color:#999; font-size:15px; overflow:hidden;}
-		.bbs .postSection .postList li .postObj .wdate span {display:block; float:left; line-height:20px; height:20px; position:relative; padding:0 7.5px;}
-		.bbs .postSection .postList li .postObj .wdate span:first-child {padding-left:0;}
-		.bbs .postSection .postList li .postObj .wdate span:before {position:absolute; width:1px; height:12px; margin-top:-6px; top:50%; left:-.5px; background:#ccc; clear:both; content:''; display:block; }
-		.bbs .postSection .postList li .postObj .wdate span:first-child:before {display:none; }
+		.bbs .postSection .postlist {width:100%; margin-left:-2%; margin-top:-2%; }
+		.bbs .postSection .postlist li {float:left; width:100%; margin-left:2%; margin-top:2%; }
+		.bbs .postSection .postlist li .postObj {display:block; width:100%; height:350px; box-sizing:border-box; padding:10px; border:1px solid #dadada; position:relative; overflow:hidden; transition:all .2s; -webkit-transition:all .2s; letter-spacing:-.5px;}
+		.bbs .postSection .postlist li .postObj .reserveNum {width:100%; font-size:16px; padding:10px 0;}
+		.bbs .postSection .postlist li .postObj .imgs {display:block; position:absolute; left:0; top:50; vertical-align:middle; width:220px; height:100%;  }
+		.bbs .postSection .postlist li .postObj .imgs img { width:195px; height:280px; margin:10px;}
+		.bbs .postSection .postlist li .postObj .imgs i {display:block; position:absolute; left:0; top:0px; }
+		.bbs .postSection .postlist li .postObj .txt {display:block; width:100%; padding-left:220px;  padding-top:10px; box-sizing:border-box;  vertical-align:top; position:relative;  padding-right:15px; padding-bottom:25px;}
+		.bbs .postSection .postlist li .postObj .txt .category {font-size:18px; color:#1091ff; font-weight:600; position:relative; height:30px; line-height:30px;  margin-bottom:5px;}
+		.bbs .postSection .postlist li .postObj .txt .category:after {clear:both; content:''; ;display:block; position:absolute; left:0; bottom:-.5px; width:25px; height:1px; background:#1091ff; }
+		.bbs .postSection .postlist li .postObj .txt .title {font-size:18px; color:#333; height:25px; line-height:25px; overflow:hidden; display:block; -webkit-line-clamp:1; white-space:nowrap; text-overflow:ellipsis;  word-break:keep-all; max-width:100%; margin-bottom:10px;}
+		.bbs .postSection .postlist li .postObj .txt .detail {width:100%; margin-right:10px;}
+		.bbs .postSection .postlist li .postObj .txt .detail table {border-collapse:collapse; border-spacing:0; box-sizing:border-box;}
+		.bbs .postSection .postlist li .postObj .txt .detail table tr {height:50px;border-top:1px solid #221f1f; border-bottom:1px solid #221f1f;}
+		.bbs .postSection .postlist li .postObj .txt .detail table tr th {width:100px;font-size:14px;}
+		.bbs .postSection .postlist li .postObj .txt .btn_area {display:block; position:absolute; height:100px; width:100%; text-align:right; top:250px; right:0px; bottom:0;}
+		.bbs .postSection .postlist li .postObj .wdate { box-sizing:border-box; position:absolute; bottom:0; left:32%; color:#999; font-size:15px; overflow:hidden;}
+		.bbs .postSection .postlist li .postObj .wdate span {display:block; float:left; line-height:20px; height:20px; position:relative; padding:0 7.5px;}
+		.bbs .postSection .postlist li .postObj .wdate span:first-child {padding-left:0;}
+		.bbs .postSection .postlist li .postObj .wdate span:before {position:absolute; width:1px; height:12px; margin-top:-6px; top:50%; left:-.5px; background:#ccc; clear:both; content:''; display:block; }
+		.bbs .postSection .postlist li .postObj .wdate span:first-child:before {display:none; }
 		
 		
 		
@@ -243,7 +245,7 @@
 		<div id="fi">
 		<br>
 			<b style="margin-left:55px;">1:1문의</b><br>
-			<img src="/tobe/img/chiefAdmin_qna.png" width=35%; style="margin-left:55px;" onclick="location.href='/tobe/chiefAdmin/customer/chiefAskList.do';">
+			<img src="/tobe/img/chiefAdmin_qna.png" width=35%; style="margin-left:55px;" onclick="location.href='/tobe/chiefAdmin/customer/chiefQnalist.do';">
 		</div>
 		<div id="f">
 		<br>
@@ -258,12 +260,12 @@
                 <span class="srchSelect">
                     <select id="stype" name="searchType" class="dSelect" title="검색분류 선택">
                         <option value="all">전체</option>
-                        <option value="title" <c:if test="${NoticeVO.searchType == 'title'}"></c:if>> 제목</option>
-                        <option value="content" <c:if test="${NoticeVO.searchType == 'content'}"></c:if>> 내용</option>
+                        <option value="title" <c:if test="${QnaVO.searchType == 'title'}"></c:if>> 제목</option>
+                        <option value="content" <c:if test="${QnaVO.searchType == 'content'}"></c:if>> 내용</option>
                     </select>
                 </span>
                 <span class="searchWord">
-                    <input type="text" id="sval" name="searchWord" value="${NoticeVO.searchWord}"  title="검색어 입력">
+                    <input type="text" id="sval" name="searchWord" value="${QnaVO.searchWord}"  title="검색어 입력">
                 </span>
                 <!-- <input type="button" id="" value="검색" title="검색"> -->
                 <span class = "btnSearch">
@@ -292,30 +294,22 @@
                         </tr>
                     </thead>
                     <tbody>
-					<c:if test="${empty map.list }">
-                        <tr>
-                            <td class="first" colspan="8">등록된 글이 없습니다.</td>
-                        </tr>
-					</c:if>
-                    <c:forEach var="vo" items="${map.list }">       
-                        <tr>
-                            <td>${vo.no }</td>
-                            <td style="text-align:left;">
-                            	<c:forEach begin="1" end="${vo.nested }">
-                            	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                            	</c:forEach>
-                            	<c:if test="${vo.nested > 0 }">
-                            		<img src="/project/img/ico_re.png">
-                            	</c:if>
-                                <a href="view.do?no=${vo.no}">${vo.title } [${vo.comment_count}]</a>
-                            </td>
-                            <td class="writer">
-                                ${vo.user_name }
-                            </td>
-                            <td>${vo.viewcnt }</td>
-                            <td class="date"><fmt:formatDate value="${vo.writedate }" pattern="YYYY-MM-dd"/></td>
-                        </tr>
-                   </c:forEach>
+					<c:if test="${empty map.list }"></c:if>
+                    <c:forEach var="qna" items="${list}">      
+               
+						    <tr>
+						        <td>${qna.qna_no}</td>
+						        <td>
+						            <a href="/tobe/chiefAdmin/customer/chiefQnaDetail.do?qnaNo=${qna.qna_no}" class="SelectBtn">${qna.q_title}</a>
+						        </td>
+						        <td>
+						        	${qna.member_no}
+						        </td>
+						        <td colspan="8">
+						            <fmt:formatDate value="${qna.q_writedate}" pattern="yyyy-MM-dd" />
+						        </td>
+							</tr>    
+						</c:forEach>
                    </tbody>
                 </table>
              
