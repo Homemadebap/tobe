@@ -86,9 +86,7 @@
 #main {
    display: flex;
 }
-#btn, #logo, #mainlogo, #btna {
-	cursor: pointer;
-}
+
 a:link, a:visited {
 	text-decoration: none;
 	color: #000;
