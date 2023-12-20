@@ -88,7 +88,7 @@
 	          <div class="search-window">
 	            <form action="">
 	              <div class="search-wrap">
-	                <label for="search" class="blind" style="font-weight: bold;">공지사항</label>
+	                <label for="search" class="blind" style="font-weight: bold;">FAQ</label>
 	                    <select>
 	                        <option value="제목">제목</option>
 	                        <option value="제목">작성일</option>
