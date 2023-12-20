@@ -13,6 +13,32 @@
 <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+
+<script>
+
+// $(function() {
+// 	$("#emailCheck").click(function() {
+// 		$.ajax({
+// 			url:'emailCheck.do',
+// 			data:{email:$('#email').val()},
+// 			success:function(res) {
+// 				console.log(res);
+// 				if (res == 'true') {
+// 					alert('이메일이 중복되었습니다.');
+// 					$("#email").val('');
+// 					$("#email").focus();
+// 				} else {
+// 					dupCheck = true;
+// 					alert('사용가능한 이메일입니다.');
+// 					$("#email").attr('readonly','readonly');
+// 				}
+// 			}
+// 		})
+// 	})
+// })
+
+</script>
+
 </head>
 <style>
 
@@ -110,7 +136,15 @@
 .total th, .total td {
     text-align: center;
     width: 33.3%;
+    padding: 0 0;
+    margin: 0 0;
 }
+
+.total td{
+	font-size: 1.5rem;
+}
+
+
 
 
 </style>
@@ -118,12 +152,13 @@
 	<%@include file="/WEB-INF/views/chiefAdmin/common/chiefSideBar_logo.jsp" %>
    	
    	<div class="searchBox">
-   		<form action="chiefAdmin/sales/">
+   		<form action="payList.do" method="get">
    			<table>
    				<tr>
    					<th>학원명</th>
    					<td>
-   						<select class="input">
+   						<select name="education" class="input">
+   							<option value="">전체</option>
    							<option value="1">해커스</option>
    							<option value="2">파고다</option>
    							<option value="3">YBM</option>
@@ -138,7 +173,7 @@
 				</tr>   			
    			</table>
    			<div class="frmBtn">
-		   		<input type="submit" value="검색">
+		   		<input type="submit" value="검색" >
    				<input type="reset" value="초기화">
    			</div>
    		</form>
@@ -152,12 +187,12 @@
 				<th>결제총액</th>
 				<th>수수료</th>
 			</tr>
-<%-- 			<c:forEach var="vo" items="${ }"> --%>
-<!-- 				<td></td> -->
-<!-- 				<td></td> -->
-<!-- 				<td></td> -->
-<!-- 				<td></td> -->
-<%-- 			</c:forEach> --%>
+			<c:forEach var="vo" items="${payList}">
+				<td>${vo.education}</td>
+				<td>${vo.pay_date}</td>
+				<td>${vo.pay_total}</td>
+				<td>${vo.charge_total}</td>
+			</c:forEach>
 		
 		</table>
 	
@@ -169,17 +204,17 @@
 			<th colspan="3" style="font-size: 1.15rem;">총매출: </th>
 		</tr>
 		<tr style="height: 10rem;">
-			<td>dfdfdf</td>
-			<td>dfdfdfdf</td>
-			<td>dfdfdfdf</td>
+			<td><b>해커스</b><br><br>ㅇㅇㅇㅇ원 </td>
+			<td><b>파고다</b><br><br>ㅇㅇㅇㅇ원 </td>
+			<td><b>ybm</b><br><br>ㅇㅇㅇㅇ원 </td>
 		</tr>
 		<tr style="background-color: #D9D9D9; height: 3.5rem;">
 			<th colspan="3" style="font-size: 1.15rem;">총수수료: </th>
 		</tr>
 		<tr style="height: 10rem;">
-			<td>dfdfdf</td>
-			<td>dfdfdf</td>
-			<td>dfdfdf</td>
+			<td><b>해커스</b><br><br>ㅇㅇㅇㅇ원 </td>
+			<td><b>파고다</b><br><br>ㅇㅇㅇㅇ원 </td>
+			<td><b>ybm</b><br><br>ㅇㅇㅇㅇ원 </td>
 		</tr>
 	</table>
 
