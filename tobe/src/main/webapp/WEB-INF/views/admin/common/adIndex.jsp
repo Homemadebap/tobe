@@ -152,7 +152,7 @@ p {
 
 </head>
 <body>
-	<%@include file="/WEB-INF/views/admin/common/adSideBar_logo.jsp" %>
+	<%@include file="/WEB-INF/views/admin/common/adSideBar_logo2.jsp" %>
 	<c:if test="${admin.ad_type == 1}">
 		<div class="hackers_logo admin_logo">
 			<img src="/tobe/img/HACKERS_logo.png" style="width: 13rem;">
