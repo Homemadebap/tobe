@@ -5,12 +5,12 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import kr.co.tobe.vo.MemberVO;
+import kr.co.tobe.vo.NoticeVO;
 import kr.co.tobe.vo.QnaVO;
 
 @Controller
@@ -25,15 +25,21 @@ public class UserCustomerController {
 		return "user/customer/userQna";
 	}
 	
+	@GetMapping("/user/customer/customer.do")
+	public String userCustomer(Model model, NoticeVO vo) {
+		model.addAttribute("map", service.list(vo));
+		return "user/customer/userCustomer";
+	}
+	
 	@GetMapping("/user/customer/userFaq.do")
 	public String userFaq() {
 		return "user/customer/userFaq";
 	}
 	
-	@GetMapping("/user/customer/userAskForm.do")
-	public String userAskForm() {
-		return "user/customer/userAskForm";
-	}
+//	@GetMapping("/user/customer/userAskForm.do")
+//	public String userAskForm() {
+//		return "user/customer/userAskForm";
+//	}
 	
 	//강좌 문의 등록 
 		@PostMapping("/user/customer/qna/insert.do")

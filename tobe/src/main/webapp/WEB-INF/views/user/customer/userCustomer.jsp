@@ -88,12 +88,18 @@
 	            <form action="">
 	              <div class="search-wrap">
 	                <label for="search" class="blind" style="font-weight: bold;">공지사항</label>
-	                    <select>
-	                        <option value="제목">제목</option>
-	                        <option value="제목">작성일</option>
-	                    </select>
-	                    <input id="search" type="search" name="" placeholder="검색어를 입력하세요." value="">                        
-	                    <button type="submit" class="btn" style="background-color: #ECEDE8; color:#44546A; border-width: 1px; border-radius: 7px; padding:3x 10px; ">검색</button>
+	                   <form method="get" name="searchForm" id="searchForm" action="userCustomer.do">
+		                    <span class="srchSelect">
+	                        	<select id="stype" name="searchType" class="dSelect" title="검색분류 선택">
+	                        		<option value="all">전체</option>
+			                        <option value="n_title"><c:if test="${NoticeVO.searchType == 'n_title'}">selected</c:if>제목</option>
+			                        <option value="n_writedate"><c:if test="${NoticeVO.searchType == 'n_writedate'}">selected</c:if>작성일</option>
+		                    	</select>
+		                    </span>
+	                    <span class="searchWord">
+			                    <input id="search" type="search" name="searchWord" value="${NoticeVO.searchWord }" placeholder="검색어를 입력하세요.">                        
+			                    <button type="submit" class="btn" style="background-color: #ECEDE8; color:#44546A; border-width: 1px; border-radius: 7px; padding:3x 10px; ">검색</button>
+		                    </span>
 	              </div>
 	            </form>
 	          </div>
@@ -101,7 +107,7 @@
      
     
 
-		    <div class="board_head">
+				<div class="board_head">
 		        <table class="list">
 		            <thead>
 		                <tr style="text-align: center;" >
@@ -110,42 +116,45 @@
 		                    <th>작성일</th>
 		                </tr>
 		            </thead>
-		
-		            <tbody class="context">
-		                <tr>
-		                    <td>3</td>
-		                    <td class="txt">
-		                        <a href="userNoticeDetail.html">사용자들은 보시오!!!</a>
-		                    </td>
-		                    <td class="date">2023.12.11</td>
-		                </tr>
-		                <tr>
-		                    <td>2</td>
-		                    <td class="txt">
-		                        <a href="userNoticeDetail.html">제목</a>
-		                    </td>
-		                    <td class="date">날짜</td>
-		                </tr>
-		                <tr>
-		                    <td>1</td>
-		                    <td class="txt">
-		                        <a href="userNoticeDetail.html">제목</a>
-		                    </td>
-		                    <td class="date">날짜</td>
-		                </tr>
+		            
+		            <tbody>
+		            <c:if test="${empty map.list }">
+                            <tr>
+                                <td class="first" colspan="8">등록된 글이 없습니다.</td>
+                            </tr>
+					</c:if>
+					<c:forEach var="vo" items="${map.list }">       
+                            <tr>
+                                <td>${vo.notice_no }</td>
+                                <td style="text-align:left;">
+                                <td>${vo.n_title }</td>                     
+                                <td class="date"><fmt:formatDate value="${vo.n_writedate }" pattern="YYYY-MM-dd"/></td>
+                            </tr>
+                       </c:forEach>
 		            </tbody>
-		
+
 		        </table>
-		 
-		        <ul class="page">
-		            <li class="prev"><</li>
-		            <li><a href="" class="current">1</a></li>
-		            <li><a href="">2</a></li>
-		            <li><a href="">3</a></li>
-		            <li class="prev">></li>
-		
-		        </ul>
-		    </div>
+		  		    <div class="btnSet"  style="text-align:right;">
+		 				
+		 				<div class="pagenate clear">
+                        <ul class='paging'>
+                        <c:if test="${map.prev }">
+                        	<li><a href="index.do?page=${map.startPage-1 }&searchType=${NoitceVO.searchType}&searchWord=${NoticeVO.searchWord}"> << </a></li>
+                        </c:if>
+                        <c:forEach var="p" begin="${map.startPage}" end="${map.endPage}">
+                        	<c:if test="${p == NoticeVO.page}">
+                            <li><a href='#;' class='current'>${p}</a></li>
+                            </c:if>
+                            <c:if test="${p != NoticeVO.page}">
+                            <li><a href='userCustomer.do?page=${p}&searchType=${NoticeVO.searchType}&searchWord=${NoticeVO.searchWord}'>${p}</a></li>
+                            </c:if>
+                        </c:forEach>
+                        <c:if test="${map.next }">
+                        	<li><a href="userCustomer.do?page=${map.endPage+1 }&searchType=${NoticeVO.searchType}&searchWord=${NoticeVO.searchWord}"> >> </a></li>
+                        </c:if>
+                        </ul>
+                    </div>
+                    -->
 			<%@include file="/WEB-INF/views/user/common/userFooter.jsp"%>
 		</div>
 	</div>

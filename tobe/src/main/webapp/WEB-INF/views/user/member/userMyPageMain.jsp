@@ -48,7 +48,11 @@ $(function(){
 	    }
 	})
 	
+	
+	
+	
 })
+
 
 
 
@@ -340,13 +344,13 @@ $(function(){
 		                            <td>${vo.i_price}</td>
 		                            <td>${vo.i_startday}</td>
 		                            <td>${vo.i_endday}</td>
+		                            
 		                            <td><form action="/tobe/user/review/write.do" method="get">
 		                            	<input type="hidden" name="infoCourse_no" value="${vo.course_no }">
 		                            	<input type="hidden" name="infoDetail_no" value="${vo.detail_no }">
 		                            	<input type="hidden" name="infoCourseName" value="${vo.i_cname }">
 		                            	<input type="submit" value="후기작성">
 		                            </form></td>
-		                            <!-- <td><input type="button" onclick="location.href='/tobe/user/review/write.do?infoCourse_no=${vo.course_no}'" value="후기작성"/></td> -->    		                            
 		                        </tr>
 		                    </c:forEach>
 	                    </table>

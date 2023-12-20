@@ -659,17 +659,16 @@ function setCourseComp(no) {
         </ul>
    	</div>
     <div class = "container">
-    	<div class = "subContainer" id = "box1">
-    		<div class = "subChildContainer" id = "childbox1">
+    	<div class = "subContainer">
+    	<c:forEach var="lecture" items="${lectureList }">
+    		<div class = "subChildContainer">
     			<h2>강의 목록</h2>
-    			<c:forEach var="lecture" items="${lectureList }">
 	    			<p><img src="${lecture.teacher_img_org}" alt="강사 이미지" width="50" height="50"></p>
 	                <p>${lecture.cname}</p>
 	                <p>${lecture.time}</p>
 	                <p>${lecture.price}</p>
-	            </c:forEach>
     		</div>
-    		<div class = "subChildContainer" id = "childSelectBox1">
+    		<div class = "childSelectBox1">
     			<table>
     				<tr>
     					<td><button type="button" onclick="" class="SelectBtn">장바구니 담기</button></td>
@@ -678,46 +677,7 @@ function setCourseComp(no) {
     				</tr>
     			</table>
     		</div>
-    	</div>
-    	<div class = "subContainer" id = "box2">
-    		<div class = "subChildContainer" id = "childbox2">
-    			<h2>강의 목록</h2>
-    			<c:forEach var="lecture" items="${lectureList }">
-	    			<p><a href = "/tobe/user/course/userCourseDetail.do"><img src="${lecture.teacher_img_org}" alt="강사 이미지" width="50" height="50"></a></p>
-	                <p>${lecture.cname}</p>
-	                <p>${lecture.time}</p>
-	                <p>${lecture.price}</p>
-	            </c:forEach>
-    		</div>
-    		<div class = "subChildContainer" id = "childSelectBox2">
-    			<table>
-    				<tr>
-    					<td><button type="button" onclick="location.href='/tobe/user/common/userBasket.do'" class="SelectBtn">장바구니 담기</button></td>
-    					<td><button type="button" onclick="location.href='/tobe/user/common/userCompareCourse.do'" class="SelectBtn">비교함 담기</button></td>
-    					<td><button type="button" onclick="location.href='/tobe/user/pay/userPayDetail.do'" class="payBtn">결제 하기</button></td>
-    				</tr>
-    			</table>
-    		</div>
-    	</div>
-    	<div class = "subContainer" id = "box3">
-    		<div class = "subChildContainer" id = "childbox3">
-    			<h2>강의 목록</h2>
-    			<c:forEach var="lecture" items="${lectureList }">
-	    			<p><img src="${lecture.teacher_img_org}" alt="강사 이미지" width="50" height="50"></p>
-	                <p>${lecture.cname}</p>
-	                <p>${lecture.time}</p>
-	                <p>${lecture.price}</p>
-	            </c:forEach>
-    		</div>
-    		<div class = "subChildContainer" id = "childSelectBox3">
-    			<table>
-    				<tr>
-    					<td><button type="button" onclick="location.href='/tobe/user/common/userBasket.do'" class="SelectBtn">장바구니 담기</button></td>
-    					<td><button type="button" onclick="location.href='/tobe/user/common/userCompareCourse.do'" class="SelectBtn">비교함 담기</button></td>
-    					<td><button type="button" onclick="location.href='/tobe/user/pay/userPayDetail.do'" class="payBtn">결제 하기</button></td>
-    				</tr>
-    			</table>
-    		</div>
+    		</c:forEach>
     	</div>
    	</div>
    <%@include file="/WEB-INF/views/user/common/userFooter.jsp"%>
