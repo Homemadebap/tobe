@@ -17,7 +17,7 @@
     $(function() {
         nhn.husky.EZCreator.createInIFrame({
             oAppRef: oEditors,
-            elPlaceHolder: "r_content",
+            elPlaceHolder: "q_content",
             sSkinURI: "/tobe/smarteditor/SmartEditor2Skin.html",    
             htParams : {
                 bUseToolbar : true,                // 툴바 사용 여부 (true:사용/ false:사용하지 않음)
@@ -34,7 +34,7 @@
         });
     })
     function goSave() {
-    	oEditors.getById['r_content'].exec('UPDATE_CONTENTS_FIELD',[]);
+    	oEditors.getById['q_content'].exec('UPDATE_CONTENTS_FIELD',[]);
     	$("#frm").submit();
     }
     
@@ -62,7 +62,7 @@
                 <h3 class="sub_title">문의 등록</h3>
     
                 <div class="bbs">
-                <form method="post" name="frm" id="frm" action="/user/customer/qna/insert.do" enctype="multipart/form-data" >
+                <form method="post" name="frm" id="frm" action="/tobe/user/customer/qna/insert.do" enctype="multipart/form-data" >
                     <table class="board_write">
                   
                         <tbody>

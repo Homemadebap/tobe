@@ -56,7 +56,7 @@
 	
 	<insert id="insert" parameterType="kr.co.tobe.vo.QnaVO">
 		INSERT INTO qna(
-			`user_no`,
+			`member_no`,
 			`q_title`,
 			`q_content`,
 			`q_writedate`,			

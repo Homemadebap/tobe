@@ -10,4 +10,6 @@ public interface UserCourseService {
 	int cQnaInsert(CqnaVO vo);//, MultipartFile file, HttpServletRequest request);
 	int cQnaUpdate(CqnaVO vo);//, MultipartFile file, HttpServletRequest request);
 	int cQnaDelete(CqnaVO vo);//, HttpServletRequest request);
+	CourseVO getSelectCourse(int no);
+	
 }

@@ -51,12 +51,12 @@ public class UserCustomerController {
 			if (r > 0) {
 				model.addAttribute("cmd", "move");
 				model.addAttribute("msg", "정상적으로 저장되었습니다.");
-				model.addAttribute("url", "??"); //돌아갈 페이지 박모훈 완성 후 ..
+				model.addAttribute("url", "/tobe/user/customer/userQna.do"); //돌아갈 페이지 박모훈 완성 후 ..
 			} else {
 				model.addAttribute("cmd", "back");
 				model.addAttribute("msg", "등록 오류");
 			}
-			return "user/course/userAskForm";
+			return "user/common/userAlert";
 		}
 		//수정 이동 view
 		@GetMapping("/user/customer/qna/edit.do")
@@ -72,7 +72,7 @@ public class UserCustomerController {
 			if (r > 0) {
 				model.addAttribute("cmd", "move");
 				model.addAttribute("msg", "정상적으로 수정되었습니다.");
-				model.addAttribute("url", "??");
+				model.addAttribute("url", "/tobe/user/customer/userQna.do");
 			} else {
 				model.addAttribute("cmd", "back");
 				model.addAttribute("msg", "등록 오류");
@@ -86,7 +86,7 @@ public class UserCustomerController {
 			if (r > 0) {
 				model.addAttribute("cmd", "move");
 				model.addAttribute("msg", "정상적으로 삭제되었습니다.");
-				model.addAttribute("url", "??");
+				model.addAttribute("url", "/tobe/user/customer/userQna.do");
 			} else {
 				model.addAttribute("cmd", "back");
 				model.addAttribute("msg", "등록 오류");
