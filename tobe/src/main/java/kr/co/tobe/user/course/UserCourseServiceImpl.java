@@ -35,5 +35,10 @@ public class UserCourseServiceImpl implements UserCourseService {
 	public int cQnaDelete(CqnaVO vo) {
 		return mapper.qnaDelete(vo.getCqna_no());
 	}
+
+	@Override
+	public CourseVO getSelectCourse(int no) {
+		return mapper.courseSelect(no);
+	}
 		
 }

@@ -301,6 +301,7 @@ caption {
 	display: none;
 }
 </style>
+
 <body>
 <script>
       $(document).ready(function() {
@@ -510,9 +511,31 @@ caption {
             console.log('시간 코드 : ' , timecd);
          });
       });
-      
 </script>
-   <div class="wrap">
+<script>  
+function setCourseComp(no) {
+	  var compT;	
+	  $.ajax({    	
+        url: "/tobe/user/course/setCourseComp.do",
+        data: {
+            course_no: no,
+        },
+        success: function(res) {
+			if (res == "success") {
+				console.log("등록 성공");
+			}
+			if(res=="full"){
+				console.log("full");
+				alert('비교함이 꽉차있습니다 비교함을 비워주세요.');
+			}
+        },
+        error: function(xhr, status, error) {
+            console.error("에러 발생", status, error);
+        }
+   		});
+	}
+</script>
+      <div class="wrap">
       <%@include file="/WEB-INF/views/user/common/userHeader.jsp"%>
       </div>
    </div>
@@ -650,7 +673,7 @@ caption {
     			<table>
     				<tr>
     					<td><button type="button" onclick="" class="SelectBtn">장바구니 담기</button></td>
-    					<td><button type="button" onclick="" class="SelectBtn">비교함 담기</button></td>
+    					<td><button type="button" onclick="setCourseComp(11);" class="SelectBtn">비교함 담기</button></td>
     					<td><button type="button" onclick="location.href='/tobe/user/pay/userPayDetail.do?'+" class="payBtn">결제 하기</button></td>
     				</tr>
     			</table>
@@ -699,4 +722,5 @@ caption {
    	</div>
    <%@include file="/WEB-INF/views/user/common/userFooter.jsp"%>
 </body>
+
 </html>

@@ -45,4 +45,9 @@
 		DELETE FROM cqna WHERE cqna_no=#{no}
 	</delete>
 	
+	<select id="courseSelect" parameterType="int" resultType="kr.co.tobe.vo.CourseVO">
+		SELECT *
+		FROM course
+		WHERE course_no = #{no};
+	</select>
 </mapper>

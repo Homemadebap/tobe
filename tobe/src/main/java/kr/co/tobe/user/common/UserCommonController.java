@@ -21,7 +21,9 @@ public class UserCommonController {
 	UserCommonService service;
 	
 	@GetMapping("/user/common/userIndex.do")
-	public String index() {
+	public String index(){//(HttpSession sess) {
+		//sess.setAttribute("CourseComp1",  "empty");
+		//sess.setAttribute("CourseComp2", "empty");
 		return "user/common/userIndex"; 
 	}
 	
