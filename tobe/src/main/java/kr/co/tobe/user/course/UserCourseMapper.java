@@ -14,4 +14,6 @@ public interface UserCourseMapper {
 	int qnaDelete(int no);
 	int qnaInsert(CqnaVO vo);
 	int updateGno(int no);
+	CourseVO courseSelect(int no);
+	
 }

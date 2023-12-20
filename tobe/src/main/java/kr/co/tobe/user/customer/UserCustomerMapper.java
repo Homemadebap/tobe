@@ -17,13 +17,13 @@ public interface UserCustomerMapper {
 	int qnaInsert(QnaVO vo);
 	int updateGno(int no);
 	
-	int count(QnaVO vo);
-	List<QnaVO> list(QnaVO vo);
+	int qnaCount(QnaVO vo);
+	List<QnaVO> qnaList(QnaVO vo);
 	
 	//notice
 	int noticeInsert(NoticeVO vo);
 	int noticeCount(NoticeVO vo);
-	List<NoticeVO> list(NoticeVO vo);
+	List<NoticeVO> noticeList(NoticeVO vo);
 	
 
 }

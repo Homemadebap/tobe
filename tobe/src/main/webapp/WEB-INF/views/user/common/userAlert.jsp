@@ -10,4 +10,9 @@
 	alert('${msg}');
 	history.back();
 </c:if>
+
+<c:if test="${cmd == 'keep'}">
+alert('${msg}');
+</c:if>
+
 </script>

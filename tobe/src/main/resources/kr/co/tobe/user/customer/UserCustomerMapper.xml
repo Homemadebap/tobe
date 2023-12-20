@@ -2,6 +2,32 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="kr.co.tobe.user.customer.UserCustomerMapper">
 	
+	<sql id="noticeSql">
+		<where>
+			<if test="searchWord != null and searchWord != ''">
+				<if test="searchType == 'all'">
+					n_title LIKE '%${searchWord}%' OR n_content LIKE '%${searchWord}%'
+				</if>
+				<if test="searchType != 'all'">
+					${searchType} LIKE '%${searchWord}%'
+				</if>
+			</if>
+		</where>
+	</sql>
+	
+	<select id="noticeList" parameterType="kr.co.tobe.vo.NoticeVO" resultType="kr.co.tobe.vo.NoticeVO">
+		SELECT *
+		FROM notice
+		<include refid="noticeSql"/>
+		LIMIT #{startIdx}, 10
+	</select>
+	
+	<select id="noticeCount" parameterType="kr.co.tobe.vo.NoticeVO" resultType="int">
+		SELECT COUNT(*)
+		FROM notice
+		<include refid="noticeSql"/>
+	</select>
+	
 	<sql id="qnaSql">
 		<where>
 			<if test="searchWord != null and searchWord != ''">
@@ -15,14 +41,14 @@
 		</where>
 	</sql>
 	
-	<select id="list" parameterType="kr.co.tobe.vo.QnaVO" resultType="kr.co.tobe.vo.QnaVO">
+	<select id="qnaList" parameterType="kr.co.tobe.vo.QnaVO" resultType="kr.co.tobe.vo.QnaVO">
 		SELECT *
 		FROM qna
 		<include refid="qnaSql"/>
 		ORDER BY gno DESC, ono ASC
 		LIMIT #{startIdx}, 10
 	</select>
-	<select id="count" parameterType="kr.co.tobe.vo.QnaVO" resultType="int">
+	<select id="qnaCount" parameterType="kr.co.tobe.vo.QnaVO" resultType="int">
 		SELECT COUNT(*)
 		FROM qna
 		<include refid="qnaSql"/>
@@ -30,7 +56,7 @@
 	
 	<insert id="insert" parameterType="kr.co.tobe.vo.QnaVO">
 		INSERT INTO qna(
-			`user_no`,
+			`member_no`,
 			`q_title`,
 			`q_content`,
 			`q_writedate`,			
@@ -48,25 +74,8 @@
 		)
 	</insert>
 	
-	<sql id="noticeSql">
-		<where>
-			<if test="searchWord != null and searchWord != ''">
-				<if test="searchType == 'all'">
-					n_title LIKE '%${searchWord}%' OR n_content LIKE '%${searchWord}%'
-				</if>
-				<if test="searchType != 'all'">
-					${searchType} LIKE '%${searchWord}%'
-				</if>
-			</if>
-		</where>
-	</sql>
-	
-	<select id="noticeCount" parameterType="kr.co.tobe.vo.NoticeVO" resultType="int">
-		SELECT COUNT(*)
-		FROM notice
-		<include refid="noticeSql"/>
-	</select>
-	
+
+	<!-- 
 	<insert id="noticeInsert" parameterType="kr.co.tobe.vo.NoticeVO">
 		INSERT INTO notice(
 			`notice_no`,
@@ -80,6 +89,7 @@
 			NOW()
 		)
 	</insert>
+	-->
 	
 	
 <!--  -->

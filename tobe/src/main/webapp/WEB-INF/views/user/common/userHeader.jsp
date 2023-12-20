@@ -17,6 +17,7 @@ $(document).ready(function(){
     var position = $(window).scrollTop(); 
     $(".quickMenu").stop().animate({"top":position+currentPosition+"px"},500);
   });
+  
 });
 
 
@@ -32,7 +33,7 @@ $(document).ready(function(){
 //});
 
 
-
+	
 </script>
 
 </head>
@@ -73,9 +74,10 @@ $(document).ready(function(){
 
 </div>
 	<div id="ex1" class="modal">
-	  <p>Thanks for clicking. That felt good.</p>
+	 	${CourseInfo.education}
+	  
 	 <!-- <a href="#" rel="modal:close">Close</a> --> 
-		<p><a href="#sub-modal" rel="modal:open">Open Modal</a></p>
+		<p><a href="#sub-modal" rel="modal:open">비교하기</a></p>
 	</div>
 	<div id="sub-modal" class="modal">
 	  	<p>Thanks for clicking. That felt good.</p>

@@ -22,7 +22,9 @@ public class UserCommonController {
 	UserCommonService service;
 	
 	@GetMapping("/user/common/userIndex.do")
-	public String index() {
+	public String index(){//(HttpSession sess) {
+		//sess.setAttribute("CourseComp1",  "empty");
+		//sess.setAttribute("CourseComp2", "empty");
 		return "user/common/userIndex"; 
 	}
 	
@@ -41,10 +43,10 @@ public class UserCommonController {
 //		return "user/review/userReviewIndex";
 //	}
 	
-	@GetMapping("/user/customer/userCustomer.do")
-	public String userCustomer() {
-		return "user/customer/userCustomer";
-	}
+//	@GetMapping("/user/customer/userCustomer.do")
+//	public String userCustomer() {
+//		return "user/customer/userCustomer";
+//	}
 	
 	@GetMapping("/user/member/userMyPageMain.do")
 	public String userMyPageMain(HttpSession sess, Model model) {

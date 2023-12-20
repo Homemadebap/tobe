@@ -10,7 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import kr.co.tobe.vo.CourseVO;
 import kr.co.tobe.vo.CqnaVO;
@@ -22,6 +22,26 @@ public class UserCourseController {
 	@Autowired
 	UserCourseService service;
 	
+	@ResponseBody	
+	@GetMapping("/user/course/setCourseComp.do")
+	public String setCourseComp(Model model, int course_no, HttpSession sess) {
+		 CourseVO Comp1 = (CourseVO)sess.getAttribute("CourseComp1");
+		 CourseVO Comp2 = (CourseVO)sess.getAttribute("CourseComp2");
+		  if(Comp1 != null){
+			  if(Comp2 != null) {
+				  return "full";
+			  } else {
+				  sess.setAttribute("CourseComp2", service.getSelectCourse(course_no));
+			  }
+		  } else {
+			  sess.setAttribute("CourseComp1", service.getSelectCourse(course_no));
+		  }
+		  		
+		System.out.println(sess.getAttribute("CourseComp1"));
+		System.out.println(sess.getAttribute("CourseComp2"));
+		return "success";
+	}
+		
 	@GetMapping("/user/course/userCourseIndex.do")
 	public String getLectureList(Model model, CourseVO courseVO) {
 		List<CourseVO> lectureList = service.getLectureList(courseVO);
@@ -47,18 +67,18 @@ public class UserCourseController {
 		if (r > 0) {
 			model.addAttribute("cmd", "move");
 			model.addAttribute("msg", "정상적으로 저장되었습니다.");
-			model.addAttribute("url", "??"); //돌아갈 페이지 박모훈 완성 후 ..
+			model.addAttribute("url", "/tobe/user/course/userCourseDetail.do"); //돌아갈 페이지 박모훈 완성 후 ..
 		} else {
 			model.addAttribute("cmd", "back");
 			model.addAttribute("msg", "등록 오류");
 		}
-		return "user/course/userCourseAskForm";
+		return "user/common/userAlert";
 	}
 	//수정 이동 view
 	@GetMapping("/user/course/qna/edit.do")
 	public String edit(Model model, CqnaVO vo) {
 //		model.addAttribute("vo", service.view(vo, false)); 
-		
+		//수정 시 vo 담을것 (모훈)
 		return "user/course/userCourseModAskForm";
 	}
 	//강좌 문의 수정 
@@ -68,7 +88,7 @@ public class UserCourseController {
 		if (r > 0) {
 			model.addAttribute("cmd", "move");
 			model.addAttribute("msg", "정상적으로 수정되었습니다.");
-			model.addAttribute("url", "??");
+			model.addAttribute("url", "/tobe/user/course/userCourseDetail.do");
 		} else {
 			model.addAttribute("cmd", "back");
 			model.addAttribute("msg", "등록 오류");
@@ -82,7 +102,7 @@ public class UserCourseController {
 		if (r > 0) {
 			model.addAttribute("cmd", "move");
 			model.addAttribute("msg", "정상적으로 삭제되었습니다.");
-			model.addAttribute("url", "??");
+			model.addAttribute("url", "/tobe/user/course/userCourseDetail.do");
 		} else {
 			model.addAttribute("cmd", "back");
 			model.addAttribute("msg", "등록 오류");
