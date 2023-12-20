@@ -86,9 +86,7 @@
 #main {
    display: flex;
 }
-#btn, #logo, #mainlogo, #btna {
-	cursor: pointer;
-}
+
 a:link, a:visited {
 	text-decoration: none;
 	color: #000;
@@ -96,6 +94,10 @@ a:link, a:visited {
 a:hover {
 	text-decoration: none;
 	color: #d3d3d3;
+}
+#logout{
+	margin: 0 0 0 300px;
+	font-size: 90%;
 }
 
 </style>
