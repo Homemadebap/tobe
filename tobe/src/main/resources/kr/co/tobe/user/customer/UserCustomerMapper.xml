@@ -28,6 +28,12 @@
 		<include refid="noticeSql"/>
 	</select>
 	
+	<!-- 상세 -->
+	<select id="detail" parameterType="int" resultType="kr.co.tobe.vo.NoticeVO">
+		SELECT * FROM notice WHERE notice_no = #{notice_no}
+	</select>
+	
+	<!-- 문의 -->
 	<sql id="qnaSql">
 		<where>
 			<if test="searchWord != null and searchWord != ''">
@@ -74,6 +80,24 @@
 		)
 	</insert>
 	
+
+
+	<select id="faqTitle" parameterType="kr.co.tobe.vo.FaqVO" resultType="kr.co.tobe.vo.FaqVO">
+		SELECT f_title FROM faq
+	</select>
+	
+ 	<select id="faqList" parameterType="kr.co.tobe.vo.FaqVO" resultType="kr.co.tobe.vo.FaqVO">
+		SELECT *
+		FROM faq	
+		LIMIT #{startIdx}, 10
+	</select>
+	<select id="faqCount" parameterType="kr.co.tobe.vo.FaqVO" resultType="int">
+		SELECT COUNT(*)
+		FROM faq
+	</select>
+
+	
+
 
 	<!-- 
 	<insert id="noticeInsert" parameterType="kr.co.tobe.vo.NoticeVO">
