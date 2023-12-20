@@ -95,6 +95,10 @@ a:hover {
 	text-decoration: none;
 	color: #d3d3d3;
 }
+#logout{
+	margin: 0 0 0 300px;
+	font-size: 90%;
+}
 
 </style>
 <body>

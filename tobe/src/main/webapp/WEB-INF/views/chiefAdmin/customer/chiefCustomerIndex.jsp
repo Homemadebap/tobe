@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -259,7 +260,7 @@
 		<div id="f">
 		<br>
 			<b style="margin-left:55px;">1:1문의</b><br>
-			<img src="/tobe/img/chiefAdmin_qna.png" width=35%; style="margin-left:55px;" onclick="location.href='/tobe/chiefAdmin/customer/chiefAskList.do';">
+			<img src="/tobe/img/chiefAdmin_qna.png" width=35%; style="margin-left:55px;" onclick="location.href='/tobe/chiefAdmin/customer/chiefQnaList.do';">
 		</div>
 		<div id="f">
 		<br>
@@ -309,25 +310,19 @@
                     <tbody>
 					<c:if test="${empty map.list }">
                         <tr>
-                            <td class="first" colspan="8">등록된 글이 없습니다.</td>
                         </tr>
 					</c:if>
-                    <c:forEach var="vo" items="${map.list }">       
-                        <tr>
-                            <td>${NoticeVo.notice_no }</td>
-                            <td style="text-align:left;">
-                            	<c:forEach begin="1" end="${NoticeVo.nested }">
-                            	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                            	</c:forEach>
-                            	<c:if test="${Noticevo.nested > 0 }">
-                            		<img src="/project/img/ico_re.png">
-                            	</c:if>
-                                <a href="view.do?no=${vo.no}">${NoticeVo.n_title } [${vo.comment_count}]</a>
-                            </td>                       
-                            <td>${NoticeVo.viewcnt }</td>
-                            <td class="date"><fmt:formatDate value="${NoticeVo.writedate }" pattern="YYYY-MM-dd"/></td>
-                        </tr>
-                   </c:forEach>
+                    <c:forEach var="notice" items="${list}">       
+						    <tr>
+						        <td>${notice.notice_no}</td>
+						        <td>
+						            <a href="/tobe/chiefAdmin/customer/chiefNoticeDetail.do?noticeNo=${notice.notice_no}" class="SelectBtn">${notice.n_title}</a>
+						        </td>
+						        <td colspan="8">
+						            <fmt:formatDate value="${notice.n_writedate}" pattern="yyyy-MM-dd" />
+						        </td>
+						    </tr>
+						</c:forEach>
                    </tbody>
                 </table>
                 <div class="btnSet"  style="text-align:right;">
