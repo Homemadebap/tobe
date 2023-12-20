@@ -134,6 +134,20 @@ p {
 	width: 6rem;
 	height: 9rem;
 }
+
+#logout {
+	position: absolute;
+	left: 85rem;
+	top: 3.5rem;
+	font-size: 1rem;
+	cursor: pointer;
+}
+
+#logout:link, #logout:visited {
+	text-decoration: none;
+	color: #000;
+}
+
 </style>
 
 </head>
@@ -158,6 +172,7 @@ p {
 		</div>
 	</c:if>
 	
+	<a href="/tobe/admin/common/adLogout.do" id="logout">로그아웃</a>
 	<div class="box" id="sales_box ">
 		<div class="mbox" id="tmpt">
 			<p>이번 달 매출</p>

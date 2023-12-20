@@ -19,7 +19,7 @@ public class AdCustomerController {
 	public String adIndex(HttpSession sess, Model model) {
 		AdminVO admin = (AdminVO)sess.getAttribute("loginInfo");
 		if(admin == null) {
-			return "redirect:/user/member/userLogin.do";
+			return "redirect:/admin/common/adLogin.do";
 		}
 		
 		model.addAttribute("admin", admin);
