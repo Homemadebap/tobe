@@ -511,6 +511,50 @@ caption {
             console.log('시간 코드 : ' , timecd);
          });
       });
+      $(document).ready(function () {
+          // 검색 버튼 클릭 처리
+          $("#se").on("click", function () {
+              // 선택된 데이터 수집
+              var selectedAcademy = $("#td_academy button.on").data("academycd");
+              var selectedLecture = $("#td_lecture button.on").data("lecturecd");
+              var selectedLocal = $("#td_local button.on").data("localcd");
+              var selectedCity = $("#td_city button.on").data("citycd");
+              var selectedLevel = $("#td_level button.on").data("levelcd");
+              var selectedWeek = $("#td_week button.on").data("weekcd");
+              var selectedTime = $("#td_time button.on").data("timecd");
+
+              // 서버로 AJAX 요청 수행 (실제 엔드포인트와 매개변수로 대체)
+              $.ajax({
+                  type: "GET",
+                  url: "/user/course/userCourseIndex.do",
+                  data: {
+                      academy: selectedAcademy,
+                      lecture: selectedLecture,
+                      local: selectedLocal,
+                      city: selectedCity,
+                      level: selectedLevel,
+                      week: selectedWeek,
+                      time: selectedTime
+                  },
+                  success: function (data) {
+                      // 서버로부터의 성공적인 응답 처리
+                      console.log("검색 결과:", data);
+                      // 검색 결과로 UI 업데이트
+                  },
+                  error: function (error) {
+                      // 서버로부터의 오류 응답 처리
+                      console.error("검색 중 오류 발생:", error);
+                  }
+              });
+          });
+
+          // 각 카테고리에 대한 버튼 클릭 처리
+          $("button[name='btnAcademy'], button[name='lectureName'], button[name='local'], button[name='city'], button[name='level'], button[name='week'], button[name='time']").on("click", function () {
+              // 선택된 버튼을 강조하기 위해 'on' 클래스를 토글
+              $(this).removeClass("on").toggleClass("on").siblings();
+          });
+      });
+
 </script>
 <script>  
 function setCourseComp(no) {

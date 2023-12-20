@@ -40,5 +40,10 @@ public class UserCourseServiceImpl implements UserCourseService {
 	public CourseVO getSelectCourse(int no) {
 		return mapper.courseSelect(no);
 	}
-		
+	
+	@Override
+	public List<CourseVO> getComplexSelect(CourseVO CVO) {
+		return mapper.complexSelect(CVO);
+	}
+	
 }

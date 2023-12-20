@@ -45,7 +45,9 @@ public class UserCourseController {
 	@GetMapping("/user/course/userCourseIndex.do")
 	public String getLectureList(Model model, CourseVO courseVO) {
 		List<CourseVO> lectureList = service.getLectureList(courseVO);
+		List<CourseVO> complexSelectResult = service.getComplexSelect(courseVO);
 		model.addAttribute("lectureList", lectureList);
+		model.addAttribute("complexSelectResult", complexSelectResult);
 		return "user/course/userCourseIndex";
 	}
 	
@@ -109,4 +111,5 @@ public class UserCourseController {
 		}
 		return "user/common/userAlert";
 	}
+	
 }

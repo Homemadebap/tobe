@@ -11,5 +11,5 @@ public interface UserCourseService {
 	int cQnaUpdate(CqnaVO vo);//, MultipartFile file, HttpServletRequest request);
 	int cQnaDelete(CqnaVO vo);//, HttpServletRequest request);
 	CourseVO getSelectCourse(int no);
-	
+	List<CourseVO> getComplexSelect(CourseVO CVO);
 }

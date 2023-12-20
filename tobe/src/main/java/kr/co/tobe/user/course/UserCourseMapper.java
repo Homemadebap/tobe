@@ -15,5 +15,5 @@ public interface UserCourseMapper {
 	int qnaInsert(CqnaVO vo);
 	int updateGno(int no);
 	CourseVO courseSelect(int no);
-	
+	List<CourseVO> complexSelect(CourseVO CVO);
 }
