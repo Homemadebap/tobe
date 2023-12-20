@@ -16,14 +16,14 @@
 
 <script>
 function loginCheck() {
-	if ($("#id").val() == '') {
+	if ($("#ad_id").val() == '') {
 		alert("아이디를 입력해 주세요");
-		$("#id").focus();
+		$("#ad_id").focus();
 		return false;
 	}
-	if ($("#pwd").val() == '') {
+	if ($("#ad_pwd").val() == '') {
 		alert("비밀번호를 입력해 주세요");
-		$("#pwd").focus();
+		$("#ad_pwd").focus();
 		return false;
 	}
 }
@@ -150,7 +150,7 @@ p {
 </head>
 <body>
 	<%@include file="/WEB-INF/views/admin/common/adSideBar_logo.jsp" %>
-	<form action="adLogin.do" method="post" id="board1" name="board1" onsubmit="">
+	<form action="adLogin.do" method="post" id="board1" name="board1" onsubmit="return loginCheck()">
             <div class="sub">
                 <h3 class="sub_title">로그인</h3>
                 	<div class="size">
@@ -160,8 +160,8 @@ p {
                             <fieldset class="login_form">
                                 <ul class="no_dot" margin>
                                     <li>TOBE</li>
-                                    <li><input type="text" id="id" name="id" placeholder="아이디" style="width:200px"></li>
-                                    <li><input type="password" id="pwd" name="pwd" placeholder="비밀번호" style="width:200px"></li>
+                                    <li><input type="text" id="ad_id" name="ad_id" placeholder="아이디" style="width:200px"></li>
+                                    <li><input type="password" id="ad_pwd" name="ad_pwd" placeholder="비밀번호" style="width:200px"></li>
                                     <li><label><input type="checkbox" name="reg1" id="reg1" style="width:10px;height:10px"/><font size="1px">아이디저장</font></label></li>
                                     <li><a href="userFindMember.do" class="btn" style="font-size:10px">아이디|비밀번호 찾기</a></li>
                                 </ul>

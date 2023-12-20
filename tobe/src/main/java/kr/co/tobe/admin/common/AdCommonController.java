@@ -17,11 +17,6 @@ public class AdCommonController {
 	@Autowired
 	AdCommonService service;
 	
-	@GetMapping("/admin/common/adIndex.do")
-	public String adIndex() {
-		return "admin/common/adIndex"; 
-	}
-	
 	@GetMapping("/admin/course/adCourseIndex.do")
 	public String adCourseIndex() {
 		return "admin/course/adCourseIndex"; 

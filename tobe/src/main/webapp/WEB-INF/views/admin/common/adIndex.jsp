@@ -145,13 +145,13 @@ p {
 			<span style="position: absolute; top: 0.5rem; left: 14rem; font-size: 2rem;"><b>관리자 페이지_해커스</b></span>
 		</div>
 
-	<c:if test="${adminVo.ad_type} == 2">
+	<c:if test="${admin.ad_type} == 2">
 		<div class="PAGODA_logo admin_logo">
 			<img src="/tobe/img/PAGODA_logo.png" style="position: absolute; width: 13rem; top:0.5rem;">
 			<span style="position: absolute; top: 0.5rem; left: 14rem; font-size: 2rem;"><b>관리자 페이지_파고다</b></span>
 		</div>
 	</c:if>
-	<c:if test="${adminVo.ad_type} == 3">
+	<c:if test="${admin.ad_type} == 3">
 		<div class="YBM_logo admin_logo">
 			<img src="/tobe/img/YBM_logo.png" style="position: absolute;  width: 13rem; top: -0.5rem;">
 			<span style="position: absolute; top: 0.5rem; left: 14rem; font-size: 2rem;"><b>관리자 페이지_YBM</b></span>
@@ -161,18 +161,18 @@ p {
 	<div class="box" id="sales_box ">
 		<div class="mbox" id="mSales">
 			<p>이번 달 매출</p>
-			<span style="position: absolute; right: 3rem; bottom: 2rem;">${admin.mSales}<b style="font-size: 1.5rem;">원</b></span>
+			<span style="position: absolute; right: 3rem; bottom: 2rem;">"admin.mSales"<b style="font-size: 1.5rem;">원</b></span>
 		</div>
 		<div class="mbox" id="pSales">
-			<span style="position: absolute; right: 2rem; top: 2rem;">${admin.pSales}<b >원</b></span>
+			<span style="position: absolute; right: 2rem; top: 2rem;">"admin.pSales"<b >원</b></span>
 			<p style="position: absolute; left: 4.5rem; bottom: 1rem;">지난 달 매출</p>
 		</div>
 		<div class="mbox" id="pCommision"> 
-			<span style="position: absolute; right: 2rem; top: 2rem;">${admin.pCommision}<b>원</b></span>
+			<span style="position: absolute; right: 2rem; top: 2rem;">"admin.pCommision"<b>원</b></span>
 			<p style="position: absolute; left: 4rem; bottom: 1rem;">지난 달 수수료</p>
 		</div>
 		<div class="mbox" id="ySales">
-			<span style="position: absolute; right: 2rem; top: 2rem;">${admin.ySales}<b>원</b></span>
+			<span style="position: absolute; right: 2rem; top: 2rem;">"admin.ySales"<b>원</b></span>
 			<p style="position: absolute; left: 5.5rem; bottom: 1rem;">연 매출</p>
 		</div>
 	</div>
@@ -198,11 +198,11 @@ p {
 	<div class="sbox" id="pay_box" style="position: absolute; left: 34.6rem;">
 		<a href="/tobe/admin/pay/adPayIndex.do">주문/결제관리 →</a>
 		<div id="today_pay">
-			<span style="position:absolute; left: 1.5rem; font-size: 5rem; color: #766CE8">5</span>
+			<span style="position:absolute; left: 1.5rem; font-size: 5rem; color: #766CE8">${tpc.count }</span>
 			<span style="position:absolute; left: 1rem; bottom: 1rem;">금일결제</span>
 		</div>
 		<div id="cancel_pay">
-			<span style="position:absolute; left: 1.5rem; font-size: 5rem; color: #AFAFAF">0</span>
+			<span style="position:absolute; left: 1.5rem; font-size: 5rem; color: #AFAFAF">${tpcc.count }</span>
 			<span style="position:absolute; left: 1rem; bottom: 1rem;">결제취소</span>		
 		</div>
 		
@@ -210,24 +210,8 @@ p {
 	
 	<div class="sbox" id="qna_box" style="position: absolute; left: 53.7rem;">
 		<a href="/tobe/admin/customer/adQnaIndex.do">문의관리 →</a>
-		<c:if test="${empty admin.qna}">
-                        <tr>
-                            <td class="noIndex">새로운 문의가 없습니다.</td>
-                        </tr>
-                    </c:if>
-		<c:if test="${!empty admin.qna }">
-	                    <table>
-		                    <c:forEach var="vo" items="${admin.qna}">
-		                        <tr>
-		                            <td>new!</td>
-		                            <td><a href"">${vo.q_title}</a></td>    
-		                            <td>${vo.q_writedate}</td>      		                            
-		                        </tr>
-		                    </c:forEach>
-	                    </table>
-                    </c:if>
+
 		
-		userReviewDetail.do?page=${map.startPage-1 }&searchType=${replyVO.searchType}&searchWord=${replyVO.searchWord}
 	</div>
 	
 	<div class="sbox" id="userHomePage_box" style="position: absolute; left: 72.8rem;">
