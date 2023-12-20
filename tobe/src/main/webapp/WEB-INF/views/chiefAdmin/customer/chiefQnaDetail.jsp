@@ -1,18 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>공지사항 상세페이지</title>
+<title>1:1문의</title>
 </head>
 <body>
 <%@include file="/WEB-INF/views/chiefAdmin/common/chiefSideBar_logo.jsp" %>
 	<form action="">
-			<div class = "noticeDetailTitle">
-		   		<h1>공지사항</h1>
+			<div class = "qnaDetailTitle">
+		   		<h1>1:1문의</h1>
 		   	</div>
 		   	<div id="firstLine">
 			   	<hr>
@@ -20,8 +20,8 @@
 		   	<div>
 		   		<table>
 				    <tr>
-				        <td>${notice.n_title}</td>
-				        <td><c:out value="${notice.n_writedate}" /></td>
+				        <td>${qna.q_title}</td>
+				        <td><c:out value="${qna.q_writedate}" /></td>
 				    </tr>
 				</table>
 		   	</div>
@@ -30,11 +30,11 @@
 		   	</div>
 		   	<div class = "textBox">
 		   		<div class = "subContainer">
-		   			<input type="text" value="${notice.n_content}" readonly id="realTextBox">
+		   			<input type="text" value="${qna.q_content}" readonly id="realTextBox">
 		   		</div>
 		   	</div>
 		   	<div class = "combackBtn">
-		  			<button type="button" onclick="location.href='/tobe/chiefAdmin/customer/chiefCustomerIndex.do'" class="comBack">목록</button></td>
+		  			<button type="button" onclick="location.href='/tobe/chiefAdmin/customer/chiefQnaList.do'" class="comBack">목록</button></td>
 		 	</div>
 	</form>
 </body>

@@ -11,6 +11,10 @@ public interface AdCustomerService {
 	
 	Map<String, Object> todayPayCnt(AdminVO avo);
 	Map<String, Object> todayPayCancelCnt(AdminVO avo);
+	Map<String, Object> thisMonthPayTotal(AdminVO avo);
+	Map<String, Object> lastMonthPayTotal(AdminVO avo);
+	Map<String, Object> lastMonthChargeTotal(AdminVO avo);
+	Map<String, Object> thisYearPayTotal(AdminVO avo);
 	
 	
 }
