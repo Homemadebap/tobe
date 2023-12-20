@@ -88,20 +88,27 @@
 	          <div class="search-window">
 	            <form action="">
 	              <div class="search-wrap">
-	                <label for="search" class="blind" style="font-weight: bold;">공지사항</label>
-	                    <select>
-	                        <option value="제목">제목</option>
-	                        <option value="제목">작성일</option>
-	                    </select>
-	                    <input id="search" type="search" name="" placeholder="검색어를 입력하세요." value="">                        
-	                    <button type="submit" class="btn" style="background-color: #ECEDE8; color:#44546A; border-width: 1px; border-radius: 7px; padding:3x 10px; ">검색</button>
+	                <label for="search" class="blind" style="font-weight: bold;">문의</label>
+	                   <form method="get" name="searchForm" id="searchForm" action="userQna.do">
+		                    <span class="srchSelect">
+	                        	<select id="stype" name="searchType" class="dSelect" title="검색분류 선택">
+	                        		<option value="all">전체</option>
+			                        <option value="q_title"><c:if test="${QnaVO.searchType == 'q_title'}">selected</c:if>제목</option>
+			                        <option value="q_writedate"><c:if test="${QnaVO.searchType == 'q_writedate'}">selected</c:if>작성일</option>
+		                    	</select>
+		                    </span>
+		                    
+		                    <span class="searchWord">
+			                    <input id="search" type="search" name="searchWord" value="${QnaVO.searchWord }" placeholder="검색어를 입력하세요.">                        
+			                    <button type="submit" class="btn" style="background-color: #ECEDE8; color:#44546A; border-width: 1px; border-radius: 7px; padding:3x 10px; ">검색</button>
+		                    </span>
+	                    </form>
+	                    
 	              </div>
 	            </form>
 	          </div>
-	        </div>
-     
-    
-
+	          </div>
+	          
 		    <div class="board_head">
 		        <table class="list">
 		            <thead>
@@ -158,7 +165,7 @@
                         <c:if test="${map.next }">
                         	<li><a href="userQna.do?page=${map.endPage+1 }&searchType=${QnaVO.searchType}&searchWord=${QnaVO.searchWord}"> >> </a></li>
                         </c:if>
-                        </ul> 
+                        </ul>
                     </div>
                     
 		 	    <!--<div style="text-align:right;"><button onClick="location.href='userAskForm.do'">작성하기</button></div>-->

@@ -14,4 +14,13 @@ public class NoticeVO {
 	
 	private int startIdx;
 	private int page;
+	private String searchType;
+	private String searchWord;
+	
+	public NoticeVO() {
+		this.page = 1;
+	}
+	public int getStartIdx() {
+		return (page-1) * 10;
+	}
 }
