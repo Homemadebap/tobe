@@ -127,7 +127,7 @@
                             <tr>
                                 <td>${vo.notice_no }</td>
                                 <td style="text-align:left;">
-                                <td>${vo.n_title }</td>                     
+                                <td><a href="userNoticeDetail.do?notice_no=${vo.notice_no }">${vo.n_title }</a></td>                     
                                 <td class="date"><fmt:formatDate value="${vo.n_writedate }" pattern="YYYY-MM-dd"/></td>
                             </tr>
                        </c:forEach>

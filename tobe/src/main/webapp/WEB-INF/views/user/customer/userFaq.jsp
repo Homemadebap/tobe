@@ -13,6 +13,7 @@
 <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
 <link rel="stylesheet" href="/tobe/css/user_Header_Footer.css" />
+<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
     
 <style>
     .main{
@@ -63,6 +64,21 @@
 
 
 </style>
+<script>
+    $(function(){
+        $(".t").click(function(){
+            var idx = $(this).index(".t");
+            
+            // 현재 클릭한 토글 외의 다른 토글 닫기
+            $(".content").not(":eq("+idx+")").slideUp(300);
+            
+            // 클릭한 토글 열기 또는 닫기
+            $(".content").eq(idx).slideToggle(300);
+        });
+    });
+</script>
+
+
 </head>
 <body>
 <body>
@@ -104,48 +120,21 @@
 
 		    <div class="board_head">
 		        <table class="list">
-		            <thead>
-		                <tr style="text-align: center;" >
-		                    <th>번호</th>
-		                    <th>제목</th>
-		                    <th>작성일</th>
-		                </tr>
-		            </thead>
+		    </div>
 		
 		            <tbody class="context">
-		                <tr>
-		                    <td>3</td>
-		                    <td class="txt">
-		                        <a href="userNoticeDetail.html">사용자들은 보시오!!!</a>
-		                    </td>
-		                    <td class="date">2023.12.11</td>
-		                </tr>
-		                <tr>
-		                    <td>2</td>
-		                    <td class="txt">
-		                        <a href="userNoticeDetail.html">제목</a>
-		                    </td>
-		                    <td class="date">날짜</td>
-		                </tr>
-		                <tr>
-		                    <td>1</td>
-		                    <td class="txt">
-		                        <a href="userNoticeDetail.html">제목</a>
-		                    </td>
-		                    <td class="date">날짜</td>
-		                </tr>
+		                <c:forEach var="vo" items="${map.list }">       
+                            <tr>                              
+                                <td class="t">${vo.f_title }</td>
+                            </tr>
+                            <tr>                              
+                                <td class="content" style="display:none;">${vo.f_content }</td>
+                            </tr>
+                       </c:forEach>
 		            </tbody>
 		
 		        </table>
 		 
-		        <ul class="page">
-		            <li class="prev"><</li>
-		            <li><a href="" class="current">1</a></li>
-		            <li><a href="">2</a></li>
-		            <li><a href="">3</a></li>
-		            <li class="prev">></li>
-		
-		        </ul>
 		    </div>
 			<%@include file="/WEB-INF/views/user/common/userFooter.jsp"%>
 		</div>
