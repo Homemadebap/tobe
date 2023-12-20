@@ -12,9 +12,12 @@ public interface ChiefCustomerService {
 
 	public boolean insert(NoticeVO vo);
 	public boolean faqinsert(FaqVO vo);
-//	Map<String, Object> list(NoticeVO vo);
+
 	NoticeVO getNoticeDetail(int noticeNo);
 	List<NoticeVO> getlist(NoticeVO vo);
+	
+	//페이지처리
+	Map<String, Object> noticeList(NoticeVO vo);
 	
 	QnaVO getQnaDetail(int qnaNo);
 	List<QnaVO> getqnalist(QnaVO vo);

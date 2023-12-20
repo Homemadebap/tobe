@@ -33,7 +33,7 @@
 
 </head>
 <body>
-<%@include file="/WEB-INF/views/admin/common/adSideBar_logo.jsp" %>
+<%@include file="/WEB-INF/views/admin/common/adSideBar_logo2.jsp" %>
 
 
 </body>

@@ -5,18 +5,24 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>FAQ</title>
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
-  <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
-</head>
+<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
 <script>
-$(function(){
-    $('.depth1 > li').on('mouseover',function(){
-        $(this).find('.depth2').stop().slideDown();
-    }).on('mouseleave',function(){
-        $(this).find('.depth2').stop().slideUp();
+    $(function(){
+        $(".t").click(function(){
+            var idx = $(this).index(".t");
+            
+            // 현재 클릭한 토글 외의 다른 토글 닫기
+            //$(".c").not(":eq("+idx+")").slideUp(300);
+            $(".c").slideUp(300);
+            // 클릭한 토글 열기 또는 닫기
+            $(".c").eq(idx).slideToggle(300);
+        });
     });
 </script>
+</head>
+
 <style>
 #top{
 	position: relative;
@@ -256,6 +262,7 @@ $(function(){
 		a[href^=tel]{color:inherit;text-decoration:none;}
 		
 		legend, caption{display:none;}	
+	
 </style>
 <body>
 <%@include file="/WEB-INF/views/chiefAdmin/common/chiefSideBar_logo.jsp" %>
@@ -311,26 +318,29 @@ $(function(){
                     </colgroup>
                     <thead>
                         <tr>
-                            <th>번호</th>
-                            <th>제목</th>
+                            <th colspan="8">제목</th>
                         </tr>
                     </thead>
                     <tbody>
 					<c:if test="${empty map.list }"></c:if>
                         <c:forEach var="faq" items="${list}">       
-						    <tr class="depth1">
-						        <td>${faq.faq_no}</td>
-						        <td colspan="8">
+						    <tr>
+						        <td colspan="8" class="t">
 						            ${faq.f_title}
+						        </td>
+					        </tr>
+					        <tr>
+						        <td colspan="8" class="c" style="display:none; background-color:#D8D8D8;">
+						        	${faq.f_content}
 						        </td>
 						    </tr>
 						</c:forEach>
                    </tbody>
                 </table>
                 <div class="btnSet"  style="text-align:right;">
-                <c:if test="${!empty loginInfo}">
-                    <a class="btn" href="/tobe/chiefAdmin/customer/chiefFaqForm.do">글작성 </a>
-                </c:if>
+	                <c:if test="${!empty loginInfo}">
+	                    <a class="btn" href="/tobe/chiefAdmin/customer/chiefFaqForm.do">글작성 </a>
+	                </c:if>
            		</div>
                 		<div class="pagenate clear">
                     		<ul class='paging'>

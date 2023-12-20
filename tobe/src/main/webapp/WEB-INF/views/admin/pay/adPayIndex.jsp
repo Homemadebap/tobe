@@ -50,18 +50,18 @@
 	border: solid 1px ;
 	width: 1000px;
 	height: 500px;
-	margin: 350px 0 0 250px;
+	margin: 260px 0 0 250px;
 	border-collapse: collapse;
 }
 tr{
 border: solid 1px;
-height: 50px;
+height: 30px;
 }
 td{
 border: solid 1px;
 }
 #noticeSeachMain { /*검색버튼*/
-			margin-left: 10px;
+			margin-left: 500px;
 			border: 1px solid #808080;
 			text-align: center;
 			width: 50px;
@@ -70,12 +70,24 @@ border: solid 1px;
 			cursor: pointer;
 			border-radius: 5px;
 		}
-		
+.ti{
+	margin:
+}	
+#searchOrReset{
+	margin: 5px;
+	text-align: end;
+}
+#searchOrReset > button{
+	cursor: pointer;
+	border: 0;
+	background-color: #F0F8FF;
+	color: #808080;
+}
 </style>
 
 </head>
 <body>
-<%@include file="/WEB-INF/views/admin/common/adSideBar_logo.jsp" %>
+<%@include file="/WEB-INF/views/admin/common/adSideBar_logo2.jsp" %>
 	<div class="hackers_logo admin_logo">
 			<img src="/tobe/img/HACKERS_logo.png" style="width: 13rem;">
 			<span style="position: absolute; top: 0.5rem; left: 14rem; font-size: 2rem;"><b>관리자 페이지_해커스</b></span>
@@ -94,7 +106,6 @@ border: solid 1px;
 		</div>
 	</c:if>
 	
-
 		<table class="table">
 		<tr>
 		    <td width="100px;">검색어</td>
@@ -140,13 +151,12 @@ border: solid 1px;
 			</td>
 		</tr>
 	    </table>
-	 	 <span class = "btnSearch">
-             	<button name = "noticeSearch" id = "noticeSeachMain">
-             		검색
-             	</button>
-           </span>     
+	 	 <div id="searchOrReset">
+						<button>초기화</button>
+						<button>검색</button>
+					</div>    
          <table class="tablea">
-         <tr>
+         <tr class="ti">
          	<th>주문번호</th>   
          	<th>이름</th>
          	<th>아이디</th>
