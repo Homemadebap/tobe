@@ -19,21 +19,19 @@ public class AdCommonController {
 	@GetMapping("/admin/course/adCourseIndex.do")
 	public String adCourseIndex(HttpSession sess, Model model) {
 		AdminVO admin = (AdminVO)sess.getAttribute("loginInfo");
+		if(admin == null) {
+			return "redirect:/admin/common/adLogin.do";
+		}
 		model.addAttribute("admin", admin);
 		return "admin/course/adCourseIndex"; 
-	}
-	
-	@GetMapping("/admin/pay/adPayIndex.do")
-	public String adPayIndex(HttpSession sess, Model model) {
-		AdminVO admin = (AdminVO)sess.getAttribute("loginInfo");
-		model.addAttribute("admin", admin);
-		return "admin/pay/adPayIndex"; 
-	}
-	
-	
+	}	
+
 	@GetMapping("/admin/customer/adQnaIndex.do")
 	public String adQnaIndex(HttpSession sess, Model model) {
 		AdminVO admin = (AdminVO)sess.getAttribute("loginInfo");
+		if(admin == null) {
+			return "redirect:/admin/common/adLogin.do";
+		}
 		model.addAttribute("admin", admin);
 		return "admin/customer/adQnaIndex"; 
 	}
@@ -41,6 +39,9 @@ public class AdCommonController {
 	@GetMapping("/admin/course/adCourseForm.do")
 	public String adCourseForm(HttpSession sess, Model model) {
 		AdminVO admin = (AdminVO)sess.getAttribute("loginInfo");
+		if(admin == null) {
+			return "redirect:/admin/common/adLogin.do";
+		}
 		model.addAttribute("admin", admin);
 		return "admin/course/adCourseForm"; 
 	}
@@ -84,7 +85,10 @@ public class AdCommonController {
 	@GetMapping("/admin/common/adIndex.do")
 	public String adIndex(HttpSession sess, Model model) {
 		AdminVO admin = (AdminVO)sess.getAttribute("loginInfo");
-
+		if(admin == null) {
+			return "redirect:/admin/common/adLogin.do";
+		}
+		
 		model.addAttribute("admin", admin);
 		model.addAttribute("tpc", service.todayPayCnt(admin));
 		model.addAttribute("tpcc", service.todayPayCancelCnt(admin));
@@ -95,7 +99,7 @@ public class AdCommonController {
 		
 		
 		
-		return "admin/common/adIndex"; 
+		return "admin/common/adIndex";
 		
 	}
 	

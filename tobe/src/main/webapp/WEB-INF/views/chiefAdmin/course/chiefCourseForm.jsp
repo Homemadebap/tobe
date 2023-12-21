@@ -352,7 +352,7 @@
 			</div>
 		</div>
 		<div id="de">
-			<textarea name="detail" id="detail" style="width:50%;"></textarea> <!-- name이랑 id는 컬럼명 -->
+			<textarea name="detail" id="detail"></textarea> <!-- name이랑 id는 컬럼명 -->
 		</div>
 	 </div>
 	       	 <div >

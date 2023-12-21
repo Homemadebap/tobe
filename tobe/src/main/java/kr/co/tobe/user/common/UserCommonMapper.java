@@ -5,6 +5,7 @@ import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
 
+import kr.co.tobe.vo.CalendarVO;
 import kr.co.tobe.vo.CourseVO;
 import kr.co.tobe.vo.MemberVO;
 
@@ -25,4 +26,5 @@ public interface UserCommonMapper {
 	// 마이페이지 - 나의문의 내역 뽑아오기
 	List<Map<String, Object>> myReviewIndex(MemberVO user);
 	
+	List<CalendarVO> calenList();
 }
