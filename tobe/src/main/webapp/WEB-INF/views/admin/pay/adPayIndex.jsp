@@ -22,12 +22,16 @@
 
 
 <style>
+#top{
+   position: relative;
+   margin: -760px 0 0 -90px; 
+}
 .admin_logo {
 	position: absolute;
 	width: 40rem;
 	height: 5rem;
 	top: 2rem;
-	left: 15rem;
+	left: 10rem;
 }
 /*.box{
 	position: absolute;
@@ -105,7 +109,7 @@ border: solid 1px;
 			<span style="position: absolute; top: 0.5rem; left: 14rem; font-size: 2rem;"><b>관리자 페이지_YBM</b></span>
 		</div>
 	</c:if>
-	
+	<div id="top">
 		<table class="table">
 		<tr>
 		    <td width="100px;">검색어</td>
@@ -169,6 +173,7 @@ border: solid 1px;
          	<th>결제총액</th>
          </tr>
          	
-         </table>       
+         </table>   
+         </div>    
 </body>
 </html>
