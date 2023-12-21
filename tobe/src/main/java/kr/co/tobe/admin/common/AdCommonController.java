@@ -24,18 +24,7 @@ public class AdCommonController {
 		}
 		model.addAttribute("admin", admin);
 		return "admin/course/adCourseIndex"; 
-	}
-	
-	@GetMapping("/admin/pay/adPayIndex.do")
-	public String adPayIndex(HttpSession sess, Model model) {
-		AdminVO admin = (AdminVO)sess.getAttribute("loginInfo");
-		if(admin == null) {
-			return "redirect:/admin/common/adLogin.do";
-		}
-		model.addAttribute("admin", admin);
-		return "admin/pay/adPayIndex"; 
-	}
-	
+	}	
 
 	@GetMapping("/admin/customer/adQnaIndex.do")
 	public String adQnaIndex(HttpSession sess, Model model) {
