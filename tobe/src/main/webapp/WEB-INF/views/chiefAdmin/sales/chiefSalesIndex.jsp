@@ -16,26 +16,6 @@
 
 <script>
 
-// $(function() {
-// 	$("#emailCheck").click(function() {
-// 		$.ajax({
-// 			url:'emailCheck.do',
-// 			data:{email:$('#email').val()},
-// 			success:function(res) {
-// 				console.log(res);
-// 				if (res == 'true') {
-// 					alert('이메일이 중복되었습니다.');
-// 					$("#email").val('');
-// 					$("#email").focus();
-// 				} else {
-// 					dupCheck = true;
-// 					alert('사용가능한 이메일입니다.');
-// 					$("#email").attr('readonly','readonly');
-// 				}
-// 			}
-// 		})
-// 	})
-// })
 
 </script>
 
@@ -201,7 +181,7 @@
 
 	<table class="total">
 		<tr style="background-color: #D9D9D9; height: 3.5rem;">
-			<th colspan="3" style="font-size: 1.15rem;">총매출: </th>
+			<th colspan="3" style="font-size: 1.15rem;">총매출: ${pay_chageTotal.pay_total }</th>
 		</tr>
 		<tr style="height: 10rem;">
 			<td><b>해커스</b><br><br>ㅇㅇㅇㅇ원 </td>
@@ -209,7 +189,7 @@
 			<td><b>ybm</b><br><br>ㅇㅇㅇㅇ원 </td>
 		</tr>
 		<tr style="background-color: #D9D9D9; height: 3.5rem;">
-			<th colspan="3" style="font-size: 1.15rem;">총수수료: </th>
+			<th colspan="3" style="font-size: 1.15rem;">총수수료: ${pay_chageTotal.charge_total } </th>
 		</tr>
 		<tr style="height: 10rem;">
 			<td><b>해커스</b><br><br>ㅇㅇㅇㅇ원 </td>

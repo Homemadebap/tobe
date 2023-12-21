@@ -8,5 +8,6 @@ import org.apache.ibatis.annotations.Mapper;
 @Mapper
 public interface ChiefSalesMapper {
 	
-	List<Map<String, String>> payList(Map<String, String> map);
+	List<Map<String, Object>> payList(Map<String, Object> map);
+	List<Map<String, Object>> pay_chageTotal(Map<String, Object> map);
 }

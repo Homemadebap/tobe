@@ -18,18 +18,12 @@ public class ChiefCommonController {
 	@GetMapping ("/chiefAdmin/common/chiefIndex.do")
 	public String index(HttpSession sess, Model model) {
 		AdminVO admin = (AdminVO)sess.getAttribute("loginInfo");
-		if(admin == null) {
-			return "redirect:/admin/common/adLogin.do";
-		}
 		return "chiefAdmin/common/chiefIndex";
 	}
 	
 	@GetMapping ("/chiefAdmin/sales/chiefSalesIndex.do")
 	public String chiefSalesIndex(HttpSession sess, Model model) {
 		AdminVO admin = (AdminVO)sess.getAttribute("loginInfo");
-		if(admin == null) {
-			return "redirect:/admin/common/adLogin.do";
-		}
 		return "chiefAdmin/sales/chiefSalesIndex";
 	}
 	

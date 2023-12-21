@@ -19,15 +19,5 @@ public class AdPayController {
 
 	@Autowired
 	AdPayService service;
-	
-	@GetMapping("/admin/pay/adPayIndex.do")
-	public String adPayIndex(HttpSession sess, Model model) {
-		AdminVO admin = (AdminVO)sess.getAttribute("loginInfo");
-		if(admin == null) {
-			return "redirect:/admin/common/adLogin.do";
-		}
-		model.addAttribute("admin", admin);
-		model.addAttribute("list", service.getlist());
-		return "admin/pay/adPayIndex"; 
-	}
+
 }
