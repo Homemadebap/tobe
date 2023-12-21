@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>관리자 페이지</title>
+<title>학원관리자 페이지</title>
 </head>
 <style>
 #logo {
@@ -79,7 +79,7 @@
 #mainlogo>img {
    background-color: #fff;
    border: 0px;
-   margin: 0 0 0 40px;
+   margin: -50px 0 0 40px;
    max-width: 500px;
    max-height: 500px;
 }
@@ -105,54 +105,55 @@ a:hover {
 <div id="main">
 	<div id="contain">
     	<div id="logo">
-        	<img src="/tobe/img/admin_logo.png" onclick="location.href='/tobe/chiefAdmin/common/chiefIndex.do';">
+        	<img src="/tobe/img/admin_logo.png" onclick="location.href='/tobe/admin/common/adIndex.do';">
 			<hr style="border: solid 1px pink;">
 		</div>
 	
 		<div>
-		   	<button id="btn" onclick="location.href='/tobe/chiefAdmin/member/chiefMemberIndex.do';">
-		    	<img src="/tobe/img/admin_user.png">
+		   	<button id="btn" onclick="location.href='/tobe/admin/course/adCourseIndex.do';"> 	
+		   		<img src="/tobe/img/admin_course.png">
 		    </button>
 	   	</div>
 		<div>
-			<button id="btn" onclick="location.href='/tobe/chiefAdmin/course/chiefCourseIndex.do';">
-				<img src="/tobe/img/admin_course.png">
-			</button>
-		</div>
-		<div>
-		   	<button id="btno" onclick="location.href='/tobe/chiefAdmin/pay/chiefPayIndex.do';">
+			<button id="btno" onclick="location.href='/tobe/admin/pay/adPayIndex.do';">
 				<img src="/tobe/img/admin_order.png">
 			</button>
 		</div>
 		<div>
-		   	<button id="btne" onclick="location.href='/tobe/chiefAdmin/email/chiefEmailIndex.do';">
-	      		<img src="/tobe/img/admin_email.png">
-		   	</button>
-		</div>
-		<div>
-		   	<button id="btno" onclick="location.href='/tobe/chiefAdmin/customer/chiefCustomerIndex.do';">
+		   	<button id="btno" onclick="location.href='/tobe/admin/customer/adQnaIndex.do';">
 		      	<img src="/tobe/img/admin_qna.png">
 		   	</button>
 		</div>
-		<div>
-	   		<button id="btn" onclick="location.href='/tobe/chiefAdmin/sales/chiefSalesIndex.do';">
-	      		<img src="/tobe/img/admin_account.png">
-		   	</button>
-		</div>
-		<div>
-	   		<button id="btna" onclick="location.href='';">
-	       		<img src="/tobe/img/admin_admin.png">
-		    </button>
-	 	</div>
+		<div id="btna"></div>
+		<div id="btna"></div>
+	 	<div id="btna"></div>
+	 	<div id="btna"></div>
 	 	<div id="btna"></div>
 	</div> 
 	<div id="mainlogo">
-	      <img src="/tobe/img/admin_logoa.png" onclick="location.href='/tobe/chiefAdmin/common/chiefIndex.do';">
+	     <c:if test="${admin.ad_type == 1}">
+		<div class="hackers_logo admin_logo">
+			<img src="/tobe/img/HACKERS_logo.png" style="width: 13rem;">
+			<span style="position: absolute; top: 0.5rem; left: 14rem; font-size: 2rem;"><b>관리자 페이지_해커스</b></span>
+		</div>
+	</c:if>
+	<c:if test="${admin.ad_type == 2}">
+		<div class="PAGODA_logo admin_logo">
+			<img src="/tobe/img/PAGODA_logo.png" style="position: absolute; width: 13rem; top:0.5rem;">
+			<span style="position: absolute; top: 0.5rem; left: 14rem; font-size: 2rem;"><b>관리자 페이지_파고다</b></span>
+		</div>
+	</c:if>
+	<c:if test="${admin.ad_type == 3}">
+		<div class="YBM_logo admin_logo">
+			<img src="/tobe/img/YBM_logo.png" style="position: absolute;  width: 13rem;">
+			<span style="position: absolute; top: 0.5rem; left: 14rem; font-size: 2rem;"><b>관리자 페이지_YBM</b></span>
+		</div>
+	</c:if>
 	</div>
+	
 	<div id="logout">
 		<a href="/tobe/admin/common/adLogout.do" id="logout">로그아웃</a>
 	</div>
-	
 </div>
 </body>
 </html>

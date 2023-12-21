@@ -47,10 +47,10 @@ public class UserCommonController {
 //		return "user/review/userReviewIndex";
 //	}
 	
-	@GetMapping("/user/customer/userCustomer.do")
-	public String userCustomer() {
-		return "user/customer/userCustomer";
-	}
+//	@GetMapping("/user/customer/userCustomer.do")
+//	public String userCustomer() {
+//		return "user/customer/userCustomer";
+//	}
 	
 	@GetMapping("/user/member/userMyPageMain.do")
 	public String userMyPageMain(HttpSession sess, Model model) {

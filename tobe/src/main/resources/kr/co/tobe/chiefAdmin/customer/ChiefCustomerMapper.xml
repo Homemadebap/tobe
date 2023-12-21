@@ -31,4 +31,55 @@
 		<include refid="whereSql"/>
 	</select>-->
 	
+	<select id="getlist" resultType="kr.co.tobe.vo.NoticeVO">
+		select notice_no, n_title, n_writedate from notice
+	</select>
+	<select id="NoticeDetail" parameterType="kr.co.tobe.vo.NoticeVO" resultType="kr.co.tobe.vo.NoticeVO">
+        SELECT n_title, n_writedate, n_content
+        FROM notice
+        WHERE notice_no = #{noticeNo};
+    </select>	
+    
+	<select id="getqnalist" resultType="kr.co.tobe.vo.QnaVO">
+		select qna_no, q_title, q_writedate, member_no from qna
+	</select>
+	<select id="QnaDetail" parameterType="kr.co.tobe.vo.QnaVO" resultType="kr.co.tobe.vo.QnaVO">
+        SELECT q_title, q_writedate, q_content
+        FROM qna
+        <!-- JOIN member ON qna.member_no = member.member_no -->
+        WHERE qna_no = #{qnaNo};
+		<!--GROUP BY member.name;  -->
+    </select>
+    
+    <select id="getfaqlist" resultType="kr.co.tobe.vo.FaqVO">
+		select faq_no, f_title, f_content from faq
+	</select>
+	
+	
+	<!-- ㄴㅇㄹ호ㅓ -->
+	<sql id="noticeSql">
+      <where>
+         <if test="searchWord != null and searchWord != ''">
+            <if test="searchType == 'all'">
+               n_title LIKE '%${searchWord}%' OR n_content LIKE '%${searchWord}%'
+            </if>
+            <if test="searchType != 'all'">
+               ${searchType} LIKE '%${searchWord}%'
+            </if>
+         </if>
+      </where>
+   </sql>
+   
+   <select id="noticeList" parameterType="kr.co.tobe.vo.NoticeVO" resultType="kr.co.tobe.vo.NoticeVO">
+      SELECT *
+      FROM notice
+      <include refid="noticeSql"/>
+      LIMIT #{startIdx}, 10
+   </select>
+   
+   <select id="noticeCount" parameterType="kr.co.tobe.vo.NoticeVO" resultType="int">
+      SELECT COUNT(*)
+      FROM notice
+      <include refid="noticeSql"/>
+   </select>
 </mapper>

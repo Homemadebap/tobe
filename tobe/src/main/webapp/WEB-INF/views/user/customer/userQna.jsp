@@ -127,7 +127,7 @@
 					</c:if>
 					<c:forEach var="vo" items="${map.list }">       
                             <tr>
-                                <td>${vo.member_no }</td>
+                                <td>${vo.qna_no }</td>
                                 <td style="text-align:left;">
                                 	<c:forEach begin="1" end="${vo.nested }">
                                 	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;

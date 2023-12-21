@@ -9,6 +9,7 @@ public class QnaVO {
 
 	private int qna_no;
 	private int member_no;
+	
 	private String q_title;
 	private String q_content;
 	private Timestamp q_writedate;

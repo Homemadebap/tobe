@@ -9,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import kr.co.tobe.vo.FaqVO;
 import kr.co.tobe.vo.MemberVO;
 import kr.co.tobe.vo.NoticeVO;
 import kr.co.tobe.vo.QnaVO;
@@ -21,19 +22,26 @@ public class UserCustomerController {
 	
 	@GetMapping("/user/customer/userQna.do")
 	public String userQna(Model model, QnaVO vo) {
-		model.addAttribute("map", service.list(vo));
+		model.addAttribute("map", service.qnaList(vo));
 		return "user/customer/userQna";
 	}
 	
-	@GetMapping("/user/customer/customer.do")
+	@GetMapping("/user/customer/userCustomer.do")
 	public String userCustomer(Model model, NoticeVO vo) {
-		model.addAttribute("map", service.list(vo));
+		model.addAttribute("map", service.noticeList(vo));
 		return "user/customer/userCustomer";
 	}
 	
 	@GetMapping("/user/customer/userFaq.do")
-	public String userFaq() {
+	public String userFaq(Model model, FaqVO vo) {
+		model.addAttribute("map", service.faqList(vo));
 		return "user/customer/userFaq";
+	}
+	//상세
+	@GetMapping("/user/customer/userNoticeDetail.do")
+	public String view(Model model,  NoticeVO vo) {
+		model.addAttribute("vo", service.noticeDetail(vo));
+		return "user/custmoer/userNoticeDetail";
 	}
 	
 	@GetMapping("/user/customer/userAskForm.do")

@@ -158,6 +158,31 @@
          </div>
          <div id="b">
             <a href="/tobe/chiefAdmin/customer/chiefCustomerIndex.do" id="bb"><font size=1px;>고객센터관리→</a></font>
+            <thead>
+              <tr>
+                  <th>번호</th>
+                  <th>제목</th>
+                  <th>작성자</th>
+                  <th>작성일</th>
+              </tr>
+             </thead>
+             <tbody>
+				<c:if test="${empty map.list }"></c:if>
+                <c:forEach var="qna" items="${list}">      
+				    <tr>
+				        <td>${qna.qna_no}</td>
+				        <td>
+				            <a href="/tobe/chiefAdmin/customer/chiefQnaDetail.do?qnaNo=${qna.qna_no}" class="SelectBtn">${qna.q_title}</a>
+				        </td>
+				        <td>
+				        	${qna.member_no}
+				        </td>
+				        <td >
+				            <fmt:formatDate value="${qna.q_writedate}" pattern="yyyy-MM-dd" />
+				        </td>
+					</tr>    
+				</c:forEach>
+             </tbody>
          </div>
          <div id="a">
             <a href="/tobe/chiefAdmin/sales/chiefSalesIndex.do" id="aa"><font size=1px;>정산관리→</a></font>

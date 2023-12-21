@@ -58,102 +58,19 @@ body {
 	box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
 }
 
-.mbox {
-	width: 15rem;
-	height: 7rem;
-	border: 1px solid #000;
-}
 
-.sbox {
-	position: absolute;
-	width: 17.5rem;
-	height: 16rem;
-	top: 29rem;
-	border: 1px solid #ddd;
-	box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
-}
-
-#mSales {
-	position: absolute;
-	width: 30rem;
-	height: 8rem;
-	top: 2rem;
-	left: 22.5rem;
-}
-
-#pSales {
-	position: absolute;
-	bottom: 2rem;
-	left: 12.5rem;
-}
-
-#pCommision {
-	position: absolute;
-	bottom: 2rem;
-	left: 30rem;
-}
-
-#ySales {
-	position: absolute;
-	bottom: 2rem;
-	left: 47.5rem;
-}
-
-p {
-	margin: 0 0;
-	paddint: 0 0;
-}
-
-.sbox > a:link, a:visited {
-	position: absolute;
-	right: 1rem;
-	top: 0.5rem;
-	color: #756767;
-	text-decoration: none;
-}
-
-#course_list {
-	position: absolute;
-	left: 1rem;
-	top: 5rem;
-	width: 15.5rem;
-	height: 2.5rem;
-	background-color: #F4F8F9;
-}
-
-#course_form {
-	position: absolute;
-	left: 1rem;
-	top: 10rem;
-	width: 15.5rem;
-	height: 2.5rem;
-	background-color: #F4F8F9;
-}
-
-#today_pay {
-	position: absolute;
-	top: 4rem;
-	left: 2rem;
-	width: 6rem;
-	height: 9rem;
-}
-
-#cancel_pay {
-	position: absolute;
-	top: 4rem;
-	right: 2rem;
-	width: 6rem;
-	height: 9rem;
-}
 </style>
 
 </head>
 <body>
-	<%@include file="/WEB-INF/views/admin/common/adSideBar_logo.jsp" %>
+
+		<div class="admin_logo">
+			<img src="/tobe/img/admin_logob.png" style="width: 13rem;">
+			<span style="position: absolute; top: 0.5rem; left: 14rem; font-size: 2rem;"><b>관리자 로그인 페이지</b></span>
+		</div>
 	<form action="adLogin.do" method="post" id="board1" name="board1" onsubmit="return loginCheck()">
             <div class="sub">
-                <h3 class="sub_title">로그인</h3>
-                	<div class="size">
+               	<div class="size">
                     	
                     <div class="member">
                         <div class="box">

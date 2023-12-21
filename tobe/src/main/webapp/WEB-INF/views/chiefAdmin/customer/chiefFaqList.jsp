@@ -1,11 +1,28 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>FAQ</title>
+<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+<script>
+    $(function(){
+        $(".t").click(function(){
+            var idx = $(this).index(".t");
+            
+            // 현재 클릭한 토글 외의 다른 토글 닫기
+            //$(".c").not(":eq("+idx+")").slideUp(300);
+            $(".c").slideUp(300);
+            // 클릭한 토글 열기 또는 닫기
+            $(".c").eq(idx).slideToggle(300);
+        });
+    });
+</script>
 </head>
+
 <style>
 #top{
 	position: relative;
@@ -245,6 +262,7 @@
 		a[href^=tel]{color:inherit;text-decoration:none;}
 		
 		legend, caption{display:none;}	
+	
 </style>
 <body>
 <%@include file="/WEB-INF/views/chiefAdmin/common/chiefSideBar_logo.jsp" %>
@@ -258,7 +276,7 @@
 		<div id="f">
 		<br>
 			<b style="margin-left:55px;">1:1문의</b><br>
-			<img src="/tobe/img/chiefAdmin_qna.png" width=35%; style="margin-left:55px;" onclick="location.href='/tobe/chiefAdmin/customer/chiefAskList.do';">
+			<img src="/tobe/img/chiefAdmin_qna.png" width=35%; style="margin-left:55px;" onclick="location.href='/tobe/chiefAdmin/customer/chiefQnaList.do';">
 		</div>
 		<div id="fi">
 		<br>
@@ -300,43 +318,29 @@
                     </colgroup>
                     <thead>
                         <tr>
-                            <th>번호</th>
-                            <th>제목</th>
-                            <th>작성자</th>
-                            <th>작성일</th>
+                            <th colspan="8">제목</th>
                         </tr>
                     </thead>
                     <tbody>
-					<c:if test="${empty map.list }">
-                        <tr>
-                            <td class="first" colspan="8">등록된 글이 없습니다.</td>
-                        </tr>
-					</c:if>
-                    <c:forEach var="vo" items="${map.list }">       
-                        <tr>
-                            <td>${vo.no }</td>
-                            <td style="text-align:left;">
-                            	<c:forEach begin="1" end="${vo.nested }">
-                            	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                            	</c:forEach>
-                            	<c:if test="${vo.nested > 0 }">
-                            		<img src="/project/img/ico_re.png">
-                            	</c:if>
-                                <a href="view.do?no=${vo.no}">${vo.title } [${vo.comment_count}]</a>
-                            </td>
-                            <td class="writer">
-                                ${vo.user_name }
-                            </td>
-                            <td>${vo.viewcnt }</td>
-                            <td class="date"><fmt:formatDate value="${vo.writedate }" pattern="YYYY-MM-dd"/></td>
-                        </tr>
-                   </c:forEach>
+					<c:if test="${empty map.list }"></c:if>
+                        <c:forEach var="faq" items="${list}">       
+						    <tr>
+						        <td colspan="8" class="t">
+						            ${faq.f_title}
+						        </td>
+					        </tr>
+					        <tr>
+						        <td colspan="8" class="c" style="display:none; background-color:#D8D8D8;">
+						        	${faq.f_content}
+						        </td>
+						    </tr>
+						</c:forEach>
                    </tbody>
                 </table>
                 <div class="btnSet"  style="text-align:right;">
-                <c:if test="${!empty loginInfo}">
-                    <a class="btn" href="/tobe/chiefAdmin/customer/chiefFaqForm.do">글작성 </a>
-                </c:if>
+	                <c:if test="${!empty loginInfo}">
+	                    <a class="btn" href="/tobe/chiefAdmin/customer/chiefFaqForm.do">글작성 </a>
+	                </c:if>
            		</div>
                 		<div class="pagenate clear">
                     		<ul class='paging'>

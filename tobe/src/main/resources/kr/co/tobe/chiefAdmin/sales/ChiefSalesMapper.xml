@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.co.tobe.chiefAdmin.sales.ChiefSalesMapper">
+
+	<resultMap type="HashMap" id="payComplete">
+		<id column="education" property="education"/>
+		<id column="pay_date" property="pay_date"/>
+		<id column="pay_total" property="pay_total"/>
+		<id column="charge_total" property="charge_total"/>
+	</resultMap>
+
+	<!-- 
+	<select id="payList" parameterType="java.util.Map" resultMap="payComplete">
+	     
+	     <![CDATA[
+ 			SELECT education, pay_date, pay_total, charge_total 
+ 			FROM course c JOIN pay_detail pd 
+ 			ON c.course_no=pd.course_no 
+ 			JOIN pay p ON pd.order_no=p.order_no
+ 			<include refid="wheresql"/>
+ 			ORDER BY p.order_no desc
+ 	    ]]>  
+ 	</select> 
+ 	
+ 	<sql id="wheresql">
+ 		<where>
+ 			<if test="education != null and education != ''"> 
+ 				WHERE education = #{education} 
+ 				<if test="from != null and from != '' and to != null and to != ''"> 
+ 				 	AND STR_TO_DATE(pay_date, '%Y-%m-%d') >= #{from} 
+ 				 	AND STR_TO_DATE(pay_date, '%Y-%m-%d') <= #{to} 
+ 			 	</if> 
+ 			 	<if test="from != null and from != '' and to == null and to == ''"> 
+ 			 		AND STR_TO_DATE(pay_date, '%Y-%m-%d') >= #{from} 
+ 			 	</if> 
+ 			 	<if test="from == null and from == '' and to != null and to != ''"> 
+ 			 		AND STR_TO_DATE(pay_date, '%Y-%m-%d') <= #{to} 
+ 			 	</if> 
+ 			</if> 
+ 			<if test="education==null and education ==''"> 
+ 				<if test="from != null and from != '' and to != null and to != ''"> 
+ 				 	WHERE STR_TO_DATE(pay_date, '%Y-%m-%d') >= #{from}
+ 				 	AND STR_TO_DATE(pay_date, '%Y-%m-%d') <= #{to} 
+ 			 	</if> 
+ 			 	<if test="from != null and from != '' and to == null and to == ''"> 
+ 			 		WHERE STR_TO_DATE(pay_date, '%Y-%m-%d') >= #{from} 
+ 			 	</if> 
+ 			 	<if test="from == null and from == '' and to != null and to != ''"> 
+ 			 		WHERE STR_TO_DATE(pay_date, '%Y-%m-%d') <= #{to}
+ 			 	</if> 
+ 			</if> 
+ 		</where>
+ 	</sql>
+
+ -->
+</mapper>
