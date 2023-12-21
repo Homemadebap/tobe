@@ -21,50 +21,8 @@
 	</select>
 		<!-- WHERE member_no = #{no} -->
 		
-		<!-- 마이페이지의 main 메뉴들에 대한 select문 -->
-	
-	<resultMap type="HashMap" id="currentCourseIndexpMap">
-		<id column="teacher_img" property="teacher_img"/>
-		<id column="i_cname" property="i_cname"/>
-		<id column="i_startday" property="i_startday"/>
-		<id column="i_endday" property="i_endday"/>
-	</resultMap>  
-	
-	<resultMap type="HashMap" id="pastCourseIndexpMap">
-	    <id column="teacher_img" property="teacher_img"/>
-	    <id column="pay_date" property="pay_date"/>
-	    <id column="order_no" property="order_no"/>
-	    <id column="i_cname" property="i_cname"/>
-	    <id column="i_price" property="i_price"/>
-	    <id column="i_startday" property="i_startday"/>
-	    <id column="i_endday" property="i_endday"/>
-	    <id column="detail_no" property="detail_no"/>
-	</resultMap>
-
-	<resultMap type="HashMap" id="myCourseAskIndexMap">
-		<id column="order_no" property="order_no"/>
-		<id column="cname" property="cname"/>
-		<id column="cq_title" property="cq_title"/>
-		<id column="cq_writedate" property="cq_writedate"/>
-		<id column="cqna_no" property="cqna_no"/>
-	</resultMap>
-	
-	<resultMap type="HashMap" id="askIndexMap">
-		<id column="order_no" property="order_no"/>
-		<id column="q_title" property="q_title"/>
-		<id column="q_writedate" property="q_writedate"/>
-		<id column="qna_no" property="qna_no"/>
-		<id column="member_no" property="member_no"/>
-	</resultMap>
-	
-	<resultMap type="HashMap" id="myReviewIndexMap">
-		<id column="cname" property="cname"/>
-		<id column="r_title" property="r_title"/>
-		<id column="r_writedate" property="r_writedate"/>
-	</resultMap>		
-
 		 
-	<select id="currentCourseIndex" parameterType="kr.co.tobe.vo.MemberVO" resultMap="currentCourseIndexpMap">
+	<select id="currentCourseIndex" parameterType="kr.co.tobe.vo.MemberVO" resultType="java.util.Map">
 	    <![CDATA[
 		    SELECT
 		        pd.course_no, i_cname, i_startday, i_endday, 
@@ -80,7 +38,7 @@
 	</select>
 
 
-	<select id="pastCourseIndex" parameterType="kr.co.tobe.vo.MemberVO" resultMap="pastCourseIndexpMap">
+	<select id="pastCourseIndex" parameterType="kr.co.tobe.vo.MemberVO" resultType="java.util.Map">
        SELECT 
 		    m.member_no, pd.detail_no, c.course_no,
 		    DATE_FORMAT(pay_date, '%Y-%m-%d') AS pay_date,
@@ -99,7 +57,7 @@
 	</select>	
 
 	
-	<select id="myCourseAskIndex" parameterType="kr.co.tobe.vo.MemberVO" resultMap="myCourseAskIndexMap">
+	<select id="myCourseAskIndex" parameterType="kr.co.tobe.vo.MemberVO" resultType="java.util.Map">
   		SELECT
 		    cqna_no, m.member_no, cq_title, course_no,
 		    DATE_FORMAT(cq_writedate, '%Y-%m-%d') AS cq_writedate
@@ -108,7 +66,7 @@
 		ORDER BY cq_writedate;
 	</select>	
 	
-	<select id="askIndex" parameterType="kr.co.tobe.vo.MemberVO" resultMap="askIndexMap">
+	<select id="askIndex" parameterType="kr.co.tobe.vo.MemberVO" resultType="java.util.Map">
 		SELECT
 		    q.qna_no, m.member_no, q_title, q_content,
 		    DATE_FORMAT(q_writedate, '%Y-%m-%d') AS q_writedate
@@ -117,7 +75,7 @@
 		ORDER BY q_writedate
 	</select>
 	
-	<select id="myReviewIndex" parameterType="kr.co.tobe.vo.MemberVO" resultMap="myReviewIndexMap">
+	<select id="myReviewIndex" parameterType="kr.co.tobe.vo.MemberVO" resultType="java.util.Map">
         SELECT
 		    c.cname, r_title, review_no, m.member_no, r.course_no,
 		    DATE_FORMAT(r_writedate, '%Y-%m-%d') AS r_writedate
