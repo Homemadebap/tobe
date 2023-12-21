@@ -92,24 +92,6 @@ border: solid 1px;
 </head>
 <body>
 <%@include file="/WEB-INF/views/admin/common/adSideBar_logo2.jsp" %>
-	<div class="hackers_logo admin_logo">
-			<img src="/tobe/img/HACKERS_logo.png" style="width: 13rem;">
-			<span style="position: absolute; top: 0.5rem; left: 14rem; font-size: 2rem;"><b>관리자 페이지_해커스</b></span>
-		</div>
-
-	<c:if test="${adminVo.ad_type} == 2">
-		<div class="PAGODA_logo admin_logo">
-			<img src="/tobe/img/PAGODA_logo.png" style="position: absolute; width: 13rem; top:0.5rem;">
-			<span style="position: absolute; top: 0.5rem; left: 14rem; font-size: 2rem;"><b>관리자 페이지_파고다</b></span>
-		</div>
-	</c:if>
-	<c:if test="${adminVo.ad_type} == 3">
-		<div class="YBM_logo admin_logo">
-			<img src="/tobe/img/YBM_logo.png" style="position: absolute;  width: 13rem; top: -0.5rem;">
-			<span style="position: absolute; top: 0.5rem; left: 14rem; font-size: 2rem;"><b>관리자 페이지_YBM</b></span>
-		</div>
-	</c:if>
-	<div id="top">
 		<table class="table">
 		<tr>
 		    <td width="100px;">검색어</td>

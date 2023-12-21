@@ -7,6 +7,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import kr.co.tobe.vo.CourseVO;
 import kr.co.tobe.vo.MemberVO;
 
 @Service
@@ -52,6 +53,17 @@ public class UserCommonServiceImpl implements UserCommonService {
 	@Override // 마이페이지 - 나의문의 내역 뽑아오기
 	public List<Map<String, Object>> myReviewIndex(MemberVO user) {
 		return mapper.myReviewIndex(user);
+	}
+
+	@Override
+	public CourseVO compList(int no) {
+		return mapper.courseSelect(no);
+	}
+
+	@Override
+	public int compTotalReview(int no) {
+		// TODO Auto-generated method stub
+		return mapper.reviewTotal(no);
 	}
 	
 }

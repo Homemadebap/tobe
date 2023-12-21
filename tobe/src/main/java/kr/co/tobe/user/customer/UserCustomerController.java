@@ -44,10 +44,10 @@ public class UserCustomerController {
 		return "user/custmoer/userNoticeDetail";
 	}
 	
-//	@GetMapping("/user/customer/userAskForm.do")
-//	public String userAskForm() {
-//		return "user/customer/userAskForm";
-//	}
+	@GetMapping("/user/customer/userAskForm.do")
+	public String userAskForm() {
+		return "user/customer/userAskForm";
+	}
 	
 	//강좌 문의 등록 
 		@PostMapping("/user/customer/qna/insert.do")

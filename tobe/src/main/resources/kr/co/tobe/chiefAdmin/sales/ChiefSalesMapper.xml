@@ -9,8 +9,9 @@
 		<id column="charge_total" property="charge_total"/>
 	</resultMap>
 
-	
-	<!-- <select id="payList" parameterType="java.util.Map" resultMap="payComplete">
+	<!-- 
+	<select id="payList" parameterType="java.util.Map" resultMap="payComplete">
+	     
 	     <![CDATA[
  			SELECT education, pay_date, pay_total, charge_total 
  			FROM course c JOIN pay_detail pd 
@@ -50,6 +51,6 @@
  			</if> 
  		</where>
  	</sql>
- -->
 
+ -->
 </mapper>

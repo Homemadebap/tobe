@@ -3,6 +3,7 @@ package kr.co.tobe.vo;
 import java.sql.Date;
 import java.sql.Timestamp;
 
+import kr.co.tobe.util.CodeToString;
 import lombok.Data;
 
 @Data
@@ -37,4 +38,6 @@ public class CourseVO {
 	private String teacher_img_org;
 	private String teacher_img_real;
 	private double course_rating; 
+	
+	
 }

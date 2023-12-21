@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page import="kr.co.tobe.util.CodeToString"%>
 <!DOCTYPE html>
 
 <html>
@@ -10,6 +11,15 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
 <title>Insert title here</title>
+  <style>
+  	.modal{
+		max-width: 800px;
+  		height: 800px;
+  		text-align: center;
+  		margin: 0 auto;
+  	}
+    
+  </style>
 <script type="text/javascript">
 $(document).ready(function(){
   var currentPosition = parseInt($(".quickMenu").css("top"));
@@ -20,6 +30,22 @@ $(document).ready(function(){
   
 });
 
+function courseView() {
+	$.ajax({
+		type: 'GET',
+		url:'/tobe/user/common/modal.do',
+		data:{
+			a : 1
+		},
+		success:function(res) {
+			console.log(res);
+			$('#ex1').html(res);
+			
+			$('#ex1').modal();
+			
+		}
+	})
+}
 
 // $("#goTop").click(function() {
 // 	$('html').animate({scrollTop:0}, 2000);
@@ -68,21 +94,17 @@ $(document).ready(function(){
 		<span><img src="/tobe/img/top.png" class="quick" id="goTop" style="width: 27px; height: 20px; margin-left: 17px;"></span>
 		<span><a href="/tobe/user/customer/userCustomer.do"><img src="/tobe/img/customer.png" class="quick" style="width: 55px; margin-left: 5px;"></a></span>
 		<span><a href="/tobe/user/common/userBasket.do"><img src="/tobe/img/basket.png" class="quick" style="width: 55px; margin-left: 5px;"></a></span>
-		<span><a href="#ex1" rel="modal:open"><img src="/tobe/img/compare.png" class="quick" style="width: 50px; margin-left: 8px;"></a></span>
+<!-- 		<span><a href="/tobe/user/common/modal.do" id="manual-ajax" ><img src="/tobe/img/compare.png" class="quick" style="width: 50px; margin-left: 8px;"></a></span> -->
+		<span>
+		<img src="/tobe/img/compare.png" class="quick" style="width: 50px; margin-left: 8px;" onclick="courseView();"></span>
 		<span><img src="/tobe/img/bottom.png" class="quick" id="goBottom" style="width: 28px; height: 20px; margin-left: 18px;" onclick=""></span>
 	</span>
 
 </div>
 	<div id="ex1" class="modal">
-	 	${CourseInfo.education}
-	  
-	 <!-- <a href="#" rel="modal:close">Close</a> --> 
-		<p><a href="#sub-modal" rel="modal:open">비교하기</a></p>
-	</div>
-	<div id="sub-modal" class="modal">
-	  	<p>Thanks for clicking. That felt good.</p>
-	 	<p> <a href="#" rel="modal:close">Close</a></p>
-	</div>
+		
+	</div> 
+
 </body>
 </html>
 
