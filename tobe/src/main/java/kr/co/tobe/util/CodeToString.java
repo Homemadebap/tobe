@@ -13,7 +13,7 @@ public class CodeToString {
 	}
 	
 	public static String areaToString (int i) {
-		if(i ==1) {
+		if(i ==2) {
 			return "서울";
 		}else if(i== 32) {
 			return "인천";

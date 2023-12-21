@@ -125,6 +125,17 @@
 		WHERE m.member_no = 13
 		ORDER BY r.r_writedate desc
 	</select>	
-		
-		
+	
+	<select id="courseSelect" resultType="kr.co.tobe.vo.CourseVO" parameterType="int">
+		SELECT *
+		FROM course
+		 WHERE course_no = #{no}
+	</select>
+
+	<select id="reviewTotal" resultType="int" parameterType="int">
+		SELECT count(*)
+		FROM review
+		 WHERE course_no = #{no}
+	</select>
+			
 </mapper>

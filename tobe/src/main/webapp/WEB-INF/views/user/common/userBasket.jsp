@@ -153,8 +153,8 @@ function ProcessOrder() {
 						<c:forEach var= "vo" items="${cart.list }"> 
 							<c:set var="education" value="${CodeToString.educationToString(vo.education)}" />
 							<c:set var="subject" value="${CodeToString.subjectToString(vo.subject)}" />
-							<c:set var="area" value="${CodeToString.areaToString(vo.education)}" />
-							<c:set var="branch" value="${CodeToString.branchToString(vo.education)}" />
+							<c:set var="area" value="${CodeToString.areaToString(vo.area)}" />
+							<c:set var="branch" value="${CodeToString.branchToString(vo.branch)}" />
 							<c:set var="date" value="${CodeToString.dateToStirng(vo.mon, vo.tue, vo.wed, vo.thu, vo.fri, vo.sat, vo.sun)}" />
 							<tr>
 							  <td class="input_btn" ><span>
