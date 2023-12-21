@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
    pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,6 +9,15 @@
 <title>학원관리자 페이지</title>
 </head>
 <style>
+* {
+	box-sizing: border-box;
+}
+
+body {
+	position: relative;
+}
+
+
 #logo {
    background-color: #3F4350;
    img_size: 30px;
@@ -95,9 +106,27 @@ a:hover {
 	text-decoration: none;
 	color: #d3d3d3;
 }
+
 #logout{
-	margin: 0 0 0 300px;
-	font-size: 90%;
+	position: absolute;
+	top: 2.5rem;
+	left: 45rem;
+	font-size: 110%;
+}
+
+
+#logout>a:link, #logout>a:visited {
+	text-decoration: none;
+	color: #000;
+	
+}
+
+.admin_logo {
+	position: absolute;
+	width: 40rem;
+	height: 5rem;
+	top: 1rem;
+	left: 10rem;
 }
 
 </style>
@@ -131,7 +160,7 @@ a:hover {
 	 	<div id="btna"></div>
 	</div> 
 	<div id="mainlogo">
-	     <c:if test="${admin.ad_type == 1}">
+     <c:if test="${admin.ad_type == 1}">
 		<div class="hackers_logo admin_logo">
 			<img src="/tobe/img/HACKERS_logo.png" style="width: 13rem;">
 			<span style="position: absolute; top: 0.5rem; left: 14rem; font-size: 2rem;"><b>관리자 페이지_해커스</b></span>
@@ -152,8 +181,10 @@ a:hover {
 	</div>
 	
 	<div id="logout">
-		<a href="/tobe/admin/common/adLogout.do" id="logout">로그아웃</a>
+		<a href="/tobe/admin/common/adLogout.do" >로그아웃</a>
 	</div>
+	
+
 </div>
 </body>
 </html>

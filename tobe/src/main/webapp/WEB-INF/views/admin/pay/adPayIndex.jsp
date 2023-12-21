@@ -22,21 +22,25 @@
 
 
 <style>
+#top{
+   position: relative;
+   margin: -145px 0 0 -250px; 
+}
+.box {
+	position: absolute;
+	width: 75rem;
+	height: 22rem;
+	top: 5.5rem; 
+	left: 10rem;
+}
 .admin_logo {
 	position: absolute;
 	width: 40rem;
 	height: 5rem;
 	top: 2rem;
-	left: 15rem;
+	left: 10rem;
 }
-/*.box{
-	position: absolute;
-	width: 75rem;
-	height: 22rem;
-	top: 6rem; 
-	left: 15.5rem;
-	border: 1px solid #ddd;
-}*/
+
 .table {
 	position: absolute;
 	border: solid 1px ;
@@ -53,6 +57,7 @@
 	margin: 260px 0 0 250px;
 	border-collapse: collapse;
 }
+
 tr{
 border: solid 1px;
 height: 30px;
@@ -88,24 +93,8 @@ border: solid 1px;
 </head>
 <body>
 <%@include file="/WEB-INF/views/admin/common/adSideBar_logo2.jsp" %>
-	<div class="hackers_logo admin_logo">
-			<img src="/tobe/img/HACKERS_logo.png" style="width: 13rem;">
-			<span style="position: absolute; top: 0.5rem; left: 14rem; font-size: 2rem;"><b>관리자 페이지_해커스</b></span>
-		</div>
-
-	<c:if test="${adminVo.ad_type} == 2">
-		<div class="PAGODA_logo admin_logo">
-			<img src="/tobe/img/PAGODA_logo.png" style="position: absolute; width: 13rem; top:0.5rem;">
-			<span style="position: absolute; top: 0.5rem; left: 14rem; font-size: 2rem;"><b>관리자 페이지_파고다</b></span>
-		</div>
-	</c:if>
-	<c:if test="${adminVo.ad_type} == 3">
-		<div class="YBM_logo admin_logo">
-			<img src="/tobe/img/YBM_logo.png" style="position: absolute;  width: 13rem; top: -0.5rem;">
-			<span style="position: absolute; top: 0.5rem; left: 14rem; font-size: 2rem;"><b>관리자 페이지_YBM</b></span>
-		</div>
-	</c:if>
-	
+<div class="box">
+<div id="top">
 		<table class="table">
 		<tr>
 		    <td width="100px;">검색어</td>
@@ -154,21 +143,38 @@ border: solid 1px;
 	 	 <div id="searchOrReset">
 						<button>초기화</button>
 						<button>검색</button>
-					</div>    
+		 </div>    
          <table class="tablea">
-         <tr class="ti">
-         	<th>주문번호</th>   
-         	<th>이름</th>
-         	<th>아이디</th>
-         	<th>이메일</th>
-         	<th>과목</th>
-         	<th>강좌명</th>
-         	<th>주문상태</th>
-         	<th>포인트사용금액</th>
-         	<th>결제일</th>
-         	<th>결제총액</th>
-         </tr>
+         <tr class="ti" style="text-align:center;">
+         	<td>주문번호</td>
+         	<td>이름</td>
+         	<td>아이디</td>
+         	<td>이메일</td>
+         	<td>과목</td>
+         	<td>강좌명</td>
+         	<td>주문상태</td>
+         	<td>포인트사용금액</td>
+         	<td>결제일</td>
+         	<td>결제총액</td>
+         	<c:forEach var="member" items="${list}">       
+			    <tr style="text-align:center;">
+			        <td>${member.product_no}</td>
+			        <td>${member.name}</td>
+			        <td>${member.id}</td>
+			        <td>${member.email}</td>
+			        <td>${member.i_subject}</td>
+			        <td>${member.i_cname}</td>
+			        <td>준비중</td>
+			        <td>${member.point_usage}</td>
+			        <td>${member.pay_date}</td>
+			        <td>${member.pay_total}</td> 
+			    </tr>
+			</c:forEach>
+			
+ 
          	
-         </table>       
+         </table>
+          </div>  
+         </div>    
 </body>
 </html>

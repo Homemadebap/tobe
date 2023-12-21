@@ -9,22 +9,23 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.web.servlet.HandlerInterceptor;
 
+import kr.co.tobe.vo.AdminVO;
 import kr.co.tobe.vo.MemberVO;
 
-public class LoginInterceptor implements HandlerInterceptor{
+public class LoginInterceptor_admin implements HandlerInterceptor{
 	@Override
 	public boolean preHandle(HttpServletRequest request, 
 							HttpServletResponse response, 
 							Object handler)
 							throws Exception {
 		HttpSession sess = request.getSession();
-		MemberVO login = (MemberVO)sess.getAttribute("loginInfo");
+		AdminVO login = (AdminVO)sess.getAttribute("loginInfo");
 		if (login == null) {
 			response.setContentType("text/html; charset=utf-8");
 			PrintWriter out = response.getWriter();
 			out.print("<script>");
 			out.print("alert('로그인 후 사용가능합니다.');");
-			out.print("location.href='/tobe/user/member/userLogin.do';");
+			out.print("location.href='/tobe/admin/common/adLogin.do';");
 			out.print("</script>");
 			out.close();
 			return false; // 못가

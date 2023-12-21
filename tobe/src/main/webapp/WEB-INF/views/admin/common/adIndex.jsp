@@ -29,20 +29,13 @@
 body {
 	position: relative;
 }
-.admin_logo {
-	position: absolute;
-	width: 40rem;
-	height: 5rem;
-	top: 2rem;
-	left: 15rem;
-}
 
 .box {
 	position: absolute;
 	width: 75rem;
 	height: 22rem;
-	top: 6rem; 
-	left: 15.5rem;
+	top: 5.5rem; 
+	left: 10rem;
 	border: 1px solid #ddd;
 	box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
 }
@@ -135,44 +128,14 @@ p {
 	height: 9rem;
 }
 
-#logout {
-	position: absolute;
-	left: 85rem;
-	top: 3.5rem;
-	font-size: 1rem;
-	cursor: pointer;
-}
-
-#logout:link, #logout:visited {
-	text-decoration: none;
-	color: #000;
-}
 
 </style>
 
 </head>
 <body>
 	<%@include file="/WEB-INF/views/admin/common/adSideBar_logo2.jsp" %>
-	<c:if test="${admin.ad_type == 1}">
-		<div class="hackers_logo admin_logo">
-			<img src="/tobe/img/HACKERS_logo.png" style="width: 13rem;">
-			<span style="position: absolute; top: 0.5rem; left: 14rem; font-size: 2rem;"><b>관리자 페이지_해커스</b></span>
-		</div>
-	</c:if>
-	<c:if test="${admin.ad_type == 2}">
-		<div class="PAGODA_logo admin_logo">
-			<img src="/tobe/img/PAGODA_logo.png" style="position: absolute; width: 13rem; top:0.5rem;">
-			<span style="position: absolute; top: 0.5rem; left: 14rem; font-size: 2rem;"><b>관리자 페이지_파고다</b></span>
-		</div>
-	</c:if>
-	<c:if test="${admin.ad_type == 3}">
-		<div class="YBM_logo admin_logo">
-			<img src="/tobe/img/YBM_logo.png" style="position: absolute;  width: 13rem; top: -0.5rem;">
-			<span style="position: absolute; top: 0.5rem; left: 14rem; font-size: 2rem;"><b>관리자 페이지_YBM</b></span>
-		</div>
-	</c:if>
+
 	
-	<a href="/tobe/admin/common/adLogout.do" id="logout">로그아웃</a>
 	<div class="box" id="sales_box ">
 		<div class="mbox" id="tmpt">
 			<p>이번 달 매출</p>
@@ -196,7 +159,7 @@ p {
 		</div>
 	</div>
 	
-	<div class="sbox" id="course_box" style="left: 15.5rem;">
+	<div class="sbox" id="course_box" style="left: 10rem;">
 		<a href="/tobe/admin/course/adCourseIndex.do">강좌관리 →</a>
 		<div id="course_list">
 			<a href="/tobe/admin/course/adCourseIndex.do">
@@ -214,7 +177,7 @@ p {
 		</div>
 	</div>
 	
-	<div class="sbox" id="pay_box" style="position: absolute; left: 34.6rem;">
+	<div class="sbox" id="pay_box" style="position: absolute; left: 29.1rem;">
 		<a href="/tobe/admin/pay/adPayIndex.do">주문/결제관리 →</a>
 		<div id="today_pay">
 			<span style="position:absolute; left: 1.5rem; font-size: 5rem; color: #766CE8">${tpc.count }</span>
@@ -227,13 +190,13 @@ p {
 		
 	</div>
 	
-	<div class="sbox" id="qna_box" style="position: absolute; left: 53.7rem;">
+	<div class="sbox" id="qna_box" style="position: absolute; left: 48.2rem;">
 		<a href="/tobe/admin/customer/adQnaIndex.do">문의관리 →</a>
 
 		
 	</div>
 	
-	<div class="sbox" id="userHomePage_box" style="position: absolute; left: 72.8rem;">
+	<div class="sbox" id="userHomePage_box" style="position: absolute; left: 67.3rem;">
 		<a href="/tobe/user/common/userIndex.do" style="position:absolute; width: 13rem; top: 5rem; left: 2.5rem;">
 			<img src="/tobe/img/header_tobe_logo.png" style="width: 13rem;">
 			<span style="position: absolute; left: 0.25rem; top: 4rem; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);">사용자 홈페이지 바로가기</span>

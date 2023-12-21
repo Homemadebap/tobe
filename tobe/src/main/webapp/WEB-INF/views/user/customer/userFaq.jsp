@@ -70,8 +70,8 @@
             var idx = $(this).index(".t");
             
             // 현재 클릭한 토글 외의 다른 토글 닫기
-            $(".content").not(":eq("+idx+")").slideUp(300);
-            
+            //$(".content").not(":eq("+idx+")").slideUp(300);
+            $(".content").slideUp(300);
             // 클릭한 토글 열기 또는 닫기
             $(".content").eq(idx).slideToggle(300);
         });
@@ -136,6 +136,26 @@
 		        </table>
 		 
 		    </div>
+		    
+		    <div class="pagenate clear">
+                        <ul class='paging'>
+                        <c:if test="${map.prev }">
+                        	<li><a href="index.do?page=${map.startPage-1 }&searchType=${FaqVO.searchType}&searchWord=${FaqVO.searchWord}"> << </a></li>
+                        </c:if>
+                        <c:forEach var="p" begin="${map.startPage}" end="${map.endPage}">
+                        	<c:if test="${p == FaqVO.page}">
+                            <li><a href='#;' class='current'>${p}</a></li>
+                            </c:if>
+                            <c:if test="${p != FaqVO.page}">
+                            <li><a href='userFaq.do?page=${p}&searchType=${FaqVO.searchType}&searchWord=${FaqVO.searchWord}'>${p}</a></li>
+                            </c:if>
+                        </c:forEach>
+                        <c:if test="${map.next }">
+                        	<li><a href="userFaq.do?page=${map.endPage+1 }&searchType=${FaqVO.searchType}&searchWord=${FaqVO.searchWord}"> >> </a></li>
+                        </c:if>
+                        </ul>
+                    </div>
+		    
 			<%@include file="/WEB-INF/views/user/common/userFooter.jsp"%>
 		</div>
 	</div>

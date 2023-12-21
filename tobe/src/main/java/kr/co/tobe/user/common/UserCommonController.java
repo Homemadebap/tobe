@@ -54,9 +54,6 @@ public class UserCommonController {
 	@GetMapping("/user/member/userMyPageMain.do")
 	public String userMyPageMain(HttpSession sess, Model model) {
 		MemberVO user = (MemberVO)sess.getAttribute("loginInfo");
-		if(user == null) {
-			return "redirect:/user/common/userIndex.do";
-		}
 		
 		model.addAttribute("user", user); // 사용자 정보 넘기기
 		model.addAttribute("cci", service.currentCourseIndex(user)); // 현재수강중인강의에 들어갈 정보
@@ -92,12 +89,6 @@ public class UserCommonController {
 	public String userBasket(Model model, HttpServletRequest request) {
 		HttpSession sess = request.getSession();
 		MemberVO login = (MemberVO)sess.getAttribute("loginInfo");
-		
-		if(login == null) {
-			model.addAttribute("cmd", "back");
-			model.addAttribute("msg", "로그인 후 다시 시도해주세요");
-			return "user/common/userAlert";
-		}
 
 		model.addAttribute("cart", service.cartList(login.getMember_no()) );
 		//model.addAttribute("cart", service.cartList(4));
@@ -133,9 +124,6 @@ public class UserCommonController {
 	@GetMapping("/user/member/userModify.do")
 	public String userModify(HttpSession sess, Model model) {
 		MemberVO user = (MemberVO)sess.getAttribute("loginInfo");
-		if(user == null) {
-			return "redirect:/user/member/userMyPageMain.do";
-		}
 		model.addAttribute("user", user);
 		return "user/member/userModify";
 	}
@@ -143,9 +131,6 @@ public class UserCommonController {
 	@GetMapping("/user/member/userQuit.do")
 	public String quit(HttpSession sess, Model model) {
 		MemberVO user = (MemberVO)sess.getAttribute("loginInfo");
-		if(user == null) {
-			return "redirect:/user/common/userIndex.do";
-		}
 		model.addAttribute("user", user);
 		return "user/member/userQuit";
 	}

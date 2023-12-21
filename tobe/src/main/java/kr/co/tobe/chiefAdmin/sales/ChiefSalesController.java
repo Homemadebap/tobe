@@ -19,15 +19,13 @@ public class ChiefSalesController {
 	@Autowired
 	ChiefSalesService service;
 	
-	@ResponseBody
+	//@ResponseBody
 	@GetMapping("/chiefAdmin/sales/payList.do")
-	public String payList(@RequestParam Map<String, String> condition, Model model, HttpSession sess ) {
+	public String payList(@RequestParam Map<String, Object> condition, Model model, HttpSession sess ) {
 		AdminVO admin = (AdminVO)sess.getAttribute("loginInfo");
-		if(admin == null) {
-			return "redirect:/admin/common/adLogin.do";
-		}
 		
 		model.addAttribute("payList", service.payList(condition));
+		model.addAttribute("payTotal", service.pay_chageTotal(condition));
 		return "chiefAdmin/sales/payList";
 	}
 	

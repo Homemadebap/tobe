@@ -13,7 +13,12 @@ public class ChiefSalesServiceImpl implements ChiefSalesService {
 	ChiefSalesMapper mapper;
 	
 	@Override
-	public List<Map<String, String>> payList(Map<String, String> map) {
+	public List<Map<String, Object>> payList(Map<String, Object> map) {
 		return mapper.payList(map);
+	}
+	
+	@Override
+	public List<Map<String, Object>> pay_chageTotal(Map<String, Object> map) {
+		return mapper.pay_chageTotal(map);
 	}
 }
