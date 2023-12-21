@@ -2,55 +2,58 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="kr.co.tobe.chiefAdmin.sales.ChiefSalesMapper">
 
-	<resultMap type="HashMap" id="payComplete">
-		<id column="education" property="education"/>
-		<id column="pay_date" property="pay_date"/>
-		<id column="pay_total" property="pay_total"/>
-		<id column="charge_total" property="charge_total"/>
-	</resultMap>
+	<select id="payList" parameterType="java.util.Map" resultType="java.util.Map">
+		
+		    SELECT education, pay_date, pay_total, charge_total
+		    FROM course c JOIN pay_detail pd
+		    ON c.course_no=pd.course_no
+		    JOIN pay p ON pd.order_no=p.order_no
+		    <where>
+			    <if test="education!=null and education!=''">
+			        education = #{education}
+			    </if>
+		        <if test="(from!=null and from!='') and (to!=null and to!='')">
+		             AND STR_TO_DATE(pay_date, '%Y-%m-%d') BETWEEN #{from} AND #{to}
+		        </if>
+		        <if test="(from!=null and from!='')and (to==null or to=='')">
+		        <![CDATA[
+		            AND STR_TO_DATE(pay_date, '%Y-%m-%d') >= #{from}
+		        ]]>
+		        </if>
+		        <if test="(from==null or from=='') and (to!=null and to!='')">
+		         <![CDATA[
+		            AND STR_TO_DATE(pay_date, '%Y-%m-%d') <= #{to}
+		        ]]>
+		        </if>
+			    
+		    </where>
+		    ORDER BY p.order_no DESC
+		
+	</select>
+	
+	<!-- 전체선택했을 때와 학원선택없이 날자만 선택했을 때의 총매출, 총수수료-->
+	<select id="pay_chageTotal" parameterType="java.util.Map" resultType="java.util.Map">
+		
+		    SELECT SUM(pay_total) AS pay_total, SUM(charge_total) AS charge_total
+		    FROM course c JOIN pay_detail pd
+		    ON c.course_no=pd.course_no
+		    JOIN pay p ON pd.order_no=p.order_no
+	        <if test="(from!=null and from!='') and (to!=null and to!='')">
+	             WHERE STR_TO_DATE(pay_date, '%Y-%m-%d') BETWEEN #{from} AND #{to}
+	        </if>
+	        <if test="(from!=null and from!='') and (to==null or to=='')">
+	        <![CDATA[
+	            WHERE STR_TO_DATE(pay_date, '%Y-%m-%d') >= #{from}
+	        ]]>
+	        </if>
+	        <if test="(from==null or from=='') and (to!=null and to!='')">
+	        <![CDATA[
+	            WHERE STR_TO_DATE(pay_date, '%Y-%m-%d') <= #{to}
+	        ]]>
+	        </if>
+		
+	</select>
+	
+	
 
-	<!-- 
-	<select id="payList" parameterType="java.util.Map" resultMap="payComplete">
-	     
-	     <![CDATA[
- 			SELECT education, pay_date, pay_total, charge_total 
- 			FROM course c JOIN pay_detail pd 
- 			ON c.course_no=pd.course_no 
- 			JOIN pay p ON pd.order_no=p.order_no
- 			<include refid="wheresql"/>
- 			ORDER BY p.order_no desc
- 	    ]]>  
- 	</select> 
- 	
- 	<sql id="wheresql">
- 		<where>
- 			<if test="education != null and education != ''"> 
- 				WHERE education = #{education} 
- 				<if test="from != null and from != '' and to != null and to != ''"> 
- 				 	AND STR_TO_DATE(pay_date, '%Y-%m-%d') >= #{from} 
- 				 	AND STR_TO_DATE(pay_date, '%Y-%m-%d') <= #{to} 
- 			 	</if> 
- 			 	<if test="from != null and from != '' and to == null and to == ''"> 
- 			 		AND STR_TO_DATE(pay_date, '%Y-%m-%d') >= #{from} 
- 			 	</if> 
- 			 	<if test="from == null and from == '' and to != null and to != ''"> 
- 			 		AND STR_TO_DATE(pay_date, '%Y-%m-%d') <= #{to} 
- 			 	</if> 
- 			</if> 
- 			<if test="education==null and education ==''"> 
- 				<if test="from != null and from != '' and to != null and to != ''"> 
- 				 	WHERE STR_TO_DATE(pay_date, '%Y-%m-%d') >= #{from}
- 				 	AND STR_TO_DATE(pay_date, '%Y-%m-%d') <= #{to} 
- 			 	</if> 
- 			 	<if test="from != null and from != '' and to == null and to == ''"> 
- 			 		WHERE STR_TO_DATE(pay_date, '%Y-%m-%d') >= #{from} 
- 			 	</if> 
- 			 	<if test="from == null and from == '' and to != null and to != ''"> 
- 			 		WHERE STR_TO_DATE(pay_date, '%Y-%m-%d') <= #{to}
- 			 	</if> 
- 			</if> 
- 		</where>
- 	</sql>
-
- -->
 </mapper>
