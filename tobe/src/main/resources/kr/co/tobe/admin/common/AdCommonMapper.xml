@@ -6,5 +6,121 @@
 	<select id="login" resultType="kr.co.tobe.vo.AdminVO" parameterType="kr.co.tobe.vo.AdminVO">
  		SELECT * FROM admin WHERE ad_id=#{ad_id} AND ad_pwd=MD5(#{ad_pwd});
  	</select>
-
+	
+		<resultMap type="HashMap" id="coursePayMap">
+		
+		<id column="ad_type" property="ad_type"/>
+		<id column="order_no" property="order_no"/>
+		<id column="pay_complete " property="pay_complete "/>
+		<id column="pay_cancel" property="pay_cancel"/>
+		<id column="pay_refund" property="pay_refund"/>
+		<id column="pay_date" property="pay_date"/>
+		<id column="pay_cancel_date" property="pay_cancel_date"/>
+		<id column="pay_refund_date" property="pay_refund_date"/>
+		<id column="pay_by" property="pay_by"/>
+		<id column="pay_total" property="pay_total"/>
+		<id column="point_usage " property="point_usage "/>
+		<id column="charge_total" property="charge_total"/>
+		<id column="pay_detail" property="pay_detail"/>
+		<id column="detail_no" property="detail_no"/>
+		<id column="course_no" property="course_no"/>
+		<id column="product_no" property="product_no"/>
+		<id column="pay_single" property="pay_single"/>
+		<id column="pay_charge" property="pay_charge"/>
+		<id column="i_education" property="i_education"/>
+		<id column="i_area" property="i_area"/>
+		<id column="i_branch" property="i_branch"/>
+		<id column="i_subject" property="i_subject"/>
+		<id column="i_level" property="i_level"/>
+		<id column="i_mon" property="i_mon"/>
+		<id column="i_tue" property="i_tue"/>
+		<id column="i_wed" property="i_wed"/>
+		<id column="i_thu" property="i_thu"/>
+		<id column="i_fri" property="i_fri"/>
+		<id column="i_sat" property="i_sat"/>
+		<id column="i_sun" property="i_sun"/>
+		<id column="i_startday" property="i_startday"/>
+		<id column="i_endday" property="i_endday"/>
+		<id column="i_cname" property="i_cname"/>
+		<id column="i_time" property="i_time"/>
+		<id column="i_price" property="i_price"/>
+		<id column="start_idx" property="start_idx"/>
+		<id column="page" property="page"/>
+		<result column="count" property="count"/>
+		<result column="sum" property="sum"/>
+	</resultMap>
+	
+	<select id="thisMonthPayTotal" parameterType="kr.co.tobe.vo.AdminVO" resultMap="coursePayMap">
+	    <![CDATA[
+			SELECT SUM(pay_total) as sum
+			FROM pay p
+			JOIN pay_detail pd ON p.order_no = pd.order_no
+			JOIN course c ON pd.course_no = c.course_no
+			WHERE i_education = #{ad_type}
+			AND YEAR(pay_date) = YEAR(CURDATE())
+			AND MONTH(pay_date) = MONTH(CURDATE());
+	    ]]>
+	</select>
+	
+	<select id="lastMonthPayTotal" parameterType="kr.co.tobe.vo.AdminVO" resultMap="coursePayMap">
+	    <![CDATA[
+			SELECT SUM(pay_total) as sum
+			FROM pay p
+			JOIN pay_detail pd ON p.order_no = pd.order_no
+			JOIN course c ON pd.course_no = c.course_no
+			WHERE i_education = #{ad_type}
+			AND YEAR(pay_date) = YEAR(CURDATE())
+			AND MONTH(pay_date) = MONTH(CURDATE())-1;
+	    ]]>
+	</select>
+		
+	<select id="lastMonthChargeTotal" parameterType="kr.co.tobe.vo.AdminVO" resultMap="coursePayMap">
+	    <![CDATA[
+			SELECT SUM(charge_total) as sum
+			FROM pay p
+			JOIN pay_detail pd ON p.order_no = pd.order_no
+			JOIN course c ON pd.course_no = c.course_no
+			WHERE i_education = #{ad_type}
+			AND YEAR(pay_date) = YEAR(CURDATE())
+			AND MONTH(pay_date) = MONTH(CURDATE())-1;
+	    ]]>
+	</select>
+	
+	<select id="thisYearPayTotal" parameterType="kr.co.tobe.vo.AdminVO" resultMap="coursePayMap">
+	    <![CDATA[
+			SELECT SUM(pay_total) as sum
+			FROM pay p
+			JOIN pay_detail pd ON p.order_no = pd.order_no
+			JOIN course c ON pd.course_no = c.course_no
+			WHERE i_education = #{ad_type}
+			AND YEAR(pay_date) = YEAR(CURDATE());
+	    ]]>
+	</select>
+	
+	<select id="todayPayCnt" parameterType="kr.co.tobe.vo.AdminVO" resultMap="coursePayMap">
+	    <![CDATA[
+			select count(*) as count
+			from admin a JOIN course c ON a.admin_no=c.admin_no
+				JOIN pay_detail pd ON c.course_no=pd.course_no
+				JOIN pay p ON pd.order_no=p.order_no
+			    JOIN member m ON p.member_no=m.member_no
+			WHERE a.ad_type= #{ad_type}
+			 AND STR_TO_DATE(pay_date, '%Y-%m-%d') = CURDATE();
+	    ]]>
+	</select>
+	
+	<select id="todayPayCancelCnt" parameterType="kr.co.tobe.vo.AdminVO" resultMap="coursePayMap">
+	    <![CDATA[
+			select count(*) as count
+			from admin a JOIN course c ON a.admin_no=c.admin_no
+				JOIN pay_detail pd ON c.course_no=pd.course_no
+				JOIN pay p ON pd.order_no=p.order_no
+			    JOIN member m ON p.member_no=m.member_no
+			WHERE a.ad_type= #{ad_type}
+			 AND STR_TO_DATE(pay_cancel_date, '%Y-%m-%d') = CURDATE();
+	    ]]>
+	</select>
+	
+	
+	
 </mapper>

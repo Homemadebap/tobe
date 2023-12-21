@@ -22,12 +22,16 @@
 
 
 <style>
+#top{
+   position: relative;
+   margin: -760px 0 0 -90px; 
+}
 .admin_logo {
 	position: absolute;
 	width: 40rem;
 	height: 5rem;
 	top: 2rem;
-	left: 15rem;
+	left: 10rem;
 }
 /*.box{
 	position: absolute;
@@ -50,18 +54,18 @@
 	border: solid 1px ;
 	width: 1000px;
 	height: 500px;
-	margin: 350px 0 0 250px;
+	margin: 260px 0 0 250px;
 	border-collapse: collapse;
 }
 tr{
 border: solid 1px;
-height: 50px;
+height: 30px;
 }
 td{
 border: solid 1px;
 }
 #noticeSeachMain { /*검색버튼*/
-			margin-left: 10px;
+			margin-left: 500px;
 			border: 1px solid #808080;
 			text-align: center;
 			width: 50px;
@@ -70,31 +74,24 @@ border: solid 1px;
 			cursor: pointer;
 			border-radius: 5px;
 		}
-		
+.ti{
+	margin:
+}	
+#searchOrReset{
+	margin: 5px;
+	text-align: end;
+}
+#searchOrReset > button{
+	cursor: pointer;
+	border: 0;
+	background-color: #F0F8FF;
+	color: #808080;
+}
 </style>
 
 </head>
 <body>
-<%@include file="/WEB-INF/views/admin/common/adSideBar_logo.jsp" %>
-	<div class="hackers_logo admin_logo">
-			<img src="/tobe/img/HACKERS_logo.png" style="width: 13rem;">
-			<span style="position: absolute; top: 0.5rem; left: 14rem; font-size: 2rem;"><b>관리자 페이지_해커스</b></span>
-		</div>
-
-	<c:if test="${adminVo.ad_type} == 2">
-		<div class="PAGODA_logo admin_logo">
-			<img src="/tobe/img/PAGODA_logo.png" style="position: absolute; width: 13rem; top:0.5rem;">
-			<span style="position: absolute; top: 0.5rem; left: 14rem; font-size: 2rem;"><b>관리자 페이지_파고다</b></span>
-		</div>
-	</c:if>
-	<c:if test="${adminVo.ad_type} == 3">
-		<div class="YBM_logo admin_logo">
-			<img src="/tobe/img/YBM_logo.png" style="position: absolute;  width: 13rem; top: -0.5rem;">
-			<span style="position: absolute; top: 0.5rem; left: 14rem; font-size: 2rem;"><b>관리자 페이지_YBM</b></span>
-		</div>
-	</c:if>
-	
-
+<%@include file="/WEB-INF/views/admin/common/adSideBar_logo2.jsp" %>
 		<table class="table">
 		<tr>
 		    <td width="100px;">검색어</td>
@@ -140,13 +137,12 @@ border: solid 1px;
 			</td>
 		</tr>
 	    </table>
-	 	 <span class = "btnSearch">
-             	<button name = "noticeSearch" id = "noticeSeachMain">
-             		검색
-             	</button>
-           </span>     
+	 	 <div id="searchOrReset">
+						<button>초기화</button>
+						<button>검색</button>
+					</div>    
          <table class="tablea">
-         <tr>
+         <tr class="ti">
          	<th>주문번호</th>   
          	<th>이름</th>
          	<th>아이디</th>
@@ -159,6 +155,7 @@ border: solid 1px;
          	<th>결제총액</th>
          </tr>
          	
-         </table>       
+         </table>   
+         </div>    
 </body>
 </html>
