@@ -5,7 +5,6 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import kr.co.tobe.util.CodeToString;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -190,6 +189,15 @@ public class UserCommonController {
 		return "user/common/courseModal"; 
 	}
 	
+	@ResponseBody
+	@GetMapping("/user/common/calendar/list")
+	public Map<String,Object>  calendarList() {
+		service.calendarList();
+		Map<String,Object> map = new HashMap<String, Object>();
+		
+		map.put("list", service.calendarList());
+		return map;
+	}
 	
 	
 }
