@@ -7,6 +7,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import kr.co.tobe.vo.CalendarVO;
 import kr.co.tobe.vo.CourseVO;
 import kr.co.tobe.vo.MemberVO;
 
@@ -64,6 +65,11 @@ public class UserCommonServiceImpl implements UserCommonService {
 	public int compTotalReview(int no) {
 		// TODO Auto-generated method stub
 		return mapper.reviewTotal(no);
+	}
+
+	@Override
+	public List<CalendarVO> calendarList() {
+		return mapper.calenList();
 	}
 	
 }

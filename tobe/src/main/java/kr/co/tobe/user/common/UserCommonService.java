@@ -5,6 +5,7 @@ import java.util.Map;
 
 import org.springframework.stereotype.Service;
 
+import kr.co.tobe.vo.CalendarVO;
 import kr.co.tobe.vo.CourseVO;
 import kr.co.tobe.vo.MemberVO;
 
@@ -25,4 +26,5 @@ public interface UserCommonService {
 	
 	CourseVO compList(int no);
 	int compTotalReview(int no);
+	List<CalendarVO> calendarList();
 }

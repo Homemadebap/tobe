@@ -137,5 +137,10 @@
 		FROM review
 		 WHERE course_no = #{no}
 	</select>
+	
+	<select id="calenList" resultType="kr.co.tobe.vo.CalendarVO">
+		SELECT *
+		FROM calendar
+	</select>
 			
 </mapper>
