@@ -40,17 +40,17 @@ public class UserCommonServiceImpl implements UserCommonService {
 		return mapper.pastCourseIndex(user);
 	}
 	 
-	@Override // 마이페이지 - 나의후기 내역 뽑아오기
+	@Override // 마이페이지 - 나의강좌문의 내역 뽑아오기
 	public List<Map<String, Object>> myCourseAskIndex(MemberVO user) {
 		return mapper.myCourseAskIndex(user);
 	}
 	
-	@Override // 마이페이지 - 나의후기 내역 뽑아오기
+	@Override // 마이페이지 - 나의문의 내역 뽑아오기
 	public List<Map<String, Object>> askIndex(MemberVO user) {
 		return mapper.askIndex(user);
 	}
 	
-	@Override // 마이페이지 - 나의문의 내역 뽑아오기
+	@Override // 마이페이지 - 나의후기 내역 뽑아오기
 	public List<Map<String, Object>> myReviewIndex(MemberVO user) {
 		return mapper.myReviewIndex(user);
 	}

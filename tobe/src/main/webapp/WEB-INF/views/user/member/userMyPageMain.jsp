@@ -240,6 +240,12 @@ $(function(){
 	cursor: pointer;
 }
 
+input[type="button"], input[type="submit"] {
+	background-color: #F0F5F8;
+	border: #F0F5F8;
+	cursor: pointer;
+}
+
 </style>
 
 
@@ -298,15 +304,15 @@ $(function(){
                         </tr>
                     </c:if>
                     <c:if test="${!empty cci}">
-                    	<table>
-                    		<tr>
-                    			<td>강좌번호</td>
-								<td colspan="2">강좌명</td>
-								<td>개강일</td>
-								<td>종강일</td>
+                    	<table style="width: 100%; text-align: center;">
+                    		<tr style="font-weight: bolder; font-size: 1.25rem;">
+                    			<td style="width: 20%;">강좌번호</td>
+								<td colspan="2" style="width: 40%;">강좌명</td>
+								<td style="width: 20%;">개강일</td>
+								<td style="width: 20%;">종강일</td>
 							</tr>
 		                    <c:forEach var="vo" items="${cci}">
-								<tr>
+								<tr style="text-align: center;">
 	                        		<td>${vo.course_no }</td>
 		                            <td class="url" onclick="location.href='/tobe/user/course/userCourseDetail.do?course_no=${vo.course_no}'">${vo.teacher_img}</td>
 		                            <td class="url" onclick="location.href='/tobe/user/course/userCourseDetail.do?course_no=${vo.course_no}'">${vo.i_cname}</td>    
@@ -325,8 +331,8 @@ $(function(){
                         </tr>
                     </c:if>
                     <c:if test="${!empty pci}">
-	                    <table>
-							<tr>
+	                    <table style="width: 100%; text-align: center;">
+							<tr style="font-weight: bolder; font-size: 1.25rem; "> 
 								<td>결제일</td>
 								<td>주문번호</td>
 								<td>강좌명</td>
@@ -337,7 +343,7 @@ $(function(){
 							</tr>
                     	
 		                    <c:forEach var="vo" items="${pci}">
-		                        <tr>
+		                        <tr >
 									<td>${vo.pay_date }</td>    
 		                            <td>${vo.detail_no}<input type="button" onclick="location.href='/tobe/user/pay/userPayCompleteDetail.do?detail_no=${vo.detail_no}'" value="주문상세보기"/></td>    
 		                            <td class="url" onclick="location.href='/tobe/user/course/userCourseDetail.do?course_no=${vo.course_no}'">${vo.teacher_img}${vo.i_cname}</td> 
@@ -349,7 +355,22 @@ $(function(){
 		                            	<input type="hidden" name="infoCourse_no" value="${vo.course_no }">
 		                            	<input type="hidden" name="infoDetail_no" value="${vo.detail_no }">
 		                            	<input type="hidden" name="infoCourseName" value="${vo.i_cname }">
-		                            	<input type="submit" value="후기작성">
+		                            	
+		                            	<c:forEach var="rvo" items="${mri}">
+		                            		<c:if test="${rvo.course_no ne vo.course_no}">
+		                            			
+		                            		</c:if>
+		                            		
+		                            		<c:choose>
+											    <c:when test="${rvo.course_no eq vo.course_no}">
+											        <input type="button" value="나의 후기" onclick="location.href='/tobe/user/review/userReviewDetail.do?review_no=${vo.review_no}'" >
+											    </c:when>
+											    <c:otherwise>
+											        <input type="submit" value="후기작성">
+											    </c:otherwise>
+											</c:choose>
+		                            		
+		                            	</c:forEach>
 		                            </form></td>
 		                        </tr>
 		                    </c:forEach>
@@ -364,8 +385,8 @@ $(function(){
                         </tr>
                     </c:if>
                     <c:if test="${!empty mcai}">
-	                    <table>
-							<tr>
+	                    <table style="width: 100%; text-align: center;">
+							<tr style="font-weight: bolder; font-size: 1.25rem; ">
 								<td>문의번호</td>
 								<td>제목</td>
 								<td>작성일</td>
@@ -398,8 +419,8 @@ $(function(){
                         </tr>
                     </c:if>
                     <c:if test="${!empty mri }">
-	                    <table>
-							<tr>
+	                    <table style="width: 100%; text-align: center;">
+							<tr style="font-weight: bolder; font-size: 1.25rem; ">
 								<td>후기번호</td>
 								<td>강좌명</td>
 								<td>제목</td>

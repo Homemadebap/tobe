@@ -97,6 +97,7 @@
 		WHERE m.member_no = #{member_no}
 		ORDER BY i_endday DESC;
 	</select>	
+
 	
 	<select id="myCourseAskIndex" parameterType="kr.co.tobe.vo.MemberVO" resultMap="myCourseAskIndexMap">
   		SELECT
@@ -118,7 +119,7 @@
 	
 	<select id="myReviewIndex" parameterType="kr.co.tobe.vo.MemberVO" resultMap="myReviewIndexMap">
         SELECT
-		    c.cname, r_title, review_no, m.member_no,
+		    c.cname, r_title, review_no, m.member_no, r.course_no,
 		    DATE_FORMAT(r_writedate, '%Y-%m-%d') AS r_writedate
 		FROM member m JOIN review r ON m.member_no = r.member_no
 		JOIN course c ON c.course_no = r.course_no
@@ -137,5 +138,7 @@
 		FROM review
 		 WHERE course_no = #{no}
 	</select>
+	
+	
 			
 </mapper>

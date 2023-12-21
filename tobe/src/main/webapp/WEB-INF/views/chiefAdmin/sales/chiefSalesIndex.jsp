@@ -17,6 +17,12 @@
 
 <script>
 
+var conEduTotal = ${conEduTotal};
+
+// 가져온 정보를 console.log로 출력
+console.log("conEduTotal:", conEduTotal);
+
+
 
 </script>
 
@@ -198,9 +204,9 @@
 			<td><b>ybm</b></td>
 		</tr>
 		<tr style="height: 5rem;">
-			<c:if test="${!empty conTotal}">
-				<c:forEach var="vo" items="${conTotal}">
-					<td>${vo.pay_Total }</td>
+			<c:if test="${!empty conEduTotal}">
+				<c:forEach var="vo" items="${conEduTotal}">
+					<td>${vo.pay_total }</td>
 				</c:forEach>
 			</c:if>
 		</tr>
@@ -217,9 +223,9 @@
 			<td><b>ybm</b></td>
 		</tr>
 		<tr style="height: 5rem;">
-			<c:if test="${!empty conTotal}">
-				<c:forEach var="vo" items="${conTotal }">
-					<td>${vo.charge_Total }</td>
+			<c:if test="${!empty conEduTotal}">
+				<c:forEach var="vo" items="${conEduTotal }">
+					<td>${vo.charge_total }</td>
 				</c:forEach>
 			</c:if>
 		</tr>

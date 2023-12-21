@@ -17,9 +17,9 @@ public class ChiefSalesController {
 	@GetMapping("/chiefAdmin/sales/payList.do")
 	public String payList(@RequestParam Map<String, Object> condition, Model model) {
 		model.addAttribute("payList", service.payList(condition));
-		model.addAttribute("conTotal", service.conTotal(condition));
+		model.addAttribute("conEduTotal", service.conEduTotal(condition));
 		model.addAttribute("condition", condition);
-		
+		model.addAttribute("pay_chargeTotal", service.pay_chargeTotal());
 		return "chiefAdmin/sales/chiefSalesIndex";
 	}
 	

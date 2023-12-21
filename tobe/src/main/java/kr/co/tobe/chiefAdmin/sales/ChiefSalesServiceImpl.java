@@ -16,10 +16,15 @@ public class ChiefSalesServiceImpl implements ChiefSalesService {
 	public List<Map<String, Object>> payList(Map<String, Object> map) {
 		return mapper.payList(map);
 	}
+	
 	@Override
-	public List<Map<String, Object>> conTotal(Map<String, Object> map) {
-		return mapper.conTotal(map);
+	public List<Map<String, Object>> conEduTotal(Map<String, Object> map) {
+		return mapper.conEduTotal(map);
 	}
 	
+	@Override
+	public Map<String, Object> pay_chargeTotal() {
+		return mapper.pay_chargeTotal();
+	};
 
 }

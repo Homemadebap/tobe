@@ -31,75 +31,127 @@ $(function(){
 
 
 <style>
-
-.title {
+.container {
 	position: absolute;
 	top: 13rem;
-	left: 3rem;
+	left:3rem;
+	width: 70rem;
 }
-.info {
-	position: absolute;
-	top: 17rem;
-	left: 4rem;
-	width:  69rem;
+
+.courseInfo {
+	width:  70rem;
 	border-top: 1px solid #ddd;
 	border-bottom: 1px solid #ddd;
 }
 
 #firstRow {
-	background-color: #F5F5F5;
 	font-size: 1.25rem;
 	height: 3rem;
+	background-color: #F5F5F5;
 }
 
 #secondRow {
 	height: 10rem;
 }
 
-.info td {
+.courseInfo td {
 	width: 25%;
 	text-align: center;
 }
 
-.title2 {
-	position:absolute;
-	top: 32rem;
-	left: 3rem;
+.payInfo {
+	width:  70rem;
+	border: 3px solid #000;
+	text-align: center;
 }
 
+.payInfo tr:first-child {
+	height: 3rem;
+	font-size: 1.25rem;
+}
+.payInfo tr:last-child {
+	background-color: #F5F5F5;
+}
+
+.payInfo td {
+	width: 33.3%;
+}
+
+.payInfo div {
+	height: 3rem;
+}
+
+.payMethod {
+	border-top: 1px solid #ddd;
+	border-bottom: 1px solid #ddd;
+	height: 5rem;
+}
+
+.title {
+	padding: 0.5rem 0.5rem 0 0;
+}
 </style>
 
 </head>
 <body>
 	<div class="wrap">
 		<%@include file="/WEB-INF/views/user/common/userHeader.jsp"%>
-		<div class="title">
-			<h2 style="margin: 1rem; padding: 0;">주문상품</h2>
+		<div class="container">
+			
+			<div class="title">
+				<h2 style="margin: 1rem; padding: 0;">주문상품</h2>
+			</div>
+			
+			<div>
+				<table class="courseInfo">
+					<tr id="firstRow">
+						<td></td>
+						<td>강좌정보</td>
+						<td>가격</td>
+						<td>총상품금액</td>
+					</tr>
+					<tr id="secondRow">
+						<td>dfdf</td>
+						<td>dfdf</td>
+						<td>dfdf</td>
+					</tr>
+				</table>
+			</div>
+			
+			<div class="title">
+				<h2>결제 정보</h2>
+			</div>
+			
+			<div>
+				<table class="payInfo">
+					<tr>
+						<td>총 주문 금액</td>
+						<td>총 할인 금액</td>
+						<td>결제 금액</td>
+					</tr>
+					<tr>
+						<td>dfdf</td>
+						<td>dfdf</td>
+						<td>
+							<div></div>
+							<div></div>
+							<div></div>
+							<div></div>
+						</td>
+					</tr>
+				</table>			
+			</div>
+			
+			<div class="title">
+				<h2>결제 방법</h2>
+			</div>
+			<div class="payMethod">
+			
+			</div>
+			
+			
+			
 		</div>
-		
-		<table class="info">
-
-				<tr id="firstRow">
-					<td></td>
-					<td>강좌정보</td>
-					<td>가격</td>
-					<td>총상품금액</td>
-				</tr>
-				<tr id="secondRow">
-					<td>dfdf</td>
-					<td>dfdf</td>
-					<td>dfdf</td>
-					<td>dfdfd</td>
-				</tr>
-		</table>
-
-		
-		
-		
-		<div class="title2">
-			<h2 style="margin: 1rem; padding: 0;">결제 정보</h2>
-		</div>
-
 		<%@include file="/WEB-INF/views/user/common/userFooter.jsp"%>
 	</div>
 </body>
