@@ -3,56 +3,83 @@
 <mapper namespace="kr.co.tobe.chiefAdmin.sales.ChiefSalesMapper">
 
 	<select id="payList" parameterType="java.util.Map" resultType="java.util.Map">
-		
-		    SELECT education, pay_date, pay_total, charge_total
-		    FROM course c JOIN pay_detail pd
-		    ON c.course_no=pd.course_no
-		    JOIN pay p ON pd.order_no=p.order_no
-		    <where>
-			    <if test="education!=null and education!=''">
-			        education = #{education}
-			    </if>
-		        <if test="(from!=null and from!='') and (to!=null and to!='')">
-		             AND STR_TO_DATE(pay_date, '%Y-%m-%d') BETWEEN #{from} AND #{to}
-		        </if>
-		        <if test="(from!=null and from!='')and (to==null or to=='')">
-		        <![CDATA[
-		            AND STR_TO_DATE(pay_date, '%Y-%m-%d') >= #{from}
-		        ]]>
-		        </if>
-		        <if test="(from==null or from=='') and (to!=null and to!='')">
-		         <![CDATA[
-		            AND STR_TO_DATE(pay_date, '%Y-%m-%d') <= #{to}
-		        ]]>
-		        </if>
-			    
-		    </where>
-		    ORDER BY p.order_no DESC
-		
-	</select>
-	
-	<!-- 전체선택했을 때와 학원선택없이 날자만 선택했을 때의 총매출, 총수수료-->
-	<select id="pay_chageTotal" parameterType="java.util.Map" resultType="java.util.Map">
-		
-		    SELECT SUM(pay_total) AS pay_total, SUM(charge_total) AS charge_total
-		    FROM course c JOIN pay_detail pd
-		    ON c.course_no=pd.course_no
-		    JOIN pay p ON pd.order_no=p.order_no
+	    SELECT education, DATE_FORMAT(pay_date,'%Y-%m-%d') AS pay_date, pay_total, charge_total
+	    FROM course c JOIN pay_detail pd
+	    ON c.course_no=pd.course_no
+	    JOIN pay p ON pd.order_no=p.order_no
+	    <where>
+		    <if test="education!=null and education!=''">
+		        education = #{education}
+		    </if>
 	        <if test="(from!=null and from!='') and (to!=null and to!='')">
-	             WHERE STR_TO_DATE(pay_date, '%Y-%m-%d') BETWEEN #{from} AND #{to}
+  	        <![CDATA[
+	             AND STR_TO_DATE(pay_date, '%Y-%m-%d') BETWEEN #{from} AND #{to}
+	        ]]>
 	        </if>
-	        <if test="(from!=null and from!='') and (to==null or to=='')">
+	        <if test="(from!=null and from!='')and (to==null or to=='')">
 	        <![CDATA[
-	            WHERE STR_TO_DATE(pay_date, '%Y-%m-%d') >= #{from}
+	            AND STR_TO_DATE(pay_date, '%Y-%m-%d') >= #{from}
 	        ]]>
 	        </if>
 	        <if test="(from==null or from=='') and (to!=null and to!='')">
-	        <![CDATA[
-	            WHERE STR_TO_DATE(pay_date, '%Y-%m-%d') <= #{to}
+	         <![CDATA[
+	            AND STR_TO_DATE(pay_date, '%Y-%m-%d') <= #{to}
 	        ]]>
 	        </if>
-		
+	    </where>
+	    ORDER BY p.order_no DESC
 	</select>
+	
+	<select id="conTotal" parameterType="java.util.Map" resultType="java.util.Map">
+	    SELECT sum(pay_total) as pay_total, sum(charge_total) as charge_total
+	    FROM course c JOIN pay_detail pd
+	    ON c.course_no=pd.course_no
+	    JOIN pay p ON pd.order_no=p.order_no
+	    <where>
+	        <if test="(from!=null and from!='') and (to!=null and to!='')">
+   	        <![CDATA[
+	             STR_TO_DATE(pay_date, '%Y-%m-%d') BETWEEN #{from} AND #{to}
+	        ]]>
+	        </if>
+	        <if test="(from!=null and from!='')and (to==null or to=='')">
+	        <![CDATA[
+	            AND STR_TO_DATE(pay_date, '%Y-%m-%d') >= #{from}
+	        ]]>
+	        </if>
+	        <if test="(from==null or from=='') and (to!=null and to!='')">
+	         <![CDATA[
+	            AND STR_TO_DATE(pay_date, '%Y-%m-%d') <= #{to}
+	        ]]>
+	        </if>
+	    </where>
+    	GROUP BY education
+	</select>
+	
+	
+	<select id="conTotal" parameterType="java.util.Map" resultType="java.util.Map">
+	    SELECT sum(pay_total) as pay_total, sum(charge_total) as charge_total
+	    FROM course c JOIN pay_detail pd
+	    ON c.course_no=pd.course_no
+	    JOIN pay p ON pd.order_no=p.order_no
+	    <where>
+	        <if test="(from!=null and from!='') and (to!=null and to!='')">
+   	        <![CDATA[
+	             STR_TO_DATE(pay_date, '%Y-%m-%d') BETWEEN #{from} AND #{to}
+	        ]]>
+	        </if>
+	        <if test="(from!=null and from!='')and (to==null or to=='')">
+	        <![CDATA[
+	            AND STR_TO_DATE(pay_date, '%Y-%m-%d') >= #{from}
+	        ]]>
+	        </if>
+	        <if test="(from==null or from=='') and (to!=null and to!='')">
+	         <![CDATA[
+	            AND STR_TO_DATE(pay_date, '%Y-%m-%d') <= #{to}
+	        ]]>
+	        </if>
+	    </where>
+	</select>
+
 	
 	
 

@@ -1,5 +1,8 @@
 package kr.co.tobe.chiefAdmin.common;
 
-public interface ChiefCommonService {
+import java.util.Map;
 
+public interface ChiefCommonService {
+	
+	Map<String, Object> pay_chargeTotal();
 }
