@@ -2,4 +2,24 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="kr.co.tobe.chiefAdmin.member.ChiefMemberMapper">
 
+	<select id="cmemberDetail" parameterType="int" resultType="kr.co.tobe.vo.MemberVO">
+		SELECT * FROM member WHERE member_no = #{no}
+	</select>
+	
+	<update id="cmemberUpdate" parameterType="kr.co.tobe.vo.MemberVO">
+	UPDATE  member SET 
+		point=#{point}
+	WHERE member_no=#{member_no}
+	</update>
+
+	<select id="cmemberCount" parameterType="kr.co.tobe.vo.MemberVO" resultType="int">
+		SELECT COUNT(*)
+		FROM member
+	</select>
+
+ 	<select id="cmemberList" parameterType="kr.co.tobe.vo.MemberVO" resultType="kr.co.tobe.vo.MemberVO">
+		SELECT *
+		FROM member	
+		LIMIT #{startIdx}, 10
+	</select>
 </mapper>
