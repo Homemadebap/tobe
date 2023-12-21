@@ -22,12 +22,16 @@
 
 
 <style>
+#top{
+   position: relative;
+   margin: -760px 0 0 -90px; 
+}
 .admin_logo {
 	position: absolute;
 	width: 40rem;
 	height: 5rem;
 	top: 2rem;
-	left: 15rem;
+	left: 10rem;
 }
 /*.box{
 	position: absolute;
@@ -88,7 +92,6 @@ border: solid 1px;
 </head>
 <body>
 <%@include file="/WEB-INF/views/admin/common/adSideBar_logo2.jsp" %>
-
 		<table class="table">
 		<tr>
 		    <td width="100px;">검색어</td>
@@ -152,6 +155,7 @@ border: solid 1px;
          	<th>결제총액</th>
          </tr>
          	
-         </table>       
+         </table>   
+         </div>    
 </body>
 </html>
