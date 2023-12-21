@@ -5,6 +5,7 @@ import java.util.Map;
 
 import org.springframework.stereotype.Service;
 
+import kr.co.tobe.vo.CourseVO;
 import kr.co.tobe.vo.MemberVO;
 
 @Service
@@ -21,4 +22,7 @@ public interface UserCommonService {
 	List<Map<String, Object>> askIndex(MemberVO user);
 	// 마이페이지 - 나의문의 내역 뽑아오기
 	List<Map<String, Object>> myReviewIndex(MemberVO user);
+	
+	CourseVO compList(int no);
+	int compTotalReview(int no);
 }

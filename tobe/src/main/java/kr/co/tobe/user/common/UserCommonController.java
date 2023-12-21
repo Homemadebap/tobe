@@ -2,8 +2,10 @@ package kr.co.tobe.user.common;
 
 import java.time.LocalDateTime;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import kr.co.tobe.util.CodeToString;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -12,7 +14,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
+import kr.co.tobe.vo.CourseVO;
 import kr.co.tobe.vo.MemberVO;
 
 @Controller
@@ -147,7 +151,60 @@ public class UserCommonController {
 		return "user/member/userQuit";
 	}
 	
+	@GetMapping("/user/common/modal.do")
+	public String modal (HttpSession sess, Model model) {
+		 CourseVO Comp1 = (CourseVO)sess.getAttribute("CourseComp1");
+		 CourseVO Comp2 = (CourseVO)sess.getAttribute("CourseComp2");
+		 Map<String, Object> map = new HashMap<String, Object>();
+		 
+		  if(Comp1 != null){
+			  map.put("cosComp1", service.compList(Comp1.getCourse_no()));
+			  map.put("cosCompRe1", service.compTotalReview(Comp1.getCourse_no()));
+		  }	
+		  if(Comp2 != null) {
+			  map.put("cosComp2", service.compList(Comp2.getCourse_no()));
+			  map.put("cosCompRe2", service.compTotalReview(Comp2.getCourse_no()));
+		  } 
+		  model.addAttribute("map", map);
+		  
+		return "user/common/courseModal"; 
+	}
+	
+	@GetMapping("/user/common/modalRemove.do")
+	public String modalRemove (HttpSession sess, Model model, String remove) {
+		System.out.println("나여기 와사@~~~~~~~~~~~~");
+		String r = remove;
+		System.out.println(r+"zzzzzzzzzzzzzzzzzzzzz");
+		if(r.equals("cosComp1")){//   r == "cosComp1") {
+			System.out.println("첫번쨰");
+			if(sess.getAttribute("CourseComp2") != null) { //세션 2가 있으면 세선2 -> 세션 1로 변경
+				sess.setAttribute("CourseComp1", sess.getAttribute("CourseComp2"));
+				sess.removeAttribute("CourseComp2");
+			}else {
+				sess.removeAttribute("CourseComp1");
+			}
+		} else if(r.equals("cosComp2")){
+			sess.removeAttribute("CourseComp2");
+			
+		}
+		System.out.println("세션1"+ sess.getAttribute("CourseComp1") +"세션2:"+sess.getAttribute("CourseComp2")+"!!!!!!");
+		 CourseVO Comp1 = (CourseVO)sess.getAttribute("CourseComp1");
+		 CourseVO Comp2 = (CourseVO)sess.getAttribute("CourseComp2");
 
+		 Map<String, Object> map = new HashMap<String, Object>();
+		 
+		  if(Comp1 != null){
+			  map.put("cosComp1", service.compList(Comp1.getCourse_no()));
+			  map.put("cosCompRe1", service.compTotalReview(Comp1.getCourse_no()));
+		  }	
+		  if(Comp2 != null) {
+			  map.put("cosComp2", service.compList(Comp2.getCourse_no()));
+			  map.put("cosCompRe2", service.compTotalReview(Comp2.getCourse_no()));
+		  } 
+		  model.addAttribute("map", map);
+		return "user/common/courseModal"; 
+	}
+	
 	
 	
 }

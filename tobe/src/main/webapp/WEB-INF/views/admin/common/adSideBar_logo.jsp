@@ -60,6 +60,20 @@
 	color: #fff;
 }
 
+#logout { 
+	position: absolute; 
+	left: 60rem; 
+	top: 3.5rem; 
+	font-size: 1rem; 
+	cursor: pointer; 
+} 
+
+#logout:link, #logout:visited {
+	text-decoration: none;
+	color: #000;
+}
+
+
 
 </style>
 <body>
@@ -81,6 +95,10 @@
 		<img src="/tobe/img/admin_qna_img.png" style="width: 3rem;">
 		<span style="position: absolute; top: 0.75rem; left: 4rem; font-size: 1.23rem;"><b>문의관리</b></span>
 	</a>
+	
+	<div id="logout">
+		<a href="/tobe/admin/common/adLogout.do" id="logout">로그아웃</a>
+	</div>
 </div>
 </body>
 </html>

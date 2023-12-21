@@ -1,6 +1,8 @@
 package kr.co.tobe.chiefAdmin.customer;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -39,31 +41,32 @@ public class ChiefCustomerServiceImpl implements ChiefCustomerService {
 		return mapper.faqinsert(vo) > 0 ? true : false;
 	}
 	
-//	@Override
-//	public Map<String, Object> list(NoticeVO vo) {
-//		int count = mapper.count(vo); // 총개수
-//        // 총페이지수
-//        int totalPage = count / 10;
-//        if (count % 10 > 0) totalPage++;
-//        List<NoticeVO> list = mapper.list(vo); // 목록
-//        
-//        Map<String, Object> map = new HashMap<>();
-//        map.put("count", count);
-//        map.put("totalPage", totalPage);
-//        map.put("list", list);
-//        
-//        // 하단에 페이징처리
-//        int endPage = (int)(Math.ceil(vo.getPage()/10.0)*10);
-//        int startPage = endPage - 9;
-//        if (endPage > totalPage) endPage = totalPage;
-//        boolean prev = startPage > 1;
-//        boolean next = endPage < totalPage;
-//        map.put("endPage", endPage);
-//        map.put("startPage", startPage);
-//        map.put("prev", prev);
-//        map.put("next", next);
-//		return map;
-//	}
+	 @Override
+	   public Map<String, Object> noticeList(NoticeVO param) {
+	      int count = mapper.noticeCount(param); //총개수
+	        int totalPage = count / 10; //총 페이지
+	        if (count % 10 > 0) totalPage++;
+	        System.out.println(param.getPage());
+	        System.out.println(param.getStartIdx());
+	        List<NoticeVO> noticeList = mapper.noticeList(param); //목록
+	        
+	        Map<String, Object> map = new HashMap<>();
+	        map.put("count", count);
+	        map.put("totalPage", totalPage);
+	        map.put("list", noticeList);
+	        
+	        //페이징
+	        int endPage = (int)(Math.ceil(param.getPage()/10.0)*10);
+	        int startPage = endPage - 9;
+	        if (endPage > totalPage) endPage = totalPage;
+	        boolean prev = startPage > 1;
+	        boolean next = endPage < totalPage;
+	        map.put("endPage", endPage);
+	        map.put("startPage", startPage);
+	        map.put("prev", prev);
+	        map.put("next", next);
+	      return map;
+	   }
 	
 	@Override
 	public List<NoticeVO> getlist(NoticeVO vo) {	

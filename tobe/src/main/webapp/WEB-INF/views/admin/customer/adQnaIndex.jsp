@@ -22,15 +22,53 @@
 
 
 <style>
+* {
+	box-sizing: border-box;
+}
 
+body {
+	position: relative;
+}
+.box {
+	position: absolute;
+	width: 75rem;
+	height: 22rem;
+	top: 5.5rem; 
+	left: 10rem;
+	border: 1px solid #ddd;
+	box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+}
 
+.sbox {
+	position: absolute;
+	width: 17.5rem;
+	height: 16rem;
+	top: 29rem;
+	border: 1px solid #ddd;
+	box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+}
 
 </style>
 
 </head>
 <body>
-<%@include file="/WEB-INF/views/admin/common/adSideBar_logo.jsp" %>
+<%@include file="/WEB-INF/views/admin/common/adSideBar_logo2.jsp" %>
+	<div class="box" id="sales_box ">
+	</div>
+	
+	<div class="sbox" id="course_box" style="left: 10rem;">
+	</div>
+	
+	<div class="sbox" id="pay_box" style="position: absolute; left: 29.1rem;">
+	</div>
+	
+	<div class="sbox" id="qna_box" style="position: absolute; left: 48.2rem;">
 
+		
+	</div>
+	
+	<div class="sbox" id="userHomePage_box" style="position: absolute; left: 67.3rem;">
+	</div>
 
 </body>
 </html>

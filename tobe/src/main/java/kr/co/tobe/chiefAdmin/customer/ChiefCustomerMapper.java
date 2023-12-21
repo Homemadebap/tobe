@@ -13,11 +13,13 @@ import kr.co.tobe.vo.ReviewVO;
 public interface ChiefCustomerMapper {
 	public int insert(NoticeVO vo);
 	public int faqinsert(FaqVO vo);
+	public int noticeCount(NoticeVO vo);
 
-//	public int count(NoticeVO vo);
-//	List<NoticeVO> list(NoticeVO vo);
 	NoticeVO NoticeDetail(int noticeNo);
 	List<NoticeVO> getlist(NoticeVO vo);	
+	
+	//페이지처리
+	List<NoticeVO> noticeList(NoticeVO vo);
 	
 	QnaVO QnaDetail(int qnaNo);
 	List<QnaVO> getqnalist(QnaVO vo);
