@@ -49,7 +49,6 @@
 				return;
 			}
 			// 전송
-			console.log("QKEFHKE");
 			$("#frm").submit();
 			}
 	</script>
