@@ -22,7 +22,7 @@ public class AdCommonController {
 		if(admin == null) {
 			return "redirect:/admin/common/adLogin.do";
 		}
-		
+		model.addAttribute("admin", admin);
 		return "admin/course/adCourseIndex"; 
 	}
 	
@@ -32,7 +32,7 @@ public class AdCommonController {
 		if(admin == null) {
 			return "redirect:/admin/common/adLogin.do";
 		}
-		
+		model.addAttribute("admin", admin);
 		return "admin/pay/adPayIndex"; 
 	}
 	
@@ -43,7 +43,7 @@ public class AdCommonController {
 		if(admin == null) {
 			return "redirect:/admin/common/adLogin.do";
 		}
-		
+		model.addAttribute("admin", admin);
 		return "admin/customer/adQnaIndex"; 
 	}
 	
@@ -53,6 +53,7 @@ public class AdCommonController {
 		if(admin == null) {
 			return "redirect:/admin/common/adLogin.do";
 		}
+		model.addAttribute("admin", admin);
 		return "admin/course/adCourseForm"; 
 	}
 	
@@ -75,7 +76,6 @@ public class AdCommonController {
 			return "redirect:/chiefAdmin/common/chiefIndex.do";
 		} else if((login.getAd_type() == 1) || (login.getAd_type() == 2) || (login.getAd_type() == 3)){ // 학원관리자로 로그인
 			sess.setAttribute("loginInfo", login);
-			System.out.println(login.getAd_type());
 			return "redirect:/admin/common/adIndex.do";
 		} else {
 			System.out.println("튕김");
