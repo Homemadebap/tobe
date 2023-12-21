@@ -2,11 +2,8 @@ package kr.co.tobe.config;
 
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.session.SqlSessionFactory;
-import org.apache.ibatis.session.defaults.DefaultSqlSessionFactory;
-import org.apache.ibatis.type.TypeHandlerRegistry;
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.annotation.MapperScan;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -19,11 +16,15 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 import org.springframework.web.servlet.config.annotation.DefaultServletHandlerConfigurer;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.ViewResolverRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import com.zaxxer.hikari.HikariDataSource;
+
+import kr.co.tobe.util.LoginInterceptor;
+import kr.co.tobe.util.LoginInterceptor_admin;
 
 @Configuration
 @ComponentScan(basePackages = {"kr.co.tobe"})
@@ -103,19 +104,48 @@ public class MvcConfig implements WebMvcConfigurer{
 		resolver.setDefaultEncoding("utf-8");
 		return resolver;
 	}
-	// 인터셉터
-//	@Bean
-//	public LoginInterceptor loginIntercepton() {
-//		return new LoginInterceptor();
-//	}
-//	
-//	@Override
-//	public void addInterceptors(InterceptorRegistry registry) {
-//		// url 설정
-//		registry.addInterceptor(loginIntercepton())
-//						.addPathPatterns("/member/regist.do");
-//	}
 	
+	// user 인터셉터
+	@Bean
+	public LoginInterceptor loginIntercepton() {
+		return new LoginInterceptor();
+	}
+	
+	// 관리자 인터셉터
+	@Bean
+	public LoginInterceptor_admin loginIntercepton_admin() {
+		return new LoginInterceptor_admin();
+	}	
+	
+	@Override
+	public void addInterceptors(InterceptorRegistry registry) {
+		// url 설정
+		registry.addInterceptor(loginIntercepton())
+						.addPathPatterns("/user/member/**")
+						.excludePathPatterns("/user/member/login.do")
+						.excludePathPatterns("/user/member/userJoinForm.do")
+						.excludePathPatterns("/user/member/userFindMember.do")
+						.addPathPatterns("/user/common/userBasket.do")
+						.addPathPatterns("/user/common/userBasketDelete.do")
+						.addPathPatterns("/user/course/qna/insert.do")
+						.addPathPatterns("/user/course/qna/edit.do")
+						.addPathPatterns("/user/course/qna/update.do")
+						.addPathPatterns("/user/course/qna/delete.do")
+						.addPathPatterns("/user/customer/qna/update.do")
+						.addPathPatterns("/user/customer/qna/delete.do")
+						.addPathPatterns("/user/customer/qna/insert.do")
+						.addPathPatterns("/user/course/qna/delete.do")
+						.addPathPatterns("/user/pay/**")
+						.addPathPatterns("/user/review/write.do")
+						.addPathPatterns("/user/review/insert.do");
+		
+		registry.addInterceptor(loginIntercepton_admin())
+						.addPathPatterns("/admin/**")
+						.excludePathPatterns("/admin/common/adLogin.do");
+	}
+			
+						
+
 	// 프로퍼티 설정
 	@Bean
 	public static PropertySourcesPlaceholderConfigurer property() {

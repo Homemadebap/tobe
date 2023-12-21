@@ -30,10 +30,7 @@ public class UserReviewController {
 						 @RequestParam("infoCourseName") String infoCourseName,
 						 Model model, HttpSession sess ) {
 		MemberVO user = (MemberVO)sess.getAttribute("loginInfo");
-		if(user == null) {
-			return "redirect:/user/common/userIndex.do";
-		}
-		
+
 		model.addAttribute("infoCourse_no", infoCourse_no);
 		model.addAttribute("infoDetail_no", infoDetail_no);
 		model.addAttribute("infoCourseName", infoCourseName );

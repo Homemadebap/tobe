@@ -108,14 +108,17 @@ a:hover {
 }
 
 #logout{
-	margin: 37px 0 0 300px;
+	position: absolute;
+	top: 2.5rem;
+	left: 45rem;
 	font-size: 110%;
 }
 
 
-#logout:link, #logout:visited {
+#logout>a:link, #logout>a:visited {
 	text-decoration: none;
 	color: #000;
+	
 }
 
 .admin_logo {
@@ -178,8 +181,10 @@ a:hover {
 	</div>
 	
 	<div id="logout">
-		<a href="/tobe/admin/common/adLogout.do" id="logout">로그아웃</a>
+		<a href="/tobe/admin/common/adLogout.do" >로그아웃</a>
 	</div>
+	
+
 </div>
 </body>
 </html>

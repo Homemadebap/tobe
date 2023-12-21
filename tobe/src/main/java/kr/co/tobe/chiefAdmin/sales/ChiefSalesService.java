@@ -5,5 +5,6 @@ import java.util.Map;
 
 public interface ChiefSalesService {
 	
-	List<Map<String, String>> payList(Map<String, String> map);
+	List<Map<String, Object>> payList(Map<String, Object> map);
+	List<Map<String, Object>> pay_chageTotal(Map<String, Object> map);
 }
