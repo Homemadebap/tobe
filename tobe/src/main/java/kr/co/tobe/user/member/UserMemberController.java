@@ -16,7 +16,7 @@ public class UserMemberController {
 	@Autowired
 	private UserMemberService service;
 	
-	@GetMapping("/user/member/login.do")
+	@GetMapping("/user/member/userLogin.do")
 	public String userLogin() {
 		return "user/member/userLogin";
 	}

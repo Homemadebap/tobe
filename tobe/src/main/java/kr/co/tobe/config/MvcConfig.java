@@ -122,7 +122,7 @@ public class MvcConfig implements WebMvcConfigurer{
 		// url 설정
 		registry.addInterceptor(loginIntercepton())
 						.addPathPatterns("/user/member/**")
-						.excludePathPatterns("/user/member/login.do")
+						.excludePathPatterns("/user/member/userLogin.do")
 						.excludePathPatterns("/user/member/userJoinForm.do")
 						.excludePathPatterns("/user/member/userFindMember.do")
 						.addPathPatterns("/user/common/userBasket.do")
@@ -141,7 +141,9 @@ public class MvcConfig implements WebMvcConfigurer{
 		
 		registry.addInterceptor(loginIntercepton_admin())
 						.addPathPatterns("/admin/**")
+						.addPathPatterns("/chiefAdmin/**")
 						.excludePathPatterns("/admin/common/adLogin.do");
+						
 	}
 			
 						
