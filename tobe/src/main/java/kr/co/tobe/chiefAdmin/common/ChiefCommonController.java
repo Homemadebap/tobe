@@ -16,14 +16,15 @@ public class ChiefCommonController {
 	ChiefCommonService service;
 	
 	@GetMapping ("/chiefAdmin/common/chiefIndex.do")
+
 	public String index(HttpSession sess, Model model) {
-		AdminVO admin = (AdminVO)sess.getAttribute("loginInfo");
+		AdminVO admin = (AdminVO)sess.getAttribute("loginInfo"); 
 		return "chiefAdmin/common/chiefIndex";
 	}
 	
 	@GetMapping ("/chiefAdmin/sales/chiefSalesIndex.do")
-	public String chiefSalesIndex(HttpSession sess, Model model) {
-		AdminVO admin = (AdminVO)sess.getAttribute("loginInfo");
+	public String chiefSalesIndex(Model model) {
+		model.addAttribute("pay_chargeTotal", service.pay_chargeTotal());
 		return "chiefAdmin/sales/chiefSalesIndex";
 	}
 	

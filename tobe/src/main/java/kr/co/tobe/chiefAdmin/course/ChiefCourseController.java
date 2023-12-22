@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.multipart.MultipartFile;
 
 import kr.co.tobe.vo.CourseVO;
+import kr.co.tobe.vo.MemberVO;
 
 @Controller
 public class ChiefCourseController {
@@ -34,6 +35,12 @@ public class ChiefCourseController {
 	          model.addAttribute("msg", "수업등록에 실패하였습니다.");    
 	       }
 		return "chiefAdmin/common/alert";
+	}
+	
+	@GetMapping ("/chiefAdmin/course/chiefCourseIndex.do")
+	public String cheifMemberIndex() {
+				
+		return "chiefAdmin/course/chiefCourseIndex"; 
 	}
 	
 }
