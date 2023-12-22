@@ -121,19 +121,20 @@ document.addEventListener('DOMContentLoaded', function(){
     }
     
     var courseNo = <%= request.getParameter("course_no") %>;
-    
-    $.ajax({
-		url: "/tobe/user/course/userCourseDetailQnaList.do?courseNo=${courseNo}",
-		type: 'GET',
-		success: function(courseInfo){
-			console.log("반가워");
-			console.log(courseInfo);
-			document.querySelector('.cqnaCol').innerHTML = '<h2>' + courseInfo.cq_content + '</h2>';
-		},
-		error: function() {
-			console.error('강좌 정보를 가져오는데 실패했습니다.');
-		}
-    });
+    function ajaxFunc() {
+    	$.ajax({
+			url: "/tobe/user/course/userCourseDetailQnaList.do?course_no=${courseNo}",
+			type: 'GET',
+			success: function(courseInfoList){
+				console.log("반가워");
+				console.log(courseInfoList);
+				$("#qnaContent").html(courseInfoList);
+			},
+			error: function() {
+				console.error('강좌 정보를 가져오는데 실패했습니다.');
+			}
+	    });
+    }
     
     detailButton.addEventListener('click', function(){
     	hideAll();
@@ -156,6 +157,7 @@ document.addEventListener('DOMContentLoaded', function(){
         showQna();
         moveSubContentToTop();
         setActiveButton(cqnaButton);
+        ajaxFunc();
     });
     
     var detailCol = document.querySelector('.detailCol');
@@ -228,12 +230,18 @@ document.addEventListener('DOMContentLoaded', function(){
       <div class = "mainContent">
          <div class = "subContentLecture">
             <div class = "detailContent">
-               <c:forEach var="lecture" items="${lectureList }">
+               <!--<c:forEach var="lecture" items="${lectureList }">
                    <p><img src="${lecture.teacher_img_org}" alt="강사 이미지" width="50" height="50"></p>
                       <p>${lecture.cname}</p>
                       <p>${lecture.time}</p>
                       <p>${lecture.price}</p>
-                  </c:forEach>
+                  </c:forEach> -->
+                  	<c:if test="${not empty courseInfo}">
+                   		<p><img src="${courseInfo.teacher_img_org}" alt="강사 이미지" width="50" height="50"></p>
+                   		<p>${courseInfo.cname}</p>
+                   		<p>${courseInfo.time}</p>
+                   		<p>${courseInfo.price}</p>
+               		</c:if>
             </div>
             <div class = "subContentBar">
                 <table>
@@ -272,7 +280,7 @@ document.addEventListener('DOMContentLoaded', function(){
             </div>
          </div>
          <div class = "subContent">
-            <div class = "detailContent">
+            <div id = "qnaContent">
                
             </div>
          </div>
