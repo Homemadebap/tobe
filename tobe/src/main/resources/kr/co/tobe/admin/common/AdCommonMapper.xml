@@ -77,7 +77,21 @@
 			 AND STR_TO_DATE(pay_cancel_date, '%Y-%m-%d') = CURDATE();
 	    ]]>
 	</select>
+
+	<select id="cqnaCount" parameterType="map" resultType="int">
+		select count(*) 
+		from tobe.cqna cq Inner join tobe.course c
+		on cq.course_no = c.course_no
+		where c.admin_no = #{no};
+	</select>
 	
-	
+	<select id="cqnaList" parameterType="map" resultType="kr.co.tobe.vo.CqnaVO">
+		select cq.cqna_no, cq.course_no, cq.member_no, cq.cq_title, cq.cq_content, cq.cq_writedate, cq.cq_reply,
+		(SELECT name FROM member WHERE member_no = cq.member_no) as member_name 
+		from cqna cq Inner join course c
+		on cq.course_no = c.course_no
+		where c.admin_no = #{no}
+		limit #{startIdx}, 10;
+	</select>
 	
 </mapper>
