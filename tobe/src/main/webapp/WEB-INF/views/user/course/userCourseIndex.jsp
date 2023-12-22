@@ -14,90 +14,6 @@
 <link rel="stylesheet" href="/tobe/css/user_Header_Footer.css" />
 </head>
 <style>
-.body {
-   min-width: 1200px;
-   height: 100%;
-}
-
-.wrap {
-   width: 1200px;
-   height: 70rem;
-   margin: 0 auto;
-   position: relative;
-}
-
-* {
-   box-sizing: border-box;
-}
-
-.header {
-   width: 75rem;
-   height: 15rem;
-   position: absolute;
-   top: 0;
-   left: 0;
-}
-
-.header_memberBar {
-   position: absolute;
-   color: #000;
-   right: 0;
-   top: 10%;
-   font-family: Inter;
-   text-align: center;
-   font-size: 1rem;
-   letter-spacing: 0;
-}
-
-.tobe_logo {
-   position: absolute;
-   top: 4.5rem;
-   width: 20rem;
-}
-
-.menu_container {
-   position: absolute;
-   width: 50rem;
-   right: 0;
-   top: 6.5rem;
-}
-
-.menu {
-   width: 14rem;
-   height: 5rem;
-   font-size: 2rem;
-   text-align: center;
-}
-
-.footer {
-   background-color: #d3d3d3;
-   width: 100%;
-   /* width:75rem; */
-   height:250px; 
-   position: absolute;
-   top: 1500px;
-}
-
-.footer_content {
-   display: grid;
-   place-items: center;
-}
-
-.footer_logo {
-   width: 6rem;
-   display: grid;
-   place-items: center;
-   float: left;
-   height: 5rem;
-}
-
-.footer_info {
-   width: 37.5rem;
-   display: grid;
-   place-items: center;
-   float: left;
-   height: 5rem;
-}
 
 .choiceBG {
    display: block;
@@ -201,7 +117,7 @@ caption {
    height:100%;
 }
 .sort {
-   bottom: 33.5rem;
+   bottom: 42rem;
    width: 1200px;
    margin: 0 auto;
    align-items: center;
@@ -239,7 +155,7 @@ caption {
 	justify-content: space-between;
 	position:relative;
 	align-items: center;
-	bottom:500px;
+	top:40rem;
 }
 .subContainer{
 	width:33.3333%;
@@ -335,7 +251,7 @@ caption {
     	  
     	  //해당 과목에 속하는 레벨에 on 클래스 추가
     	  levels.forEach(function(level){
-    		  levelButtons.filter('[data-levelcd="' + level.levelcd + '"]').addClass('on').show();
+    		  levelButtons.filter('[data-levelcd="' + level.levelcd + '"]').removeClass('on').show();
     	  });
       }
       
@@ -438,7 +354,7 @@ caption {
 
            // 해당 지역에 속하는 지점에 'on' 클래스 추가
            cities.forEach(function(city) {
-              cityButtons.filter('[data-citycd="' + city.citycd + '"]').addClass('on').show();
+              cityButtons.filter('[data-citycd="' + city.citycd + '"]').removeClass('on').show();
            });
        }
 
@@ -500,7 +416,13 @@ caption {
       function getSelectedDays() {
           var selectedDays = [];
           $('#td_week button.on').each(function () {
-              selectedDays.push($(this).data('weekcd'));
+              if ($(this).data('weekmoncd')) selectedDays.push($(this).data('weekmoncd'));
+              if ($(this).data('weektuecd')) selectedDays.push($(this).data('weektuecd'));
+              if ($(this).data('weekwedcd')) selectedDays.push($(this).data('weekwedcd'));
+              if ($(this).data('weekthucd')) selectedDays.push($(this).data('weekthucd'));
+              if ($(this).data('weekfricd')) selectedDays.push($(this).data('weekfricd'));
+              if ($(this).data('weeksatcd')) selectedDays.push($(this).data('weeksatcd'));
+              if ($(this).data('weeksuncd')) selectedDays.push($(this).data('weeksuncd'));
           });
           return selectedDays;
       }
@@ -516,37 +438,91 @@ caption {
           $("#se").on("click", function () {
               // 선택된 데이터 수집
               var selectedAcademy = $("#td_academy button.on").data("academycd");
+              console.log("찍혔당 : ", selectedAcademy);
               var selectedLecture = $("#td_lecture button.on").data("lecturecd");
               var selectedLocal = $("#td_local button.on").data("localcd");
               var selectedCity = $("#td_city button.on").data("citycd");
               var selectedLevel = $("#td_level button.on").data("levelcd");
-              var selectedWeek = $("#td_week button.on").data("weekcd");
+              var selectedWeekMon = $("#td_week button.on").data("weekmoncd");
+              var selectedWeekTue = $("#td_week button.on").data("weektuecd");
+              var selectedWeekWed = $("#td_week button.on").data("weekwedcd");
+              var selectedWeekThu = $("#td_week button.on").data("weekthucd");
+              var selectedWeekFri = $("#td_week button.on").data("weekfricd");
+              var selectedWeekSat = $("#td_week button.on").data("weeksatcd");
+              var selectedWeekSun = $("#td_week button.on").data("weeksuncd");
               var selectedTime = $("#td_time button.on").data("timecd");
 
-              // 서버로 AJAX 요청 수행 (실제 엔드포인트와 매개변수로 대체)
+              //test
               $.ajax({
-                  type: "GET",
-                  url: "/user/course/userCourseIndex.do",
+                  url: "/tobe/user/course/userCourseIndex2.do",
+                  method: "get",
                   data: {
-                      academy: selectedAcademy,
-                      lecture: selectedLecture,
-                      local: selectedLocal,
-                      city: selectedCity,
-                      level: selectedLevel,
-                      week: selectedWeek,
-                      time: selectedTime
+                      "education": selectedAcademy,
+                      "subject": selectedLecture,
+                      "area": selectedLocal,
+                      "branch": selectedCity,
+                      "level": selectedLevel,
+                      "mon": selectedWeekMon,
+                      "tue": selectedWeekTue,
+                      "wed": selectedWeekWed,
+                      "thu": selectedWeekThu,
+                      "fri": selectedWeekFri,
+                      "sat": selectedWeekSat,
+                      "sun": selectedWeekSun,
+                      "timezone": selectedTime
+                	  },
+                  headers:{
+                	  "Content-Type": "application/x-www-form-urlencoded;charset=utf-8"
                   },
+                  dataType: 'json',
                   success: function (data) {
-                      // 서버로부터의 성공적인 응답 처리
                       console.log("검색 결과:", data);
                       // 검색 결과로 UI 업데이트
+                      console.log(data[0].cname);
+                      console.log(data[0]["cname"]);
+                      console.log(typeof(data[0]));
+                      updateSearchResults(data);
                   },
                   error: function (error) {
                       // 서버로부터의 오류 응답 처리
                       console.error("검색 중 오류 발생:", error);
                   }
               });
+              
+              
           });
+          
+          function updateSearchResults(results) {
+        	  
+        	    var searchResultsContainer = $(".subContainer");
+        	    searchResultsContainer.empty(); // 기존 결과 비우기
+        	    //$(".subContainer").innerHTML("");
+        	    // 각 결과를 순회하면서 UI에 추가
+        	    for (var i = 0; i < results.length; i++) {
+        	        var lecture = results[i];
+					console.log(lecture);
+					console.log(lecture.course_no);
+        	        var resultHtml = "<div class='subChildContainer'>";
+        	        resultHtml += "<h2>강의 목록</h2>";
+        	        resultHtml += "<p><a href='/tobe/user/course/userCourseDetail.do?course_no="+lecture.course_no+"'><img src="+ lecture.teacher_img_org +" alt='강사 이미지' width='50' height='50'></a></p>";
+        	        resultHtml += "<p>" + lecture.cname + "</p>";
+        	        resultHtml += "<p>" + lecture.time + "</p>";
+        	        resultHtml += "<p>" + lecture.price + "</p>";
+        	        resultHtml += "</div>";
+
+        	        resultHtml += "<div class='childSelectBox1'>";
+        	        resultHtml += "<table>";
+        	        resultHtml += "<tr>";
+        	        resultHtml += "<td><button type='button' onclick='' class='SelectBtn'>장바구니 담기</button></td>";
+        	        resultHtml += "<td><button type='button' onclick='setCourseComp(11);' class='SelectBtn'>비교함 담기</button></td>";
+        	        resultHtml += "<td><button type='button' onclick=\"location.href='/tobe/user/pay/userPayDetail.do?'\" class='payBtn'>결제 하기</button></td>";
+        	        resultHtml += "</tr>";
+        	        resultHtml += "</table>";
+        	        resultHtml += "</div>";
+console.log('html:'+resultHtml);
+        	        searchResultsContainer.append(resultHtml);
+        	    }
+        	}
 
           // 각 카테고리에 대한 버튼 클릭 처리
           $("button[name='btnAcademy'], button[name='lectureName'], button[name='local'], button[name='city'], button[name='level'], button[name='week'], button[name='time']").on("click", function () {
@@ -554,6 +530,22 @@ caption {
               $(this).removeClass("on").toggleClass("on").siblings();
           });
       });
+      
+      /*document.addEventListener("DOMContentLoaded", function() {
+    	    // 강의 목록에 있는 모든 a 태그에 클릭 이벤트 추가
+    	    var courseLinks = document.querySelectorAll('.subChildContainer a');
+
+    	    courseLinks.forEach(function(link) {
+    	        link.addEventListener('click', function(event) {
+    	            // 클릭된 강의의 course_no 값을 가져오기
+    	            var courseNo = event.currentTarget.getAttribute('data-course-no');
+
+    	            // URL에 course_no를 추가하여 새로운 페이지로 이동
+    	            var newURL = '/tobe/user/course/userCourseDetail.do?courseNo=' + courseNo;
+    	            window.location.href = newURL;
+    	        });
+    	    });
+    	});*/
 
 </script>
 <script>  
@@ -581,150 +573,149 @@ function setCourseComp(no) {
 </script>
       <div class="wrap">
       <%@include file="/WEB-INF/views/user/common/userHeader.jsp"%>
-      </div>
-   </div>
-   	<div class="choiceBG">
-      	<div class="choice">
-         	<table class="choiceLayout">
-            	<caption>학원, 과목, 지역, 지점, 레벨, 요일, 시간</caption>
-            	<tr>
-               		<td class=title>학원</td>
-               		<td id = "td_academy">
-                  		<button name="btnAcademy" class="condition on" data-academycd = "1">해커스</button>
-                  		<button name="btnAcademy" class="condition" data-academycd = "2">파고다</button>
-                  		<button name="btnAcademy" class="condition" data-academycd = "3">YBM</button>
-               		</td>
-            	</tr>
-            	<tr>
-               		<td class=title>과목</td>
-               		<td id = "td_lecture">
-                  		<button name="lectureName" data-isall="Y" class="condition on" data-lecturecd = "1">토익</button>
-                  		<button name="lectureName" data-isall="N" class="condition" data-lecturecd = "2">토스</button>
-                  		<button name="lectureName" data-isall="N" class="condition" data-lecturecd = "3">토플</button>
-                  		<button name="lectureName" data-isall="N" class="condition" data-lecturecd = "4">아이엘츠</button>
-                  		<button name="lectureName" data-isall="N" class="condition" data-lecturecd = "5">텝스</button>
-                  		<button name="lectureName" data-isall="N" class="condition" data-lecturecd = "6">오픽</button>
-                  		<button name="lectureName" data-isall="N" class="condition" data-lecturecd = "7">gre</button>
-                  		<button name="lectureName" data-isall="N" class="condition" data-lecturecd = "8">g-telp</button>
-               		</td>
-            	</tr>
-            	<tr>
-               		<td class=title>지역</td>
-               		<td id = "td_local">
-                  		<button name="local" data-isall="Y" class="condition on" data-localcd = "2">서울</button>
-                  		<button name="local" data-isall="N" class="condition" data-localcd = "32">인천</button>
-                  		<button name="local" data-isall="N" class="condition" data-localcd = "53">대구</button>
-                  		<button name="local" data-isall="N" class="condition" data-localcd = "51">부산</button>
-               		</td>
-            	</tr>
-            	<tr>
-               		<td class=title>지점</td>
-               		<td id = "td_city">
-                  		<button name="city" data-isall="Y" class="condition on" data-citycd = "1">강남</button>
-                  		<button name="city" data-isall="N" class="condition" data-citycd = "2">종로</button>
-                  		<button name="city" data-isall="N" class="condition" data-citycd = "3">종로e4u</button>
-                  		<button name="city" data-isall="N" class="condition" data-citycd = "4">신촌</button>
-                  		<button name="city" data-isall="N" class="condition" data-citycd = "5">건대</button>
-                  		<button name="city" data-isall="N" class="condition" data-citycd = "11">인천 센터</button>
-                  		<button name="city" data-isall="N" class="condition" data-citycd = "6">대구 동성로</button>
-                  		<button name="city" data-isall="N" class="condition" data-citycd = "7">서면</button>
-                  		<button name="city" data-isall="N" class="condition" data-citycd = "8">부산대</button>
-                  		<button name="city" data-isall="N" class="condition" data-citycd = "9">대연</button>
-                  		<button name="city" data-isall="N" class="condition" data-citycd = "10">부산광복</button>
-               		</td>
-            	</tr>
-            	<tr>
-               		<td class=title>레벨</td>
-               		<td id = "td_level">
-                  		<button name="level" data-isall="Y" class="condition on" data-levelcd = "1500">500+</button>
-                  		<button name="level" data-isall="N" class="condition" data-levelcd = "1600">600+</button>
-                  		<button name="level" data-isall="N" class="condition" data-levelcd = "1700">700+</button>
-                  		<button name="level" data-isall="N" class="condition" data-levelcd = "1800">800+</button>
-                  		<button name="level" data-isall="N" class="condition" data-levelcd = "1900">900+</button>
-                  		<button name="level" data-isall="N" class="condition" data-levelcd = "360">60+</button>
-                  		<button name="level" data-isall="N" class="condition" data-levelcd = "370">70+</button>
-                  		<button name="level" data-isall="N" class="condition" data-levelcd = "380">80+</button>
-                  		<button name="level" data-isall="N" class="condition" data-levelcd = "390">90+</button>
-                  		<button name="level" data-isall="N" class="condition" data-levelcd = "21">IM+</button>
-                  		<button name="level" data-isall="N" class="condition" data-levelcd = "22">IH+</button>
-                  		<button name="level" data-isall="N" class="condition" data-levelcd = "23">AL+</button>
-                  		<button name="level" data-isall="N" class="condition" data-levelcd = "45">5.5+</button>
-                  		<button name="level" data-isall="N" class="condition" data-levelcd = "46">6.0+</button>
-                  		<button name="level" data-isall="N" class="condition" data-levelcd = "47">7.0+</button>
-                  		<button name="level" data-isall="N" class="condition" data-levelcd = "5300">300+</button>
-                  		<button name="level" data-isall="N" class="condition" data-levelcd = "5350">350+</button>
-                  		<button name="level" data-isall="N" class="condition" data-levelcd = "5400">400+</button>
-                  		<button name="level" data-isall="N" class="condition" data-levelcd = "500">500+</button>
-                  		<button name="level" data-isall="N" class="condition" data-levelcd = "61">IM+</button>
-                  		<button name="level" data-isall="N" class="condition" data-levelcd = "62">IH+</button>
-                  		<button name="level" data-isall="N" class="condition" data-levelcd = "63">AL+</button>
-                  		<button name="level" data-isall="N" class="condition" data-levelcd = "71">기본</button>
-                  		<button name="level" data-isall="N" class="condition" data-levelcd = "72">실전</button>
-                  		<button name="level" data-isall="N" class="condition" data-levelcd = "73">특강</button>
-                  		<button name="level" data-isall="N" class="condition" data-levelcd = "81">32+</button>
-                  		<button name="level" data-isall="N" class="condition" data-levelcd = "82">65+</button>
-               		</td>
-            	</tr>
-            	<tr>
-               		<td class=title>요일</td>
-               		<td id = "td_week">
-	                  	<button name="week" data-isall="Y" class="condition on" data-weekcd = "1">월</button>
-	                  	<button name="week" data-isall="N" class="condition" data-weekcd = "2">화</button>
-	                  	<button name="week" data-isall="N" class="condition" data-weekcd = "3">수</button>
-	                  	<button name="week" data-isall="N" class="condition" data-weekcd = "4">목</button>
-	                  	<button name="week" data-isall="N" class="condition" data-weekcd = "5">금</button>
-	                  	<button name="week" data-isall="N" class="condition" data-weekcd = "6">토</button>
-	                  	<button name="week" data-isall="N" class="condition" data-weekcd = "7">일</button>
-               		</td>
-            	</tr>
-            	<tr>
-               		<td class=title>시간</td>
-               		<td id = "td_time">
-                  		<button name="time" data-isall="Y" class="condition on" data-timecd = "9">오전(9시 이전)</button>
-                  		<button name="time" data-isall="N" class="condition" data-timecd = "912">오전(9시~12시)</button>
-                  		<button name="time" data-isall="N" class="condition" data-timecd = "1218">오후(12시~18시)</button>
-                  		<button name="time" data-isall="N" class="condition" data-timecd = "18">저녁(18시 이후)</button>
-               		</td>
-               		<td>
-               			<button id = "se">검색</button>
-               		<td>
-            	</tr>
-         	</table>
-      	</div>
-   	</div>
-   	<div class="sort">
-   		<ul>
-   			<li><button name="sortbtn" class="sortcon">마감임박순</button></li>
-         	<li><button name="sortbtn" class="sortcon">|&nbsp&nbsp&nbsp마감느린순</button></li>
-	        <li><button name="sortbtn" class="sortcon">|&nbsp&nbsp&nbsp가격낮은순</button></li>
-	        <li><button name="sortbtn" class="sortcon">|&nbsp&nbsp&nbsp가격높은순</button></li>
-	        <li><button name="sortbtn" class="sortcon">|&nbsp&nbsp&nbsp리뷰많은순</button></li>
-	        <li><button name="sortbtn" class="sortcon">|&nbsp&nbsp&nbsp베스트강좌순</button></li>
-        </ul>
-   	</div>
-    <div class = "container">
-    	<div class = "subContainer">
-    	<c:forEach var="lecture" items="${lectureList }">
-    		<div class = "subChildContainer">
-    			<h2>강의 목록</h2>
-	    			<p><img src="${lecture.teacher_img_org}" alt="강사 이미지" width="50" height="50"></p>
-	                <p>${lecture.cname}</p>
-	                <p>${lecture.time}</p>
-	                <p>${lecture.price}</p>
-    		</div>
-    		<div class = "childSelectBox1">
-    			<table>
-    				<tr>
-    					<td><button type="button" onclick="" class="SelectBtn">장바구니 담기</button></td>
-    					<td><button type="button" onclick="setCourseComp(11);" class="SelectBtn">비교함 담기</button></td>
-    					<td><button type="button" onclick="location.href='/tobe/user/pay/userPayDetail.do?'+" class="payBtn">결제 하기</button></td>
-    				</tr>
-    			</table>
-    		</div>
-    		</c:forEach>
-    	</div>
-   	</div>
-   <%@include file="/WEB-INF/views/user/common/userFooter.jsp"%>
+   		<div class="choiceBG">
+      		<div class="choice">
+         		<table class="choiceLayout">
+            		<caption>학원, 과목, 지역, 지점, 레벨, 요일, 시간</caption>
+            		<tr>
+               			<td class=title>학원</td>
+               			<td id = "td_academy">
+                  			<button name="btnAcademy" class="condition" data-academycd = "1">해커스</button>
+	                  		<button name="btnAcademy" class="condition" data-academycd = "2">파고다</button>
+	                  		<button name="btnAcademy" class="condition" data-academycd = "3">YBM</button>
+	               		</td>
+	            	</tr>
+	            	<tr>
+	               		<td class=title>과목</td>
+	               		<td id = "td_lecture">
+	                  		<button name="lectureName" data-isall="Y" class="condition" data-lecturecd = "1">토익</button>
+	                  		<button name="lectureName" data-isall="N" class="condition" data-lecturecd = "2">토스</button>
+	                  		<button name="lectureName" data-isall="N" class="condition" data-lecturecd = "3">토플</button>
+	                  		<button name="lectureName" data-isall="N" class="condition" data-lecturecd = "4">아이엘츠</button>
+	                  		<button name="lectureName" data-isall="N" class="condition" data-lecturecd = "5">텝스</button>
+	                  		<button name="lectureName" data-isall="N" class="condition" data-lecturecd = "6">오픽</button>
+	                  		<button name="lectureName" data-isall="N" class="condition" data-lecturecd = "7">gre</button>
+	                  		<button name="lectureName" data-isall="N" class="condition" data-lecturecd = "8">g-telp</button>
+	               		</td>
+	            	</tr>
+	            	<tr>
+	               		<td class=title>지역</td>
+	               		<td id = "td_local">
+	                  		<button name="local" data-isall="Y" class="condition" data-localcd = "2">서울</button>
+	                  		<button name="local" data-isall="N" class="condition" data-localcd = "32">인천</button>
+	                  		<button name="local" data-isall="N" class="condition" data-localcd = "53">대구</button>
+	                  		<button name="local" data-isall="N" class="condition" data-localcd = "51">부산</button>
+	               		</td>
+	            	</tr>
+	            	<tr>
+	               		<td class=title>지점</td>
+	               		<td id = "td_city">
+	                  		<button name="city" data-isall="Y" class="condition" data-citycd = "1">강남</button>
+	                  		<button name="city" data-isall="N" class="condition" data-citycd = "2">종로</button>
+	                  		<button name="city" data-isall="N" class="condition" data-citycd = "3">종로e4u</button>
+	                  		<button name="city" data-isall="N" class="condition" data-citycd = "4">신촌</button>
+	                  		<button name="city" data-isall="N" class="condition" data-citycd = "5">건대</button>
+	                  		<button name="city" data-isall="N" class="condition" data-citycd = "11">인천 센터</button>
+	                  		<button name="city" data-isall="N" class="condition" data-citycd = "6">대구 동성로</button>
+	                  		<button name="city" data-isall="N" class="condition" data-citycd = "7">서면</button>
+	                  		<button name="city" data-isall="N" class="condition" data-citycd = "8">부산대</button>
+	                  		<button name="city" data-isall="N" class="condition" data-citycd = "9">대연</button>
+	                  		<button name="city" data-isall="N" class="condition" data-citycd = "10">부산광복</button>
+	               		</td>
+	            	</tr>
+	            	<tr>
+	               		<td class=title>레벨</td>
+	               		<td id = "td_level">
+	                  		<button name="level" data-isall="Y" class="condition" data-levelcd = "1500">500+</button>
+	                  		<button name="level" data-isall="N" class="condition" data-levelcd = "1600">600+</button>
+	                  		<button name="level" data-isall="N" class="condition" data-levelcd = "1700">700+</button>
+	                  		<button name="level" data-isall="N" class="condition" data-levelcd = "1800">800+</button>
+	                  		<button name="level" data-isall="N" class="condition" data-levelcd = "1900">900+</button>
+	                  		<button name="level" data-isall="N" class="condition" data-levelcd = "360">60+</button>
+	                  		<button name="level" data-isall="N" class="condition" data-levelcd = "370">70+</button>
+	                  		<button name="level" data-isall="N" class="condition" data-levelcd = "380">80+</button>
+	                  		<button name="level" data-isall="N" class="condition" data-levelcd = "390">90+</button>
+	                  		<button name="level" data-isall="N" class="condition" data-levelcd = "21">IM+</button>
+	                  		<button name="level" data-isall="N" class="condition" data-levelcd = "22">IH+</button>
+	                  		<button name="level" data-isall="N" class="condition" data-levelcd = "23">AL+</button>
+	                  		<button name="level" data-isall="N" class="condition" data-levelcd = "45">5.5+</button>
+	                  		<button name="level" data-isall="N" class="condition" data-levelcd = "46">6.0+</button>
+	                  		<button name="level" data-isall="N" class="condition" data-levelcd = "47">7.0+</button>
+	                  		<button name="level" data-isall="N" class="condition" data-levelcd = "5300">300+</button>
+	                  		<button name="level" data-isall="N" class="condition" data-levelcd = "5350">350+</button>
+	                  		<button name="level" data-isall="N" class="condition" data-levelcd = "5400">400+</button>
+	                  		<button name="level" data-isall="N" class="condition" data-levelcd = "500">500+</button>
+	                  		<button name="level" data-isall="N" class="condition" data-levelcd = "61">IM+</button>
+	                  		<button name="level" data-isall="N" class="condition" data-levelcd = "62">IH+</button>
+	                  		<button name="level" data-isall="N" class="condition" data-levelcd = "63">AL+</button>
+	                  		<button name="level" data-isall="N" class="condition" data-levelcd = "71">기본</button>
+	                  		<button name="level" data-isall="N" class="condition" data-levelcd = "72">실전</button>
+	                  		<button name="level" data-isall="N" class="condition" data-levelcd = "73">특강</button>
+	                  		<button name="level" data-isall="N" class="condition" data-levelcd = "81">32+</button>
+	                  		<button name="level" data-isall="N" class="condition" data-levelcd = "82">65+</button>
+	               		</td>
+	            	</tr>
+	            	<tr>
+	               		<td class=title>요일</td>
+	               		<td id = "td_week">
+		                  	<button name="mon" data-isall="Y" class="condition week" data-weekmoncd = "1">월</button>
+		                  	<button name="tue" data-isall="N" class="condition week" data-weektuecd = "2">화</button>
+		                  	<button name="wed" data-isall="N" class="condition week" data-weekwedcd = "3">수</button>
+		                  	<button name="thu" data-isall="N" class="condition week" data-weekthucd = "4">목</button>
+		                  	<button name="fri" data-isall="N" class="condition week" data-weekfricd = "5">금</button>
+		                  	<button name="sat" data-isall="N" class="condition week" data-weeksatcd = "6">토</button>
+		                  	<button name="sun" data-isall="N" class="condition week" data-weeksuncd = "7">일</button>
+	               		</td>
+	            	</tr>
+	            	<tr>
+	               		<td class=title>시간</td>
+	               		<td id = "td_time">
+	                  		<button name="time" data-isall="Y" class="condition" data-timecd = "9">오전(9시 이전)</button>
+	                  		<button name="time" data-isall="N" class="condition" data-timecd = "912">오전(9시~12시)</button>
+	                  		<button name="time" data-isall="N" class="condition" data-timecd = "1218">오후(12시~18시)</button>
+	                  		<button name="time" data-isall="N" class="condition" data-timecd = "18">저녁(18시 이후)</button>
+	               		</td>
+	               		<td>
+	               			<button id = "se">검색</button>
+	               		<td>
+	            	</tr>
+	         	</table>
+	      	</div>
+	   	</div>
+	   	<div class="sort">
+	   		<ul>
+	   			<li><button name="sortbtn" class="sortcon">마감임박순</button></li>
+	         	<li><button name="sortbtn" class="sortcon">|&nbsp&nbsp&nbsp마감느린순</button></li>
+		        <li><button name="sortbtn" class="sortcon">|&nbsp&nbsp&nbsp가격낮은순</button></li>
+		        <li><button name="sortbtn" class="sortcon">|&nbsp&nbsp&nbsp가격높은순</button></li>
+		        <li><button name="sortbtn" class="sortcon">|&nbsp&nbsp&nbsp리뷰많은순</button></li>
+		        <li><button name="sortbtn" class="sortcon">|&nbsp&nbsp&nbsp베스트강좌순</button></li>
+	        </ul>
+	   	</div>
+	    <div class = "container">
+	    	<div class = "subContainer">
+	    	<c:forEach var="lecture" items="${complexSelectResult }">
+	    		<div class = "subChildContainer">
+	    			<h2>강의 목록</h2>
+		    			<p><img src="${lecture.teacher_img_org}" alt="강사 이미지" width="50" height="50"></p>
+		                <p>${lecture.cname}</p>
+		                <p>${lecture.time}</p>
+		                <p>${lecture.price}</p>
+	    		</div>
+	    		<div class = "childSelectBox1">
+	    			<table>
+	    				<tr>
+	    					<td><button type="button" onclick="" class="SelectBtn">장바구니 담기</button></td>
+	    					<td><button type="button" onclick="setCourseComp(11);" class="SelectBtn">비교함 담기</button></td>
+	    					<td><button type="button" onclick="location.href='/tobe/user/pay/userPayDetail.do?'+" class="payBtn">결제 하기</button></td>
+	    				</tr>
+	    			</table>
+	    		</div>
+	    		</c:forEach>
+	    	</div>
+	   	</div>
+	   	<%@include file="/WEB-INF/views/user/common/userFooter.jsp"%>
+	 </div>
 </body>
 
 </html>

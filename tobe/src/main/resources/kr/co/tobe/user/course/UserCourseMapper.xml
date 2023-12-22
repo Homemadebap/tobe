@@ -4,22 +4,22 @@
 	<select id="lectureSelect" parameterType="kr.co.tobe.vo.CourseVO" resultType="kr.co.tobe.vo.CourseVO">
 		SELECT teacher_img_org, cname, time, price 
 		FROM course
-	</select>
+	</select> 
 	<select id="complexSelect" parameterType="kr.co.tobe.vo.CourseVO" resultType="kr.co.tobe.vo.CourseVO">
-      	SELECT teacher_img_org, cname, time, price
+      	SELECT *
       	FROM course
       	WHERE education = #{education}
           	AND subject = #{subject}
           	AND area = #{area}
           	AND branch = #{branch}
           	AND level = #{level}
-          	<if test="mon != null">AND mon = #{mon}</if>
-         	<if test="tue != null">AND tue = #{tue}</if>
-         	<if test="wed != null">AND wed = #{wed}</if>
-         	<if test="thu != null">AND thu = #{thu}</if>
-         	<if test="fri != null">AND fri = #{fri}</if>
-         	<if test="sat != null">AND sat = #{sat}</if>
-         	<if test="sun != null">AND sun = #{sun}</if>
+          	<if test="mon != null">AND (mon = #{mon}</if>
+         	<if test="tue != null">OR tue = #{tue}</if>
+         	<if test="wed != null">OR wed = #{wed}</if>
+         	<if test="thu != null">OR thu = #{thu}</if>
+         	<if test="fri != null">OR fri = #{fri}</if>
+         	<if test="sat != null">OR sat = #{sat}</if>
+         	<if test="sun != null">OR sun = #{sun})</if>
           	AND timezone = #{timezone}
    </select>
 	<update id="qnaUpdate" parameterType="kr.co.tobe.vo.CqnaVO">
@@ -65,5 +65,35 @@
 		SELECT *
 		FROM course
 		WHERE course_no = #{no};
+	</select>
+	
+	<!-- 강좌 문의 -->
+	<sql id="cqnaSql">
+		<where>
+			<if test="searchWord != null and searchWord != ''">
+				<if test="searchType == 'all'">
+					cq_title LIKE '%${searchWord}%' OR cq_content LIKE '%${searchWord}%'
+				</if>
+				<if test="searchType != 'all'">
+					${searchType} LIKE '%${searchWord}%'
+				</if>
+			</if>
+		</where>
+	</sql>
+	
+	<select id="cqnaDetailList" parameterType="Integer" resultType="kr.co.tobe.vo.CqnaVO">
+		SELECT *
+		FROM cqna
+		WHERE course_no = #{courseNo}
+		<!--  
+		<include refid="cqnaSql"/>
+		ORDER BY gno DESC, ono ASC
+		LIMIT #{startIdx}, 10-->
+	</select>
+	
+	<select id="cqnaCount" parameterType="kr.co.tobe.vo.CqnaVO" resultType="int">
+		SELECT COUNT(*)
+		FROM cqna
+		<include refid="cqnaSql"/>
 	</select>
 </mapper>

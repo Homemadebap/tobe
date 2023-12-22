@@ -6,6 +6,7 @@ import org.apache.ibatis.annotations.Mapper;
 
 import kr.co.tobe.vo.CourseVO;
 import kr.co.tobe.vo.CqnaVO;
+import kr.co.tobe.vo.QnaVO;
 
 @Mapper
 public interface UserCourseMapper {
@@ -16,4 +17,6 @@ public interface UserCourseMapper {
 	int updateGno(int no);
 	CourseVO courseSelect(int no);
 	List<CourseVO> complexSelect(CourseVO CVO);
+	CqnaVO cqnaDetailList(int courseNo);
+//	int cqnaCount(int courseNo);
 }
