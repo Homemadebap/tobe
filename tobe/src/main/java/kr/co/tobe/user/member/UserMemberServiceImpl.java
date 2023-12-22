@@ -1,8 +1,5 @@
 package kr.co.tobe.user.member;
 
-import java.util.List;
-import java.util.Map;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -47,6 +44,12 @@ public class UserMemberServiceImpl implements UserMemberService {
 	@Override
 	public int quit(MemberVO mvo) {
 		return mapper.quit(mvo);
+	}
+	
+	//
+	@Override
+	public MemberVO findId(MemberVO vo) {
+		return mapper.findId(vo);
 	}
 
 	

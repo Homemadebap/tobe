@@ -25,4 +25,6 @@ public class MemberVO {
 	
 	private int startIdx;
 	private int page;
+	
+	private String searchWord;
 }

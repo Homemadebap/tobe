@@ -51,7 +51,7 @@
 		SELECT *
 		FROM qna
 		<include refid="qnaSql"/>
-		ORDER BY gno DESC, ono ASC
+		<!-- ORDER BY gno DESC, ono ASC  -->
 		LIMIT #{startIdx}, 10
 	</select>
 	<select id="qnaCount" parameterType="kr.co.tobe.vo.QnaVO" resultType="int">

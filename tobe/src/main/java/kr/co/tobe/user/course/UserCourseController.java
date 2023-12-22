@@ -80,14 +80,14 @@ public class UserCourseController {
 //	    return "user/course/userCourseIndex";
 //	}
 //	
-	@GetMapping("/user/course/userCourseDetail.do")
-	public String Detail(Model model, CourseVO courseVO) {
-		System.out.println(courseVO +"이거");
-		List<CourseVO> lectureList = service.getLectureList(courseVO);
-		model.addAttribute("lectureList", lectureList);
-		model.addAttribute("courseNo", courseVO.getCourse_no());
-		return "user/course/userCourseDetail";
-	}
+//	@GetMapping("/user/course/userCourseDetail.do")
+//	public String Detail(Model model, CourseVO courseVO) {
+//		System.out.println(courseVO +"이거");
+//		List<CourseVO> lectureList = service.getLectureList(courseVO);
+//		model.addAttribute("lectureList", lectureList);
+//		model.addAttribute("courseNo", courseVO.getCourse_no());
+//		return "user/course/userCourseDetail";
+//	}
 	
 //	강좌 문의 목록
 //	@GetMapping("/user/course/userCourseDetail.do")
@@ -152,12 +152,12 @@ public class UserCourseController {
 	}
 	
 	@GetMapping("/user/course/userCourseDetailQnaList.do")
-	@ResponseBody
-    public CqnaVO getReviewDetail(Model model, @RequestParam("courseNo") int courseNo) {
-		CqnaVO Cqna = service.cqnaDetailList(courseNo);
+    public String getReviewDetail(Model model, @RequestParam("course_no") int courseNo) {
+		List<CqnaVO> Cqna = service.cqnaDetailList(courseNo);
+		model.addAttribute("qna", Cqna);
       	System.out.println(Cqna);
       	System.out.println("하이");
-		return Cqna;
+		return "/user/course/userCourseDetailQnaList";
     }
 	
 //	@GetMapping("/user/course/userCourseDetail.do")
@@ -166,4 +166,11 @@ public class UserCourseController {
 //        model.addAttribute("qna", qna);
 //        return "user/course/userCourseDetailQnaList";
 //    }
+	
+	@GetMapping("/user/course/userCourseDetail.do")
+    public String getlectureDetail(Model model, @RequestParam("courseNo") int courseNo) {
+        CourseVO courseInfo = service.getlectureDetail(courseNo);
+        model.addAttribute("courseInfo", courseInfo);
+        return "/user/course/userCourseDetail";
+    }
 }
