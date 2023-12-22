@@ -20,13 +20,31 @@ $(function(){
     $(".tog").click(function(){
     	console.log("dddd");
         var idx = $(this).index(".tog");
-        
+	     //$(".tog").
         // 현재 클릭한 토글 외의 다른 토글 닫기
-        //$(".content").not(":eq("+idx+")").slideUp(300);
-        $(".content").slideUp(300);
+        $(".content").not(":eq("+idx+")").slideUp(0);
+        //$(".content").slideUp(300);
         // 클릭한 토글 열기 또는 닫기
         $(".content").eq(idx).slideToggle(300);
+        
     });
+    
+    $('.viewEdit').click(function () {
+    	console.log("aaa");
+        // 현재 클릭된 viewEdit 버튼이 속한 부모 tr에서 edit 클래스를 가진 요소를 찾아 보이게 하고,
+        // viewData 클래스를 가진 부분을 숨깁니다.
+        $(this).closest('tr').find('.edit').show();
+        $(this).closest('tr').find('.viewData').hide();
+    });
+
+    $('.viewRe').click(function () {
+        // 현재 클릭된 viewRe 버튼이 속한 부모 tr에서 viewData 클래스를 가진 요소를 찾아 보이게 하고,
+        // edit 클래스를 가진 부분을 숨깁니다.
+        $(this).closest('tr').find('.viewData').show();
+        $(this).closest('tr').find('.edit').hide();
+    });
+    
+    
 })
 	
 </script>
@@ -68,7 +86,7 @@ body {
            <div class="size">
                <h3 class="sub_title">답변게시판</h3>
                <div class="bbs">
-                   <table class="list">
+                   <table class="list" >
                    <p><span><strong>총 ${map.count }개</strong>  |  ${cqnaVO.page }/${map.totalPage }페이지</span></p>
                        <caption>문의 목록</caption>
                        <colgroup>
@@ -99,29 +117,48 @@ body {
                                <td class ="tog">${vo.cq_title }</td>
 
                                <td class="writer">
-                                   ${vo.member_no }
+                                   ${vo.member_name }
                                </td>
                                <td class="date"><fmt:formatDate value="${vo.cq_writedate }" pattern="YYYY-MM-dd"/></td>
-                               <td> <c:if test="${empty vo.cq_reply}"> 미답변</c:if></td>
+                               <td> <c:if test="${empty vo.cq_reply}"> 미답변</c:if>
+                               		<c:if test="${!empty vo.cq_reply}"> 답변 완료</c:if>
+                               </td>
                            </tr>
                            <tr>
                            	<td class="content" style="display:none;" colspan="5">
-                           		<p><textarea cols="100" rows="10">${vo.cq_content }</textarea></p>
-                           		<c:if test="${!empty vo.cq_reply}"> ${vo.cq_reply}</c:if>
-                           	 	
+                           		<p>${vo.cq_content }</p>
+                           		<c:if test="${!empty vo.cq_reply}">
+                           			<div class="title">
+	                           			
+	                           			<div class=" viewData">${vo.cq_reply }<button class="viewEdit">수정</button></div>
+	                           			
+	                           			
+	                         			 <div class="edit" style="display:none;">
+		                         			 <form action="/tobe/admin/customer/edit.do" method="post" >
+			                           	 		  <input type="hidden" id="cqna_no" name="cqna_no" value="${vo.cqna_no} ">
+											      <textarea name="cq_reply" cols="100" rows="10">${vo.cq_reply }</textarea>
+											      <input type="submit" value="수정">
+										    </form>
+											<button class="viewRe">취소</button>
+	                         			 </div>
+	                         			 
+	                         			 
+                           			</div>	
+                           			                         			 
+                           		</c:if>
+                           	 		
                            	 	<c:if test="${empty vo.cq_reply}">
-	                           	 	<form>
-									      <p><textarea cols="100" rows="10"></textarea></p>
-									      <p><a href="">등록</a></p>
+	                           	 	<form action="/tobe/admin/customer/reply.do" method="post" >
+	                           	 		  <input type="hidden" id="cqna_no" name="cqna_no" value="${vo.cqna_no} ">
+									      <textarea name="cq_reply" cols="100" rows="10"></textarea>
+									      <input type="submit" value="등록">
 								    </form>
                            	 	</c:if>
                            	</td>
                             </tr>
 
                            <tr>
-                           	 <td class="c"> 
                            	 	
-                           	 </td>
                            </tr>
                       </c:forEach>
                        </tbody>
