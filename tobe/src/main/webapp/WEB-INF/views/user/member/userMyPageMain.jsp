@@ -28,22 +28,22 @@ $(function(){
 	    if($(this).text() == '현재 수강 중인 강좌') {
 	        $('.currentCourseIndex').show();
 	        $('.pastCourseIndex').hide();
-	        $('.myCourseAskIndex').hide();
+	        $('.askIndex').hide();
 	        $('.myReviewIndex').hide();
 	    } else if($(this).text() == '수강 신청 내역'){
 	        $('.currentCourseIndex').hide();
 	        $('.pastCourseIndex').show();
-	        $('.myCourseAskIndex').hide();
+	        $('.askIndex').hide();
 	        $('.myReviewIndex').hide();
 	    } else if($(this).text() == '나의 문의'){
 	        $('.currentCourseIndex').hide();
 	        $('.pastCourseIndex').hide();
-	        $('.myCourseAskIndex').show();
+	        $('.askIndex').show();
 	        $('.myReviewIndex').hide();
 	    } else if($(this).text() == '나의 후기'){
 	        $('.currentCourseIndex').hide();
 	        $('.pastCourseIndex').hide();
-	        $('.myCourseAskIndex').hide();
+	        $('.askIndex').hide();
 	        $('.myReviewIndex').show();
 	    }
 	})
@@ -232,7 +232,7 @@ $(function(){
 	left: 2rem;
 }
 
-.currentCourseIndex, .pastCourseIndex, .myCourseAskIndex, .myReviewIndex {
+.currentCourseIndex, .pastCourseIndex, .askIndex, .myReviewIndex {
 	display: none;
 }
 
@@ -378,7 +378,7 @@ input[type="button"], input[type="submit"] {
                     </c:if>
 				</div>
 
-				<div class="myCourseAskIndex">
+				<div class="askIndex" style="overflow-y:scroll; height: 30rem;" >
 					<c:if test="${empty mcai}">
                         <tr>
                             <td class="noIndex">문의한 내역이 없습니다.</td>
@@ -429,8 +429,8 @@ input[type="button"], input[type="submit"] {
 		                    <c:forEach var="vo" items="${mri}">
 		                        <tr>
 		                            <td>${vo.review_no}</td>
-		                            <td>${vo.cname}</td>
-		                            <td class="url" onclick="location.href='/tobe/user/review/userReviewDetail.do?review_no=${vo.review_no}'">${vo.r_title}</td>   
+		                            <td><a class="url" href="/tobe/user/review/userReviewDetail.do?review_no=${vo.review_no}">${vo.cname}</a></td>
+		                            <td><a class="url" href="/tobe/user/review/userReviewDetail.do?review_no=${vo.review_no}">${vo.r_title}</a></td> 
 		                            <td>${vo.r_writedate}</td>  
 		                        </tr>
 		                    </c:forEach>
@@ -438,10 +438,8 @@ input[type="button"], input[type="submit"] {
                     </c:if>
 				</div>
 			</div>
-			
-			
 		</div>
-		<%@include file="/WEB-INF/views/user/common/userFooter.jsp"%>
+	<%@include file="/WEB-INF/views/user/common/userFooter.jsp"%>
 	</div>
 </body>
 </html>

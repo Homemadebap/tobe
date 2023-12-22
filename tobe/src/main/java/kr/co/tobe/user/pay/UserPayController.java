@@ -1,18 +1,10 @@
 package kr.co.tobe.user.pay;
 
-import java.time.LocalDateTime;
-import java.util.Date;
-import java.util.List;
-import java.util.Map;
-
-import javax.servlet.http.HttpSession;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-
-import kr.co.tobe.vo.MemberVO;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class UserPayController {
@@ -21,8 +13,9 @@ public class UserPayController {
 	UserPayService service;
 	
 	@GetMapping("/user/pay/userPayCompleteDetail.do")
-	public String userMyPageMain(HttpSession sess, Model model) {
-		MemberVO user = (MemberVO)sess.getAttribute("loginInfo");
+	public String userMyPageMain(@RequestParam("detail_no") int detail_no, Model model) {
+		
+		model.addAttribute("pdvo", service.payDetailIndex(detail_no));
 
 		
 		return "user/pay/userPayCompleteDetail";

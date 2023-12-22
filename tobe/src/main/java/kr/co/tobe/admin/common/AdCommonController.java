@@ -85,9 +85,6 @@ public class AdCommonController {
 	@GetMapping("/admin/common/adIndex.do")
 	public String adIndex(HttpSession sess, Model model) {
 		AdminVO admin = (AdminVO)sess.getAttribute("loginInfo");
-		if(admin == null) {
-			return "redirect:/admin/common/adLogin.do";
-		}
 		
 		model.addAttribute("admin", admin);
 		model.addAttribute("tpc", service.todayPayCnt(admin));
@@ -96,6 +93,7 @@ public class AdCommonController {
 		model.addAttribute("lmpt", service.lastMonthPayTotal(admin));
 		model.addAttribute("lmct", service.lastMonthChargeTotal(admin));
 		model.addAttribute("typt", service.thisYearPayTotal(admin));
+		model.addAttribute("cq", service.courseQna(admin));
 		
 		
 		

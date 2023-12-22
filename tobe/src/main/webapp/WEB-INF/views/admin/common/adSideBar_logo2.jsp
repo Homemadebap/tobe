@@ -29,6 +29,7 @@ body {
    width: 90%;
    margin-left: 5px;
    margin-top: 12px;
+   cursor:pointer;
 }
 
 #btn>img {
@@ -36,6 +37,7 @@ body {
    max-height: 75px;
    display: block;
    margin-left: 10px;
+   cursor:pointer;
 }
 
 #btno>img {
@@ -43,6 +45,7 @@ body {
    max-height: 100px;
    display: block;
    margin-left: 10px;
+   cursor:pointer;
 }
 
 #btne>img {

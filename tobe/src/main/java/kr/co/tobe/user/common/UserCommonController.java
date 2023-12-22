@@ -16,7 +16,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import kr.co.tobe.vo.CourseVO;
+import kr.co.tobe.vo.CqnaVO;
 import kr.co.tobe.vo.MemberVO;
+import kr.co.tobe.vo.QnaVO;
 
 @Controller
 public class UserCommonController {
@@ -54,6 +56,8 @@ public class UserCommonController {
 	@GetMapping("/user/member/userMyPageMain.do")
 	public String userMyPageMain(HttpSession sess, Model model) {
 		MemberVO user = (MemberVO)sess.getAttribute("loginInfo");
+		CqnaVO cqna = new CqnaVO();
+		QnaVO qna = new QnaVO();
 		
 		model.addAttribute("user", user); // 사용자 정보 넘기기
 		model.addAttribute("cci", service.currentCourseIndex(user)); // 현재수강중인강의에 들어갈 정보

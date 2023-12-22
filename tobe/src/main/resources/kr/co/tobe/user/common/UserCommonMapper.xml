@@ -55,7 +55,6 @@
 		WHERE m.member_no = #{member_no}
 		ORDER BY i_endday DESC;
 	</select>	
-
 	
 	<select id="myCourseAskIndex" parameterType="kr.co.tobe.vo.MemberVO" resultType="java.util.Map">
   		SELECT
@@ -81,9 +80,10 @@
 		    DATE_FORMAT(r_writedate, '%Y-%m-%d') AS r_writedate
 		FROM member m JOIN review r ON m.member_no = r.member_no
 		JOIN course c ON c.course_no = r.course_no
-		WHERE m.member_no = 13
+		WHERE m.member_no = #{member_no}
 		ORDER BY r.r_writedate desc
 	</select>	
+
 	
 	<select id="courseSelect" resultType="kr.co.tobe.vo.CourseVO" parameterType="int">
 		SELECT *

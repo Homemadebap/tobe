@@ -78,6 +78,13 @@
 	    ]]>
 	</select>
 	
+	<select id="courseQna" parameterType="kr.co.tobe.vo.AdminVO" resultType="java.util.Map">
+			SELECT cqna_no, cq_title, STR_TO_DATE(cq_writedate, '%Y-%m-%d') as cq_writedate
+			FROM cqna cq JOIN course c ON cq.course_no=c.course_no
+			WHERE education=#{ad_type}
+			AND cq_reply is null;
+	</select>
+	
 	
 	
 </mapper>

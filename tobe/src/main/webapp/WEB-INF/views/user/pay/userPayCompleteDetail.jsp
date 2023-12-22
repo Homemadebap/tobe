@@ -2,6 +2,8 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ page import="java.io.*,java.util.*" %>
+<%@ page import="javax.servlet.*,javax.servlet.http.*" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -29,7 +31,6 @@ $(function(){
 
 </script>
 
-
 <style>
 .container {
 	position: absolute;
@@ -52,6 +53,8 @@ $(function(){
 
 #secondRow {
 	height: 10rem;
+	font-size: 1.5rem;
+	font-weight: bolder;
 }
 
 .courseInfo td {
@@ -68,6 +71,7 @@ $(function(){
 .payInfo tr:first-child {
 	height: 3rem;
 	font-size: 1.25rem;
+	font-weight: bolder;
 }
 .payInfo tr:last-child {
 	background-color: #F5F5F5;
@@ -105,15 +109,20 @@ $(function(){
 			<div>
 				<table class="courseInfo">
 					<tr id="firstRow">
-						<td></td>
-						<td>강좌정보</td>
-						<td>가격</td>
-						<td>총상품금액</td>
+						<th></th>
+						<th>강좌정보</th>
+						<th>가격</th>
+						<th>총상품금액</th>
 					</tr>
 					<tr id="secondRow">
-						<td>dfdf</td>
-						<td>dfdf</td>
-						<td>dfdf</td>
+						<td>${pdvo.teacher_img_real }</td>
+						<td>
+							<span style="font-size: 1.25rem;">강좌명 : ${pdvo.i_cname }</span><br>
+							<span style="font-size: 1rem; font-weight: normal;">개강일 : ${pdvo.i_startday }</span><br>
+							<span style="font-size: 1rem; font-weight: normal;">종강일 : ${pdvo.i_endday}</span>
+						</td>
+						<td>${pdvo. pay_single}</td>
+						<td>${pdvo. i_price}</td>
 					</tr>
 				</table>
 			</div>
@@ -125,19 +134,24 @@ $(function(){
 			<div>
 				<table class="payInfo">
 					<tr>
-						<td>총 주문 금액</td>
-						<td>총 할인 금액</td>
-						<td>결제 금액</td>
+						<td>
+							<span style="width: 50%; float: left;">총 주문 금액</span>
+							<span style="width: 50%; float: left;">${pdvo. i_price}원</span>
+						</td>
+						<td>
+							<span style="width: 50%; float: left;">총 할인 금액</span>
+							<c:set var="discount" value="${pdvo.i_price - pdvo.pay_single }"/>
+							<span style="width: 50%; float: left;"><c:out value="${discount }원"/></span>		
+						</td>
+						<td>
+							<span style="width: 50%; float: left;">결제 금액</span>
+							<span style="width: 50%; float: left;">${pdvo. i_price}원</span>	
+						</td>
 					</tr>
 					<tr>
-						<td>dfdf</td>
-						<td>dfdf</td>
-						<td>
-							<div></div>
-							<div></div>
-							<div></div>
-							<div></div>
-						</td>
+						<td></td>
+						<td></td>
+						<td>${pdvo.pay_single }</td>
 					</tr>
 				</table>			
 			</div>
