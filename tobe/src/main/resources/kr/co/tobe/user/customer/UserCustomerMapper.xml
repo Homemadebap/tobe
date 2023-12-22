@@ -65,18 +65,13 @@
 			`member_no`,
 			`q_title`,
 			`q_content`,
-			`q_writedate`,			
-			`gno`,
-			`ono`,
-			`nested`
+			`q_writedate`			
+
 		) VALUES (
 			#{member_no},
 			#{q_title},
 			#{q_content},
-			NOW(),
-			0,
-			0,
-			0
+			NOW()
 		)
 	</insert>
 	
@@ -146,9 +141,9 @@
 		</selectKey>
 	</insert>
 	
-	<update id="updateGno" parameterType="int">
+	<!-- <update id="updateGno" parameterType="int">
 		UPDATE qna SET gno=#{no} WHERE qna_no=#{no}
-	</update>
+	</update> -->
 	
 	<delete id="qnaDelete" parameterType="int">
 		DELETE FROM qna WHERE qna_no=#{no}

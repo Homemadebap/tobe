@@ -4,7 +4,8 @@
 
 
 	
-	
+	<insert id="replyInsert" parameterType="int">
+	</insert>
 	
 
 </mapper>

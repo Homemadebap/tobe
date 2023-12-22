@@ -8,6 +8,13 @@ public class AdCustomerServiceImpl implements AdCustomerService {
 
 		@Autowired
 		AdCustomerMapper mapper;
+
+		@Override
+		public int cQnaReply(int no) {
+			return mapper.replyInsert(no);
+		}
+		
+		
 		
 
 }
