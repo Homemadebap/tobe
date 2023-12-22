@@ -13,9 +13,7 @@ public class QnaVO {
 	private String q_title;
 	private String q_content;
 	private Timestamp q_writedate;
-	private int gno;
-	private int ono;
-	private int nested;
+	private String q_reply;
 	
 	private int startIdx;
 	private int page;

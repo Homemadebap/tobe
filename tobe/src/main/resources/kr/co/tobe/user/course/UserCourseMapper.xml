@@ -34,28 +34,22 @@
 			`member_no`,
 			`cq_title`,
 			`cq_content`,
-			`cq_writedate`,
-			`gno`,
-			`ono`,
-			`nested`
+			`cq_writedate`
 		) VALUES (
 			#{course_no},
 			#{member_no},
 			#{cq_title},
 			#{cq_content},
-			NOW(),
-			0,
-			0,
-			0
+			NOW()
 		)
 		<selectKey keyProperty="cqna_no" order="AFTER" resultType="int">
 			SELECT LAST_INSERT_ID()
 		</selectKey>
 	</insert>
 	
-	<update id="updateGno" parameterType="int">
+<!-- 	<update id="updateGno" parameterType="int"> 
 		UPDATE cqna SET gno=#{no} WHERE cqna_no=#{no}
-	</update>
+ 	</update> -->
 	
 	<delete id="qnaDelete" parameterType="int">
 		DELETE FROM cqna WHERE cqna_no=#{no}
@@ -81,7 +75,7 @@
 		</where>
 	</sql>
 	
-	<select id="cqnaDetailList" parameterType="Integer" resultType="kr.co.tobe.vo.CqnaVO">
+	<select id="cqnaDetailList" parameterType="kr.co.tobe.vo.CqnaVO" resultType="kr.co.tobe.vo.CqnaVO">
 		SELECT *
 		FROM cqna
 		WHERE course_no = #{courseNo}
@@ -96,4 +90,10 @@
 		FROM cqna
 		<include refid="cqnaSql"/>
 	</select>
+	
+	<select id="lectureDetail" parameterType="kr.co.tobe.vo.CourseVO" resultType="kr.co.tobe.vo.CourseVO">
+        SELECT *
+        FROM course
+        WHERE course_no = #{courseNo};
+    </select>
 </mapper>

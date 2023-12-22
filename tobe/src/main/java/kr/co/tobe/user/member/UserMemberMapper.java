@@ -25,7 +25,8 @@ public interface UserMemberMapper {
 	int quit(MemberVO mvo);
 
 	// 아이디 찾기
-	int searchID(MemberVO vo);
+	MemberVO findId(MemberVO vo);
+	
 	
 	// 마이페이지 - 현재 수강중인 강의 목록 뽑아오기
 	List<Map<String, Object>> currentCourseIndex(MemberVO mvo);

@@ -53,9 +53,9 @@
    position: absolute;
    border: solid 1px ;
    width: 1000px;
-   height: 500px;
    margin: 260px 0 0 250px;
    border-collapse: collapse;
+   top: 2rem;
 }
 tr{
 border: solid 1px;
@@ -87,7 +87,12 @@ border: solid 1px;
    background-color: #F0F8FF;
    color: #808080;
 }
-
+.searchWord{
+	margin: 1000px 0 0 500px;
+	position: relative;
+	top: 265px;
+	
+}
 </style>
 
 </head>
@@ -139,12 +144,16 @@ border: solid 1px;
 	      </tr>
 	     </thead>
        </table>
-       
-             
-        <div class="btn" float="right;">
-	       	<input type="button" id="reset" value="초기화">
-	       	<input type="button" id="search" value="검색">
-       </div> 
+       <!--
+       <form method ="get" name="searchForm" id="searchForm" action="chiefMemberIndex.do">
+		   <span class="searchWord">
+		   	 <input id="search" type="search" name="searchWord" value="${MemberVO.searchWord }" placeholder="검색">                        
+			 <button type="submit" class="btn" style="background-color: #ECEDE8; color:#44546A; border-width: 1px; border-radius: 7px; padding:3x 10px; ">검색</button>
+		   </span>
+		</form> 
+		-->
+
+
    
  
          <table class="tablea">
@@ -187,7 +196,7 @@ border: solid 1px;
                         <c:if test="${map.prev }">
                         	<li><a href="index.do?page=${map.startPage-1 }"> &lt;&lt; </a></li>
                         </c:if>
-                        <c:forEach var="p" begin="${map.startPage}" end="${map.endPage}">
+                        <c:forEach var="p" begin="${map.startPage ge 0 ? map.startPage : 0}" end="${map.endPage}">
                         	<c:if test="${p == MemberVO.page}">
                             <li><a href='#;' class='current'>${p}></a></li>
                             </c:if>

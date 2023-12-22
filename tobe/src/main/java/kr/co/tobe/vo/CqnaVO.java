@@ -13,12 +13,11 @@ public class CqnaVO {
 	private String cq_title;
 	private String cq_content;
 	private Timestamp cq_writedate;
-	private int gno;
-	private int ono;
-	private int nested;
+	private String cq_reply;
 	
 	private int startIdx;
 	private int page;
+
 	private String searchType;
 	private String searchWord;
 	
@@ -27,6 +26,7 @@ public class CqnaVO {
 	public CqnaVO() {
 		this.page = 1;
 	}
+
 	public int getStartIdx() {
 		return (page-1) * 10;
 	}

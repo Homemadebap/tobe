@@ -4,7 +4,11 @@
 
 
 	
-	
+	<insert id="replyInsert" parameterType="kr.co.tobe.vo.CqnaVO">
+		UPDATE cqna 
+		SET cq_reply = #{cq_reply}
+		WHERE cqna_no =#{cqna_no}
+	</insert>
 	
 
 </mapper>
