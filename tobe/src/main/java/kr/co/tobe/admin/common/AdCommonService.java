@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import kr.co.tobe.vo.AdminVO;
+import kr.co.tobe.vo.CqnaVO;
 
 public interface AdCommonService {
 	AdminVO login(AdminVO vo);
@@ -15,4 +16,7 @@ public interface AdCommonService {
 	Map<String, Object> lastMonthChargeTotal(AdminVO avo);
 	Map<String, Object> thisYearPayTotal(AdminVO avo);
 	List<Map<String, Object>> courseQna(AdminVO avo);
+
+	Map<String, Object> cqnaList(Map<String, Object> map);
+
 }

@@ -151,23 +151,23 @@ function ProcessOrder() {
 					</thead>
 					<tbody>
 						<c:forEach var= "vo" items="${cart.list }"> 
-							<c:set var="education" value="${CodeToString.educationToString(vo.education)}" />
+						<!-- <c:set var="education" value="${CodeToString.educationToString(vo.education)}" />
 							<c:set var="subject" value="${CodeToString.subjectToString(vo.subject)}" />
 							<c:set var="area" value="${CodeToString.areaToString(vo.area)}" />
 							<c:set var="branch" value="${CodeToString.branchToString(vo.branch)}" />
-							<c:set var="date" value="${CodeToString.dateToStirng(vo.mon, vo.tue, vo.wed, vo.thu, vo.fri, vo.sat, vo.sun)}" />
+							<c:set var="date" value="${CodeToString.dateToStirng(vo.mon, vo.tue, vo.wed, vo.thu, vo.fri, vo.sat, vo.sun)}" /> -->
 							<tr>
 							  <td class="input_btn" ><span>
 							  <input  type="checkbox" class="input_button small" name="chknum_0" data-no="${vo.cart_no }" value="${vo.price }" onclick="MathPrice(this);"><label for="checkbox2">&nbsp;</label></span></td>
 							  <td class="img"><a></a></td>
 							  <td class="product"> 
-							  	학원명 : ${education}<br>
+							  	학원명 : ${CodeToString.educationToString(vo.education)}<br>
 							  	과정명 : ${vo.cname}<br>
-							  	과목 : ${subject}<br>
-							  	지역 : ${area} <br>
-							  	지점 : ${branch} <br>
+							  	과목 : ${CodeToString.subjectToString(vo.subject)}<br>
+							  	지역 : ${CodeToString.areaToString(vo.area)} <br>
+							  	지점 : ${CodeToString.branchToString(vo.branch)} <br>
 								시간 : ${vo.time} <br>
-							  	요일 : ${date }<br></td>
+							  	요일 : ${CodeToString.dateToStirng(vo.mon, vo.tue, vo.wed, vo.thu, vo.fri, vo.sat, vo.sun)}<br></td>
 							  <td class="price">${vo.price }</td>
 							</tr>
 						</c:forEach>

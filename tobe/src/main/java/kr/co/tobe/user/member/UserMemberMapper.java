@@ -1,8 +1,5 @@
 package kr.co.tobe.user.member;
 
-import java.util.List;
-import java.util.Map;
-
 import org.apache.ibatis.annotations.Mapper;
 
 import kr.co.tobe.vo.MemberVO;
@@ -26,5 +23,8 @@ public interface UserMemberMapper {
 
 	// 아이디 찾기
 	int searchID(MemberVO vo);
+
+	MemberVO findId(MemberVO vo);
+	
 
 }

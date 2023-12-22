@@ -34,7 +34,7 @@ public class ChiefMemberController {
 		model.addAttribute("msg",msg);
 		model.addAttribute("url",url);
 		model.addAttribute("cmd","move");
-		return "chiefAdmin/common/chiefAlert";
+		return "chiefAdmin/common/alert";
 	}
 	
 	@GetMapping ("/chiefAdmin/member/chiefMemberDetail.do")
@@ -43,3 +43,5 @@ public class ChiefMemberController {
 		return "chiefAdmin/member/chiefMemberDetail"; 
 	}
 }
+	
+

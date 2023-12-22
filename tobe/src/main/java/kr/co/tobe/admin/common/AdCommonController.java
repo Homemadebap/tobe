@@ -1,5 +1,8 @@
 package kr.co.tobe.admin.common;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import kr.co.tobe.vo.AdminVO;
+import kr.co.tobe.vo.CqnaVO;
 
 @Controller
 public class AdCommonController {
@@ -27,11 +31,19 @@ public class AdCommonController {
 	}	
 
 	@GetMapping("/admin/customer/adQnaIndex.do")
-	public String adQnaIndex(HttpSession sess, Model model) {
+	public String adQnaIndex(HttpSession sess, Model model, CqnaVO cqvo) {
 		AdminVO admin = (AdminVO)sess.getAttribute("loginInfo");
 		if(admin == null) {
 			return "redirect:/admin/common/adLogin.do";
 		}
+		Map<String, Object> map = new HashMap<>();
+		map.put("cqvo", cqvo);
+		map.put("no", admin.getAdmin_no());
+		map.put("page", cqvo.getPage());
+		map.put("startIdx", cqvo.getStartIdx());
+		
+		model.addAttribute("map", service.cqnaList(map));
+		
 		model.addAttribute("admin", admin);
 		return "admin/customer/adQnaIndex"; 
 	}

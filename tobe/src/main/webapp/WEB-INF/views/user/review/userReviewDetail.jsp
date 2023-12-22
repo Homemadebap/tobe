@@ -184,6 +184,7 @@ hr{
 		        <td>${review.r_title}</td>
 		        <td><c:out value="${review.r_writedate}" /></td>
 		    </tr>
+		</table>
    	</div>
    	<div id="secondLine">
    		<hr>

@@ -27,9 +27,22 @@ public class UserMemberController {
 	}
 	 
 //	아이디 비밀번호 찾기
+	//@PostMapping("user/member/userFindMember.do")
 	@GetMapping("user/member/userFindMember.do")
-	public String userFindMember() {
+	public String findMember(MemberVO vo, HttpSession sess, Model model) {
 		return "user/member/userFindMember";
+	}
+	@PostMapping("user/member/userFindMember.do")
+	public String userFindMember(MemberVO vo, HttpSession sess, Model model) {
+		MemberVO findId = service.findId(vo);
+		if (findId == null) {
+			model.addAttribute("msg", "조회 결과가 없습니다.");
+			model.addAttribute("cmd", "back");
+			return "user/common/userAlert";
+		} else { 
+			sess.setAttribute("checkInfo", findId);
+			return "redirect:user/member/userFindMember2";
+		}
 	}
 
 	

@@ -6,6 +6,7 @@ import java.util.Map;
 import org.apache.ibatis.annotations.Mapper;
 
 import kr.co.tobe.vo.AdminVO;
+import kr.co.tobe.vo.CqnaVO;
 
 
 @Mapper
@@ -21,4 +22,8 @@ public interface AdCommonMapper {
 	Map<String, Object> lastMonthChargeTotal(AdminVO avo);
 	Map<String, Object> thisYearPayTotal(AdminVO avo);
 	List<Map<String, Object>> courseQna(AdminVO avo);
+
+	int cqnaCount(Map<String, Object> map);
+	List<CqnaVO> cqnaList(Map<String, Object> map);
+
 }
