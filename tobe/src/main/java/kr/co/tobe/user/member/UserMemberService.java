@@ -13,6 +13,8 @@ public interface UserMemberService {
 	int update(MemberVO vo);
 	MemberVO pwdCheck(MemberVO mvo);
 	int quit(MemberVO mvo);
+	//
+	MemberVO findId(MemberVO vo);
 
 	
 	

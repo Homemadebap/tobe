@@ -22,4 +22,22 @@
 		FROM member	
 		LIMIT #{startIdx}, 10
 	</select>
+	<!-- 	
+	<sql id = "cmemberSql">
+		<where>
+	        <if test="searchWord != null and searchWord != ''">
+	            name LIKE '%' || #{searchWord} || '%' OR
+	            id LIKE '%' || #{searchWord} || '%' OR
+	            gender LIKE '%' || #{searchWord} || '%' OR
+	            registdate LIKE '%' || #{searchWord} || '%' OR
+	            birthday LIKE '%' || #{searchWord} || '%' OR
+	            email LIKE '%' || #{searchWord} || '%' OR
+	            hp LIKE '%' || #{searchWord} || '%' OR
+	            point LIKE '%' || #{searchWord} || '%' OR
+	            addr1 LIKE '%' || #{searchWord} || '%'
+	        </if>
+	    </where>
+	</sql> 
+	-->	
+
 </mapper>
