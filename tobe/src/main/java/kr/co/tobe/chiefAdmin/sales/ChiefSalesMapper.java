@@ -9,5 +9,6 @@ import org.apache.ibatis.annotations.Mapper;
 public interface ChiefSalesMapper {
 	
 	List<Map<String, Object>> payList(Map<String, Object> map);
-	List<Map<String, Object>> pay_chageTotal(Map<String, Object> map);
+	List<Map<String, Object>> conEduTotal(Map<String, Object> map);
+	Map<String, Object> pay_chargeTotal();
 }
