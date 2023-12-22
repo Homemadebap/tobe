@@ -18,7 +18,13 @@ public class ChiefSalesServiceImpl implements ChiefSalesService {
 	}
 	
 	@Override
-	public List<Map<String, Object>> pay_chageTotal(Map<String, Object> map) {
-		return mapper.pay_chageTotal(map);
+	public List<Map<String, Object>> conEduTotal(Map<String, Object> map) {
+		return mapper.conEduTotal(map);
 	}
+	
+	@Override
+	public Map<String, Object> pay_chargeTotal() {
+		return mapper.pay_chargeTotal();
+	};
+
 }

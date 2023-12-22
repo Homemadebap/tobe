@@ -43,3 +43,5 @@ public class ChiefMemberController {
 		return "chiefAdmin/member/chiefMemberDetail"; 
 	}
 }
+	
+

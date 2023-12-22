@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ page import="kr.co.tobe.util.CodeToString"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,6 +16,12 @@
 <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
 
 <script>
+
+var conEduTotal = ${conEduTotal};
+
+// 가져온 정보를 console.log로 출력
+console.log("conEduTotal:", conEduTotal);
+
 
 
 </script>
@@ -70,8 +77,8 @@
 .lBox {
 	position: absolute;
 	width: 40rem;
-	height: 28rem;
-	top: 17.5rem; 
+	height: 29.5rem;
+	top: 16rem; 
 	left: 12rem;
 	border: 1px solid #ddd;
 	box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
@@ -82,6 +89,8 @@
 	top: 1rem;
 	border-collapse: collapse;
 	width: 100%;
+	border-top: none;
+	border-bottom: none;
 }
 
 .salesList th, .salesList td {
@@ -92,20 +101,19 @@
 }
 
 .salesList th {
-    border-right: none; /* 오른쪽 구분선 없음 */
-    border-bottom: none; /* 아래쪽 구분선 없음 */
-    border-top: none; /* 아래쪽 구분선 없음 */
+        border-top: none; /* 맨 위 줄 제거 */
 }
 
-.salesList > tr:last-child td {
-    border-bottom: none; /* 마지막 행의 아래쪽 구분선 없음 */
+.salesList td {
+        border-bottom: none; /* 맨 아래 줄 제거 */
 }
+
 
 .total {
 	position: absolute;
 	width: 33rem;
-	height: 28rem;
-	top: 17.5rem; 
+	height: 29.5rem;
+	top: 16rem; 
 	left: 54rem;
 	border: 1px solid #ddd;
 	box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
@@ -168,12 +176,15 @@
 				<th>수수료</th>
 			</tr>
 			<c:forEach var="vo" items="${payList}">
-				<td>${vo.education}</td>
-				<td>${vo.pay_date}</td>
-				<td>${vo.pay_total}</td>
-				<td>${vo.charge_total}</td>
+			<c:set var="education" value="${CodeToString.educationToString(vo.education)}" />
+				<tr>
+					<td>${education}</td>
+					<td>${vo.pay_date}</td>
+					<td>${vo.pay_total}</td>
+					<td>${vo.charge_total}</td>
+				</tr>
 			</c:forEach>
-		
+			
 		</table>
 	
 	</div>
@@ -181,22 +192,46 @@
 
 	<table class="total">
 		<tr style="background-color: #D9D9D9; height: 3.5rem;">
-			<th colspan="3" style="font-size: 1.15rem;">총매출: ${pay_chageTotal.pay_total }</th>
+			<th colspan="3" style="font-size: 1.15rem;">총매출: 
+				<c:if test="${!empty pay_chargeTotal}">
+					<span style="font-size: 1.5rem; color: #3152A8">${pay_chargeTotal.pay_total }</span>
+				</c:if>
+			</th>
 		</tr>
-		<tr style="height: 10rem;">
-			<td><b>해커스</b><br><br>ㅇㅇㅇㅇ원 </td>
-			<td><b>파고다</b><br><br>ㅇㅇㅇㅇ원 </td>
-			<td><b>ybm</b><br><br>ㅇㅇㅇㅇ원 </td>
+		<tr style="height:5rem;">
+			<td><b>해커스</b></td>
+			<td><b>파고다</b></td>
+			<td><b>ybm</b></td>
+		</tr>
+		<tr style="height: 5rem;">
+			<c:if test="${!empty conEduTotal}">
+				<c:forEach var="vo" items="${conEduTotal}">
+					<td>${vo.pay_total }</td>
+				</c:forEach>
+			</c:if>
 		</tr>
 		<tr style="background-color: #D9D9D9; height: 3.5rem;">
-			<th colspan="3" style="font-size: 1.15rem;">총수수료: ${pay_chageTotal.charge_total } </th>
+			<th colspan="3" style="font-size: 1.15rem;">총수수료:  
+				<c:if test="${!empty pay_chargeTotal}">
+					<span style="font-size: 1.5rem; color: #3152A8">${pay_chargeTotal.charge_total }</span>
+				</c:if>
+			</th>
 		</tr>
-		<tr style="height: 10rem;">
-			<td><b>해커스</b><br><br>ㅇㅇㅇㅇ원 </td>
-			<td><b>파고다</b><br><br>ㅇㅇㅇㅇ원 </td>
-			<td><b>ybm</b><br><br>ㅇㅇㅇㅇ원 </td>
+		<tr style="height:5rem;">
+			<td><b>해커스</b></td>
+			<td><b>파고다</b></td>
+			<td><b>ybm</b></td>
+		</tr>
+		<tr style="height: 5rem;">
+			<c:if test="${!empty conEduTotal}">
+				<c:forEach var="vo" items="${conEduTotal }">
+					<td>${vo.charge_total }</td>
+				</c:forEach>
+			</c:if>
 		</tr>
 	</table>
+	
+	
 
    
 </body>

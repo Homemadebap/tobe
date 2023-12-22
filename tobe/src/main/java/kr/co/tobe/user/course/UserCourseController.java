@@ -1,6 +1,7 @@
 package kr.co.tobe.user.course;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -10,11 +11,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import kr.co.tobe.vo.CourseVO;
 import kr.co.tobe.vo.CqnaVO;
 import kr.co.tobe.vo.MemberVO;
+import kr.co.tobe.vo.QnaVO;
+import kr.co.tobe.vo.ReviewVO;
 
 @Controller
 public class UserCourseController {
@@ -44,18 +48,55 @@ public class UserCourseController {
 		
 	@GetMapping("/user/course/userCourseIndex.do")
 	public String getLectureList(Model model, CourseVO courseVO) {
+		System.out.println("Received request: " + courseVO);
 		List<CourseVO> lectureList = service.getLectureList(courseVO);
+//		List<CourseVO> complexSelectResult = service.getComplexSelect(courseVO);
 		model.addAttribute("lectureList", lectureList);
+//		model.addAttribute("complexSelectResult", complexSelectResult);
 		return "user/course/userCourseIndex";
 	}
 	
+	@GetMapping("/user/course/userCourseIndex2.do")
+	@ResponseBody
+	public List<CourseVO> getLectureList2(Model model, CourseVO courseVO) {
+		System.out.println("Received request: " + courseVO);
+		//List<CourseVO> lectureList = service.getLectureList(courseVO);
+		List<CourseVO> complexSelectResult = service.getComplexSelect(courseVO);
+		//model.addAttribute("lectureList", lectureList);
+		model.addAttribute("complexSelectResult", complexSelectResult);
+		return complexSelectResult;
+	}
+	
+//	@GetMapping("/user/course/userCourseIndex.do")
+//	public String getLectureList(Model model, @RequestParam(name = "academy") String academy,
+//	        @RequestParam(name = "lecture") String lecture, @RequestParam(name = "local") String local,
+//	        @RequestParam(name = "city") String city, @RequestParam(name = "level") String level,
+//	        @RequestParam(name = "week") String week, @RequestParam(name = "time") String time) {
+//	    CourseVO courseVO = new CourseVO();
+//	    List<CourseVO> lectureList = service.getLectureList(courseVO);
+//	    List<CourseVO> complexSelectResult = service.getComplexSelect(courseVO);
+//	    model.addAttribute("lectureList", lectureList);
+//	    model.addAttribute("complexSelectResult", complexSelectResult);
+//	    return "user/course/userCourseIndex";
+//	}
+//	
 	@GetMapping("/user/course/userCourseDetail.do")
 	public String Detail(Model model, CourseVO courseVO) {
+		System.out.println(courseVO +"이거");
 		List<CourseVO> lectureList = service.getLectureList(courseVO);
 		model.addAttribute("lectureList", lectureList);
+		model.addAttribute("courseNo", courseVO.getCourse_no());
 		return "user/course/userCourseDetail";
 	}
-
+	
+//	강좌 문의 목록
+//	@GetMapping("/user/course/userCourseDetail.do")
+//	@ResponseBody
+//	public Map<String, Object> CourseDetailCqna(CqnaVO vo) {
+//		System.out.println("Received request: " + vo);
+//		Map<String, Object> map = service.cqnaList(vo);
+//		return map;
+//	}
 
 	//강좌 문의 등록 
 	@PostMapping("/user/course/qna/insert.do")
@@ -109,4 +150,20 @@ public class UserCourseController {
 		}
 		return "user/common/userAlert";
 	}
+	
+	@GetMapping("/user/course/userCourseDetailQnaList.do")
+	@ResponseBody
+    public CqnaVO getReviewDetail(Model model, @RequestParam("courseNo") int courseNo) {
+		CqnaVO Cqna = service.cqnaDetailList(courseNo);
+      	System.out.println(Cqna);
+      	System.out.println("하이");
+		return Cqna;
+    }
+	
+//	@GetMapping("/user/course/userCourseDetail.do")
+//	public String cqnaList(Model model, CqnaVO vo) {
+//        CqnaVO qna = service.getReviewDetail(qnaNo);
+//        model.addAttribute("qna", qna);
+//        return "user/course/userCourseDetailQnaList";
+//    }
 }

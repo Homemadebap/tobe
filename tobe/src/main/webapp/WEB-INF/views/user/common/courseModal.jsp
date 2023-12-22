@@ -73,8 +73,8 @@ $(function(){
 					가격 : ${map.cosComp1.price}<br>
 					강사명 : ${map.cosComp1.teacher1} , ${map.cosComp1.teacher2}<br>
 					개강일 : ${map.cosComp1.startday}<br>
-					종가일 : ${map.cosComp1.startday}<br>
-					후기 평점 : ${map.cosComp1.endday}<br>
+					종가일 : ${map.cosComp1.endday}<br>
+					후기 평점 : ${map.cosComp1.course_rating}<br>
 					후기 갯수 : ${map.cosCompRe1}
 				</div>
 				<div>
@@ -85,8 +85,8 @@ $(function(){
 					가격 : ${map.cosComp2.price}<br>
 					강사명 : ${map.cosComp2.teacher1} , ${map.cosComp2.teacher2}<br>
 					개강일 : ${map.cosComp2.startday}<br>
-					종가일 : ${map.cosComp2.startday}<br>
-					후기 평점 : ${map.cosComp2.endday}<br>
+					종가일 : ${map.cosComp2.endday}<br>
+					후기 평점 : ${map.cosComp2.course_rating}<br>
 					후기 갯수 : ${map.cosCompRe2}<br>
 				</div>
 			</div>	 	

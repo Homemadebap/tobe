@@ -1,5 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="kr.co.tobe.chiefAdmin.common.ChiefCommonMapper">
-
+	
+	<!-- 전체선택했을 때와 학원선택없이 날짜만 선택했을 때의 총매출, 총수수료-->
+	<select id="pay_chargeTotal" resultType="java.util.Map">
+		    SELECT SUM(pay_total) AS pay_total, SUM(charge_total) AS charge_total
+		    FROM course c JOIN pay_detail pd
+		    ON c.course_no=pd.course_no
+		    JOIN pay p ON pd.order_no=p.order_no
+	</select>
+	
+	
 </mapper>

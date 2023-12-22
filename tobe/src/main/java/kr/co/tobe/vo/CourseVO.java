@@ -5,8 +5,10 @@ import java.sql.Timestamp;
 
 import kr.co.tobe.util.CodeToString;
 import lombok.Data;
+import lombok.ToString;
 
 @Data
+@ToString
 public class CourseVO {
 
 	private int course_no;

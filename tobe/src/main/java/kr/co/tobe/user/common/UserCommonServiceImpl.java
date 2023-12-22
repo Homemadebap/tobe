@@ -7,6 +7,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import kr.co.tobe.vo.CalendarVO;
 import kr.co.tobe.vo.CourseVO;
 import kr.co.tobe.vo.MemberVO;
 
@@ -40,17 +41,17 @@ public class UserCommonServiceImpl implements UserCommonService {
 		return mapper.pastCourseIndex(user);
 	}
 	 
-	@Override // 마이페이지 - 나의후기 내역 뽑아오기
+	@Override // 마이페이지 - 나의강좌문의 내역 뽑아오기
 	public List<Map<String, Object>> myCourseAskIndex(MemberVO user) {
 		return mapper.myCourseAskIndex(user);
 	}
 	
-	@Override // 마이페이지 - 나의후기 내역 뽑아오기
+	@Override // 마이페이지 - 나의문의 내역 뽑아오기
 	public List<Map<String, Object>> askIndex(MemberVO user) {
 		return mapper.askIndex(user);
 	}
 	
-	@Override // 마이페이지 - 나의문의 내역 뽑아오기
+	@Override // 마이페이지 - 나의후기 내역 뽑아오기
 	public List<Map<String, Object>> myReviewIndex(MemberVO user) {
 		return mapper.myReviewIndex(user);
 	}
@@ -64,6 +65,11 @@ public class UserCommonServiceImpl implements UserCommonService {
 	public int compTotalReview(int no) {
 		// TODO Auto-generated method stub
 		return mapper.reviewTotal(no);
+	}
+
+	@Override
+	public List<CalendarVO> calendarList() {
+		return mapper.calenList();
 	}
 	
 }
