@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+ <%@ page import="kr.co.tobe.util.CodeToString"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,6 +8,10 @@
 <title>결제창</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
 <link rel="stylesheet" href="/tobe/css/user_Header_Footer.css" />
+<!-- jQuery -->
+  <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
+  <!-- iamport.payment.js -->
+  <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-{SDK-최신버전}.js"></script>
 <style>
 .title {
 	position: absolute;
@@ -112,6 +117,46 @@ input[type="checkbox"] {
 	background-color: #000;
 }
 </style>
+<script>
+$(document).ready(function() {
+	$('#paytotal').text('0원'); 
+	$('#payfinal').text('0원'); 
+
+	$('#payfinalbyP').text('0원'); 
+});
+
+function proceedPay(){
+	$.ajax({  
+	 url : '/user/pay/userPayDetail',
+	 type : 'POST',
+	 async : true,
+	 dataType : "Json", 
+	 data :
+		 $('#cart').serialize(),
+	 success : function(data){
+		 if(data.cnt > 0){
+			 requestPay(data)
+		 }else{
+			 alert(data.msg)
+		 }
+	 }, 
+	 error : function (e){
+		 alert("에러")
+	 }
+	}); 
+	function AgreeAllSelect(checkAllCheckbox) {
+	    var individualCheckboxes = $('.input_button.small');
+	    var isChecked = $(checkAllCheckbox).is(':checked');
+	    
+	    if(isChecked){
+	    	$('.input_button.small').prop('checked', true);
+	    	selectedPrices =0;
+	    } else{
+	    	$('.input_button.small').prop('checked', false);
+	    }
+	    
+}
+</script>
 </head>
 <body>
 <div class="wrap">
@@ -119,27 +164,41 @@ input[type="checkbox"] {
 <div class="title">
 <h2 style="margin: 1rem; padding: 0;">주문상품</h2>
 </div>
+<form method="post" name="cart" id="cart" action="/user/pay/userPayDetail">
 		<table class="info" >
 				<tr id="firstRow">
 					<td>강좌정보</td>
 					<td>가격</td>
 					<td>총상품금액</td>
 				</tr>
+				 <c:forEach var="cart" items="${basket}"> 
 				<tr id="secondRow">
-					<td>dfdf</td>
-					<td>dfdf</td>
-					<td>dfdfd</td>
+					<td>
+						  학원명 : ${CodeToString.educationToString(cart.education)}<br>
+                          과정명 : ${cart.cname}<br>
+                          과목 : ${CodeToString.subjectToString(cart.subject)}<br>
+                          지역 : ${CodeToString.areaToString(cart.area)} <br>
+                          지점 : ${CodeToString.branchToString(cart.branch)} <br>
+                       	  시간 : ${cart.time} <br>
+                          요일 : ${CodeToString.dateToStirng(cart.mon, cart.tue, cart.wed, cart.thu, cart.fri, cart.sat, cart.sun)}<br></td>
+                       
+					</td>
+					<td class="price">${cart.price }</td>
+					<td class="totalprice">${cart.pay_total}</td>
 				</tr>
+				</c:forEach>
 		</table>
+		<c:forEach var="cart" items="${basket}"> 
 		<div class="title2">
 			<h2 style="margin: 1rem; padding: 0;">포인트 사용</h2>
 			<hr width="800px;" style="margin-left:15px;">
-			<strong >결제 예정 금액</strong> <input type="text" style="margin-left:15px;" heigth="10px;">원 <br style="margin-bottom:15px;"> 
+			<strong >결제 예정 금액</strong>  <p id="paytotal"></p>원 <br style="margin-bottom:15px;"> 
 			<br><hr width="800px;">
 			<br>
-			<strong>보유 포인트</strong> <input type="text" style="margin-left:15px;" heigth="10px;">원 <button style="margin-left:15px; background-color:#000; color: #fff; border-radius:5px;">전액 사용</button>
+			<strong>보유 포인트</strong> <input type="text" style="margin-left:15px;" hiegth="10px;">원 / ${loginInfo.point }원 <button style="margin-left:15px; background-color:#000; color: #fff; border-radius:5px;">전액 사용</button>
 			<hr width="800px;">
 		</div>
+		</c:forEach>
 		<div class="title3">
 			<h2 style="margin: 1rem; padding: 0;">결제 수단</h2>
 			<hr width="800px;" >
@@ -167,16 +226,16 @@ input[type="checkbox"] {
 				</table>
 				
 				<div class="agree">
-					<input type="checkbox"> 주문 정보를 확인하였으며, 약관 전체에 동의합니다.<br>
-					<input type="checkbox"> 주문 상품정보에 동의(필수)<br>
-					<input type="checkbox"> 결제대행서비스 이용을 위한 개인정보 제3자 제공 및 위탁 동의(필수)<br>
-					<input type="checkbox"> 개인정보 수집 및 이용에 대한 동의(필수)<br>
-					<input type="checkbox"> 개인정보 제3자 제공에 대한 동의(필수)
+					<input type="checkbox" name="checkAll" class="check_all" onclick="AgreetAllSelect(this);"> 주문 정보를 확인하였으며, 약관 전체에 동의합니다.<br>
+					<input  type="checkbox" class="input_button small"  onclick="MathPrice(this);"> 주문 상품정보에 동의(필수)<br>
+					<input  type="checkbox" class="input_button small"  onclick="MathPrice(this);"> 결제대행서비스 이용을 위한 개인정보 제3자 제공 및 위탁 동의(필수)<br>
+					<input  type="checkbox" class="input_button small"  onclick="MathPrice(this);"> 개인정보 수집 및 이용에 대한 동의(필수)<br>
+					<input  type="checkbox" class="input_button small"  onclick="MathPrice(this);"> 개인정보 제3자 제공에 대한 동의(필수)
 				</div>
-				<button class="payment">
+				<button class="payment" onClick="proceedPay()" port="post">
 					<h>결제하기</h>
 				</button>
-
+</form>
 <%@include file="/WEB-INF/views/user/common/userFooter.jsp"%>
 </div>
 </body>
