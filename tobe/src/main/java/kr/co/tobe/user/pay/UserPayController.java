@@ -27,4 +27,9 @@ public class UserPayController {
 		
 		return "user/pay/userPayCompleteDetail";
 	}
+	
+	@GetMapping ("/user/pay/userPayDetail.do")
+	public String userPayDetail() {
+		return "user/pay/userPayDetail";
+	}
 }

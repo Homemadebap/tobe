@@ -36,6 +36,12 @@ public class ChiefMemberController {
 		model.addAttribute("cmd","move");
 		return "chiefAdmin/common/chiefAlert";
 	}
+	
+	@GetMapping ("/chiefAdmin/member/chiefMemberDetail.do")
+	public String cheifMemberDetail(Model model, int no) {
+		model.addAttribute("map", service.detail(no));
+		return "chiefAdmin/member/chiefMemberDetail"; 
+	}
 }
 	
 
