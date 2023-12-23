@@ -1,9 +1,10 @@
 package kr.co.tobe.user.pay;
 
 import java.util.Map;
-
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import kr.co.tobe.vo.BasketVO;
 
 @Service
 public class UserPayServiceImpl implements UserPayService {
@@ -14,5 +15,9 @@ public class UserPayServiceImpl implements UserPayService {
 	@Override
 	public Map<String, Object> payDetailIndex(int detail_no) {
 		return mapper.payDetailIndex(detail_no);
+	}
+	
+	public List<BasketVO> getcart(String cartNo) {
+		return mapper.getCart(cartNo);
 	}
 }

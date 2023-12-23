@@ -100,7 +100,7 @@
 #boxa{
 	display: flex;
 	border: solid 1px;
-	width:1000px; 
+	width:1200px; 
 	height:610px; 
 }
 .filebox {

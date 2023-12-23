@@ -158,7 +158,7 @@ function ProcessOrder() {
 							<c:set var="date" value="${CodeToString.dateToStirng(vo.mon, vo.tue, vo.wed, vo.thu, vo.fri, vo.sat, vo.sun)}" /> -->
 							<tr>
 							  <td class="input_btn" ><span>
-							  <input  type="checkbox" class="input_button small" name="chknum_0" data-no="${vo.cart_no }" value="${vo.price }" onclick="MathPrice(this);"><label for="checkbox2">&nbsp;</label></span></td>
+							  <input  type="checkbox" class="input_button small" name="cart_no" data-no="${vo.cart_no }" value="${vo.price }" onclick="MathPrice(this);"><label for="checkbox2">&nbsp;</label></span></td>
 							  <td class="img"><a></a></td>
 							  <td class="product"> 
 							  	학원명 : ${CodeToString.educationToString(vo.education)}<br>
