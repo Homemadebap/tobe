@@ -1,21 +1,20 @@
 package kr.co.tobe.user.pay;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+
 import kr.co.tobe.vo.BasketVO;
-import kr.co.tobe.vo.MemberVO;
 
 @Controller
 public class UserPayController {
@@ -27,9 +26,14 @@ public class UserPayController {
 	public String userPayCompleteDetail(@RequestParam("detail_no") int detail_no, Model model) {
 		
 		model.addAttribute("pdvo", service.payDetailIndex(detail_no));
-
-		
 		return "user/pay/userPayCompleteDetail";
+	}
+	
+	@GetMapping("/user/pay/userPayCancelForm.do")
+	public String userPayCancelForm(@RequestParam("detail_no") int detail_no, Model model) {
+		
+		model.addAttribute("pdvo", service.payDetailIndex(detail_no));
+		return "user/pay/userPayCancelForm";
 	}
 	
 	@GetMapping ("/user/pay/userPayDetail.do")

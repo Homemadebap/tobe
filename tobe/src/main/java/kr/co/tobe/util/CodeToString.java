@@ -111,5 +111,14 @@ public class CodeToString {
 		}
 		return date;
 	}
+	
+	public static String paybyToString (int i) {
+		if(i == 1) {
+			return "가상계좌";
+		} else if(i==2) {
+			return "신용카드";
+		}
+		return null;
+	}
 
 }

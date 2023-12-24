@@ -8,5 +8,5 @@ public interface UserPayService {
 
 	Map<String, Object> payDetailIndex(int detail_no);
 	List<BasketVO> getcart(String cartNo);
-
+	
 }

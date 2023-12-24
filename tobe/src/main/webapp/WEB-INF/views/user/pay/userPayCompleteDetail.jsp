@@ -4,6 +4,10 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ page import="java.io.*,java.util.*" %>
 <%@ page import="javax.servlet.*,javax.servlet.http.*" %>
+<%@ page import="kr.co.tobe.util.CodeToString"%>
+<%@ page import="java.util.Date" %>
+<%@ page import="java.text.SimpleDateFormat" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,13 +24,6 @@
 <link rel="stylesheet" href="/tobe/css/user_Header_Footer.css" />
 
 <script type="text/javascript">
-
-$(function(){
-
-	
-})
-
-
 
 
 </script>
@@ -85,15 +82,54 @@ $(function(){
 	height: 3rem;
 }
 
-.payMethod {
-	border-top: 1px solid #ddd;
-	border-bottom: 1px solid #ddd;
-	height: 5rem;
+.payInfo span {
+	height: 3rem;
+	padding: 0.5rem;
 }
 
 .title {
 	padding: 0.5rem 0.5rem 0 0;
 }
+
+#minusImg {
+	position: absolute;
+	top: 23.75rem;
+	left: 22.5rem;
+	width: 2rem;
+}
+
+#equalImg {
+	position: absolute;
+	top: 23.75rem;
+	left: 45.6rem;
+	width: 2rem;
+}
+
+#btnBox {
+	margin: 2rem;
+    display: flex;
+    justify-content: center;
+}
+
+#cancelBtn {
+	width: 7rem;
+	height: 2.25rem;
+	font-size: 1.25rem;
+	background-color: #000;
+	color: #fff;
+	cursor: pointer;
+}
+
+#backBtn {
+	width: 7rem;
+	height: 2.25rem;
+	font-size: 1.25rem;
+	background-color: #fff;
+	color: #000;
+	cursor: pointer;
+}
+
+
 </style>
 
 </head>
@@ -121,8 +157,8 @@ $(function(){
 							<span style="font-size: 1rem; font-weight: normal;">개강일 : ${pdvo.i_startday }</span><br>
 							<span style="font-size: 1rem; font-weight: normal;">종강일 : ${pdvo.i_endday}</span>
 						</td>
-						<td>${pdvo. pay_single}</td>
-						<td>${pdvo. i_price}</td>
+						<td>${pdvo. pay_single}원</td>
+						<td>${pdvo. i_price}원</td>
 					</tr>
 				</table>
 			</div>
@@ -132,6 +168,8 @@ $(function(){
 			</div>
 			
 			<div>
+				<img id="minusImg" src="/tobe/img/minus.png">
+				<img id="equalImg" src="/tobe/img/equal.png">
 				<table class="payInfo">
 					<tr>
 						<td>
@@ -145,27 +183,33 @@ $(function(){
 						</td>
 						<td>
 							<span style="width: 50%; float: left;">결제 금액</span>
-							<span style="width: 50%; float: left;">${pdvo. i_price}원</span>	
+							<span style="width: 50%; float: left;">${pdvo.pay_single}원</span>	
 						</td>
 					</tr>
 					<tr>
 						<td></td>
 						<td></td>
-						<td>${pdvo.pay_single }</td>
+						<td style="font-size: 1.25rem;">
+						<c:set var="pay_by" value="${CodeToString.paybyToString(pdvo.pay_by)}" />
+							<span style="width: 50%; float: left;">결제 방법</span>
+							<span style="width: 50%; float: left;">${pay_by}</span>	
+							<span style="width: 50%; float: left;">입금계좌</span>
+							<span style="width: 50%; float: left;">${pdvo.ad_account}</span>
+							<span style="width: 50%; float: left;">예금주</span>
+							<span style="width: 50%; float: left;">${pdvo.ad_name}</span>
+							<span style="width: 50%; float: left;">결제 완료</span>
+							<span style="width: 50%; float: left;">${pdvo.pay_date2}</span>
+						</td>
 					</tr>
 				</table>			
 			</div>
-			
-			<div class="title">
-				<h2>결제 방법</h2>
+			<div id="btnBox">
+				<button id="backBtn" onclick="history.back()">이전</button>
+				<button id="cancelBtn" onclick="location.href='/tobe/user/pay/userPayCancelForm.do?detail_no=${pdvo.detail_no}'">취소하기</button>
 			</div>
-			<div class="payMethod">
-			
-			</div>
-			
-			
-			
 		</div>
+
+
 		<%@include file="/WEB-INF/views/user/common/userFooter.jsp"%>
 	</div>
 </body>
