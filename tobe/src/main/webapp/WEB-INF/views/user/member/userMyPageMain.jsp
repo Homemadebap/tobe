@@ -429,7 +429,7 @@ input[type="button"], input[type="submit"] {
 		                    <c:forEach var="vo" items="${mri}">
 		                        <tr>
 		                            <td>${vo.review_no}</td>
-		                            <td><a class="url" href="/tobe/user/review/userReviewDetail.do?review_no=${vo.review_no}">${vo.cname}</a></td>
+		                            <td><a class="url" href="/tobe/user/course/userCourseDetail.do?course_no=${vo.course_no}">${vo.cname}</a></td>
 		                            <td><a class="url" href="/tobe/user/review/userReviewDetail.do?review_no=${vo.review_no}">${vo.r_title}</a></td> 
 		                            <td>${vo.r_writedate}</td>  
 		                        </tr>

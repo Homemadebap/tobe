@@ -338,7 +338,7 @@
                    </tbody>
                 </table>
                 <div class="btnSet"  style="text-align:right;">
-	                <c:if test="${!empty loginInfo}">
+	                <c:if test="${!empty adLoginInfo}">
 	                    <a class="btn" href="/tobe/chiefAdmin/customer/chiefFaqForm.do">글작성 </a>
 	                </c:if>
            		</div>

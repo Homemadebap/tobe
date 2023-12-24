@@ -198,7 +198,7 @@ p {
 				<c:forEach var="vo" items="${cq}">
 					<tr>
 					    <td style="width: 20%;">${vo.cqna_no}</td>
-						<td class="url" style="width: 40%; cursor:pointer;" onclick="location.href='/tobe/user/customer/userAskForm.do?cqna_no=${vo.cqna_no}'">${vo.cq_title}</td>    
+						<td class="url" style="width: 40%; cursor:pointer;" onclick="location.href='/tobe/user/course/userCourseAskDetail.do?cqna_no=${vo.cqna_no}'">${vo.cq_title}</td>    
 						<td style="width: 40%;">${vo.cq_writedate}</td>
 					</tr>
 				</c:forEach>
