@@ -69,14 +69,14 @@
 	             pay_date BETWEEN STR_TO_DATE(#{startday}, '%Y-%m-%d') AND STR_TO_DATE(#{endday}, '%Y-%m-%d')
 	        ]]>
 	        </if>
-	        <if test="(startday!=null and startday!='')and (endday==null or endday=='')">
+	        <if test="(startday!=null and startday!='')and (endday==null and endday=='')">
 	        <![CDATA[
-	            AND pay_date >= STR_TO_DATE(#{startday}, '%Y-%m-%d')
+	            pay_date >= STR_TO_DATE(#{startday}, '%Y-%m-%d')
 	        ]]>
 	        </if>
-	        <if test="(startday==null or startday=='') and (endday!=null and endday!='')">
+	        <if test="(startday==null and startday=='') and (endday!=null and endday!='')">
 	         <![CDATA[
-	            AND pay_date <= STR_TO_DATE(#{endday}, '%Y-%m-%d')
+	            pay_date <= STR_TO_DATE(#{endday}, '%Y-%m-%d')
 	        ]]>
 	        </if>
 	    </where>
