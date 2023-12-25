@@ -152,8 +152,8 @@ public class UserCourseController {
 	}
 	
 	@GetMapping("/user/course/userCourseDetailQnaList.do")
-    public String getReviewDetail(Model model, @RequestParam("course_no") int courseNo) {
-		List<CqnaVO> Cqna = service.cqnaDetailList(courseNo);
+    public String getQnaDetail(Model model, @RequestParam("course_no") int course_no) {
+		List<CqnaVO> Cqna = service.cqnaDetailList(course_no);
 		model.addAttribute("qna", Cqna);
       	System.out.println(Cqna);
       	System.out.println("하이");
@@ -168,9 +168,18 @@ public class UserCourseController {
 //    }
 	
 	@GetMapping("/user/course/userCourseDetail.do")
-    public String getlectureDetail(Model model, @RequestParam("courseNo") int courseNo) {
-        CourseVO courseInfo = service.getlectureDetail(courseNo);
+    public String getlectureDetail(Model model, @RequestParam("course_no") int course_no) {
+        CourseVO courseInfo = service.getlectureDetail(course_no);
         model.addAttribute("courseInfo", courseInfo);
         return "/user/course/userCourseDetail";
+    }
+	
+	@GetMapping("/user/course/userCourseDetailReviewList.do")
+    public String getReviewDetail(Model model, @RequestParam("course_no") int course_no) {
+		List<ReviewVO> reviewList = service.ReviewList(course_no);
+		model.addAttribute("reviewList", reviewList);
+      	System.out.println(reviewList);
+      	System.out.println("하이");
+		return "/user/course/userCourseDetailReviewList";
     }
 }
