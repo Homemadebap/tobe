@@ -107,7 +107,7 @@
 }
 
 #backBtn {
-	width: 7rem;
+	width: 9rem;
 	height: 2.25rem;
 	font-size: 1.25rem;
 	background-color: #fff;
@@ -170,7 +170,7 @@
 							<span style="width: 50%; float: left;">결제취소 금액</span>
 							<span style="width: 50%; float: left;">${pcdi.pay_single}원</span>	
 						</td>
-						<td style="width: 60%;">환불 방법</td>
+						<td style="width: 60%;">환불 안내</td>
 					</tr>
 					<tr>
 						<td style="font-size: 1.25rem;">
@@ -178,13 +178,13 @@
 							<c:set var="pay_by" value="${CodeToString.paybyToString(pcdi.pay_by)}" />
 							<span style="width: 50%; float: left;">진행상황</span>
 							<span style="width: 50%; float: left;">${pay_refund}</span>
-							<span style="width: 50%; float: left;">결제 방법</span>
+							<span style="width: 50%; float: left;">결제방법</span>
 							<span style="width: 50%; float: left;">${pay_by}</span>	
 							<span style="width: 50%; float: left;">입금계좌</span>
 							<span style="width: 50%; float: left;">${pcdi.pay_by_account}</span>
 							<span style="width: 50%; float: left;">예금주</span>
 							<span style="width: 50%; float: left;">${pcdi.name}</span>
-							<span style="width: 50%; float: left;">환불 완료</span>
+							<span style="width: 50%; float: left;">환불날짜</span>
 							<c:if test="${pcdi.pay_refund_date2 != null}">
 								<span style="width: 50%; float: left;">${pcdi.pay_refund_date2}</span>
 							</c:if>
@@ -193,26 +193,32 @@
 							</c:if>
 						</td>
 						<td>
-							<p style="height: 1rem; padding: 0; margin: 0;"></p>
-							<form method="post" action="userPayCancel.do?detail_no=${pdvo.detail_no }">
-								<div>
-									<select id="cancelReason" name="cancelReason" class="input">
-										<option value="1">단순변심</option>
-										<option value="2">수업 불만족</option>
-										<option value="3">학원 불만족</option>
-										<option value="4">결제방법 변경</option>
-										<option value="5">기타</option>
-									</select>
-								</div>
-								<textarea id="cancelReasonDetail" name="cancelReasonDetail" placeholder="주문 취소 사유를 입력해주세요." cols="50" rows="6"></textarea><br><br>
-								<button id="cancelBtn" >주문취소하기</button><br><br>
-							</form>
+							<p>1. 환불 조건
+							   - 강좌가 개강한 지 7일 이내에 있는 결제건에 대해서만 <br>100% 환불이 가능합니다. 이외의 환불액은 게시판을 확인해주시기 바랍니다.
+							</p>
+							<p>
+							2. 환불 처리 기간
+							   - 환불 요청이 접수된 후 최대 7일 이내에 처리됩니다.
+							</p>
+							<p>
+							3. 환불 방법:
+							   - 환불은 원래 결제 수단을 통해 이루어집니다.
+							</p>
+							<p>
+							4. 환불 수수료 및 제한사항:
+							   - 환불 수수료는 발생하지 않습니다.<br>
+							   - 특정 제한사항이나 조건이 있는 경우, 이는 개별적으로 안내드리겠습니다.
+							</p>
+							<p>
+							5. 문의처 안내:
+							   - 환불에 관한 추가 정보나 문의사항이 있으시면 <br>언제든지 [고객센터/02-123-4567로 연락해주시기 바랍니다.
+							</p>
 						</td>
 					</tr>
 				</table>			
 			</div>
 			<div id="btnBox">
-				<button id="backBtn" onclick="location.href='/tobe/user/pay/userPayCompleteDetail.do?detail_no=${pdvo.detail_no}'">이전</button>
+				<button id="backBtn" onclick="location.href='/tobe/user/member/userMyPageMain.do'">마이페이지</button>
 			</div>
 		</div>
 
