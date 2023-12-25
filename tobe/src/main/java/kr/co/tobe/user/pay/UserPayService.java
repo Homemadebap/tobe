@@ -7,6 +7,8 @@ import kr.co.tobe.vo.BasketVO;
 public interface UserPayService {
 
 	Map<String, Object> payDetailIndex(int detail_no);
+	boolean payCancel(Map<String, Object> cancelReasonMap);
+	Map<String, Object> payCancelDetailIndex(int detail_no);
 	List<BasketVO> getcart(String cartNo);
 	
 }

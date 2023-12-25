@@ -1,6 +1,8 @@
 package kr.co.tobe.user.pay;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -31,9 +33,37 @@ public class UserPayController {
 	
 	@GetMapping("/user/pay/userPayCancelForm.do")
 	public String userPayCancelForm(@RequestParam("detail_no") int detail_no, Model model) {
-		
 		model.addAttribute("pdvo", service.payDetailIndex(detail_no));
 		return "user/pay/userPayCancelForm";
+	}
+	
+	@PostMapping("/user/pay/userPayCancel.do")
+	public String userPayCancel(@RequestParam("detail_no") int detail_no,
+								@RequestParam("cancelReason") String cancelReason,
+								@RequestParam("cancelReasonDetail") String cancelReasonDetail,
+								Model model) {
+		int order_no = (int)service.payDetailIndex(detail_no).get("order_no");
+		Map<String, Object> cancelReasonMap = new HashMap<>();
+		cancelReasonMap.put("order_no", order_no);
+		cancelReasonMap.put("cancelReason", cancelReason);
+		cancelReasonMap.put("cancelReasonDetail", cancelReasonDetail);
+		boolean r = service.payCancel(cancelReasonMap);
+		
+		if(r) {
+			model.addAttribute("cmd", "move");
+			model.addAttribute("msg", "결제가 취소되었습니다.");
+			model.addAttribute("url", "/tobe/user/pay/userPayCancelDetail.do?detail_no="+detail_no);
+		} else {
+			model.addAttribute("cmd", "back");
+			model.addAttribute("msg", "결제 취소가 실행되지 않았습니다.");
+		}
+		return "user/common/userAlert";
+	}
+	
+	@GetMapping("/user/pay/userPayCancelDetail.do")
+	public String userPayCancelDetail(@RequestParam("detail_no") int detail_no, Model model) {
+		model.addAttribute("pcdi", service.payCancelDetailIndex(detail_no));
+		return "user/pay/userPayCancelDetail";
 	}
 	
 	@GetMapping ("/user/pay/userPayDetail.do")

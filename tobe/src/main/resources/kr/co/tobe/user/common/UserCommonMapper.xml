@@ -47,7 +47,8 @@
 		    i_price, 
 		    i_startday, 
 		    i_endday,
-		   teacher_img_org
+		   teacher_img_org,
+		   pay_cancel, pay_cancel_date, pay_refund, pay_refund_date
 		FROM member m
 		JOIN pay p ON m.member_no = p.member_no
 		JOIN pay_detail pd ON p.order_no = pd.order_no

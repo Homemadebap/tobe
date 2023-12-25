@@ -376,7 +376,6 @@ input[type="button"], input[type="submit"] {
 		                    </c:forEach>
 	                    </table>
                     </c:if>
-				</div>
 
 				<div class="askIndex" style="overflow-y:scroll; height: 30rem;" >
 					<c:if test="${empty mcai}">

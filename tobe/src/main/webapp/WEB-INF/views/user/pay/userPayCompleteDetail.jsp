@@ -13,7 +13,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Tobe 결제완료</title>
+<title>Tobe 주문정보</title>
 
 <META name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, user-scalable=no">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
@@ -24,6 +24,23 @@
 <link rel="stylesheet" href="/tobe/css/user_Header_Footer.css" />
 
 <script type="text/javascript">
+
+$(function(){
+	document.getElementById('cancelBtn').addEventListener('click', function () {
+	    document.getElementById('popup').style.display = 'block';
+	});
+
+	document.getElementById('confirmButton').addEventListener('click', function () {
+		window.location.href = '/tobe/user/pay/userPayCancelForm.do?detail_no=${pdvo.detail_no}';
+	});
+
+	document.getElementById('cancelButton').addEventListener('click', function () {
+	    document.getElementById('popup').style.display = 'none';
+	    // 여기에 취소 버튼을 눌렀을 때의 동작을 추가
+	    // 예를 들어, 아무 동작도 하지 않거나 다른 작업을 수행할 수 있습니다.
+	});
+})
+
 
 
 </script>
@@ -36,6 +53,9 @@
 	width: 70rem;
 }
 
+.btitle {
+	color: #49654e;
+}
 .courseInfo {
 	width:  70rem;
 	border-top: 1px solid #ddd;
@@ -87,20 +107,16 @@
 	padding: 0.5rem;
 }
 
-.title {
-	padding: 0.5rem 0.5rem 0 0;
-}
-
 #minusImg {
 	position: absolute;
-	top: 23.75rem;
+	top: 27.25rem;
 	left: 22.5rem;
 	width: 2rem;
 }
 
 #equalImg {
 	position: absolute;
-	top: 23.75rem;
+	top: 27.25rem;
 	left: 45.6rem;
 	width: 2rem;
 }
@@ -129,6 +145,43 @@
 	cursor: pointer;
 }
 
+.popup {
+    display: none;
+    transform: translate(75%, 100%);
+    background-color: #000;
+    padding: 20px;
+    border: 1px solid #ccc;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 30rem;
+    height: 20rem;
+    font-size: 1.5rem;
+}
+
+.popup-content {
+	height: 14.5rem;
+    text-align: center;
+    background-color: #d3d3d3;
+}
+
+#confirm {
+	padding: 4rem 0 2rem;
+}
+#cancelButton {
+	width: 5rem;
+	height: 2.25rem;
+	font-size: 1.25rem;
+	background-color: #fff;
+	color: #000;
+	cursor: pointer;
+}
+#confirmButton {
+	width: 5rem;
+	height: 2.25rem;
+	font-size: 1.25rem;
+	background-color: #000;
+	color: #fff;
+	cursor: pointer;
+}
 
 </style>
 
@@ -137,9 +190,11 @@
 	<div class="wrap">
 		<%@include file="/WEB-INF/views/user/common/userHeader.jsp"%>
 		<div class="container">
-			
+			<div class="btitle">
+				 <h1>결제정보</h1>
+			</div>
 			<div class="title">
-				<h2 style="margin: 1rem; padding: 0;">주문상품</h2>
+				<h2>주문상품</h2>
 			</div>
 			
 			<div>
@@ -190,7 +245,10 @@
 						<td></td>
 						<td></td>
 						<td style="font-size: 1.25rem;">
+						<c:set var="pay_complete" value="${CodeToString.payCompleteToString(pdvo.pay_complete)}" />
 						<c:set var="pay_by" value="${CodeToString.paybyToString(pdvo.pay_by)}" />
+							<span style="width: 50%; float: left;">진행상황</span>
+							<span style="width: 50%; float: left;">${pay_complete}</span>	
 							<span style="width: 50%; float: left;">결제 방법</span>
 							<span style="width: 50%; float: left;">${pay_by}</span>	
 							<span style="width: 50%; float: left;">입금계좌</span>
@@ -204,11 +262,19 @@
 				</table>			
 			</div>
 			<div id="btnBox">
-				<button id="backBtn" onclick="history.back()">이전</button>
-				<button id="cancelBtn" onclick="location.href='/tobe/user/pay/userPayCancelForm.do?detail_no=${pdvo.detail_no}'">취소하기</button>
+				<button id="backBtn" onclick="location.href='/tobe/user/member/userMyPageMain.do'">이전</button>
+				<button id="cancelBtn">주문취소</button>
 			</div>
 		</div>
-
+	
+		<div id="popup" class="popup">
+		    <div class="popup-content">
+		        <p id="confirm"><b>주문을 취소하시겠습니까?</b></p>
+		        <button id="cancelButton">취소</button>
+		        <button id="confirmButton">확인</button>
+		    </div>
+		</div>
+			
 
 		<%@include file="/WEB-INF/views/user/common/userFooter.jsp"%>
 	</div>

@@ -17,6 +17,20 @@ public class UserPayServiceImpl implements UserPayService {
 		return mapper.payDetailIndex(detail_no);
 	}
 	
+	@Override
+	public boolean payCancel(Map<String, Object> cancelReasonMap) {
+		if( mapper.payCancel(cancelReasonMap)> 0) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+	
+	@Override
+	public Map<String, Object> payCancelDetailIndex(int detail_no) {
+		return mapper.payCancelDetailIndex(detail_no);
+	}
+	
 	public List<BasketVO> getcart(String cartNo) {
 		return mapper.getCart(cartNo);
 	}
