@@ -18,7 +18,8 @@ public interface UserCourseMapper {
 	int updateGno(int no);
 	CourseVO courseSelect(int no);
 	List<CourseVO> complexSelect(CourseVO CVO);
-	List<CqnaVO> cqnaDetailList(int courseNo);
+	List<CqnaVO> cqnaDetailList(int course_no);
 //	int cqnaCount(int courseNo);
-	CourseVO lectureDetail(int courseNo);
+	CourseVO lectureDetail(int course_no);
+	List<ReviewVO> ReviewList(int course_no);
 }

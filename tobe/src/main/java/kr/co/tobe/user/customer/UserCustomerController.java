@@ -41,7 +41,7 @@ public class UserCustomerController {
 	@GetMapping("/user/customer/userNoticeDetail.do")
 	public String view(Model model,  NoticeVO vo) {
 		model.addAttribute("vo", service.noticeDetail(vo));
-		return "user/custmoer/userNoticeDetail";
+		return "user/customer/userNoticeDetail";
 	}
 	
 	@GetMapping("/user/customer/userAskForm.do")
