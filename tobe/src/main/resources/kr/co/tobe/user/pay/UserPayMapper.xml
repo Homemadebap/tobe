@@ -21,7 +21,7 @@
 	</update>	
 	
 	<select id="payCancelDetailIndex" parameterType="int" resultType="java.util.Map">
-		SELECT pd.*, p.*, teacher_img_real, DATE_FORMAT(pay_refund_date,'%Y-%m-%d %H:%i') AS pay_refund_date2, name
+		SELECT pd.*, p.*, teacher_img_org, DATE_FORMAT(pay_refund_date,'%Y-%m-%d %H:%i') AS pay_refund_date2, name
 		FROM member m JOIN pay p ON m.member_no=p.member_no
 			JOIN pay_detail pd ON p.order_no=pd.order_no
 			JOIN course c ON pd.course_no=c.course_no

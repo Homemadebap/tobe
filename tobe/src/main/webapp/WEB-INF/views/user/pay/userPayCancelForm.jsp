@@ -147,7 +147,7 @@
 						<th>총상품금액</th>
 					</tr>
 					<tr id="secondRow">
-						<td>${pdvo.teacher_img_real }</td>
+						<td><img src="/tobe/img/${pdvo.teacher_img_real }"></td>
 						<td>
 							<span style="font-size: 1.25rem;">강좌명 : ${pdvo.i_cname }</span><br>
 							<span style="font-size: 1rem; font-weight: normal;">개강일 : ${pdvo.i_startday }</span><br>
@@ -194,9 +194,9 @@
 						</td>
 						<td>
 							<p style="height: 1rem; padding: 0; margin: 0;"></p>
-							<form method="post" action="userPayCancel.do?detail_no=${pdvo.detail_no }">
+							<form method="post" action="userPayCancel.do">
 								<div>
-									<select id="cancelReason" name="cancelReason" class="input">
+									<select id="pay_cancel_reason" name="pay_cancel_reason" class="input">
 										<option value="1">단순변심</option>
 										<option value="2">수업 불만족</option>
 										<option value="3">학원 불만족</option>
@@ -204,8 +204,9 @@
 										<option value="5">기타</option>
 									</select>
 								</div>
-								<textarea id="cancelReasonDetail" name="cancelReasonDetail" placeholder="주문 취소 사유를 입력해주세요." cols="50" rows="6"></textarea><br><br>
+								<textarea id="pay_cancel_reason_detail" name="pay_cancel_reason_detail" placeholder="주문 취소 사유를 입력해주세요." cols="50" rows="6"></textarea><br><br>
 								<button id="cancelBtn" >주문취소하기</button><br><br>
+								<input type="hidden" name="detail_no" value="${pdvo.detail_no }">
 							</form>
 						</td>
 					</tr>
