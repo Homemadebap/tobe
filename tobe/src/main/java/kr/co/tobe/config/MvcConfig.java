@@ -146,7 +146,6 @@ public class MvcConfig implements WebMvcConfigurer{
 	}
 			
 						
-
 	// 프로퍼티 설정
 	@Bean
 	public static PropertySourcesPlaceholderConfigurer property() {
