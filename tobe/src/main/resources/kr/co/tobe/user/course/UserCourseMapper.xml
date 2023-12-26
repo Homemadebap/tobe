@@ -80,17 +80,14 @@
 		SELECT *
 		FROM cqna
 		WHERE course_no = #{course_no}
+		ORDER BY cqna_no DESC
 		LIMIT #{startIdx}, 10
-		<!--  
-		<include refid="cqnaSql"/>
-		ORDER BY gno DESC, ono ASC
-		LIMIT #{startIdx}, 10-->
 	</select>
 	
 	<select id="cqnaCount" parameterType="kr.co.tobe.vo.CqnaVO" resultType="int">
 		SELECT COUNT(*)
 		FROM cqna
-		<include refid="cqnaSql"/>
+		WHERE course_no = #{course_no}
 	</select>
 	
 	<select id="lectureDetail" parameterType="kr.co.tobe.vo.CourseVO" resultType="kr.co.tobe.vo.CourseVO">

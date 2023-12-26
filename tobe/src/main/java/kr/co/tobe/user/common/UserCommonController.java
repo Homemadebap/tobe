@@ -54,8 +54,6 @@ public class UserCommonController {
 	@GetMapping("/user/member/userMyPageMain.do")
 	public String userMyPageMain(HttpSession sess, Model model) {
 		MemberVO user = (MemberVO)sess.getAttribute("loginInfo");
-		CqnaVO cqna = new CqnaVO();
-		QnaVO qna = new QnaVO();
 		
 		model.addAttribute("user", user); // 사용자 정보 넘기기
 		model.addAttribute("cci", service.currentCourseIndex(user)); // 현재수강중인강의에 들어갈 정보
@@ -65,7 +63,6 @@ public class UserCommonController {
 		model.addAttribute("mri", service.myReviewIndex(user)); // 나의후기에 들어갈 정보
 		
 		// db에는 문자열로 있는 날짜들을 Date 타입으로 바꾸는 것
-		List<Map<String, Object>> result = service.pastCourseIndex(user);
 		return "user/member/userMyPageMain";
 	}
 	

@@ -15,41 +15,44 @@
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
-<link rel="stylesheet" href="/tobe/css/user_Header_Footer.css" />
 </head>
 
 <style>
-.visual img {
+
+.visual{
+	height: 20rem;
+}
+
+.swiper {
+    height:19rem;
+    width: 75rem;
+    text-align: center;
+
+}
+
+.swiper img {
     display: block; /* 이미지 하단 라인 제거 */
 }
-.visual {
-    height:500px;
-    width:100%;
-    text-align: center;
-    position: relative;
-    top: 13rem;
-}
-.swiper {
-    height:300px;
-}
+
 .swiper-slide {
     background-position: center center;
     background-size: cover;
     background-repeat: no-repeat;
 }
-#bst-review{
+
+#best{
+   margin: 1rem auto;
+   padding: 0 6rem;
+}
+
+
+.bst{
    border: solid 1px;
    width: 500px;
    height: 200px;
    display: inline-block;
 }
-#bst-class{
-   border: solid 1px;
-   width: 500px;
-   height: 200px;
-   display: inline-block;
-   
-}
+
 b {
  color: #000;
  font-size: 25px;
@@ -59,37 +62,31 @@ strong{
    font-size: 25px;
 }
 #review{
-   margin: 0 0 0 10px;
+   margin: 0;
    position: relative;
 }
 #rev{
 	display: flex;
 	justify-content:space-between;
-	margin: 15px 0 0 -30px;
+	margin: 1rem 0 0 0;
 }
 #rt1{
   
    width: 300px;
-   height: 300px;
+   height: 16rem;;
 }
 #rt2{
    
    width: 300px;
-   height: 300px;
+   height: 16rem;
 }
 #rt3{
    width: 300px;
-   height: 300px;
+   height: 16rem;
 }
 #re{
  color: #58ACFA;
  font-size: 25px;
-}
-#review{
-   margin: 0 0 0 140px;
-}
-#best{
-   margin: 0 0 0 120px;
 }
 
 #rt1>p{
@@ -115,32 +112,32 @@ strong{
 <body>
 
 <div class="wrap">
-	<%@include file="/WEB-INF/views/user/common/userHeader.jsp"%>
+	<div class="headerBox">
+		<%@include file="/WEB-INF/views/user/common/userHeader.jsp"%>
+	</div>
+	
 	<div class="main">
-		
 		<div class="visual">
-		 
-	         <div class="swiper swiper-visual">
-	             <div class="swiper-wrapper">
-	                 <img class="swiper-slide" style="background-image:url('/tobe/img/pa.png');">
-	                 <img class="swiper-slide" style="background-image:url('/tobe/img/ybm.png');">
-	                 <img class="swiper-slide" style="background-image:url('/tobe/img/ha.png');">
-	             </div>
-	         </div>
-	    
-	   </div> 
-   	   <p>슬라이드쇼 ↑</p>
+			<div class="swiper swiper-visual">
+			    <div class="swiper-wrapper">
+			        <img class="swiper-slide" style="background-image:url('/tobe/img/pa.png');">
+			        <img class="swiper-slide" style="background-image:url('/tobe/img/ybm.png');">
+			        <img class="swiper-slide" style="background-image:url('/tobe/img/ha.png');">
+			    </div>
+			</div>
+		</div>
+
 	   <div id="best">
-	      <div id="bst-review">
+	      <div class="bst">
 	          리뷰 많은 강좌
 	      </div>
-	      <div id="bst-class">
+	      <div class="bst">
 	          베스트 강좌 
 	      </div>
 	   </div>
    
 	   <div id="review">
-	      <strong> ─────────────── 리얼 생생</strong> <b id="re">후기 </b><strong>────────────────</strong><br>
+	      <strong> ─────────────────── 리얼 생생</strong> <b id="re">후기 </b><strong>─────────────────────</strong><br>
 	     <div id="rev">
 	      <div id="rt1">
 	         <p style="font-weight:bold">완소토익으로 토익스타트 야무지게</p>
@@ -162,15 +159,16 @@ strong{
 	         <p style="font-weight:bold">기본기부터 실전 꿀팁까지!</p>
 	          <hr style="border: solid 1px gray;">
 	          <p>제 영어 베이스는 회화에서는 중하이고 독해능력은 중간정도 상태였습니다. 제 단계에서 토익으로 수강할 수 있는 강의들을 검색하다가 리뷰수도, 학생수도 정말 많았던 1타토익 600반 강의에 등록</p>
-	      	 <img src="/tobe/img/PAGOD_logo.png" width="120" height="23">	
+	      	 <img src="/tobe/img/PAGODA_logo.png" width="120" height="23">	
 	      </div>
 	     </div> 
 	   </div>
 
 
 
-		<%@include file="/WEB-INF/views/user/common/userFooter.jsp"%>
+		
 	</div>
+	<%@include file="/WEB-INF/views/user/common/userFooter.jsp"%>
 </div>
 
 </body>

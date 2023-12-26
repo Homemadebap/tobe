@@ -99,7 +99,6 @@
 }
 #boxa{
 	display: flex;
-	border: solid 1px;
 	width:1200px; 
 	height:610px; 
 }
@@ -138,8 +137,8 @@
 #boxb{
  	border: solid 1px;
 	width:750px; 
-	height:500px;
-	margin: -600px 0 0 230px;
+	height:400px;
+	margin: -600px 0 0 260px;
 	position: relative; /*부모 div에 설정 후 자식 div에 display: flex하면 가로정렬*/
 }
 #box_a{
@@ -203,7 +202,8 @@
 	margin: 30px 0 0 -520px;
 }
 #de{
-	margin: 100px 0 0 0;
+	margin: 0 0 0 260px;
+	width: 1300px;
 }
 </style>
 </head>

@@ -11,21 +11,17 @@
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
-<link rel="stylesheet" href="/tobe/css/user_Header_Footer.css" />
 </head>
 <style>
 .mainContent{
-   width: 1200px;
-   margin: 0 auto;
-   position: relative;
+   width: 75rem;
    display: block;
-   top: 12rem;
 }
 .subContentBar{
    margin-left: 800px;
 }
 .DetailSelectBtn{
-   cursor: pointer;
+	  cursor: pointer;
       color: black;
       border: 0;
       /* display: flex; */
@@ -44,7 +40,7 @@
       position: relative;
 }
 .DetailpayBtn{
-   cursor: pointer;
+   	  cursor: pointer;
       color: white;
       border: 0;
       /* display: flex; */
@@ -56,8 +52,8 @@
       margin: 5px 10px;
       height: 34px;
       border-radius: 20px;
-   background-color: #253528; 
-   border-color: #000;
+   	  background-color: #253528; 
+   	  border-color: #000;
       /* text-align: center; */
       letter-spacing: -0.5px;
       position: relative;
@@ -102,7 +98,8 @@
 }
 .subContent{
 	margin: 0 auto;
-	position: relative;
+	width: 75rem;
+	height: 35rem;
 }
 </style>
 <script>
@@ -118,15 +115,16 @@ document.addEventListener('DOMContentLoaded', function(){
     function showReview() {
         $('#showDetailContent, #showQnaContent').hide();
         $('#showReviewContent').show();
+        ajaxFuncReview();
     }
 
     function showQnA() {
         $('#showDetailContent, #showReviewContent').hide();
         $('#showQnaContent').show();
-        ajaxFunc(); // 강좌 문의를 가져오는 함수 호출
+        ajaxFuncQna(); // 강좌 문의를 가져오는 함수 호출
     }
     
-    function ajaxFunc() {
+    function ajaxFuncQna() {
     	$.ajax({
 			url: "/tobe/user/course/userCourseDetailQnaList.do?course_no=" + course_no,
 			type: 'GET',
@@ -141,7 +139,7 @@ document.addEventListener('DOMContentLoaded', function(){
 	    });
     }
     
-    function ajaxFunc() {
+    function ajaxFuncReview() {
     	$.ajax({
 			url: "/tobe/user/course/userCourseDetailReviewList.do?course_no=" + course_no,
 			type: 'GET',
@@ -164,7 +162,9 @@ document.addEventListener('DOMContentLoaded', function(){
 </script>
 <body>
    <div class="wrap">
-      <%@include file = "/WEB-INF/views/user/common/userHeader.jsp"%>
+		<div class="headerBox">
+			<%@include file="/WEB-INF/views/user/common/userHeader.jsp"%>
+		</div>
       <div class = "mainContent">
          <div class = "subContentLecture">
             <div class = "detailContent">
@@ -184,9 +184,9 @@ document.addEventListener('DOMContentLoaded', function(){
             <div class = "subContentBar">
                 <table>
                    <tr>
-                      <td><button type="button" onclick="location.href='/tobe/user/common/userBasket.do'" class="DetailSelectBtn">장바구니 담기</button></td>
+                      <td><a href='/tobe/user/common/userBasket.do?course_no=" + lecture.course_no + "' class='DetailSelectBtn'>장바구니 담기</a></td>
                       <td><button type="button" onclick="location.href='/tobe/user/common/userCompareCourse.do'" class="DetailSelectBtn">비교함 담기</button></td>
-                      <td><button type="button" onclick="location.href='/tobe/user/pay/userPayDetail.do'" class="DetailpayBtn">결제 하기</button></td>
+                      <td><a href = '/tobe/user/pay/userPayDetail.do?course_no=" + lecture.course_no + "' class='DetailpayBtn'>결제 하기</a></td>
                    </tr>
                 </table>
             </div>
@@ -201,21 +201,20 @@ document.addEventListener('DOMContentLoaded', function(){
                   </tr>
                </table>
             </div>
-         </div>
-         <div class = "subContent">
-            <div id = "showDetailContent">
-            </div>
-         </div>
-         <div class = "subContent">
-            <div id = "showReviewContent">
-            </div>
-         </div>
-         <div class = "subContent">
-            <div id = "showQnaContent">
-            </div>
+         
+	         <div class = "subContent">
+	            <div id = "showDetailContent">
+	            </div>
+	            <div id = "showReviewContent">
+	            </div>
+	            <div id = "showQnaContent">
+	            </div>
+	         </div>
          </div>
       </div>
-   <%@include file = "/WEB-INF/views/user/common/userFooter.jsp" %>
+		<div class="footerBox">
+			<%@include file="/WEB-INF/views/user/common/userFooter.jsp"%>
+		</div>
    </div>
 </body>
 </html>

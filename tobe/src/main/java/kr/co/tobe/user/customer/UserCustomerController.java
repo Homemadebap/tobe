@@ -43,6 +43,12 @@ public class UserCustomerController {
 		model.addAttribute("vo", service.noticeDetail(vo));
 		return "user/customer/userNoticeDetail";
 	}
+	//문의 상세
+	@GetMapping("/user/customer/userQnaDetail.do")
+	public String viewQnaDetail(Model model,  QnaVO vo) {
+		model.addAttribute("vo", service.qnaDetail(vo));
+		return "user/customer/userQnaDetail";
+	}
 	
 	@GetMapping("/user/customer/userAskForm.do")
 	public String userAskForm() {
@@ -67,14 +73,14 @@ public class UserCustomerController {
 			return "user/common/userAlert";
 		}
 		//수정 이동 view
-		@GetMapping("/user/customer/qna/edit.do")
+		@GetMapping("/user/customer/userModAskForm.do")
 		public String edit(Model model, QnaVO vo) {
 //			model.addAttribute("vo", service.view(vo, false)); 
 			
 			return "user/customer/userModAskForm";
 		}
 		//강좌 문의 수정 
-		@PostMapping("/user/customer/qna/update.do")
+		@GetMapping("/user/customer/qna/update.do")
 		public String update(Model model, HttpServletRequest request, QnaVO vo){//, MultipartFile file) {
 			int r = service.qnaUpdate(vo);//, file, request);
 			if (r > 0) {
