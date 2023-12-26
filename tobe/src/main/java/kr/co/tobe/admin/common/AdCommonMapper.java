@@ -6,7 +6,9 @@ import java.util.Map;
 import org.apache.ibatis.annotations.Mapper;
 
 import kr.co.tobe.vo.AdminVO;
+import kr.co.tobe.vo.CourseVO;
 import kr.co.tobe.vo.CqnaVO;
+import kr.co.tobe.vo.MemberVO;
 
 
 @Mapper
@@ -25,5 +27,8 @@ public interface AdCommonMapper {
 
 	int cqnaCount(Map<String, Object> map);
 	List<CqnaVO> cqnaList(Map<String, Object> map);
+	
+	int courseCount(CourseVO vo);
+	List<CourseVO> courseList(CourseVO vo);
 
 }

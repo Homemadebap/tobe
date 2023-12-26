@@ -24,12 +24,18 @@ public class ChiefCourseController {
 	}
 	
 	@PostMapping ("/chiefAdmin/course/chiefCourseInsert.do")
-	public String insert(CourseVO vo, Model model, MultipartFile file, HttpServletRequest request) {
+	public String insert(CourseVO vo, Model model, MultipartFile file, HttpServletRequest request, String educationName) {
+		System.out.println(vo);
 		boolean r = service.insert(vo, file, request);
 	      if (r) { // 정상적으로 DB에 insert 
 	          model.addAttribute("cmd", "move");         
 	          model.addAttribute("msg", "수업등록이 완료되었습니다.");
 	          model.addAttribute("url", "/tobe/chiefAdmin/course/chiefCourseForm.do");
+	          if(educationName != null) {
+	        	  model.addAttribute("cmd", "move");         
+		          model.addAttribute("msg", "수업등록이 완료되었습니다.");
+		          model.addAttribute("url", "/tobe/admin/course/adCourseIndex.do");
+	          }
 	       } else { // 등록안됨
 	          model.addAttribute("cmd", "back");
 	          model.addAttribute("msg", "수업등록에 실패하였습니다.");    
