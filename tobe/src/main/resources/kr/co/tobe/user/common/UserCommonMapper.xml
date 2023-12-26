@@ -19,6 +19,13 @@
 		FROM basket
 		 WHERE member_no = #{no}
 	</select>
+	<insert id="cartInsert"  parameterType="kr.co.tobe.vo.BasketVO">
+		INSERT INTO basket(
+			member_no, course_no
+		) VALUES (
+			#{member_no}, #{course_no}
+		)
+	</insert>
 		<!-- WHERE member_no = #{no} -->
 		
 		 
