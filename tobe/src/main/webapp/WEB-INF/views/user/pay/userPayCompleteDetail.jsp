@@ -261,6 +261,42 @@ $(function(){
 					</tr>
 				</table>			
 			</div>
+			
+		<!--  -->
+		<div class = "title2">
+			<h2>주문자 정보</h2>
+		</div>
+		
+		<table class = "orderer">
+			<tr>
+				<td>주문하시는 분</td>
+				<td>${pdvo.member_name}</td>
+			</tr>
+			<tr>
+				<td>이메일 주소</td>
+				<td>${pdvo.member_email}</td>
+			</tr>
+			<tr>
+				<td>휴대폰 번호</td>
+				<td>${pdvo.member_hp}</td>
+			</tr>			
+		</table>
+		
+		<div class="title3">
+			<h2>결제 정보</h2>
+		</div>
+		
+		<table class = "payment">
+			<tr>
+				<td>카드 결제</td>
+				<td>${pdvo.pay_single}원</td>
+			</tr>
+			<tr>
+				<td>포인트 할인</td>
+				<td><c:out value="${discount }원"/></td>
+			</tr>
+		</table>
+		<!--  -->
 			<div id="btnBox">
 				<button id="backBtn" onclick="location.href='/tobe/user/member/userMyPageMain.do'">이전</button>
 				<button id="cancelBtn">주문취소</button>
@@ -274,9 +310,10 @@ $(function(){
 		        <button id="confirmButton">확인</button>
 		    </div>
 		</div>
+		
 			
-
-		<%@include file="/WEB-INF/views/user/common/userFooter.jsp"%>
+	<%@include file="/WEB-INF/views/user/common/userFooter.jsp"%>
+		
 	</div>
 </body>
 </html>

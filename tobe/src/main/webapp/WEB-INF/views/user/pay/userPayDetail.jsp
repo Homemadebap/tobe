@@ -125,25 +125,44 @@ $(document).ready(function() {
 	$('#payfinalbyP').text('0원'); 
 });
 
-function proceedPay(){
-	$.ajax({  
-	 url : '/user/pay/userPayDetail',
-	 type : 'POST',
-	 async : true,
-	 dataType : "Json", 
-	 data :
-		 $('#cart').serialize(),
-	 success : function(data){
-		 if(data.cnt > 0){
-			 requestPay(data)
-		 }else{
-			 alert(data.msg)
-		 }
-	 }, 
-	 error : function (e){
-		 alert("에러")
-	 }
-	}); 
+function requestPay() {
+	var IMP = window.IMP; // 생략 가능
+	IMP.init("store-e48427ce-8dd2-476e-ac6f-992c6044483e"); // 예: imp00000000
+  //IMP.request_pay(param, callback) 결제창 호출
+  
+  IMP.request_pay({ // param
+      pg: "html5_inicis.INIpayTest", //결제대행사 설정에 따라 다르며 공식문서 참고
+      pay_method: "card", //결제방법 설정에 따라 다르며 공식문서 참고
+      merchant_uid: map.cart_no, / /주문(db에서 불러옴) 고유번호
+      name: data.products,
+      amount: map.pay_total,
+      //buyer_email: "",
+      buyer_name: data.name,
+      //buyer_tel: "010-4242-4242",
+      buyer_addr: data.addr,
+      //buyer_postcode: "01181"
+  }, function (rsp) { // callback
+      if (rsp.success) {
+    	// 결제 성공 시: 결제 승인 또는 가상계좌 발급에 성공한 경우
+          // jQuery로 HTTP 요청
+          jQuery.ajax({
+            url: "/payment/verify/"+ rsp.imp_uid, 
+            method: "POST",
+          }).done(function (data) {
+        	// 위의 rsp.paid_amount 와 data.response.amount를 비교한후 로직 실행 (iamport 서버검증)
+        	  if(rsp.paid_amount == data.response.amount){
+		        	succeedPay(rsp.imp_uid, rsp.merchant_uid);
+	        	} else {
+	        		alert("결제 검증 실패");
+	        	}
+          })
+      } else {
+    	  var msg = '결제에 실패하였습니다.';
+          msg += '에러내용 : ' + rsp.error_msg;
+          alert(msg);
+      }
+  });
+}
 	function AgreeAllSelect(checkAllCheckbox) {
 	    var individualCheckboxes = $('.input_button.small');
 	    var isChecked = $(checkAllCheckbox).is(':checked');
@@ -156,6 +175,21 @@ function proceedPay(){
 	    }
 	    
 }
+	
+	function requestPay() {//결제하기 버튼
+		console.log(1);
+	    var selectedNoList = [];
+
+	    $('.input_button.small:checked').each(function() {
+	        var order_no = $(this).data('no');
+	        selectedNoList.push(cartNo);
+	    });
+
+	    if (selectedNoList.length > 0) {
+			 window.location.href= '/tobe/user/pay/userPayCompleteDetail.do?cartNo='+selectedNoList.join(',');
+	    }
+	}
+
 </script>
 </head>
 <body>
@@ -232,8 +266,8 @@ function proceedPay(){
 					<input  type="checkbox" class="input_button small"  onclick="MathPrice(this);"> 개인정보 수집 및 이용에 대한 동의(필수)<br>
 					<input  type="checkbox" class="input_button small"  onclick="MathPrice(this);"> 개인정보 제3자 제공에 대한 동의(필수)
 				</div>
-				<button class="payment" onClick="proceedPay()" port="post">
-					<h>결제하기</h>
+				<input type="submit" class="payment" onClick="requestPay()" port="post" value="결제하기">
+					
 				</button>
 </form>
 <%@include file="/WEB-INF/views/user/common/userFooter.jsp"%>
