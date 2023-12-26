@@ -15,7 +15,8 @@ public interface UserCourseService {
 	int cQnaDelete(CqnaVO vo);//, HttpServletRequest request);
 	CourseVO getSelectCourse(int no);
 	List<CourseVO> getComplexSelect(CourseVO CVO);
-	List<CqnaVO> cqnaDetailList(int course_no);
+	List<CqnaVO> getCqnaDetailList(int course_no, int startIdx, int itemsPerPage);
+    int getCqnaCount(int course_no);
 	CourseVO getlectureDetail(int course_no);
 	List<ReviewVO> ReviewList(int course_no);
 }

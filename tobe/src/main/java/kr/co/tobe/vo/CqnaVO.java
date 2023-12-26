@@ -17,7 +17,7 @@ public class CqnaVO {
 	
 	private int startIdx;
 	private int page;
-
+	
 	private String searchType;
 	private String searchWord;
 	

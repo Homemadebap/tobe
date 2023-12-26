@@ -575,7 +575,7 @@ caption {
         	        resultHtml += "<td><a href='/tobe/user/common/userBasket.do?course_no=" + lecture.course_no + "' class='SelectBtn'>장바구니 담기</a></td>";
         	        resultHtml += "<td><button type='button' onclick='setCourseComp(11);' class='SelectBtn'>비교함 담기</button></td>";
         	        //resultHtml += "<td><button type='button' onclick=\"location.href='/tobe/user/pay/userPayDetail.do?'\" class='payBtn'>결제 하기</button></td>";
-        	        resultHtml += "<td><a href = '/tobe/user/pay/userPayDetail.do?course_no=" + lecture.course_no + "' class='payBtn'>결제 하기</button></td>";
+        	        resultHtml += "<td><a href = '/tobe/user/pay/userPayDetail.do?course_no=" + lecture.course_no + "' class='payBtn'>결제 하기</a></td>";
         	        resultHtml += "</tr>";
         	        resultHtml += "</table>";
         	        resultHtml += "</div>";
