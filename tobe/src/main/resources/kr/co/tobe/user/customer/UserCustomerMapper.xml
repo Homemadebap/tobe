@@ -148,6 +148,11 @@
 	<delete id="qnaDelete" parameterType="int">
 		DELETE FROM qna WHERE qna_no=#{no}
 	</delete>
-
+	
+	<select id="NoticeDetail" parameterType="kr.co.tobe.vo.NoticeVO" resultType="kr.co.tobe.vo.NoticeVO">
+        SELECT n_title, n_writedate, n_content
+        FROM notice
+        WHERE notice_no = #{no};
+    </select>
 
 </mapper>

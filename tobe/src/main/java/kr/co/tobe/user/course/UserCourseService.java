@@ -6,6 +6,7 @@ import java.util.Map;
 import kr.co.tobe.vo.CourseVO;
 import kr.co.tobe.vo.CqnaVO;
 import kr.co.tobe.vo.QnaVO;
+import kr.co.tobe.vo.ReviewVO;
 
 public interface UserCourseService {
 	List<CourseVO> getLectureList(CourseVO CVO);
@@ -14,5 +15,7 @@ public interface UserCourseService {
 	int cQnaDelete(CqnaVO vo);//, HttpServletRequest request);
 	CourseVO getSelectCourse(int no);
 	List<CourseVO> getComplexSelect(CourseVO CVO);
-	CqnaVO cqnaDetailList(int courseNo);
+	List<CqnaVO> cqnaDetailList(int course_no);
+	CourseVO getlectureDetail(int course_no);
+	List<ReviewVO> ReviewList(int course_no);
 }

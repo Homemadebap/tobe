@@ -61,7 +61,7 @@
 		WHERE course_no = #{no};
 	</select>
 	
-	<!-- 강좌 문의 -->
+	
 	<sql id="cqnaSql">
 		<where>
 			<if test="searchWord != null and searchWord != ''">
@@ -75,10 +75,12 @@
 		</where>
 	</sql>
 	
-	<select id="cqnaDetailList" parameterType="Integer" resultType="kr.co.tobe.vo.CqnaVO">
+	<!-- 강좌문의 -->
+	<select id="cqnaDetailList" parameterType="kr.co.tobe.vo.CqnaVO" resultType="kr.co.tobe.vo.CqnaVO">
 		SELECT *
 		FROM cqna
-		WHERE course_no = #{courseNo}
+		WHERE course_no = #{course_no}
+		LIMIT #{startIdx}, 10
 		<!--  
 		<include refid="cqnaSql"/>
 		ORDER BY gno DESC, ono ASC
@@ -90,4 +92,28 @@
 		FROM cqna
 		<include refid="cqnaSql"/>
 	</select>
+	
+	<select id="lectureDetail" parameterType="kr.co.tobe.vo.CourseVO" resultType="kr.co.tobe.vo.CourseVO">
+        SELECT *
+        FROM course
+        WHERE course_no = #{course_no};
+    </select>
+    
+    
+    <!-- 강좌후기 -->
+    <select id="ReviewList" parameterType="kr.co.tobe.vo.ReviewVO" resultType="kr.co.tobe.vo.ReviewVO">
+		SELECT *
+		FROM review
+		WHERE course_no = #{course_no}
+		LIMIT #{startIdx}, 10
+		<!--  
+		<include refid="cqnaSql"/>
+		ORDER BY gno DESC, ono ASC
+		LIMIT #{startIdx}, 10-->
+	</select>
+    <!-- <select id="cqnaDetailQnaList" parameterType="kr.co.tobe.vo.ReviewVO" resultType="kr.co.tobe.vo.ReviewVO">
+        SELECT r_title, r_writedate, r_content
+        FROM review
+        WHERE review_no = #{reviewNo};
+    </select>  -->
 </mapper>

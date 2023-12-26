@@ -85,6 +85,15 @@
 		where c.admin_no = #{no};
 	</select>
 	
+
+	<select id="courseQna" parameterType="kr.co.tobe.vo.AdminVO" resultType="java.util.Map">
+			SELECT cqna_no, cq_title, STR_TO_DATE(cq_writedate, '%Y-%m-%d') as cq_writedate
+			FROM cqna cq JOIN course c ON cq.course_no=c.course_no
+			WHERE education=#{ad_type}
+			AND cq_reply is null;
+	</select>
+	
+
 	<select id="cqnaList" parameterType="map" resultType="kr.co.tobe.vo.CqnaVO">
 		select cq.cqna_no, cq.course_no, cq.member_no, cq.cq_title, cq.cq_content, cq.cq_writedate, cq.cq_reply,
 		(SELECT name FROM member WHERE member_no = cq.member_no) as member_name 
@@ -93,5 +102,6 @@
 		where c.admin_no = #{no}
 		limit #{startIdx}, 10;
 	</select>
+
 	
 </mapper>

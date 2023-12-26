@@ -6,7 +6,6 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import kr.co.tobe.vo.AdminVO;
 import kr.co.tobe.vo.CqnaVO;
@@ -52,6 +51,11 @@ public class AdCommonServiceImpl implements AdCommonService {
 		return mapper.thisYearPayTotal(avo);
 	}
 	
+	@Override // 마이페이지 - 나의후기 내역 뽑아오기
+	public List<Map<String, Object>> courseQna(AdminVO avo) {
+		return mapper.courseQna(avo);
+	}
+
 	@Override
 	public Map<String, Object> cqnaList(Map<String, Object> param){//CqnaVO param) {
 	
@@ -81,5 +85,4 @@ public class AdCommonServiceImpl implements AdCommonService {
 		return map;
 	}
 
-	
 }

@@ -79,9 +79,20 @@ public class UserCourseServiceImpl implements UserCourseService {
 //	}
 	
 	@Override
-	public CqnaVO cqnaDetailList(int courseNo) {
+	public List<CqnaVO> cqnaDetailList(int course_no) {
 		System.out.println("여기");
-		return mapper.cqnaDetailList(courseNo);
+		return mapper.cqnaDetailList(course_no);
+	}
+	
+	@Override
+	public CourseVO getlectureDetail(int course_no) {
+		return mapper.lectureDetail(course_no);
+	}
+	
+	@Override
+	public List<ReviewVO> ReviewList(int course_no){
+		System.out.println("반갑다.");
+		return mapper.ReviewList(course_no);
 	}
 	
 }
