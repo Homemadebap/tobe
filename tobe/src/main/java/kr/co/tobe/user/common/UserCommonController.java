@@ -15,6 +15,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import kr.co.tobe.util.SendMail;
 import kr.co.tobe.vo.CourseVO;
 import kr.co.tobe.vo.MemberVO;
 
@@ -24,10 +25,9 @@ public class UserCommonController {
 	@Autowired
 	UserCommonService service;
 	
+	
 	@GetMapping("/user/common/userIndex.do")
 	public String index(){//(HttpSession sess) {
-		//sess.setAttribute("CourseComp1",  "empty");
-		//sess.setAttribute("CourseComp2", "empty");
 		return "user/common/userIndex"; 
 	}
 	
@@ -89,7 +89,6 @@ public class UserCommonController {
 	public String userBasket(Model model, HttpServletRequest request) {
 		HttpSession sess = request.getSession();
 		MemberVO login = (MemberVO)sess.getAttribute("loginInfo");
-
 		model.addAttribute("cart", service.cartList(login.getMember_no()) );
 		//model.addAttribute("cart", service.cartList(4));
 		//test
