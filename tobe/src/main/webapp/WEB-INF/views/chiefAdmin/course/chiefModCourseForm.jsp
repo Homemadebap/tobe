@@ -89,6 +89,32 @@
 	   }
 	 }
    
+   $(document).ready(function() {
+	   console.log(${map.branch});
+	   $("#educationS").val(${map.education});
+	   $("#branchS").val(${map.branch});
+	   $("#areaS").val(${map.area});
+	   $("#subjectS").val(${map.subject});
+	   $("#levelS").val(${map.level});
+	   $("#timezoneS").val(${map.timezone});
+	   $("#monS").val(${map.mon});
+	   $("#tueS").val(${map.tue});
+	   $("#wedS").val(${map.wed});
+	   $("#thuS").val(${map.thu});
+	   $("#friS").val(${map.fri});
+	   $("#satS").val(${map.sat});
+	   $("#sunS").val(${map.sun});
+	   $("#teacher1S").val(${map.teacher1});
+	   $("#teacher2S").val(${map.teacher2});
+	   $("#startdayS").val(${map.startday});
+	   $("#enddayS").val(${map.endday});
+	   $("#cnameS").val(${map.cname});
+	   $("#detail").val(${map.detail});
+	   $("#timeS").val(${map.time});
+	   $("#priceS").val(${map.price});
+	   $("#teacher_img_orgS").val(${map.teacher_img_org});
+   });
+   
    </script>
 <style>
 #in{
@@ -211,7 +237,7 @@
 <%@include file="/WEB-INF/views/chiefAdmin/common/chiefSideBar_logo.jsp" %>
   
   
-   <form name="insert" method="post" action="chiefCourseInsert.do" enctype="multipart/form-data" onsubmit="return goSave()">   
+   <form name="cheifModForm" method="post" action="chiefCourseIndex.do" enctype="multipart/form-data" onsubmit="return goSave()">   
 		<c:forEach var="map" items="${list}">   
 	  <div id="con">
 	    <div id="boxa">      
@@ -219,7 +245,7 @@
 	        <input type="file" onchange="readURL(this);"> 
 			<img id="preview" class="upload-name" value="강사이미지" />
 			    <label for="file">파일첨부</label> 
-			    <input type="file" id="file" name="file" onchange="readURL(this);">
+			    <input type="file" id="teacher_img_orgS" name="file" onchange="readURL(this);">
 			</div>
 		</div>
 		<div id="boxb">
@@ -227,7 +253,7 @@
 				<div class="edu">
 			
 					<b>학원명</b>
-					<select name="education">
+					<select name="education" id="educationS">
 	                  <option value="1">해커스</option>
 	                  <option value="2">파고다</option>
 	                  <option value="3">YBM</option>
@@ -235,7 +261,7 @@
 				</div>
 				<div class="br">
 					<b>지점명</b>
-					 <select name="branch">
+					 <select name="branch" id="branchS">
 		                  <option value="1">강남</option>
 		                  <option value="2">종로</option>
 		                  <option value="3">종로e4u</option>
@@ -251,7 +277,7 @@
 				</div>
 				<div class="ar">
 					<b>지역</b>
-					<select name="area">
+					<select name="area" id="areaS">
 	                  <option value="2">서울</option>
 	                  <option value="32">인천</option>
 	                  <option value="51">부산</option>
@@ -262,7 +288,7 @@
 			<div id="sub">
 				<div id="su">
 					<b>과목</b>
-					<select name="subject">
+					<select name="subject" id="subjectS">
 		                 <option value="1">토익</option>
 		                 <option value="2">토스</option>
 		                 <option value="3">토플</option>
@@ -274,82 +300,82 @@
 	        		 </select>
 				</div>	
 				<div id="cn">
-					<b style="margin-right:10px">과목명</b>  <input type="text" name="cname" id="cname" size="70" value="${map.cname}	">  
+					<b style="margin-right:10px">과목명</b>  <input type="text" name="cname" id="cnameS" size="70" value="${map.cname}	">  
 				</div>
 			</div>
 			<div>
-				<div id="le">
+				<div id="le" >
 					<b>수준</b> <b>토익</b>
-					<label><input type="checkbox" name="level" value="1500"> 500</label>
-					<label><input type="checkbox" name="level" value="1600"> 600</label> 
-					<label><input type="checkbox" name="level" value="1700"> 700</label> 
-					<label><input type="checkbox" name="level" value="1800"> 800</label> 
-					<label><input type="checkbox" name="level" value="1900"> 900</label><br>
+					<label><input type="checkbox" name="level" class="levelS" value="1500"> 500</label>
+					<label><input type="checkbox" name="level" class="levelS" value="1600"> 600</label> 
+					<label><input type="checkbox" name="level" class="levelS" value="1700"> 700</label> 
+					<label><input type="checkbox" name="level" class="levelS" value="1800"> 800</label> 
+					<label><input type="checkbox" name="level" class="levelS" value="1900"> 900</label><br>
 					<b style="margin-left:37px">토플</b>
-					<label><input type="checkbox" name="level" value="360"> 60</label> 
-					<label><input type="checkbox" name="level" value="370"> 70</label> 
-					<label><input type="checkbox" name="level" value="380"> 80</label> 
-					<label><input type="checkbox" name="level" value="390"> 90</label><br>
+					<label><input type="checkbox" name="level" class="levelS" value="360"> 60</label> 
+					<label><input type="checkbox" name="level" class="levelS" value="370"> 70</label> 
+					<label><input type="checkbox" name="level" class="levelS" value="380"> 80</label> 
+					<label><input type="checkbox" name="level" class="levelS" value="390"> 90</label><br>
 					<b style="margin-left:37px">ielts</b>
-					<label><input type="checkbox" name="level" value="45">5</label> 
-					<label><input type="checkbox" name="level" value="46">6</label>
-					<label><input type="checkbox" name="level" value="47">7</label><br>
+					<label><input type="checkbox" name="level" class="levelS" value="45">5</label> 
+					<label><input type="checkbox" name="level" class="levelS" value="46">6</label>
+					<label><input type="checkbox" name="level" class="levelS" value="47">7</label><br>
 				    <b style="margin-left:37px">텝스</b>
-				    <label><input type="checkbox" name="level" value="5300"> 300</label>
-				    <label><input type="checkbox" name="level" value="5350"> 350</label> 
-				    <label><input type="checkbox" name="level" value="5400"> 400</label> 
-				    <label><input type="checkbox" name="level" value="5500"> 500</label><br>
+				    <label><input type="checkbox" name="level" class="levelS" value="5300"> 300</label>
+				    <label><input type="checkbox" name="level" class="levelS" value="5350"> 350</label> 
+				    <label><input type="checkbox" name="level" class="levelS" value="5400"> 400</label> 
+				    <label><input type="checkbox" name="level" class="levelS" value="5500"> 500</label><br>
 				    <b style="margin-left:37px">오픽</b>
-					<label><input type="checkbox" name="level" value="61">입문</label>
-					<label><input type="checkbox" name="level" value="62">기본</label>
-					<label><input type="checkbox" name="level" value="63">중급</label><br>
+					<label><input type="checkbox" name="level" class="levelS" value="61">입문</label>
+					<label><input type="checkbox" name="level" class="levelS" value="62">기본</label>
+					<label><input type="checkbox" name="level" class="levelS" value="63">중급</label><br>
 				    <b style="margin-left:37px">gre</b>
-					<label><input type="checkbox" name="level"value="71"> 기본</label>
-					<label><input type="checkbox" name="level" value="72"> 정규</label> 
-					<label><input type="checkbox" name="level" value="73"> 실전</label><br>
+					<label><input type="checkbox" name="level" class="levelS" value="71"> 기본</label>
+					<label><input type="checkbox" name="level" class="levelS" value="72"> 정규</label> 
+					<label><input type="checkbox" name="level" class="levelS" value="73"> 실전</label><br>
 					<b style="margin-left:37px">g-telp</b>
-					<label><input type="checkbox" name="level"value="81"> 30</label> 
-					<label><input type="checkbox" name="level" value="82"> 40</label>
+					<label><input type="checkbox" name="level" class="levelS" value="81"> 30</label> 
+					<label><input type="checkbox" name="level" class="levelS" value="82"> 40</label>
 				</div>
 			</div>
 			<div id="te">
-				<b>강사명1</b> <input type="text" name="teacher1" id="teacher1"><b style="margin-left:10px" style="margin-right:10px" >강사명2</b> <input type="text" name="teacher2"> 
+				<b>강사명1</b> <input type="text" name="teacher1" id="teacher1S"><b style="margin-left:10px" style="margin-right:10px" >강사명2</b> <input type="text" name="teacher2" id="teachers2S"> 
 			</div>
 			<div id="da">
 				<div id="pr">
-					<b style="margin-right:10px">가격</b> <input type="text" name="price" id="price">원
+					<b style="margin-right:10px">가격</b> <input type="text" name="price" id="priceS">원
 				</div>
 				<div id="st">
-					<b>개강일</b>	<input type="date" name="startday">			
+					<b>개강일</b>	<input type="date" name="startday" id="startdayS">			
 				</div>
 				<div id="en">
-					<b>종강일</b> <input type="date" name="endday">
+					<b>종강일</b> <input type="date" name="endday" id="enddayS">
 				</div>
 			</div>
 			<div>
 				<div id="mo">
 					<B>요일</B>
-					<label><input type="checkbox" name="mon" value="1">월</label> 
-					<label><input type="checkbox" name="tue" value="2">화</label> 
-		            <label><input type="checkbox" name="wed" value="3">수</label> 
-		            <label><input type="checkbox" name="thu" value="4">목</label> 
-		            <label><input type="checkbox" name="fri" value="5">금</label> 
-		            <label><input type="checkbox" name="sat" value="6">토</label> 
-		            <label><input type="checkbox" name="sun" value="7">일</label>
+					<label><input type="checkbox" name="mon" id="monS" value="1">월</label> 
+					<label><input type="checkbox" name="tue" id="tueS" value="2">화</label> 
+		            <label><input type="checkbox" name="wed" id="wedS" value="3">수</label> 
+		            <label><input type="checkbox" name="thu" id="thuS" value="4">목</label> 
+		            <label><input type="checkbox" name="fri" id="friS" value="5">금</label> 
+		            <label><input type="checkbox" name="sat" id="satS" value="6">토</label> 
+		            <label><input type="checkbox" name="sun" id="sunS" value="7">일</label>
 				</div>
 			</div>
 			<div id="tt">
 				<div id="ti">
 					<b style="margin-right:10px">수업시간대</b>
 					<select name="timezone">
-	                  <option value="9">오전(9시이전)</option>
-	                  <option value="912">오전(9시~12시)</option>
-	                  <option value="1218">오후(12시~18시)</option>
-	                  <option value="18">저녁(18시이후)</option>
+	                  <option value="9" id="timezoneS">오전(9시이전)</option>
+	                  <option value="912" id="timezoneS">오전(9시~12시)</option>
+	                  <option value="1218" id="timezoneS">오후(12시~18시)</option>
+	                  <option value="18" id="timezoneS">저녁(18시이후)</option>
 	            	</select>
 				</div>
 				<div id="dti">
-					<b style="margin-right:10px">상세시간</b> <input type="text" name="time" id="time">${ }
+					<b style="margin-right:10px">상세시간</b> <input type="text" name="time" id="timeS">
 				</div>
 			</div>
 		</div>
