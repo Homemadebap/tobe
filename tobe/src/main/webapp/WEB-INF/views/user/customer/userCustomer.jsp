@@ -60,7 +60,11 @@
     }
     .page{text-align: center; margin: 20px auto 0;}
     .page li {display: inline-block;}
-
+    
+#top{
+   position: relative;
+   margin: -1100px 0 0 -10px; 
+}
 
 </style>
 </head>
@@ -68,6 +72,7 @@
 	<div class="wrap">
 		<%@include file="/WEB-INF/views/user/common/userHeader.jsp"%>
 		</div>
+	<div id="top">
 		<div class="main">
 		    <table class="select">
 		        <div>
@@ -157,6 +162,7 @@
                     -->
 			<%@include file="/WEB-INF/views/user/common/userFooter.jsp"%>
 		</div>
+	</div>
 	</div>
 </body>
 </html>

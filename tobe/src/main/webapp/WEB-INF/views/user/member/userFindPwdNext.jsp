@@ -55,7 +55,7 @@ $(function(){
 			</form>
 
 			<!-- <form action="userLogin.do" method="post" id="login" name="login" onsubmit="">  -->			
-			<div class="ok_btn"><input type="submit" value="비밀번호 찾기"/></div>
+			<!-- <div class="ok_btn"><input type="submit" value="비밀번호 찾기"/></div>  -->
 		</div>
 	</div>
 
