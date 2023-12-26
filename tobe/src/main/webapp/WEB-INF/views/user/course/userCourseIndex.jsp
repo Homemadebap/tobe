@@ -11,7 +11,6 @@
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
-<link rel="stylesheet" href="/tobe/css/user_Header_Footer.css" />
 </head>
 <style>
 
@@ -20,18 +19,14 @@
    justify-content: center;
    align-items: center;
    background-color: #E4E6D9;
-   width: 100%;
+   width: 75rem;
    /* height:20rem; */
-   position: absolute;
-   top: 15rem;
-   left: 0;
-   right: 0;
+
 }
 
 .choice {
-   width: 1200px;
+   width: 80rem;
    margin: 0 auto;
-   position: relative;
 }
 
 .choice>ul {
@@ -91,7 +86,6 @@ caption {
    border-color: #000;
    /* text-align: center; */
    letter-spacing: -0.5px;
-   position: relative;
 }
 
 .condition:before{
@@ -117,12 +111,10 @@ caption {
    height:100%;
 }
 .sort {
-   bottom: 42rem;
-   width: 1200px;
-   margin: 0 auto;
+   width: 75rem;
    align-items: center;
    /* text-align: center; */
-   position: relative;
+	margin: 0 0 1rem 0;
 }
 
 .sort>ul {
@@ -149,17 +141,15 @@ caption {
    font-weight: bold;
 }
 .container {
-	width:1200px;
-	margin: 0 auto;
+	width:75rem;
 	display: flex;
 	justify-content: space-between;
-	position:relative;
 	align-items: center;
-	top:40rem;
+	border: 1px solid #000; /* 나중에 강좌들 잘 나오는 거 확인하면 지워용*/
 }
 .subContainer{
 	width:33.3333%;
-	height: 500px;
+	height: 50rem;
 }
 .subChildContainer{
 	height: 400px;
@@ -632,7 +622,9 @@ function setCourseComp(no) {
 	}
 </script>
       <div class="wrap">
-      <%@include file="/WEB-INF/views/user/common/userHeader.jsp"%>
+		<div class="headerBox">
+			<%@include file="/WEB-INF/views/user/common/userHeader.jsp"%>
+		</div>
    		<div class="choiceBG">
       		<div class="choice">
          		<table class="choiceLayout">
@@ -774,7 +766,9 @@ function setCourseComp(no) {
 	    		</c:forEach>
 	    	</div>
 	   	</div>
-	   	<%@include file="/WEB-INF/views/user/common/userFooter.jsp"%>
+		<div class="footerBox">
+			<%@include file="/WEB-INF/views/user/common/userFooter.jsp"%>
+		</div>
 	 </div>
 </body>
 

@@ -23,6 +23,7 @@
 	box-sizing: border-box;
 }
 .headerBox {
+	width: 75rem;
 	height: 13rem;
 }
 .header { 
