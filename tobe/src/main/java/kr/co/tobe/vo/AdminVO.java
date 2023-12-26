@@ -16,7 +16,7 @@ public class AdminVO {
 	private String ad_hp;
 	private Timestamp ad_registdate;
 	private int ad_charge;
-	private int ad_account;
+	private String ad_account;
 	private String logo_filename;
 		
 }

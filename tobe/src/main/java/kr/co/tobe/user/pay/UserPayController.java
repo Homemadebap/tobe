@@ -13,10 +13,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import kr.co.tobe.vo.BasketVO;
-import kr.co.tobe.vo.MemberVO;
 
 @Controller
 public class UserPayController {
@@ -25,11 +25,45 @@ public class UserPayController {
 	UserPayService service;
 	
 	@GetMapping("/user/pay/userPayCompleteDetail.do")
-	public String userMyPageMain(HttpSession sess, Model model) {
-		MemberVO user = (MemberVO)sess.getAttribute("loginInfo");
-
+	public String userPayCompleteDetail(@RequestParam("detail_no") int detail_no, Model model) {
 		
+		model.addAttribute("pdvo", service.payDetailIndex(detail_no));
 		return "user/pay/userPayCompleteDetail";
+	}
+	
+	@GetMapping("/user/pay/userPayCancelForm.do")
+	public String userPayCancelForm(@RequestParam("detail_no") int detail_no, Model model) {
+		model.addAttribute("pdvo", service.payDetailIndex(detail_no));
+		return "user/pay/userPayCancelForm";
+	}
+	
+	@PostMapping("/user/pay/userPayCancel.do")
+	public String userPayCancel(@RequestParam("detail_no") int detail_no,
+								@RequestParam("cancelReason") String cancelReason,
+								@RequestParam("cancelReasonDetail") String cancelReasonDetail,
+								Model model) {
+		int order_no = (int)service.payDetailIndex(detail_no).get("order_no");
+		Map<String, Object> cancelReasonMap = new HashMap<>();
+		cancelReasonMap.put("order_no", order_no);
+		cancelReasonMap.put("cancelReason", cancelReason);
+		cancelReasonMap.put("cancelReasonDetail", cancelReasonDetail);
+		boolean r = service.payCancel(cancelReasonMap);
+		
+		if(r) {
+			model.addAttribute("cmd", "move");
+			model.addAttribute("msg", "결제가 취소되었습니다.");
+			model.addAttribute("url", "/tobe/user/pay/userPayCancelDetail.do?detail_no="+detail_no);
+		} else {
+			model.addAttribute("cmd", "back");
+			model.addAttribute("msg", "결제 취소가 실행되지 않았습니다.");
+		}
+		return "user/common/userAlert";
+	}
+	
+	@GetMapping("/user/pay/userPayCancelDetail.do")
+	public String userPayCancelDetail(@RequestParam("detail_no") int detail_no, Model model) {
+		model.addAttribute("pcdi", service.payCancelDetailIndex(detail_no));
+		return "user/pay/userPayCancelDetail";
 	}
 	
 	@GetMapping ("/user/pay/userPayDetail.do")

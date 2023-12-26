@@ -7,7 +7,9 @@ import org.springframework.stereotype.Service;
 
 import kr.co.tobe.vo.CalendarVO;
 import kr.co.tobe.vo.CourseVO;
+import kr.co.tobe.vo.CqnaVO;
 import kr.co.tobe.vo.MemberVO;
+import kr.co.tobe.vo.QnaVO;
 
 @Service
 public interface UserCommonService {

@@ -18,6 +18,7 @@
    width: 90%;
    margin-left: 5px;
    margin-top: 12px;
+   cursor:pointer;
 }
 
 #btn>img {
@@ -25,6 +26,7 @@
    max-height: 75px;
    display: block;
    margin-left: 10px;
+   cursor:pointer;
 }
 
 #btno>img {
@@ -32,6 +34,7 @@
    max-height: 100px;
    display: block;
    margin-left: 10px;
+   cursor:pointer;
 }
 
 #btne>img {
@@ -39,6 +42,7 @@
    max-height: 70px;
    display: block;
    margin-left: 10px;
+   cursor:pointer;
 }
 
 #btna>img {
@@ -46,6 +50,7 @@
    max-height: 80px;
    display: block;
    margin-left: 10px;
+   cursor:pointer;
 }
 
 #btn {
@@ -98,6 +103,9 @@ a:hover {
 #logout{
 	margin: 0 0 0 300px;
 	font-size: 90%;
+}
+#mainlogo > img {
+	cursor:pointer;
 }
 
 </style>

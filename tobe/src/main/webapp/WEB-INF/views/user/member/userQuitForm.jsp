@@ -167,23 +167,23 @@
 
 .quitNotice {
 	position: absolute;
-	top: 12rem;
+	top: 10rem;
 	left: 1rem;
 }
 
 .quitBox {
 	position: absolute;
 	width: 71rem;
-	top: 32.5rem;
-	margin: 0 2rem;
+	left: 1rem;
+	top: 27rem;
 }
 
 .line {
 	position: absolute;
 	background-color: #49654E;
-	width: 70rem;
+	width: 72rem;
 	height: 2px;
-	top: 5rem;
+	top: 4rem;
 	
 }
 
@@ -197,7 +197,6 @@
     cursor: pointer;
     left: 31rem;
 }
-
 
 </style>
 
@@ -233,9 +232,9 @@
 			</div>
 			
 			<div class="quitNotice">
-				<h1>그동안 Tobe를 이용해주셔서 감사합니다.</h1>
-				<p style="font-size: 1.3rem;">공영쇼핑 회원탈퇴 시 아래 사항을 확인하여 주시기 바랍니다.</p>
-				<ul style="font-size: 1.15rem;">
+				<h2>그동안 Tobe를 이용해주셔서 감사합니다.</h2>
+				<p style="font-size: 1.15rem; margin: 0 0;">공영쇼핑 회원탈퇴 시 아래 사항을 확인하여 주시기 바랍니다.</p>
+				<ul style="font-size: 1.15rem; margin: 0.5rem; padding: 0 0 0 1rem;">
 					<li>고객님의 정보는 전자상거래 소비자보호법에 의거한 공영쇼핑 개인정보보호정책에 따라 관리됩니다.
 					<li>탈퇴 시 고객님께서 보유하셨던 포인트는 모두 삭제되며, 재가입 시에도 복원되지 않습니다.</li>
 					<li>탈퇴 후 <b>3개월</b>동안 재가입을 하실 수 없습니다.</li>
@@ -246,7 +245,7 @@
 			</div>
 			
 			<div class="quitBox">
-				<h1 id="q">회원 탈퇴 사유</h1>
+				<h2 id="q">회원 탈퇴 사유</h2>
 				<div class="line"></div>
 				<form class="quitForm" method="post" action="userQuit.do">
 					<table>
@@ -270,7 +269,7 @@
 						</tr>
 						<tr>
 							<th style="font-size: 1.25rem;">기타 불만 사항</th>
-							<td><textarea id="quitOpnion" cols="100" rows="15" placeholder="(선택입력)Tobe에 의견이 있으시면 작성해주세요." 
+							<td><textarea id="quitOpnion" cols="100" rows="10" placeholder="(선택입력)Tobe에 의견이 있으시면 작성해주세요." 
 									style="font-size:1rem;"></textarea></td>
 						</tr>					
 					</table>

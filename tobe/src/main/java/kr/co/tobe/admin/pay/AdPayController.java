@@ -22,7 +22,7 @@ public class AdPayController {
 	
 	@GetMapping("/admin/pay/adPayIndex.do")
 	public String adPayIndex(HttpSession sess, Model model) {
-		AdminVO admin = (AdminVO)sess.getAttribute("loginInfo");
+		AdminVO admin = (AdminVO)sess.getAttribute("adLoginInfo");
 		if(admin == null) {
 			return "redirect:/admin/common/adLogin.do";
 		}

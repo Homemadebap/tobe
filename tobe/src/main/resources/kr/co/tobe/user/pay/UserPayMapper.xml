@@ -1,6 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="kr.co.tobe.user.pay.UserPayMapper">
+	
+	<select id="payDetailIndex" parameterType="int" resultType="java.util.Map">
+		SELECT pd.*, p.*, teacher_img_real, DATE_FORMAT(pay_date,'%Y-%m-%d %H:%i') AS pay_date2, ad_name, ad_account
+		FROM pay p JOIN pay_detail pd ON p.order_no=pd.order_no
+			JOIN course c ON pd.course_no=c.course_no
+			JOIN admin a ON c.education=a.ad_type
+		WHERE detail_no = #{detail_no}
+	</select>	
+	
+	<!-- 어느 테이블에 넣을지 생각해보기 -->
+	<update id="payCancel" parameterType="java.util.Map">
+		UPDATE pay
+		SET pay_cancel=1,
+			pay_cancel_date= now(),
+		    pay_cancel_reason = #{pay_cancel_reason},
+		    pay_cancel_reason_detail = #{pay_cancel_reason_detail}
+		where order_no = #{order_no};
+	</update>	
+	
+	<select id="payCancelDetailIndex" parameterType="int" resultType="java.util.Map">
+		SELECT pd.*, p.*, teacher_img_real, DATE_FORMAT(pay_refund_date,'%Y-%m-%d %H:%i') AS pay_refund_date2, name
+		FROM member m JOIN pay p ON m.member_no=p.member_no
+			JOIN pay_detail pd ON p.order_no=pd.order_no
+			JOIN course c ON pd.course_no=c.course_no
+		WHERE detail_no = #{detail_no}
+	</select>	
+	
+		
 	<select id="getCart" resultType="map" parameterType="String">	
 		SELECT education, area, branch, subject, mon, tue, wed, thu, fri, sat, sun, time, price, cname, cart_no
 		FROM basket INNER JOIN course

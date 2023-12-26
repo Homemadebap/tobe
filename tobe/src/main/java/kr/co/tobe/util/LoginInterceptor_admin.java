@@ -19,7 +19,7 @@ public class LoginInterceptor_admin implements HandlerInterceptor{
 							Object handler)
 							throws Exception {
 		HttpSession sess = request.getSession();
-		AdminVO login = (AdminVO)sess.getAttribute("loginInfo");
+		AdminVO login = (AdminVO)sess.getAttribute("adLoginInfo");
 		if (login == null) {
 			response.setContentType("text/html; charset=utf-8");
 			PrintWriter out = response.getWriter();
