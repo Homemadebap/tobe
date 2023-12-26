@@ -42,7 +42,7 @@ public class UserPayController {
 		return "user/pay/userPayDetail";
 	}
 	
-	@PostMapping("/user/pay/userPayDetail.do")
+	@PostMapping("/user/pay/userPayDetail")
 	@ResponseBody
 	public String paymentOk(HttpServletRequest req, @ModelAttribute BasketVO bvo) {
 		HttpSession session = req.getSession();
