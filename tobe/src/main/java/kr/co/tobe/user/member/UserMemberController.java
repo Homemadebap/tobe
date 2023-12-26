@@ -44,12 +44,33 @@ public class UserMemberController {
 			model.addAttribute("user", findId);
 			return "user/member/userFindMemberNext";
 		}
+		
 	}
 	
 	@GetMapping("/user/member/userFindMemberNext.do")
 	public String findMemberNext() {
 		return "user/member/userFindMemberNext";
 	}
+	
+	@PostMapping("/user/member/userFindPwdNext.do")
+	public String userFindPwd(MemberVO vo, HttpSession sess, Model model) {
+		MemberVO findPwd = service.findPwd(vo); 
+			model.addAttribute("user", findPwd);
+//			return "user/member/userFindPwdNext";
+			if (findPwd == null) {
+				model.addAttribute("msg", "등록된 정보가 없습니다.");
+				model.addAttribute("cmd", "back");
+				return "user/common/userAlert";
+			} else { 
+				model.addAttribute("user", findPwd);
+				return "user/member/userFindPwdNext";
+			}
+		}
+	
+//	@GetMapping("/user/member/userFindPwdNext.do")
+//	public String findPwdNext() {
+//		return "user/member/userFindPwdNext";
+//	}
 //	@PostMapping ("/user/member/userFindMemberNext.do")
 //	public String userFindMemberNext(HttpSession sess, MemberVO vo, Model model) {
 //		MemberVO findId = service.findId(vo);
@@ -174,5 +195,10 @@ public class UserMemberController {
 		return "user/common/userAlert";
 	}
 	
+	//약관동의
+	@GetMapping("/user/member/userJoinPolicy.do")
+	public String userJoinPolicy() {
+		return "user/member/userJoinPolicy";
+	}
 
 }

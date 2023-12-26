@@ -56,6 +56,10 @@
 		SELECT * FROM member WHERE name = #{name} AND email = #{email}		
 	</select>
 	
+	<select id ="findPwd" resultType="kr.co.tobe.vo.MemberVO" parameterType="kr.co.tobe.vo.MemberVO"> 
+		SELECT * FROM member WHERE name = #{name} AND id = #{id} AND email = #{email}		
+	</select>
+	
 	 	
 
 
