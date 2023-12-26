@@ -4,147 +4,52 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>수강신청</title>
+<title>수강후기</title>
 <META name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, user-scalable=no">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
-<link rel="stylesheet" href="/tobe/css/user_Header_Footer.css" />
 </head>
 <style>
 <style>
-.body {
-   min-width: 1200px;
-   height: 100%;
-}
-
-.wrap {
-   width: 1200px;
-   height: 100%;
-   /*height: 70rem;*/
-   margin: 0 auto;
-   position: relative;
-}
-
-* {
-   box-sizing: border-box;
-}
-
-.header {
-   width: 75rem;
-   height: 15rem;
-   position: absolute;
-   top: 0;
-   left: 0;
-}
-
-.header_memberBar {
-   position: absolute;
-   color: #000;
-   right: 0;
-   top: 10%;
-   font-family: Inter;
-   text-align: center;
-   font-size: 1rem;
-   letter-spacing: 0;
-}
-
-.tobe_logo {
-   position: absolute;
-   top: 4.5rem;
-   width: 20rem;
-}
-
-.menu_container {
-   position: absolute;
-   width: 50rem;
-   right: 0;
-   top: 6.5rem;
-}
-
-.menu {
-   width: 14rem;
-   height: 5rem;
-   font-size: 2rem;
-   text-align: center;
-}
-
-.footer {
-   background-color: #d3d3d3;
-   width: 100%;
-   /* width:75rem; */
-   height:250px; 
-   position: absolute;
-   top: 1500px;
-}
-
-.footer_content {
-   display: grid;
-   place-items: center;
-}
-
-.footer_logo {
-   width: 6rem;
-   display: grid;
-   place-items: center;
-   float: left;
-   height: 5rem;
-}
-
-.footer_info {
-   width: 37.5rem;
-   display: grid;
-   place-items: center;
-   float: left;
-   height: 5rem;
-}
 .reviewDetailTitle{
-	width: 1200px;
+	width: 75rem;
 	margin: 0 auto;
-	position: relative;
-	top: 14rem;
+}
+.reviewDetailTitle h2 {
+	width: 75rem;
+	padding: 0 4rem;
 }
 table{
-	width: 1200px;
-	margin: 0 auto;
+	width: 75rem;
 	text-align: center;
-	position: relative;
-	bottom: 34rem;
+
 }
-#firstLine{
-	width: 1200px;
-	margin: 0 auto;
-	position: relative;
-	top:13rem;
-}
+
 #secondLine{
-	width: 1200px;
+	width: 75rem;
 	margin: 0 auto;
-	position: relative;
-	top: 15rem;
+
 }
 hr{
 	border: 1px solid #000;
 }
 .textBox{
-	width: 1200px;
-	position: relative;
+	width: 75rem;
 	margin: 0 auto;
-	top: 18rem;
+
 }
 #realTextBox{
-	width: 1200px;
-	height: 700px;
+	width: 75rem;
+	height: 40rem;
 	background-color: #f1f3f5;
 	border: 0;
 }
 .combackBtn{
-	position:relative;
 	margin: 0 auto;
-	width: 1200px;
-	top: 20rem;
+	width: 75rem;
 }
 .comBack{
 	width: 70px;
@@ -164,21 +69,18 @@ hr{
    	border-color: #000;
    	/* text-align: center; */
    	letter-spacing: -0.5px;
-   	position: relative;
 }
 </style>
 <body>
    	<div class="wrap">
-      	<%@include file="/WEB-INF/views/user/common/userHeader.jsp"%>
-      	</div>
-    </div>
-   	<div class = "reviewDetailTitle">
-   		<h1>수강후기</h1>
+		<div class="headerBox">
+			<%@include file="/WEB-INF/views/user/common/userHeader.jsp"%>
+		</div>
+   	<div class="reviewDetailTitle">
+   		<h2>수강후기</h2>
    	</div>
-   	<div id="firstLine">
-	   	<hr>
-   	</div>
-   	<div>
+ 
+   	<div >
    		<table>
 		    <tr>
 		        <td>${review.r_title}</td>
@@ -195,8 +97,11 @@ hr{
    		</div>
    	</div>
    	<div class = "combackBtn">
-  			<button type="button" onclick="location.href='/tobe/user/review/userReviewIndex.do'" class="comBack">목록</button></td>
+  			<button type="button" onclick="location.href='/tobe/user/review/userReviewIndex.do'" class="comBack">목록</button>
  	</div>
-   	<%@include file="/WEB-INF/views/user/common/userFooter.jsp"%>
+		<div class="footerBox">
+			<%@include file="/WEB-INF/views/user/common/userFooter.jsp"%>
+		</div>
+	</div>
 </body>
 </html>

@@ -21,7 +21,6 @@
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
-<link rel="stylesheet" href="/tobe/css/user_Header_Footer.css" />
 
 <script type="text/javascript">
 
@@ -47,10 +46,8 @@ $(function(){
 
 <style>
 .container {
-	position: absolute;
-	top: 13rem;
-	left:3rem;
 	width: 70rem;
+	padding: 0 2.5rem;
 }
 
 .btitle {
@@ -109,15 +106,15 @@ $(function(){
 
 #minusImg {
 	position: absolute;
-	top: 27.25rem;
-	left: 22.5rem;
+	top: 40.25rem;
+	left: 25rem;
 	width: 2rem;
 }
 
 #equalImg {
 	position: absolute;
-	top: 27.25rem;
-	left: 45.6rem;
+	top: 40.25rem;
+	left: 48.25em;
 	width: 2rem;
 }
 
@@ -147,7 +144,10 @@ $(function(){
 
 .popup {
     display: none;
-    transform: translate(75%, 100%);
+ 	position: fixed;
+ 	top: 25rem;
+ 	left: 35rem;
+  	z-index: 9999;
     background-color: #000;
     padding: 20px;
     border: 1px solid #ccc;
@@ -188,7 +188,9 @@ $(function(){
 </head>
 <body>
 	<div class="wrap">
-		<%@include file="/WEB-INF/views/user/common/userHeader.jsp"%>
+		<div class="headerBox">
+			<%@include file="/WEB-INF/views/user/common/userHeader.jsp"%>
+		</div>
 		<div class="container">
 			<div class="btitle">
 				 <h1>결제정보</h1>
@@ -312,8 +314,9 @@ $(function(){
 		</div>
 		
 			
-	<%@include file="/WEB-INF/views/user/common/userFooter.jsp"%>
-		
+		<div class="footerBox">
+			<%@include file="/WEB-INF/views/user/common/userFooter.jsp"%>
+		</div>
 	</div>
 </body>
 </html>

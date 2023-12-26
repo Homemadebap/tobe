@@ -21,7 +21,6 @@
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
-<link rel="stylesheet" href="/tobe/css/user_Header_Footer.css" />
 
 <script type="text/javascript">
 
@@ -30,10 +29,8 @@
 
 <style>
 .container {
-	position: absolute;
-	top: 13rem;
-	left:3rem;
 	width: 70rem;
+	padding: 0 2.5rem;
 }
 
 .btitle {
@@ -129,7 +126,9 @@
 </head>
 <body>
 	<div class="wrap">
-		<%@include file="/WEB-INF/views/user/common/userHeader.jsp"%>
+		<div class="headerBox">
+			<%@include file="/WEB-INF/views/user/common/userHeader.jsp"%>
+		</div>
 		<div class="container">
 			<div class="btitle">
 				 <h1>결제취소 상세조회</h1>
@@ -222,7 +221,9 @@
 			</div>
 		</div>
 
-		<%@include file="/WEB-INF/views/user/common/userFooter.jsp"%>
+		<div class="footerBox">
+			<%@include file="/WEB-INF/views/user/common/userFooter.jsp"%>
+		</div>
 	</div>
 </body>
 </html>
