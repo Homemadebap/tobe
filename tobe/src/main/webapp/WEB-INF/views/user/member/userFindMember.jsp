@@ -48,19 +48,19 @@ function checkId() {
 }
 
 function checkPwd() {
-	if ($("#name").val() == '') {
+	if ($("#name2").val() == '') {
 		alert("이름을 입력해주세요");
-		$("#name").focus();
+		$("#name2").focus();
 		return false;
 	}
-	if ($("#id").val() == '') {
+	if ($("#id2").val() == '') {
 		alert("아이디를 입력해 주세요");
-		$("#id").focus();
+		$("#id2").focus();
 		return false;
 	}
-	if ($("#email").val() == '') {
+	if ($("#email2").val() == '') {
 		alert("이메일을 입력해 주세요");
-		$("#email").focus();
+		$("#email2").focus();
 		return false;
 	}
 }
@@ -95,20 +95,20 @@ function checkPwd() {
 				</div>
 </form>
 			
-	<form action="userFindMember.do" method="post" id="board2" name="board2" onsubmit="return checkPwd()">
+	<form action="userFindPwdNext.do" method="post" id="board2" name="board2" onsubmit="return checkPwd()">
 		<div class="pwd_contents" id="pwd_data" style="display: none;">
 			<fieldset clss="pwd_form">
 				<ul>
 					<li>이름</li>
-					<li><input type="text" id="name"></li>
+					<li><input type="text" name="name" id="name2"></li>
 				</ul>
 				<ul>
 					<li>아이디</li>
-					<li><input type="id" id="id"></li>
+					<li><input type="id" name="id" id="id2"></li>
 				</ul>
 				<ul>
 					<li>이메일</li>
-					<li><input type="email" id="email"></li>
+					<li><input type="email" name="email" id="email2"></li>
 				</ul>
 			</fieldset>						
 			<div class="ok_btn"><input type="submit" value="확인"/></div>

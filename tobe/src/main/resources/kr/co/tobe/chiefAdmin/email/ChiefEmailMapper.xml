@@ -1,5 +1,72 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="kr.co.tobe.chiefAdmin.email.ChiefEmailMapper">
+	<sql id="whereSql">
+		<where>	
+			<if test="searchWord != null and searchWord != ''">
+				(id = #{searchWord} OR name = #{searchWord} OR email = #{searchWord})
+			</if>
+         	<if test="startday != null and startday != ''">
+            	<if test="searchWord != null and searchWord != ''">
+                   AND
+               </if>
+                  <![CDATA[
+	              registdate BETWEEN STR_TO_DATE(#{startday}, '%Y-%m-%d') AND STR_TO_DATE(#{endday}, '%Y-%m-%d')
+	       		 ]]>
+         	</if>
+         	<if test="birthDayStartday != null and birthDayStartday != ''">
+             	<if test="searchWord != null and searchWord != '' or startday != null and startday != ''">
+                   AND
+               </if>
+                 <![CDATA[
+	              birthday BETWEEN STR_TO_DATE(#{birthDayStartday}, '%Y-%m-%d') AND STR_TO_DATE(#{birthDayEndday}, '%Y-%m-%d')
+	       		 ]]>
+        	</if>
+		</where>	
+	</sql>
+	
+	<insert id="emailInsert" parameterType="kr.co.tobe.vo.EmailVO">
+		INSERT INTO email (
+		   member_no, e_title, e_content, e_senddate
+		) VALUES (
+			#{member_no},#{e_title} ,#{e_content}, NOW()
+		)
 
+	</insert>
+	
+	<select id="count" parameterType="kr.co.tobe.vo.EmailVO" resultType="int">
+		SELECT COUNT(*) FROM email
+	</select>
+	
+	<select id="emailList" resultType="kr.co.tobe.vo.EmailVO" >
+		SELECT email_no, member_no
+		,e_title, e_content, e_senddate
+		FROM email
+	</select>
+	
+	<select id="emailSelect" resultType="String" parameterType="int">
+		SELECT email
+		FROM member
+		WHERE member_no=#{no}
+	</select>
+	
+	<select id="memberSelect" resultType="int" parameterType="String" >
+		SELECT member_no
+		FROM member
+		WHERE email=#{email}
+	</select>
+	
+	<select id="memberCount" parameterType="kr.co.tobe.vo.MemberVO" resultType="int">
+		SELECT COUNT(*) FROM member
+		<include refid="whereSql"/>
+	</select>
+	
+	<select id="memberList" parameterType="kr.co.tobe.vo.MemberVO" resultType="kr.co.tobe.vo.MemberVO">
+		SELECT *
+		FROM member
+		<include refid="whereSql"/>
+		LIMIT #{startIdx}, 10
+	</select>
+	
+	
 </mapper>

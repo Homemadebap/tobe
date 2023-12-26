@@ -5,14 +5,14 @@ import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
 
+import kr.co.tobe.vo.BasketVO;
 import kr.co.tobe.vo.CalendarVO;
 import kr.co.tobe.vo.CourseVO;
-import kr.co.tobe.vo.CqnaVO;
 import kr.co.tobe.vo.MemberVO;
-import kr.co.tobe.vo.QnaVO;
 
 @Mapper
 public interface UserCommonMapper {
+	int cartInsert (BasketVO vo);
 	List<Map> list(int no);		//목록 가져올 것.. join 강좌정보: , 레벨, 요일, 시간, 강좌 금액
 	int delete(int no);			//cartPk 삭제
 	int count (int no);			//id별 강좌 정보 

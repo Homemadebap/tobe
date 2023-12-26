@@ -203,7 +203,7 @@
                             </fieldset>
                             <div class="btnSet_clear">
                                 <div style="color: #2F5720">
-                                    <p>아직 TOBE회원이 아니신가요?<a href="userJoinForm.do" class="btn">회원가입</a></p>
+                                    <p>아직 TOBE회원이 아니신가요?<a href="userJoinPolicy.do" class="btn">회원가입</a></p>
                                </div>
                             </div>
                         </div>

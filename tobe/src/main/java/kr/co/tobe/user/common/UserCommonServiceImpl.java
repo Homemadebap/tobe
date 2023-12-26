@@ -7,11 +7,10 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import kr.co.tobe.vo.BasketVO;
 import kr.co.tobe.vo.CalendarVO;
 import kr.co.tobe.vo.CourseVO;
-import kr.co.tobe.vo.CqnaVO;
 import kr.co.tobe.vo.MemberVO;
-import kr.co.tobe.vo.QnaVO;
 
 @Service
 public class UserCommonServiceImpl implements UserCommonService {
@@ -72,6 +71,11 @@ public class UserCommonServiceImpl implements UserCommonService {
 	@Override
 	public List<CalendarVO> calendarList() {
 		return mapper.calenList();
+	}
+
+	@Override
+	public int basketInsert(BasketVO vo) {
+		return mapper.cartInsert(vo);
 	}
 	
 }

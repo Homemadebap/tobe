@@ -69,7 +69,7 @@ function courseView() {
 	<span class="header_memberBar">
 		<c:if test="${empty loginInfo }">
 		    <a href="/tobe/user/member/userLogin.do">로그인</a> |
-		    <a href="/tobe/user/member/userJoinForm.do">회원가입</a>
+		    <a href="/tobe/user/member/userJoinPolicy.do">회원가입</a>
 		</c:if>
 		
 		<c:if test="${!empty loginInfo }">

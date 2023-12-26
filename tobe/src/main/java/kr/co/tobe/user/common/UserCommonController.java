@@ -1,7 +1,5 @@
 package kr.co.tobe.user.common;
 
-import java.time.LocalDateTime;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -15,7 +13,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import kr.co.tobe.util.SendMail;
+import kr.co.tobe.vo.BasketVO;
 import kr.co.tobe.vo.CourseVO;
 import kr.co.tobe.vo.CqnaVO;
 import kr.co.tobe.vo.MemberVO;
@@ -69,9 +67,14 @@ public class UserCommonController {
 	}
 	
 	@GetMapping("/user/common/userBasket.do")
-	public String userBasket(Model model, HttpServletRequest request) {
+	public String userBasket(Model model, HttpServletRequest request, BasketVO vo) {
 		HttpSession sess = request.getSession();
 		MemberVO login = (MemberVO)sess.getAttribute("loginInfo");
+		//int no = course_no;
+		if(vo.getCourse_no() > 0) {
+			vo.setMember_no(login.getMember_no());
+			service.basketInsert(vo);
+		}
 		model.addAttribute("cart", service.cartList(login.getMember_no()) );
 		//model.addAttribute("cart", service.cartList(4));
 		//test
