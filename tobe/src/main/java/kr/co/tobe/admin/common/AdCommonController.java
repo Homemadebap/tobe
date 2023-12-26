@@ -47,7 +47,7 @@ public class AdCommonController {
 		return "admin/customer/adQnaIndex"; 
 	}
 	
-	@GetMapping("/admin/course/adCourseForm.do")
+	@GetMapping("/admin/course/adCourseForm.do") 
 	public String adCourseForm(HttpSession sess, Model model) {
 		AdminVO admin = (AdminVO)sess.getAttribute("adLoginInfo");
 		model.addAttribute("admin", admin);
