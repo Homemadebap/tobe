@@ -192,7 +192,20 @@ p {
 	
 	<div class="sbox" id="qna_box" style="position: absolute; left: 48.2rem;">
 		<a href="/tobe/admin/customer/adQnaIndex.do">문의관리 →</a>
-
+		<div style="overflow-y:scroll; height: 12rem; width: 15.5rem; position: absolute; left: 1rem; top: 3rem;">
+			<c:if test="${!empty cq}">
+				<table style="width: 100%; text-align: center;">
+				<c:forEach var="vo" items="${cq}">
+					<tr>
+					    <td style="width: 20%;">${vo.cqna_no}</td>
+						<td class="url" style="width: 40%; cursor:pointer;" onclick="location.href='/tobe/user/course/userCourseAskDetail.do?cqna_no=${vo.cqna_no}'">${vo.cq_title}</td>    
+						<td style="width: 40%;">${vo.cq_writedate}</td>
+					</tr>
+				</c:forEach>
+				</table>
+			</c:if>
+		</div>
+		
 		
 	</div>
 	

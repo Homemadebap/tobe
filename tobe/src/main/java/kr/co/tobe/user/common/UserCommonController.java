@@ -17,7 +17,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import kr.co.tobe.util.SendMail;
 import kr.co.tobe.vo.CourseVO;
+import kr.co.tobe.vo.CqnaVO;
 import kr.co.tobe.vo.MemberVO;
+import kr.co.tobe.vo.QnaVO;
 
 @Controller
 public class UserCommonController {
@@ -54,6 +56,8 @@ public class UserCommonController {
 	@GetMapping("/user/member/userMyPageMain.do")
 	public String userMyPageMain(HttpSession sess, Model model) {
 		MemberVO user = (MemberVO)sess.getAttribute("loginInfo");
+		CqnaVO cqna = new CqnaVO();
+		QnaVO qna = new QnaVO();
 		
 		model.addAttribute("user", user); // 사용자 정보 넘기기
 		model.addAttribute("cci", service.currentCourseIndex(user)); // 현재수강중인강의에 들어갈 정보
@@ -64,24 +68,6 @@ public class UserCommonController {
 		
 		// db에는 문자열로 있는 날짜들을 Date 타입으로 바꾸는 것
 		List<Map<String, Object>> result = service.pastCourseIndex(user);
-		for (Map<String, Object> map : result) {
-		    // 특정 키를 사용하여 값을 가져오기
-		    Object value = map.get("pay_date1");
-			if (value instanceof String) {
-			    System.out.println("데이터는 String 타입입니다.");
-			} else if (value instanceof Integer) {
-			    System.out.println("데이터는 Integer 타입입니다.");
-			} else if (value instanceof List) {
-			    System.out.println("데이터는 List 타입입니다.");
-			} else if (value instanceof LocalDateTime){
-			    System.out.println("데이터는 LocalDateTime 타입입니다.");
-			} else if(value instanceof Date){
-				System.out.println("데이터는 Date 타입입니다.");
-			} else {
-				System.out.println("데이터 타입을 알 수 없습니다.");
-			}
-		}		
-		
 		return "user/member/userMyPageMain";
 	}
 	

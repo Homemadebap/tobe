@@ -21,7 +21,8 @@ public interface AdCommonMapper {
 	Map<String, Object> lastMonthPayTotal(AdminVO avo);
 	Map<String, Object> lastMonthChargeTotal(AdminVO avo);
 	Map<String, Object> thisYearPayTotal(AdminVO avo);
-	
+	List<Map<String, Object>> courseQna(AdminVO avo);
+
 	int cqnaCount(Map<String, Object> map);
 	List<CqnaVO> cqnaList(Map<String, Object> map);
 

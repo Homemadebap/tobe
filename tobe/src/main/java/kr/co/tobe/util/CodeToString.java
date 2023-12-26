@@ -111,5 +111,32 @@ public class CodeToString {
 		}
 		return date;
 	}
+	
+	public static String paybyToString (int i) {
+		if(i == 1) {
+			return "가상계좌";
+		} else if(i==2) {
+			return "신용카드";
+		}
+		return null;
+	}
+	
+	public static String payCompleteToString (int i) {
+		if(i==1) {
+			return "결제 완료";
+		} else if(i==0) {
+			return "결제 진행중";
+		}
+		return null;
+	}
+	
+	public static String payRefundToString(int i) {
+		if(i==1) {
+			return "환불 완료";
+		} else if(i==0) {
+			return "환불 진행중";
+		}
+		return null;
+	}
 
 }

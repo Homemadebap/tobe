@@ -2,12 +2,18 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ page import="java.io.*,java.util.*" %>
+<%@ page import="javax.servlet.*,javax.servlet.http.*" %>
+<%@ page import="kr.co.tobe.util.CodeToString"%>
+<%@ page import="java.util.Date" %>
+<%@ page import="java.text.SimpleDateFormat" %>
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Tobe 결제완료</title>
+<title>Tobe 주문정보</title>
 
 <META name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, user-scalable=no">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
@@ -20,15 +26,24 @@
 <script type="text/javascript">
 
 $(function(){
+	document.getElementById('cancelBtn').addEventListener('click', function () {
+	    document.getElementById('popup').style.display = 'block';
+	});
 
-	
+	document.getElementById('confirmButton').addEventListener('click', function () {
+		window.location.href = '/tobe/user/pay/userPayCancelForm.do?detail_no=${pdvo.detail_no}';
+	});
+
+	document.getElementById('cancelButton').addEventListener('click', function () {
+	    document.getElementById('popup').style.display = 'none';
+	    // 여기에 취소 버튼을 눌렀을 때의 동작을 추가
+	    // 예를 들어, 아무 동작도 하지 않거나 다른 작업을 수행할 수 있습니다.
+	});
 })
 
 
 
-
 </script>
-
 
 <style>
 .container {
@@ -38,6 +53,9 @@ $(function(){
 	width: 70rem;
 }
 
+.btitle {
+	color: #49654e;
+}
 .courseInfo {
 	width:  70rem;
 	border-top: 1px solid #ddd;
@@ -52,6 +70,8 @@ $(function(){
 
 #secondRow {
 	height: 10rem;
+	font-size: 1.5rem;
+	font-weight: bolder;
 }
 
 .courseInfo td {
@@ -68,6 +88,7 @@ $(function(){
 .payInfo tr:first-child {
 	height: 3rem;
 	font-size: 1.25rem;
+	font-weight: bolder;
 }
 .payInfo tr:last-child {
 	background-color: #F5F5F5;
@@ -81,15 +102,87 @@ $(function(){
 	height: 3rem;
 }
 
-.payMethod {
-	border-top: 1px solid #ddd;
-	border-bottom: 1px solid #ddd;
-	height: 5rem;
+.payInfo span {
+	height: 3rem;
+	padding: 0.5rem;
 }
 
-.title {
-	padding: 0.5rem 0.5rem 0 0;
+#minusImg {
+	position: absolute;
+	top: 27.25rem;
+	left: 22.5rem;
+	width: 2rem;
 }
+
+#equalImg {
+	position: absolute;
+	top: 27.25rem;
+	left: 45.6rem;
+	width: 2rem;
+}
+
+#btnBox {
+	margin: 2rem;
+    display: flex;
+    justify-content: center;
+}
+
+#cancelBtn {
+	width: 7rem;
+	height: 2.25rem;
+	font-size: 1.25rem;
+	background-color: #000;
+	color: #fff;
+	cursor: pointer;
+}
+
+#backBtn {
+	width: 7rem;
+	height: 2.25rem;
+	font-size: 1.25rem;
+	background-color: #fff;
+	color: #000;
+	cursor: pointer;
+}
+
+.popup {
+    display: none;
+    transform: translate(75%, 100%);
+    background-color: #000;
+    padding: 20px;
+    border: 1px solid #ccc;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 30rem;
+    height: 20rem;
+    font-size: 1.5rem;
+}
+
+.popup-content {
+	height: 14.5rem;
+    text-align: center;
+    background-color: #d3d3d3;
+}
+
+#confirm {
+	padding: 4rem 0 2rem;
+}
+#cancelButton {
+	width: 5rem;
+	height: 2.25rem;
+	font-size: 1.25rem;
+	background-color: #fff;
+	color: #000;
+	cursor: pointer;
+}
+#confirmButton {
+	width: 5rem;
+	height: 2.25rem;
+	font-size: 1.25rem;
+	background-color: #000;
+	color: #fff;
+	cursor: pointer;
+}
+
 </style>
 
 </head>
@@ -97,23 +190,30 @@ $(function(){
 	<div class="wrap">
 		<%@include file="/WEB-INF/views/user/common/userHeader.jsp"%>
 		<div class="container">
-			
+			<div class="btitle">
+				 <h1>결제정보</h1>
+			</div>
 			<div class="title">
-				<h2 style="margin: 1rem; padding: 0;">주문상품</h2>
+				<h2>주문상품</h2>
 			</div>
 			
 			<div>
 				<table class="courseInfo">
 					<tr id="firstRow">
-						<td></td>
-						<td>강좌정보</td>
-						<td>가격</td>
-						<td>총상품금액</td>
+						<th></th>
+						<th>강좌정보</th>
+						<th>가격</th>
+						<th>총상품금액</th>
 					</tr>
 					<tr id="secondRow">
-						<td>dfdf</td>
-						<td>dfdf</td>
-						<td>dfdf</td>
+						<td>${pdvo.teacher_img_real }</td>
+						<td>
+							<span style="font-size: 1.25rem;">강좌명 : ${pdvo.i_cname }</span><br>
+							<span style="font-size: 1rem; font-weight: normal;">개강일 : ${pdvo.i_startday }</span><br>
+							<span style="font-size: 1rem; font-weight: normal;">종강일 : ${pdvo.i_endday}</span>
+						</td>
+						<td>${pdvo. pay_single}원</td>
+						<td>${pdvo. i_price}원</td>
 					</tr>
 				</table>
 			</div>
@@ -123,35 +223,59 @@ $(function(){
 			</div>
 			
 			<div>
+				<img id="minusImg" src="/tobe/img/minus.png">
+				<img id="equalImg" src="/tobe/img/equal.png">
 				<table class="payInfo">
 					<tr>
-						<td>총 주문 금액</td>
-						<td>총 할인 금액</td>
-						<td>결제 금액</td>
+						<td>
+							<span style="width: 50%; float: left;">총 주문 금액</span>
+							<span style="width: 50%; float: left;">${pdvo. i_price}원</span>
+						</td>
+						<td>
+							<span style="width: 50%; float: left;">총 할인 금액</span>
+							<c:set var="discount" value="${pdvo.i_price - pdvo.pay_single }"/>
+							<span style="width: 50%; float: left;"><c:out value="${discount }원"/></span>		
+						</td>
+						<td>
+							<span style="width: 50%; float: left;">결제 금액</span>
+							<span style="width: 50%; float: left;">${pdvo.pay_single}원</span>	
+						</td>
 					</tr>
 					<tr>
-						<td>dfdf</td>
-						<td>dfdf</td>
-						<td>
-							<div></div>
-							<div></div>
-							<div></div>
-							<div></div>
+						<td></td>
+						<td></td>
+						<td style="font-size: 1.25rem;">
+						<c:set var="pay_complete" value="${CodeToString.payCompleteToString(pdvo.pay_complete)}" />
+						<c:set var="pay_by" value="${CodeToString.paybyToString(pdvo.pay_by)}" />
+							<span style="width: 50%; float: left;">진행상황</span>
+							<span style="width: 50%; float: left;">${pay_complete}</span>	
+							<span style="width: 50%; float: left;">결제 방법</span>
+							<span style="width: 50%; float: left;">${pay_by}</span>	
+							<span style="width: 50%; float: left;">입금계좌</span>
+							<span style="width: 50%; float: left;">${pdvo.ad_account}</span>
+							<span style="width: 50%; float: left;">예금주</span>
+							<span style="width: 50%; float: left;">${pdvo.ad_name}</span>
+							<span style="width: 50%; float: left;">결제 완료</span>
+							<span style="width: 50%; float: left;">${pdvo.pay_date2}</span>
 						</td>
 					</tr>
 				</table>			
 			</div>
-			
-			<div class="title">
-				<h2>결제 방법</h2>
+			<div id="btnBox">
+				<button id="backBtn" onclick="location.href='/tobe/user/member/userMyPageMain.do'">이전</button>
+				<button id="cancelBtn">주문취소</button>
 			</div>
-			<div class="payMethod">
-			
-			</div>
-			
-			
-			
 		</div>
+	
+		<div id="popup" class="popup">
+		    <div class="popup-content">
+		        <p id="confirm"><b>주문을 취소하시겠습니까?</b></p>
+		        <button id="cancelButton">취소</button>
+		        <button id="confirmButton">확인</button>
+		    </div>
+		</div>
+			
+
 		<%@include file="/WEB-INF/views/user/common/userFooter.jsp"%>
 	</div>
 </body>

@@ -22,20 +22,14 @@ public class AdCommonController {
 	
 	@GetMapping("/admin/course/adCourseIndex.do")
 	public String adCourseIndex(HttpSession sess, Model model) {
-		AdminVO admin = (AdminVO)sess.getAttribute("loginInfo");
-		if(admin == null) {
-			return "redirect:/admin/common/adLogin.do";
-		}
+		AdminVO admin = (AdminVO)sess.getAttribute("adLoginInfo");
 		model.addAttribute("admin", admin);
 		return "admin/course/adCourseIndex"; 
 	}	
 
 	@GetMapping("/admin/customer/adQnaIndex.do")
 	public String adQnaIndex(HttpSession sess, Model model, CqnaVO cqvo) {
-		AdminVO admin = (AdminVO)sess.getAttribute("loginInfo");
-		if(admin == null) {
-			return "redirect:/admin/common/adLogin.do";
-		}
+		AdminVO admin = (AdminVO)sess.getAttribute("adLoginInfo");
 		Map<String, Object> map = new HashMap<>();
 		map.put("cqvo", cqvo);
 		map.put("no", admin.getAdmin_no());
@@ -50,10 +44,7 @@ public class AdCommonController {
 	
 	@GetMapping("/admin/course/adCourseForm.do")
 	public String adCourseForm(HttpSession sess, Model model) {
-		AdminVO admin = (AdminVO)sess.getAttribute("loginInfo");
-		if(admin == null) {
-			return "redirect:/admin/common/adLogin.do";
-		}
+		AdminVO admin = (AdminVO)sess.getAttribute("adLoginInfo");
 		model.addAttribute("admin", admin);
 		return "admin/course/adCourseForm"; 
 	}
@@ -72,11 +63,11 @@ public class AdCommonController {
 			model.addAttribute("cmd", "back");
 			return "admin/common/adAlert";
 		} else if(login.getAd_type()== 999){ // 총관리자로 로그인
-			sess.setAttribute("loginInfo", login);
+			sess.setAttribute("adLoginInfo", login);
 			System.out.println(999);
 			return "redirect:/chiefAdmin/common/chiefIndex.do";
 		} else if((login.getAd_type() == 1) || (login.getAd_type() == 2) || (login.getAd_type() == 3)){ // 학원관리자로 로그인
-			sess.setAttribute("loginInfo", login);
+			sess.setAttribute("adLoginInfo", login);
 			return "redirect:/admin/common/adIndex.do";
 		} else {
 			System.out.println("튕김");
@@ -96,10 +87,7 @@ public class AdCommonController {
 	
 	@GetMapping("/admin/common/adIndex.do")
 	public String adIndex(HttpSession sess, Model model) {
-		AdminVO admin = (AdminVO)sess.getAttribute("loginInfo");
-		if(admin == null) {
-			return "redirect:/admin/common/adLogin.do";
-		}
+		AdminVO admin = (AdminVO)sess.getAttribute("adLoginInfo");
 		
 		model.addAttribute("admin", admin);
 		model.addAttribute("tpc", service.todayPayCnt(admin));
@@ -108,6 +96,7 @@ public class AdCommonController {
 		model.addAttribute("lmpt", service.lastMonthPayTotal(admin));
 		model.addAttribute("lmct", service.lastMonthChargeTotal(admin));
 		model.addAttribute("typt", service.thisYearPayTotal(admin));
+		model.addAttribute("cq", service.courseQna(admin));
 		
 		
 		

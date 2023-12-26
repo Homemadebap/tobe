@@ -100,129 +100,67 @@
       letter-spacing: -0.5px;
       position: relative;
 }
+.subContent{
+	margin: 0 auto;
+	position: relative;
+}
 </style>
 <script>
 document.addEventListener('DOMContentLoaded', function(){
    
-    var detailButton = document.getElementById('detailButton');
-    var reviewButton = document.getElementById('reviewButton');
-    var cqnaButton = document.getElementById('cqnaButton');
+    var course_no = <%= request.getParameter("course_no") %>;
     
-    var buttons = [detailButton, reviewButton, cqnaButton];
+    function showDetail() {
+        $('#showReviewContent, #showQnaContent').hide();
+        $('#showDetailContent').show();
+    }
 
-    function setActiveButton(button) {
-        // 모든 버튼 초기화
-        buttons.forEach(function (btn) {
-            btn.parentElement.style.backgroundColor = '#8ba888';
-        });
+    function showReview() {
+        $('#showDetailContent, #showQnaContent').hide();
+        $('#showReviewContent').show();
+    }
 
-        // 현재 버튼 활성화
-        button.parentElement.style.backgroundColor = '#253528'; // 원하는 배경색으로 변경
+    function showQnA() {
+        $('#showDetailContent, #showReviewContent').hide();
+        $('#showQnaContent').show();
+        ajaxFunc(); // 강좌 문의를 가져오는 함수 호출
     }
     
-    var courseNo = <%= request.getParameter("course_no") %>;
     function ajaxFunc() {
     	$.ajax({
-			url: "/tobe/user/course/userCourseDetailQnaList.do?course_no=${courseNo}",
+			url: "/tobe/user/course/userCourseDetailQnaList.do?course_no=" + course_no,
 			type: 'GET',
 			success: function(courseInfoList){
 				console.log("반가워");
 				console.log(courseInfoList);
-				$("#qnaContent").html(courseInfoList);
+				$("#showQnaContent").html(courseInfoList);
 			},
 			error: function() {
-				console.error('강좌 정보를 가져오는데 실패했습니다.');
+				console.error('문의 정보를 가져오는데 실패했습니다.');
 			}
 	    });
     }
     
-    detailButton.addEventListener('click', function(){
-    	hideAll();
-    	toggleDisplay(detailCol);
-    	moveSubContentToRelative();
-    	setActiveButton(detailButton);
-    });
+    function ajaxFunc() {
+    	$.ajax({
+			url: "/tobe/user/course/userCourseDetailReviewList.do?course_no=" + course_no,
+			type: 'GET',
+			success: function(courseInfoList){
+				console.log("반가워");
+				console.log(courseInfoList);
+				$("#showReviewContent").html(courseInfoList);
+			},
+			error: function() {
+				console.error('후기 정보를 가져오는데 실패했습니다.');
+			}
+	    });
+    }
     
-    reviewButton.addEventListener('click', function() {
-        hideAll();
-        toggleDisplay(reviewCol);
-        showReview();
-        moveSubContentToTop();
-        setActiveButton(reviewButton);
-    });
-
-    cqnaButton.addEventListener('click', function() {
-        hideAll();
-        toggleDisplay(cqnaCol);
-        showQna();
-        moveSubContentToTop();
-        setActiveButton(cqnaButton);
-        ajaxFunc();
-    });
-    
-    var detailCol = document.querySelector('.detailCol');
-    var reviewCol = document.querySelector('.reviewCol');
-    var cqnaCol = document.querySelector('.cqnaCol');
-    var subContentLecture = document.querySelector('.subContentLecture');
-    var subContent = document.querySelector('.subContent');
-
-    function toggleDisplay(element){
-        element.style.display = (element.style.display === 'none' || element.style.display === '') ? 'block' : 'none';
-    }
-
-    function hideAll() {
-        detailCol.style.display = 'none';
-        reviewCol.style.display = 'none';
-        cqnaCol.style.display = 'none';
-    }
-
-    function showReview() {
-        hideAll();
-        toggleDisplay(reviewCol);
-    }
-
-    function showQna() {
-        hideAll();
-        toggleDisplay(cqnaCol);
-    }
-
-    function moveSubContentToTop() {
-        subContent.style.position = 'absolute';
-        subContent.style.top = '0';
-        subContentLecture.style.display = 'none'; // 숨기기
-    }
-
-    function moveSubContentToRelative() {
-        subContent.style.position = 'relative';
-        subContent.style.top = '';
-        subContentLecture.style.display = 'block'; // 보이기
-    }
-
-    detailButton.addEventListener('click', function() {
-        hideAll();
-        toggleDisplay(detailCol);
-        moveSubContentToRelative();
-        setActiveButton(detailButton);
-    });
-
-    reviewButton.addEventListener('click', function() {
-        hideAll();
-        toggleDisplay(reviewCol);
-        showReview();
-        moveSubContentToTop();
-        setActiveButton(reviewButton);
-    });
-
-    cqnaButton.addEventListener('click', function() {
-        hideAll();
-        toggleDisplay(cqnaCol);
-        showQna();
-        moveSubContentToTop();
-        setActiveButton(cqnaButton);
-    });
+    window.showDetail = showDetail;
+    window.showReview = showReview;
+    window.showQnA = showQnA;
 });
-
-
+    
 </script>
 <body>
    <div class="wrap">
@@ -257,31 +195,23 @@ document.addEventListener('DOMContentLoaded', function(){
             <div class = "detailContent">
                <table class = "reviewQnA">
                   <tr>
-                     <td><button type = "button" id = "detailButton">강좌 상세 내용</button></td>
-                     <td><button type = "button" id = "reviewButton">강좌 후기</button></td>
-                     <td><button type = "button" id = "cqnaButton">강좌 문의</button></td>
-                  </tr>
-                  <tr class = "detailCol">
-                     <td colspan="3">
-                        강좌상세정보
-                     </td>
-                  </tr>
-                  <tr class = "reviewCol">
-                     <td colspan="3">
-                        후기목록   
-                     </td>
-                  </tr>
-                  <tr class = "cqnaCol">
-                     <td colspan="3">
-                        <div id = "cqnaListContainer"></div>
-                     </td>
+                      <td><button type="button" id="detailButton" onclick="showDetail()">강좌 상세 내용</button></td>
+                      <td><button type="button" id="reviewButton" onclick="showReview()">강좌 후기</button></td>
+                      <td><button type="button" id="cqnaButton" onclick="showQnA()">강좌 문의</button></td>
                   </tr>
                </table>
             </div>
          </div>
          <div class = "subContent">
-            <div id = "qnaContent">
-               
+            <div id = "showDetailContent">
+            </div>
+         </div>
+         <div class = "subContent">
+            <div id = "showReviewContent">
+            </div>
+         </div>
+         <div class = "subContent">
+            <div id = "showQnaContent">
             </div>
          </div>
       </div>

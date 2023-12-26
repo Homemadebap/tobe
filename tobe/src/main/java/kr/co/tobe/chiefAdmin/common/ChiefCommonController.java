@@ -18,7 +18,7 @@ public class ChiefCommonController {
 	@GetMapping ("/chiefAdmin/common/chiefIndex.do")
 
 	public String index(HttpSession sess, Model model) {
-		AdminVO admin = (AdminVO)sess.getAttribute("loginInfo"); 
+		AdminVO admin = (AdminVO)sess.getAttribute("adLoginInfo"); 
 		return "chiefAdmin/common/chiefIndex";
 	}
 	
