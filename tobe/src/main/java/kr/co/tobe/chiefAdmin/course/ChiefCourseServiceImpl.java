@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import kr.co.tobe.vo.CourseVO;
+import kr.co.tobe.vo.MemberVO;
 
 @Service
 public class ChiefCourseServiceImpl implements ChiefCourseService {
@@ -33,5 +34,14 @@ public class ChiefCourseServiceImpl implements ChiefCourseService {
 	       }
 		  
 		return mapper.insert(vo) > 0 ? true : false;
+	}
+	@Override
+	public int update (CourseVO vo) {
+		return mapper.courseUpdate(vo);
+	}
+	
+	@Override
+	public CourseVO detail(int no) {
+		return mapper.courseModDetail(no);
 	}
 }

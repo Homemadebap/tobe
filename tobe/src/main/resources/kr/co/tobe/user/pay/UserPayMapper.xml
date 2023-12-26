@@ -35,6 +35,12 @@
 		ON basket.course_no = course.course_no
 		WHERE cart_no in (${a}) 
 	</select>
-
-
+	<insert id="pay" parameterType="kr.co.tobe.vo.PayVO">
+	INSERT INTO pay (`member_no`, `pay_complete`, `pay_cancel`, `pay_refund`, `pay_date`, `pay_cancel_date`, `pay_refund_date`, `pay_by`, `pay_total`, `point_usage`, `charge_total`, `pay_detail`, `pay_by_account`, `pay_cancel_reason`, `pay_cancel_reason_detail`) 
+	VALUES (#{member_no}, #{pay_complete}, #{pay_cancel}, #{pay_refund}, NOW(), #{pay_cancel_date}, #{pay_refund_date}, #{pay_by}, #{pay_total}, #{point_usage}, #{charge_total}, #{pay_detail}, #{pay_by_account}, #{pay_cancel_reason}, #{pay_cancel_reason_detail});
+	</insert>
+	<insert id="payDetail" parameterType="kr.co.tobe.vo.PayDetailVO">
+	 INSERT INTO pay_detail (`order_no`, `course_no`, `product_no`, `pay_single`, `pay_charge`, `i_education`, `i_area`, `i_branch`, `i_subject`, `i_level`, `i_mon`, `i_tue`, `i_wed`, `i_thu`, `i_fri`, `i_sat`, `i_sun`, `i_startday`, `i_endday`, `i_cname`, `i_time`, `i_price`) 
+	 VALUES (#{order_no}, #{course_no}, #{product_no}, #{pay_single}, #{pay_charge}, #{i_education}, #{i_area}, #{i_branch}, #{i_subject}, #{i_level}, #{i_mon}, #{i_tue}, #{i_wed}, #{i_thu}, #{i_fri}, #{i_sat}, #{i_sun}, #{i_startday}, #{i_endday}, #{i_cname}, #{i_time}, #{i_price});
+	</insert>
 </mapper>
