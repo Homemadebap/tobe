@@ -11,5 +11,6 @@ public interface ChiefCourseService {
 
 	boolean insert(CourseVO vo, MultipartFile file, HttpServletRequest request);
 	int update(CourseVO vo);
-	CourseVO detail(int no);
+	CourseVO modcourse(int no);
+	
 }

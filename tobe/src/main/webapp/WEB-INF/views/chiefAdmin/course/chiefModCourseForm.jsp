@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>tobe 강좌등록</title>
+<title>tobe 강좌수정</title>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="/tobe/smarteditor/js/HuskyEZCreator.js"></script>
 <script>
@@ -212,6 +212,7 @@
   
   
    <form name="insert" method="post" action="chiefCourseInsert.do" enctype="multipart/form-data" onsubmit="return goSave()">   
+		<c:forEach var="map" items="${list}">   
 	  <div id="con">
 	    <div id="boxa">      
 	        <div class="filebox">
@@ -224,6 +225,7 @@
 		<div id="boxb">
 			<div id="box_a">
 				<div class="edu">
+			
 					<b>학원명</b>
 					<select name="education">
 	                  <option value="1">해커스</option>
@@ -347,7 +349,7 @@
 	            	</select>
 				</div>
 				<div id="dti">
-					<b style="margin-right:10px">상세시간</b> <input type="text" name="time" id="time">
+					<b style="margin-right:10px">상세시간</b> <input type="text" name="time" id="time">${ }
 				</div>
 			</div>
 		</div>
@@ -355,14 +357,16 @@
 			<textarea name="detail" id="detail"></textarea> <!-- name이랑 id는 컬럼명 -->
 		</div>
 	 </div>
+	 
 	       	 <div >
 	            <div align="center">
 		            <div colspan="2" id="put">
-			            <input type="submit" value="등록하기"> 
+			            <input type="submit" value="수정하기"> 
 			            <input type="button" value="목록보기" onclick="backToList(this.form)">
 		            </div>
 	            </div>
 	         </div>
+	  </c:forEach>      
    </form>
  </div>  
 </body>

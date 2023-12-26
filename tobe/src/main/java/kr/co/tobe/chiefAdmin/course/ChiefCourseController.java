@@ -44,8 +44,8 @@ public class ChiefCourseController {
 	}
 	
 	@GetMapping ("/chiefAdmin/course/chiefModCourseForm.do")
-	public String cheifMod() {//Model model, int no
-//			model.addAttribute("map", service.detail(no));
+	public String modcourse(Model model, int no) {
+		model.addAttribute("map", service.modcourse(no));
 		return "chiefAdmin/course/chiefModCourseForm"; 
 	}
 	
@@ -65,4 +65,6 @@ public class ChiefCourseController {
 		model.addAttribute("cmd","move");
 		return "chiefAdmin/common/alert";
 	}
+	
+
 }

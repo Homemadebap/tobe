@@ -17,9 +17,19 @@
 		#{cname}, #{detail},
 		#{time}, #{price}
 		)
+		INSERT INTO course (education, admin_no)
+        VALUES (#{education}, #{admin_no})
 		<selectKey keyProperty="course_no" order="AFTER"
 			resultType="int">
 			SELECT LAST_INSERT_ID()
 		</selectKey>
 	</insert>
+	<select id="modcourse" parameterType="int" resultType="kr.co.tobe.vo.CourseVO">
+		SELECT * FROM course WHERE course_no = #{no}
+	</select>
+	<update id="courseUpdate" parameterType="kr.co.tobe.vo.courseVO">
+	UPDATE  course SET 
+		point=#{point}
+	WHERE member_no=#{member_no}
+	</update>
 </mapper>
