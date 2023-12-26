@@ -24,7 +24,7 @@ public class ChiefCommonController {
 	
 	@GetMapping ("/chiefAdmin/sales/chiefSalesIndex.do")
 	public String chiefSalesIndex(Model model) {
-		model.addAttribute("pay_chargeTotal", service.pay_chargeTotal());
+//		model.addAttribute("pay_chargeTotal", service.pay_chargeTotal());
 		return "chiefAdmin/sales/chiefSalesIndex";
 	}
 	

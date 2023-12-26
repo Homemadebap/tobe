@@ -19,8 +19,9 @@ public class ChiefSalesController {
 		model.addAttribute("payList", service.payList(condition));
 		model.addAttribute("conEduTotal", service.conEduTotal(condition));
 		model.addAttribute("condition", condition);
-		model.addAttribute("pay_chargeTotal", service.pay_chargeTotal());
+		model.addAttribute("pay_chargeTotal", service.pay_chargeTotal(condition));
 		return "chiefAdmin/sales/chiefSalesIndex";
 	}
+
 	
 }

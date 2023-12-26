@@ -2,6 +2,8 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ page import="java.time.LocalDate" %>
+<%@ page import="java.time.format.DateTimeFormatter" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -47,13 +49,7 @@ $(function(){
 	        $('.myReviewIndex').show();
 	    }
 	})
-	
-	
-	
-	
 })
-
-
 
 
 </script>
@@ -314,7 +310,7 @@ input[type="button"], input[type="submit"] {
 		                    <c:forEach var="vo" items="${cci}">
 								<tr style="text-align: center;">
 	                        		<td>${vo.course_no }</td>
-		                            <td class="url" onclick="location.href='/tobe/user/course/userCourseDetail.do?course_no=${vo.course_no}'">${vo.teacher_img}</td>
+		                            <td class="url" onclick="location.href='/tobe/user/course/userCourseDetail.do?course_no=${vo.course_no}'"><img src="/tobe/img/${vo.teacher_img}"></td>
 		                            <td class="url" onclick="location.href='/tobe/user/course/userCourseDetail.do?course_no=${vo.course_no}'">${vo.i_cname}</td>    
 		                            <td>${vo.i_startday}</td>
 		                            <td>${vo.i_endday}</td>
@@ -357,16 +353,21 @@ input[type="button"], input[type="submit"] {
 		                            	<input type="hidden" name="infoCourseName" value="${vo.i_cname }">
 		                            	
 		                            	<c:forEach var="rvo" items="${mri}">
-		                            		<c:if test="${rvo.course_no ne vo.course_no}">
-		                            			
-		                            		</c:if>
-		                            		
+		                            			<%
+													  LocalDate currentDate = LocalDate.now();
+													  DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+													  String formattedCurrentDate = currentDate.format(formatter);
+													  pageContext.setAttribute("formattedCurrentDate", formattedCurrentDate);
+												%>
 		                            		<c:choose>
 											    <c:when test="${rvo.course_no eq vo.course_no}">
 											        <input type="button" value="나의 후기" onclick="location.href='/tobe/user/review/userReviewDetail.do?review_no=${vo.review_no}'" >
 											    </c:when>
-											    <c:otherwise>
+
+											    <c:when test="${vo.i_endday > formattedCurrentDate && rvo.course_no ne vo.course_no}">
 											        <input type="submit" value="후기작성">
+											    </c:when>
+											    <c:otherwise>
 											    </c:otherwise>
 											</c:choose>
 		                            		
@@ -376,7 +377,7 @@ input[type="button"], input[type="submit"] {
 		                    </c:forEach>
 	                    </table>
                     </c:if>
-
+				</div>
 				<div class="askIndex" style="overflow-y:scroll; height: 30rem;" >
 					<c:if test="${empty mcai}">
                         <tr>
@@ -438,6 +439,7 @@ input[type="button"], input[type="submit"] {
 				</div>
 			</div>
 		</div>
+	
 	<%@include file="/WEB-INF/views/user/common/userFooter.jsp"%>
 	</div>
 </body>

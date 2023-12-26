@@ -193,7 +193,7 @@ console.log("conEduTotal:", conEduTotal);
 
 	<table class="total">
 		<tr style="background-color: #D9D9D9; height: 3.5rem;">
-			<th colspan="3" style="font-size: 1.15rem;">총매출: 
+			<th colspan="3" style="font-size: 1.15rem;">총매출:
 				<c:if test="${!empty pay_chargeTotal}">
 					<span style="font-size: 1.5rem; color: #3152A8;">${pay_chargeTotal.pay_total }</span>
 				</c:if>
@@ -212,7 +212,7 @@ console.log("conEduTotal:", conEduTotal);
 			</c:if>
 		</tr>
 		<tr style="background-color: #D9D9D9; height: 3.5rem;">
-			<th colspan="3" style="font-size: 1.15rem;">총수수료:  
+			<th colspan="3" style="font-size: 1.15rem;">총수수료:
 				<c:if test="${!empty pay_chargeTotal}">
 					<span style="font-size: 1.5rem; color: #3152A8;">${pay_chargeTotal.charge_total }</span>
 				</c:if>
