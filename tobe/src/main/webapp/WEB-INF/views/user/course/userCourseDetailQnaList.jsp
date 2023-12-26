@@ -18,30 +18,21 @@
               </tr>
           </thead>
           
-          <tbody>
+          <!-- <tbody>
           	<tr>
 	        <td>${Cqna.cq_title}</td>
 	        <td><c:out value="${Cqna.cq_writedate}" /></td>
-	    </tr>
-          </tbody>
+	    	</tr>
+          </tbody>  -->
           <tbody>
-          	<c:if test="${empty qna }">
-                        <tr>
-                            <td class="first" colspan="8">등록된 글이 없습니다.</td>
-                        </tr>
+          	<c:if test="${empty cqnaList }">
+                 <tr>
+                     <td class="first" colspan="8">등록된 글이 없습니다.</td>
+                 </tr>
 			</c:if>
-			<c:forEach var="vo" items="${qna }">       
+			<c:forEach var="vo" items="${cqnaList }">       
                   <tr>
                       <td>${vo.cqna_no }</td>
-                      <td style="text-align:left;">
-                      	<!--<c:forEach begin="1" end="${vo.nested }">
-                      	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                      	</c:forEach>
-                      	<!--<c:if test="${vo.nested > 0 }">
-                      		<img src="">
-                      	</c:if>-->
-                    
-                      </td>
                       <td>${vo.cq_title }</td>                     
                       <td class="date"><fmt:formatDate value="${vo.cq_writedate }" pattern="YYYY-MM-dd"/></td>
                   </tr>
@@ -54,22 +45,24 @@
             	</c:if>
 
 			<div class="pagenate clear">
-                <ul class='paging'>
-                <c:if test="${map.prev }">
-                	<li><a href="index.do?page=${map.startPage-1 }&searchType=${CqnaVO.searchType}&searchWord=${CqnaVO.searchWord}"> << </a></li>
-                </c:if>
-                <c:forEach var="p" begin="${map.startPage}" end="${map.endPage}">
-                	<c:if test="${p == CqnaVO.page}">
-                    <li><a href='#;' class='current'>${p}</a></li>
-                    </c:if>
-                    <c:if test="${p != CqnaVO.page}">
-                    <li><a href='userQna.do?page=${p}&searchType=${CqnaVO.searchType}&searchWord=${CqnaVO.searchWord}'>${p}</a></li>
-                    </c:if>
-                </c:forEach>
-                <c:if test="${map.next }">
-                	<li><a href="userQna.do?page=${map.endPage+1 }&searchType=${CqnaVO.searchType}&searchWord=${CqnaVO.searchWord}"> >> </a></li>
-                </c:if>
-                </ul>
-            </div>
+			    <ul class='paging'>
+			        <c:if test="${currentPage > 1}">
+					    <li><a href="userCourseDetailQnaList.do?page=${currentPage - 1}&course_no=${course_no}"> << </a></li>
+					</c:if>
+					<c:forEach var="p" begin="1" end="${totalPage}">
+					    <c:choose>
+					        <c:when test="${p == currentPage}">
+					            <li><a href='#;' class='current'>${p}</a></li>
+					        </c:when>
+					        <c:otherwise>
+					            <li><a href='userCourseDetailQnaList.do?page=${p}&course_no=${course_no}'>${p}</a></li>
+					        </c:otherwise>
+					    </c:choose>
+					</c:forEach>
+					<c:if test="${currentPage < totalPage}">
+					    <li><a href="userCourseDetailQnaList.do?page=${currentPage + 1}&course_no=${course_no}"> >> </a></li>
+					</c:if>
+			    </ul>
+			</div>
    	</div>
 </div>

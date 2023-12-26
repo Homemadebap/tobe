@@ -14,10 +14,13 @@ public class PayVO {
 	private String pay_cancel_date;
 	private String pay_refund_date;
 	private int pay_by;
+	private String pay_by_account;
 	private int pay_total;
 	private int point_usage;
 	private int charge_total;
 	private String pay_detail;
+	private int pay_cancel_reason;
+	private String pay_cancel_reason_detail;
 	
 	private int startIdx;
 	private int page;

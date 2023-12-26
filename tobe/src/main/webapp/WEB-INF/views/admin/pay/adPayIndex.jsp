@@ -15,7 +15,68 @@
 <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
 
 <script>
+function datdAdd(src, field, amount){
+	if(isNaN(amount)){
+		return null;
+	}
+	var d=(src.gatDate ? src : toDate(src, '-'));
+	amount = new Number(amount);
 	
+	switch(field.toLowerCase()){
+	case'y':{
+		d.setFullYear(d.getFullYear()+amount);
+		break;
+	}
+	case'm':{
+		d.setMonth(d.getMonth()+amount);
+		break;
+	}
+	case'd':{
+		d.setDate(d.getDate()+amount);
+		break;
+	}
+	default:{
+		return null;
+	}
+	}
+	var month = parseInt(d.getMonth())+1;
+	var day = parseInt(d.getDate());
+	
+	return d.getFullYear()+'-'+(month<10?'0'+month:month)+'-'+(day<10?'0'+day:day);
+};
+
+function formatDate(d,f){
+	if(!this.valueOf())return'';
+	
+	return f.replace(/(yyyy|mm|dd|hh|nn|ss|aVp)/gi, function($1)){
+		switch($1.toLowerCase()){
+		case 'yyyy': return d.getFullYear();
+		case 'mm': return (d.getMonth()+1<10?'0':")+(d.getMonth()+1);
+		case 'dd': return (d.getDate()<10?'0':")+d.getDate();
+		case 'hh': return (d.getHours()<10?'0':")+d.getHours();
+		case 'nn': return (d.getMinutes()<10?'0':")+d.getMinutes();
+		case 'ss': return (d.getSeconds()<10?'0':")+d.getSeconds();
+		}
+	});
+};
+function toDate(dateStr, delm){
+	var year;
+	var month;
+	var day;
+	
+	if(delm){
+		var d= dateStr.split(delm);
+		year = d[0];
+		month = d[1]-1;
+		day=d[2];
+	} else{
+		year = dateStr.substr(0,4);
+		month = dateStr.substr(4,2)-1;
+		day=dateStr.substr(6,2);
+	}
+	return new Date(year, month, day);
+}
+
 
 </script>
 
@@ -54,7 +115,7 @@
 	border: solid 1px ;
 	width: 1000px;
 	height: 500px;
-	margin: 260px 0 0 250px;
+	margin: 270px 0 0 250px;
 	border-collapse: collapse;
 }
 
@@ -75,11 +136,12 @@ border: solid 1px;
 			cursor: pointer;
 			border-radius: 5px;
 		}
-.ti{
-	margin:
+td{
+	height: 5px;
 }	
 #searchOrReset{
-	margin: 5px;
+	position: absolute;
+	margin: 234px 0 0 1145px;
 	text-align: end;
 }
 #searchOrReset > button{
@@ -105,12 +167,16 @@ border: solid 1px;
 		<tr>   
 		    <td>날   짜</td>
 		    <td>
-				<input type="date" name="startday"> - <input type="date" name="startday">
-				<input type="button" value="오늘">
+		    <form>
+				<input type="date" path="searchDtFrom" cssClass="datepicker onlyDate essential" title="검색시작일" enddate="searchEndDate" readonly="true"/> - 
+				<input type="date" path="searchDtTo" cssClass="datepicker onlyDate essential" title="검색종료일" startdate="searchStartDate" readonly="true"/>
+				     <!-- <input type="date" name="startday"> - <input type="date" name="startday"> -->   
+				<span class="btn_pack type10"><button type="button" name="search" class="date_range d0">오늘</button></span>
 				<input type="button" value="일주일">
 				<input type="button" value="1개월">
 				<input type="button" value="3개월">
 				<input type="button" value="전체">
+			</form>	
 			</td>
 		</tr>
 		<tr>
@@ -141,12 +207,12 @@ border: solid 1px;
 		</tr>
 	    </table>
 	 	 <div id="searchOrReset">
-						<button>초기화</button>
+						<input type="reset" >
 						<button>검색</button>
 		 </div>    
          <table class="tablea">
-         <tr class="ti" style="text-align:center;">
-         	<td>주문번호</td>
+         <tr  style="text-align:center;">
+         	<td class="ti">주문번호</td>
          	<td>이름</td>
          	<td>아이디</td>
          	<td>이메일</td>

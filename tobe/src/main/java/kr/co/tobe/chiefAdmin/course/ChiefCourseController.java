@@ -43,4 +43,26 @@ public class ChiefCourseController {
 		return "chiefAdmin/course/chiefCourseIndex"; 
 	}
 	
+	@GetMapping ("/chiefAdmin/course/chiefModCourseForm.do")
+	public String cheifMod() {//Model model, int no
+//			model.addAttribute("map", service.detail(no));
+		return "chiefAdmin/course/chiefModCourseForm"; 
+	}
+	
+	@PostMapping ("/chiefAdmin/course/chiefModCourseForm.do")
+	public String cheifModForm(CourseVO vo, Model model) {
+		int r = service.update(vo);
+		String msg="";
+		String url="chiefModCourseForm.do";
+		if (r > 0) {
+			msg = "정상적으로 수정되었습니다.";
+		} else {
+			msg = "수정사항이 없습니다";
+		}
+		
+		model.addAttribute("msg",msg);
+		model.addAttribute("url",url);
+		model.addAttribute("cmd","move");
+		return "chiefAdmin/common/alert";
+	}
 }

@@ -6,6 +6,8 @@ import java.util.Map;
 import org.apache.ibatis.annotations.Mapper;
 
 import kr.co.tobe.vo.BasketVO;
+import kr.co.tobe.vo.PayDetailVO;
+import kr.co.tobe.vo.PayVO;
 
 @Mapper
 public interface UserPayMapper {
@@ -17,4 +19,8 @@ public interface UserPayMapper {
 	int count (int no);
 	
 	List<BasketVO> getCart(String cartNo);
+	Map<String, Object> CartMap(int cart_no);
+	
+	int pay(PayVO vo);
+	int payDetail(PayDetailVO vo);
 }
