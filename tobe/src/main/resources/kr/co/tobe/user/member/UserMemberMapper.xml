@@ -51,8 +51,9 @@
 	
 	<!-- 수정중 -->
 	<!-- 아이디 찾기 -->
-	<select id ="findId" resultType="kr.co.tobe.vo.MemberVO" parameterType="kr.co.tobe.vo.MemberVO">
-		SELECT * FROM member WHERE name = #{name} AND email = #{email}	
+	
+	<select id ="findId" resultType="kr.co.tobe.vo.MemberVO" parameterType="kr.co.tobe.vo.MemberVO"> 
+		SELECT * FROM member WHERE name = #{name} AND email = #{email}		
 	</select>
 	
 	 	

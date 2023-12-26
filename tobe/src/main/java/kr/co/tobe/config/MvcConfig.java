@@ -43,7 +43,6 @@ public class MvcConfig implements WebMvcConfigurer{
 	private String userpassword;
 	
 	
-	
 	// html,css,js,img.... 컨트롤러에서 매핑되지 않은 URL을 톰캣에서 처리하기 위해
 	@Override
 	public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) {
@@ -147,7 +146,6 @@ public class MvcConfig implements WebMvcConfigurer{
 	}
 			
 						
-
 	// 프로퍼티 설정
 	@Bean
 	public static PropertySourcesPlaceholderConfigurer property() {
@@ -155,8 +153,6 @@ public class MvcConfig implements WebMvcConfigurer{
 		property.setLocations(new ClassPathResource("db.properties"));
 		return property;
 	}
-	
-	
 	
 }
 

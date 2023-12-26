@@ -13,7 +13,7 @@ public interface UserCustomerService {
 	int qnaInsert(QnaVO vo);//, MultipartFile file, HttpServletRequest request);
 	int qnaUpdate(QnaVO vo);//, MultipartFile file, HttpServletRequest request);
 	int qnaDelete(QnaVO vo);//, HttpServletRequest request);
-	
+	QnaVO qnaDetail(QnaVO vo);
 	//notice
 	Map<String, Object> noticeList(NoticeVO vo);
 	
