@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import kr.co.tobe.vo.AdminVO;
+import kr.co.tobe.vo.CourseVO;
 import kr.co.tobe.vo.CqnaVO;
 
 @Controller
@@ -21,9 +22,13 @@ public class AdCommonController {
 	AdCommonService service;
 	
 	@GetMapping("/admin/course/adCourseIndex.do")
-	public String adCourseIndex(HttpSession sess, Model model) {
+	public String adCourseIndex(HttpSession sess, Model model, CourseVO vo) {
 		AdminVO admin = (AdminVO)sess.getAttribute("adLoginInfo");
 		model.addAttribute("admin", admin);
+		vo.setAdmin_no(admin.getAdmin_no());
+		model.addAttribute("map", service.courseListS(vo));
+		
+		//강좌 리스트 
 		return "admin/course/adCourseIndex"; 
 	}	
 

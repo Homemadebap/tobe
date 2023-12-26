@@ -110,7 +110,7 @@
 .box {
 	position: absolute;
 	width: 75rem;
-	height: 22rem;
+	height: 15rem;
 	top: 5.5rem; 
 	left: 10rem;
 }
@@ -215,16 +215,18 @@ td{
 	   	 	<div class="searchOrReset">
 				<input type="reset" >
 				<input type="submit" id="" value="검색">
-			</div>    
+			</div>  
+		
 		</table>
 		</form>
 		
-
+			<div class="">
+		  	<p><span><strong>총 ${map.count }개</strong>  |  ${memberVO.page }/${map.totalPage }페이지</span></p>
+		</div>  
 	
-	
-	  
+		
          <table class="tablea">
-         	 <p><span><strong>총 ${map.count }개</strong>  |  ${MemberVO.page }/${map.totalPage }페이지</span></p>
+         	 
          <thead>
          	<th>    </th>
          	<th>이름</th>
@@ -273,7 +275,7 @@ td{
                        </ul> 
               </div> 
 			<div>
-				<button type="button" name="button3" onclick="ProcessSendEmail();" class="btn_order">선택상품 주문하기</button>
+				<button type="button"  onclick="ProcessSendEmail();" >메일 작성하기</button>
 			</div>	
           </div>
             

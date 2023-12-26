@@ -8,4 +8,8 @@ public class AdCourseServiceImpl implements AdCourseService {
 
 	@Autowired
 	AdCourseMapper mapper;
+	
+	public int cosDelete(int no) {
+		return mapper.delete(no);
+	}
 }
