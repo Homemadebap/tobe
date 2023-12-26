@@ -11,15 +11,114 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
 <title>Insert title here</title>
-  <style>
-  	.modal{
-		max-width: 800px;
-  		height: 800px;
-  		text-align: center;
-  		margin: 0 auto;
-  	}
+<style>
+.wrap {
+	width: 85rem;
+	height: 80rem;
+	margin: 0 auto;	
+	position: relative;
+}
+
+*{
+	box-sizing: border-box;
+}
+.headerBox {
+	width: 75rem;
+	height: 13rem;
+}
+.header { 
+	width: 75rem;
+	height: 12rem;
+	position: absolute;
+	
+	top: 0;
+	left: 0rem;
+}
+
+.header_memberBar {
+	position: absolute;
+	color: #000;
+	right: 0;
+	top:10%;
+	font-family: Inter;
+	text-align: center;
+	font-size: 1rem;
+	letter-spacing: 0;
+}
+
+.tobe_logo {
+	position: absolute;
+	top: 6rem;
+	width: 15rem;	
+	margin: 0 0 0 50px;
+}
+
+.menu_container{
+	position: absolute;
+	width: 50rem;
+	right: 0;
+	top: 6.5rem;
+	font-size: 
+}
+
+a:link {
+	text-decoration: none;
+}
+
+a:visited {
+	text-decoration: none;
+	color: #49654E; 
+}
+
+.menu_container > ul > li {
+    list-style: none;
+    float: left;        
+    height: 3rem;
+    line-height: 3rem;
+    width: 25%;
+    text-align: center;
+    color: #d3d3d3;
+    font-size: 2rem;
+}
+
+.menu_container > ul > li:hover {
+    color: #49654E;
+    font-weight: bolder;
+    cursor:pointer; 
+}
+
+.quickMenu {
+	position: absolute;
+	width: 4rem;
+	top: 30rem;
+	right: -5rem;
+	z-index:99999;
+}
+
+.quick {
+	width: 4rem;
+}
+
+#goTop {
+    cursor: pointer;
+}
+
+#goBottom {
+    cursor: pointer;
+}
+
+.modal{
+	max-width: 800px;
+	height: 800px;
+	text-align: center;
+	margin: 0 auto;
+}
     
-  </style>
+.main {
+	width: 75rem;
+
+}
+</style>
 <script type="text/javascript">
 $(document).ready(function(){
   var currentPosition = parseInt($(".quickMenu").css("top"));
@@ -107,4 +206,3 @@ function courseView() {
 
 </body>
 </html>
-

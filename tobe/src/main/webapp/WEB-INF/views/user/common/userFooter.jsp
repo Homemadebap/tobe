@@ -5,11 +5,46 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style>
+
+.footer { 
+   background-color:#d3d3d3;
+   width:75rem;
+   height:8rem;
+
+}
+
+.footer_content {
+   display: grid;
+     place-items: center;
+     color: #A4A4A4;
+     display: inline-block;
+     margin: 40px 0 0 40px;
+}
+
+.footer_logo {
+   width: 6rem;
+   display: grid;
+     float: left;
+   height: 5rem;
+   font-size: 10px;
+}
+
+.footer_info{
+   width: 37.5rem;
+   display: grid;
+    place-items: center;
+    float: left;
+    height: 3rem;
+    color: #A4A4A4;
+    font-size: 12px;
+   
+}
+
+</style>
 </head>
 <body>
 <div class="footer">
-
-	
 	<div class="footer_content">
 		<span class="footer_logo">
 			<img src="/tobe/img/footer_img1.png">

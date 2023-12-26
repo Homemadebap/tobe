@@ -4,7 +4,7 @@
 	<sql id="whereSql">
 		<where>	
 			<if test="searchWord != null and searchWord != ''">
-				(id = #{searchWord} OR name = #{searchWord} OR email = #{searchWord})
+				(id LIKE '%${searchWord}%' OR name LIKE '%${searchWord}%' OR email LIKE '%${searchWord}%')
 			</if>
          	<if test="startday != null and startday != ''">
             	<if test="searchWord != null and searchWord != ''">

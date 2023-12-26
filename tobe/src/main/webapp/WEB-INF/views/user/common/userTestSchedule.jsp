@@ -12,26 +12,16 @@
 <script src='https://unpkg.com/tooltip.js/dist/umd/tooltip.min.js'></script>
 <link rel="stylesheet" href="/tobe/css/user_Header_Footer.css" />
 <style>
-	.calendarWrap{
-		position: relative;
-		top:13rem;
+.calendarWrap{
+	
+	width:75rem;
 
-		
-		width:100%;
-		max-width: 1000px;
-/* 		 margin: 0 auto; */
-	}
-	html, body {
-	  margin: 0;
-	  padding: 0;
-	  font-family: Arial, Helvetica Neue, Helvetica, sans-serif;
-	  font-size: 14px;
-	}
+}
 
-	#calendar {
-	  max-width: 1100px;
-	  margin: 40px auto;
-	}
+#calendar {
+  width: 75rem;
+  margin: 3rem auto;
+}
 	
 /*
 i wish this required CSS was better documented :(
@@ -270,11 +260,15 @@ derived from this CSS on this page: https://popper.js.org/tooltip-examples.html
 </head>
 <body>
 <div class="wrap">
-	<%@ include file="/WEB-INF/views/user/common/userHeader.jsp" %>
+	<div class="headerBox">
+		<%@include file="/WEB-INF/views/user/common/userHeader.jsp"%>
+	</div>
 	<div class="calendarWrap">
 		<div id='calendar'></div>
 	</div>
-	<%@include file="/WEB-INF/views/user/common/userFooter.jsp"%>
+	<div class="footerBox">
+		<%@include file="/WEB-INF/views/user/common/userFooter.jsp"%>
+	</div>
 </div>
 	  
 </body>

@@ -11,15 +11,11 @@
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
-<link rel="stylesheet" href="/tobe/css/user_Header_Footer.css" />
 </head>
 <style>
 .mainContent{
-   width: 1200px;
-   margin: 0 auto;
-   position: relative;
+   width: 75rem;
    display: block;
-   top: 12rem;
 }
 .subContentBar{
    margin-left: 800px;
@@ -102,7 +98,8 @@
 }
 .subContent{
 	margin: 0 auto;
-	position: relative;
+	width: 75rem;
+	height: 35rem;
 }
 </style>
 <script>
@@ -165,7 +162,9 @@ document.addEventListener('DOMContentLoaded', function(){
 </script>
 <body>
    <div class="wrap">
-      <%@include file = "/WEB-INF/views/user/common/userHeader.jsp"%>
+		<div class="headerBox">
+			<%@include file="/WEB-INF/views/user/common/userHeader.jsp"%>
+		</div>
       <div class = "mainContent">
          <div class = "subContentLecture">
             <div class = "detailContent">
@@ -202,21 +201,20 @@ document.addEventListener('DOMContentLoaded', function(){
                   </tr>
                </table>
             </div>
-         </div>
-         <div class = "subContent">
-            <div id = "showDetailContent">
-            </div>
-         </div>
-         <div class = "subContent">
-            <div id = "showReviewContent">
-            </div>
-         </div>
-         <div class = "subContent">
-            <div id = "showQnaContent">
-            </div>
+         
+	         <div class = "subContent">
+	            <div id = "showDetailContent">
+	            </div>
+	            <div id = "showReviewContent">
+	            </div>
+	            <div id = "showQnaContent">
+	            </div>
+	         </div>
          </div>
       </div>
-   <%@include file = "/WEB-INF/views/user/common/userFooter.jsp" %>
+		<div class="footerBox">
+			<%@include file="/WEB-INF/views/user/common/userFooter.jsp"%>
+		</div>
    </div>
 </body>
 </html>
