@@ -20,6 +20,8 @@ public interface UserCustomerMapper {
 	
 	int qnaCount(QnaVO vo);
 	List<QnaVO> qnaList(QnaVO vo);
+	QnaVO qnaDetail(int no);
+	
 	
 	//notice
 	int noticeInsert(NoticeVO vo);
@@ -31,6 +33,6 @@ public interface UserCustomerMapper {
 	//faq
 	int faqCount(FaqVO vo);
 	List<FaqVO> faqList(FaqVO vo);
-	
+
 
 }

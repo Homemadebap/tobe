@@ -62,6 +62,14 @@ public class UserCustomerServiceImpl implements UserCustomerService {
 	public int qnaDelete(QnaVO vo) {
 		return mapper.qnaDelete(vo.getQna_no());
 	}
+	
+	@Override
+	public QnaVO qnaDetail(QnaVO vo) {
+		QnaVO data = mapper.qnaDetail(vo.getQna_no());
+		// TODO Auto-generated method stub
+		return data;
+	}
+	
 
 
 	@Override

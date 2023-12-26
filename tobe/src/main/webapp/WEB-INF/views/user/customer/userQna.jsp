@@ -129,7 +129,7 @@
                             <tr>
                                 <td>${vo.qna_no }</td>
 
-                                <td>${vo.q_title }</td>                     
+                                <td><a href="userQnaDetail.do?qna_no=${vo.qna_no }">${vo.q_title }</a></td>                     
                                 <td class="date"><fmt:formatDate value="${vo.q_writedate }" pattern="YYYY-MM-dd"/></td>
                             </tr>
                        </c:forEach>
