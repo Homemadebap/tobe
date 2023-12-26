@@ -206,7 +206,7 @@ $(function(){
 						<th>총상품금액</th>
 					</tr>
 					<tr id="secondRow">
-						<td>${pdvo.teacher_img_real }</td>
+						<td><img src="/tobe/img/${pdvo.teacher_img_real }"></td>
 						<td>
 							<span style="font-size: 1.25rem;">강좌명 : ${pdvo.i_cname }</span><br>
 							<span style="font-size: 1rem; font-weight: normal;">개강일 : ${pdvo.i_startday }</span><br>

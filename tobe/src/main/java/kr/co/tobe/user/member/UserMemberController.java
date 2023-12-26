@@ -28,22 +28,56 @@ public class UserMemberController {
 	 
 //	아이디 비밀번호 찾기
 	//@PostMapping("user/member/userFindMember.do")
-	@GetMapping("user/member/userFindMember.do")
-	public String findMember(MemberVO vo, HttpSession sess, Model model) {
+	@GetMapping("/user/member/userFindMember.do")
+	public String findMember() {
 		return "user/member/userFindMember";
 	}
-	@PostMapping("user/member/userFindMember.do")
+	
+	@PostMapping("/user/member/userFindMember.do")
 	public String userFindMember(MemberVO vo, HttpSession sess, Model model) {
 		MemberVO findId = service.findId(vo);
 		if (findId == null) {
-			model.addAttribute("msg", "조회 결과가 없습니다.");
+			model.addAttribute("msg", "등록된 정보가 없습니다.");
 			model.addAttribute("cmd", "back");
 			return "user/common/userAlert";
 		} else { 
-			sess.setAttribute("checkInfo", findId);
-			return "redirect:user/member/userFindMember2";
+			model.addAttribute("user", findId);
+			return "user/member/userFindMemberNext";
 		}
+		
 	}
+	
+	@GetMapping("/user/member/userFindMemberNext.do")
+	public String findMemberNext() {
+		return "user/member/userFindMemberNext";
+	}
+	
+	@PostMapping("/user/member/userFindPwdNext.do")
+	public String userFindPwd(MemberVO vo, HttpSession sess, Model model) {
+		MemberVO findPwd = service.findPwd(vo); 
+			model.addAttribute("user", findPwd);
+//			return "user/member/userFindPwdNext";
+			if (findPwd == null) {
+				model.addAttribute("msg", "등록된 정보가 없습니다.");
+				model.addAttribute("cmd", "back");
+				return "user/common/userAlert";
+			} else { 
+				model.addAttribute("user", findPwd);
+				return "user/member/userFindPwdNext";
+			}
+		}
+	
+//	@GetMapping("/user/member/userFindPwdNext.do")
+//	public String findPwdNext() {
+//		return "user/member/userFindPwdNext";
+//	}
+//	@PostMapping ("/user/member/userFindMemberNext.do")
+//	public String userFindMemberNext(HttpSession sess, MemberVO vo, Model model) {
+//		MemberVO findId = service.findId(vo);
+//		model.addAttribute("user", findId);
+//		return "user/member/userFindMemberNext";
+//	}
+	
 
 	
 	@PostMapping("/user/member/userJoinForm.do")
@@ -161,5 +195,10 @@ public class UserMemberController {
 		return "user/common/userAlert";
 	}
 	
+	//약관동의
+	@GetMapping("/user/member/userJoinPolicy.do")
+	public String userJoinPolicy() {
+		return "user/member/userJoinPolicy";
+	}
 
 }

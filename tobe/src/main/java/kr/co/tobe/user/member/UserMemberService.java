@@ -15,6 +15,7 @@ public interface UserMemberService {
 	int quit(MemberVO mvo);
 	//
 	MemberVO findId(MemberVO vo);
+	MemberVO findPwd(MemberVO vo);
 
 	
 	

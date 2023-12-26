@@ -197,13 +197,13 @@
                                     <li><input type="password" id="pwd" name="pwd" placeholder="비밀번호" style="width:200px"></li>
                                     <li><label><input type="checkbox" name="reg1" id="reg1" style="width:10px;height:10px"/><font size="1px">아이디저장</font></label></li>
                                     <!-- <li><a href="userFindMember.do" class="btn" style="font-size:10px">아이디|비밀번호 찾기</a></li>  -->
-                                    <button onclick="window.open('userFindMember.do','window_name','width=300,height=700');">아이디|비밀번호 찾기</button>
+                                    <input type="button" value="아이디|비밀번호 찾기" onclick="window.open('userFindMember.do','window_name','width=300,height=700');">
                                 </ul>
                                 <div class="login_btn"><input type="submit" value="로그인"/></div>
                             </fieldset>
                             <div class="btnSet_clear">
                                 <div style="color: #2F5720">
-                                    <p>아직 TOBE회원이 아니신가요?<a href="userJoinForm.do" class="btn">회원가입</a></p>
+                                    <p>아직 TOBE회원이 아니신가요?<a href="userJoinPolicy.do" class="btn">회원가입</a></p>
                                </div>
                             </div>
                         </div>

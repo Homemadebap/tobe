@@ -51,6 +51,11 @@ public class UserMemberServiceImpl implements UserMemberService {
 	public MemberVO findId(MemberVO vo) {
 		return mapper.findId(vo);
 	}
+	
+	@Override
+	public MemberVO findPwd(MemberVO vo) {
+		return mapper.findPwd(vo);
+	}
 
 	
 }

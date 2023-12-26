@@ -8,8 +8,9 @@
 	    ON c.course_no=pd.course_no
 	    JOIN pay p ON pd.order_no=p.order_no
 	    <where>
+	    	pay_refund=0
 		    <if test="education!=null and education!=''">
-		        education = #{education}
+		        AND education = #{education}
 		    </if>
 	        <if test="(startday!=null and startday!='') and (endday!=null and endday!='')">
   	        <![CDATA[
@@ -36,9 +37,10 @@
 	    ON c.course_no=pd.course_no
 	    JOIN pay p ON pd.order_no=p.order_no
 	    <where>
+	    	pay_refund=0
 	        <if test="(startday!=null and startday!='') and (endday!=null and endday!='')">
    	        <![CDATA[
-	             pay_date BETWEEN STR_TO_DATE(#{startday}, '%Y-%m-%d') AND STR_TO_DATE(#{endday}, '%Y-%m-%d')
+	             AND pay_date BETWEEN STR_TO_DATE(#{startday}, '%Y-%m-%d') AND STR_TO_DATE(#{endday}, '%Y-%m-%d')
 	        ]]>
 	        </if>
 	        <if test="(startday!=null and startday!='')and (endday==null or endday=='')">
@@ -64,9 +66,10 @@
 	    ON c.course_no=pd.course_no
 	    JOIN pay p ON pd.order_no=p.order_no
 	    <where>
+	    	pay_refund=0
 	        <if test="(startday!=null and startday!='') and (endday!=null and endday!='')">
-  	        <![CDATA[
-	             pay_date BETWEEN STR_TO_DATE(#{startday}, '%Y-%m-%d') AND STR_TO_DATE(#{endday}, '%Y-%m-%d')
+   	        <![CDATA[
+	             AND pay_date BETWEEN STR_TO_DATE(#{startday}, '%Y-%m-%d') AND STR_TO_DATE(#{endday}, '%Y-%m-%d')
 	        ]]>
 	        </if>
 	        <if test="(startday!=null and startday!='')and (endday==null or endday=='')">
@@ -79,7 +82,7 @@
 	            AND pay_date <= STR_TO_DATE(#{endday}, '%Y-%m-%d')
 	        ]]>
 	        </if>
-	    </where>
+	   	</where>
 	</select>
 
 	

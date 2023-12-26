@@ -38,14 +38,14 @@ public class UserPayController {
 	
 	@PostMapping("/user/pay/userPayCancel.do")
 	public String userPayCancel(@RequestParam("detail_no") int detail_no,
-								@RequestParam("cancelReason") String cancelReason,
-								@RequestParam("cancelReasonDetail") String cancelReasonDetail,
+								@RequestParam("pay_cancel_reason") String pay_cancel_reason,
+								@RequestParam("pay_cancel_reason_detail") String pay_cancel_reason_detail,
 								Model model) {
 		int order_no = (int)service.payDetailIndex(detail_no).get("order_no");
 		Map<String, Object> cancelReasonMap = new HashMap<>();
 		cancelReasonMap.put("order_no", order_no);
-		cancelReasonMap.put("cancelReason", cancelReason);
-		cancelReasonMap.put("cancelReasonDetail", cancelReasonDetail);
+		cancelReasonMap.put("pay_cancel_reason", pay_cancel_reason);
+		cancelReasonMap.put("pay_cancel_reason_detail", pay_cancel_reason_detail);
 		boolean r = service.payCancel(cancelReasonMap);
 		
 		if(r) {
