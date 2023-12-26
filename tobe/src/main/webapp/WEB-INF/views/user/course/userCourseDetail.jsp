@@ -25,7 +25,7 @@
    margin-left: 800px;
 }
 .DetailSelectBtn{
-   cursor: pointer;
+	  cursor: pointer;
       color: black;
       border: 0;
       /* display: flex; */
@@ -44,7 +44,7 @@
       position: relative;
 }
 .DetailpayBtn{
-   cursor: pointer;
+   	  cursor: pointer;
       color: white;
       border: 0;
       /* display: flex; */
@@ -56,8 +56,8 @@
       margin: 5px 10px;
       height: 34px;
       border-radius: 20px;
-   background-color: #253528; 
-   border-color: #000;
+   	  background-color: #253528; 
+   	  border-color: #000;
       /* text-align: center; */
       letter-spacing: -0.5px;
       position: relative;
@@ -118,15 +118,16 @@ document.addEventListener('DOMContentLoaded', function(){
     function showReview() {
         $('#showDetailContent, #showQnaContent').hide();
         $('#showReviewContent').show();
+        ajaxFuncReview();
     }
 
     function showQnA() {
         $('#showDetailContent, #showReviewContent').hide();
         $('#showQnaContent').show();
-        ajaxFunc(); // 강좌 문의를 가져오는 함수 호출
+        ajaxFuncQna(); // 강좌 문의를 가져오는 함수 호출
     }
     
-    function ajaxFunc() {
+    function ajaxFuncQna() {
     	$.ajax({
 			url: "/tobe/user/course/userCourseDetailQnaList.do?course_no=" + course_no,
 			type: 'GET',
@@ -141,7 +142,7 @@ document.addEventListener('DOMContentLoaded', function(){
 	    });
     }
     
-    function ajaxFunc() {
+    function ajaxFuncReview() {
     	$.ajax({
 			url: "/tobe/user/course/userCourseDetailReviewList.do?course_no=" + course_no,
 			type: 'GET',
@@ -184,9 +185,9 @@ document.addEventListener('DOMContentLoaded', function(){
             <div class = "subContentBar">
                 <table>
                    <tr>
-                      <td><button type="button" onclick="location.href='/tobe/user/common/userBasket.do'" class="DetailSelectBtn">장바구니 담기</button></td>
+                      <td><a href='/tobe/user/common/userBasket.do?course_no=" + lecture.course_no + "' class='DetailSelectBtn'>장바구니 담기</a></td>
                       <td><button type="button" onclick="location.href='/tobe/user/common/userCompareCourse.do'" class="DetailSelectBtn">비교함 담기</button></td>
-                      <td><button type="button" onclick="location.href='/tobe/user/pay/userPayDetail.do'" class="DetailpayBtn">결제 하기</button></td>
+                      <td><a href = '/tobe/user/pay/userPayDetail.do?course_no=" + lecture.course_no + "' class='DetailpayBtn'>결제 하기</a></td>
                    </tr>
                 </table>
             </div>

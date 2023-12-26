@@ -43,6 +43,12 @@ public class UserCustomerController {
 		model.addAttribute("vo", service.noticeDetail(vo));
 		return "user/customer/userNoticeDetail";
 	}
+	//문의 상세
+	@GetMapping("/user/customer/userQnaDetail.do")
+	public String viewQnaDetail(Model model,  QnaVO vo) {
+		model.addAttribute("vo", service.qnaDetail(vo));
+		return "user/customer/userQnaDetail";
+	}
 	
 	@GetMapping("/user/customer/userAskForm.do")
 	public String userAskForm() {

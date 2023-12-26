@@ -151,14 +151,23 @@ public class UserCourseController {
 		return "user/common/userAlert";
 	}
 	
-	@GetMapping("/user/course/userCourseDetailQnaList.do")
-    public String getQnaDetail(Model model, @RequestParam("course_no") int course_no) {
-		List<CqnaVO> Cqna = service.cqnaDetailList(course_no);
-		model.addAttribute("qna", Cqna);
-      	System.out.println(Cqna);
-      	System.out.println("하이");
-		return "/user/course/userCourseDetailQnaList";
-    }
+	 	@GetMapping("/user/course/userCourseDetailQnaList.do")
+	    public String getQnaDetail(Model model, @RequestParam(name="course_no", required = true) int course_no, @RequestParam(value = "page", defaultValue = "1") int page) {
+	        int itemsPerPage = 10;
+	        int startIdx = (page - 1) * itemsPerPage;
+
+	        List<CqnaVO> cqnaList = service.getCqnaDetailList(course_no, startIdx, itemsPerPage);
+	        int totalCqnaCount = service.getCqnaCount(course_no);
+	        int totalPage = (int) Math.ceil((double) totalCqnaCount / itemsPerPage);
+
+	        model.addAttribute("cqnaList", cqnaList);
+	        model.addAttribute("currentPage", page);
+	        model.addAttribute("itemsPerPage", itemsPerPage);
+	        model.addAttribute("totalCqnaCount", totalCqnaCount);
+	        model.addAttribute("totalPage", totalPage);
+
+	        return "/user/course/userCourseDetailQnaList";
+	    }
 	
 //	@GetMapping("/user/course/userCourseDetail.do")
 //	public String cqnaList(Model model, CqnaVO vo) {
@@ -179,7 +188,7 @@ public class UserCourseController {
 		List<ReviewVO> reviewList = service.ReviewList(course_no);
 		model.addAttribute("reviewList", reviewList);
       	System.out.println(reviewList);
-      	System.out.println("하이");
+      	System.out.println("안뇽");
 		return "/user/course/userCourseDetailReviewList";
     }
 }
