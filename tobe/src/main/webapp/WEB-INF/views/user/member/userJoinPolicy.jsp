@@ -15,6 +15,7 @@
   
     <script>
 
+   
     function loginCheck() {
     	if ($("#id").val() == '') {
     		alert("아이디를 입력해 주세요");
@@ -27,6 +28,31 @@
     		return false;
     	}
     }
+    
+    
+    
+    function selectAll() {
+        const selectAllCheckbox = document.getElementById('selectAllCheckbox');
+        const checkboxes = document.getElementsByName('select');
+
+        checkboxes.forEach((checkbox) => {
+            checkbox.checked = selectAllCheckbox.checked;
+        });
+    }
+    
+ // 폼 제출 전 체크 확인 및 페이지 이동 함수
+    function checkAgree() {
+	 	if (!$("#agree1").prop("checked")) {
+	 		alert('약관동의내용1을 확인하세요.');
+	 		return;
+	 	}
+	 	if (!$("#agree2").prop("checked")) {
+	 		alert('약관동의내용2을 확인하세요.');
+	 		return;
+	 	}
+	 	location.href="userJoinForm.do";
+	}
+		
     </script>
     <style>
     @charset "UTF-8";
@@ -197,13 +223,14 @@
     <div class="wrap">
     <%@ include file="/WEB-INF/views/user/common/userHeader.jsp" %>
     </div>
-    	<form action="" id="joinPolicy">
-    		<ul class="join_box">
+    	<!-- <form name="policy" action="userJoinPolicy.do" method="post" id="joinPolicy">lass="join_box">
+    	  -->
+    	  	<form onsubmit="return validateForm()">
     			<li class="checkBox check1">
     				<ul class="clearfix">
     					<li>이용약관, 개인정보 수집 및 이용에 모두 동의합니다.</li>
     					<li class="checkAllBtn">
-    						전체 동의<input type="checkbox" name="checkAll" id="check">
+    						<input type="checkbox" id="selectAllCheckbox" onclick="selectAll()"><label for="selectAllCheckbox"><b>전체 동의</b></label> 
     					</li>
 
 	    				<textarea rows="15" cols="150">
@@ -556,8 +583,8 @@
 	    	</table>
 	    	
 	    	<div>위 동의 안내에 거부할 권리가 있습니다.<br>그러나 동의 거부할 경우 실명 확인이 되지 않음에 따라 가입 신청 및 수강 신청을 하실 수 없습니다.<br><strong>위와 같은 개인정보의 수집/이용에 동의하십니까?</strong></div>
-	    	<input type="radio" id="check1" name="check"> 동의함
-	    	<input type="radio" id="check2" name="check"> 동의하지 않음
+	    	<input type="checkbox"  name="select" id="agree1"> 동의함
+	    	
 
     	</ul>
     	</li>
@@ -581,19 +608,22 @@
 	    	</table>
 	    	
 	    	<div>위 동의 안내에 거부할 권리가 있습니다.<br>그러나 동의 거부할 경우 실명 확인이 되지 않음에 따라 가입 신청 및 수강 신청을 하실 수 없습니다.<br><strong>위와 같은 개인정보의 제3자 제공에 동의하십니까?</strong></div>
-	    	<input type="radio" id="check1" name="check"> 동의함
-	    	<input type="radio" id="check2" name="check"> 동의하지 않음
+	    	<input type="checkbox" name="select" id="agree2"> 동의함
+	    	
 
     	</ul>
     	</li>
+    			<div class="btnSet clear">
+                    <div><a href="javascript:;" class="btn" onclick="history.back();">이전</a>
+                    <input type="button" onclick="checkAgree();" value="다음">
+                </div>
     	</form>
     	
-		        <div class="btnSet clear">
-                    <div><a href="javascript:;" class="btn" onclick="history.back();">이전</a><a href="javascript:;" class="btn" onclick="goSave();">다음</a> </div>
+
                 </div>
     	
 
-    
-	<%@include file="/WEB-INF/views/user/common/userFooter.jsp"%>
+
+	
 </body> 
 </html>

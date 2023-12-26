@@ -18,7 +18,6 @@
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
-<link rel="stylesheet" href="/tobe/css/user_Header_Footer.css" />
 
 <script type="text/javascript">
 
@@ -58,10 +57,13 @@ $(function(){
 
 <style>
 .main {
-	position: absolute;
+	width: 75rem;
+	height: 50rem;
+}
+
+.userMain {
 	width: 75rem;
 	height: 10rem;
-	top: 12rem;
 	background-color: #E4E6D9;
 }
 
@@ -127,6 +129,7 @@ $(function(){
 	left: 3.5rem;
 	top: 1.35rem;
 }
+
 #quitText {
 	position: absolute;
 	text-align: center;
@@ -135,57 +138,44 @@ $(function(){
 }
 
 .pointContainer {
-	position: absolute;
-	width: 20rem;
+	margin: 0 0 0 53rem;
+	width: 22rem;
 	height: 10rem;
-	right: 0rem;
 }
 
 #pointImg {
-	position: absolute;
-	left: 0;
-	top: 1.75rem;
+	margin: 1.9rem 0;
+	float: left;
 }
 
 #point {
-	position: absolute;
-	width: 15rem;
-	height: 10rem;
-	right: 0;
+	float: left;
+	margin: 3rem 0 0 1rem;
+	width: 13rem;
+	height: 4rem;
 	color: #49654E;
 }
 
 #userPointText {
-	position: absolute;
 	width: 13rem;
-	top: 3rem;
-	left: 1rem;
 	font-size: 1.25rem;
 }
 #numPointText {
-	position: absolute;
 	width: 11.5rem;
-	top: 6rem;
-	left: 1rem;
 	font-size: 1.25rem;
 }
 
 .myPageMenu {
-	position: absolute;
 	width: 60rem;
 	height: 2.25rem;
 	margin: 0 auto;
-	left: 7.5rem;
-	top: 15rem;
 	font-size: 1.75rem;
 }
 
 .mainMenu_bar {
-	position: absolute;
 	width: 70rem;
 	height: 4rem;
-	top: 12rem;
-	left: 1rem;
+	margin: 0 2.5rem;
 }
 
 .mainMenu_bar>ul>li {
@@ -206,12 +196,10 @@ $(function(){
 }
 
 .line {
-	position: absolute;
 	background-color: #49654E;
 	width: 70rem;
 	height: 2px;
-	top: 17rem;
-	left: 2rem;
+	margin: 0 2.5rem;
 }
 
 .mainMenu.on {
@@ -221,12 +209,9 @@ $(function(){
 }
 
 .content_area {
-	position: absolute;
 	width: 70rem;
 	border: 1px solid #ddd;
-	magin: 0 auto;
-	top: 20rem;
-	left: 2rem;
+	margin: 0 2.5rem;
 }
 
 .currentCourseIndex, .pastCourseIndex, .askIndex, .myReviewIndex {
@@ -259,39 +244,38 @@ table {
 </head>
 <body>
 	<div class="wrap">
-		<%@include file="/WEB-INF/views/user/common/userHeader.jsp"%>
+		<div class="headerBox">
+			<%@include file="/WEB-INF/views/user/common/userHeader.jsp"%>
+		</div>
 		<div class="main">
-			
-			<div class="part1">
-				<p id="userName"><b>${user.name }</b>님</p>
-				<p id="userId">${user.id }</p>
-			</div>
-			<div class="part2">
-				<div id="set">
-					<a href="/tobe/user/member/userModify.do">
-						<img src="/tobe/img/set.png" id="setImg">
-						<span id="setText">회원정보수정</span>
-					</a>
+			<div class="userMain">
+				<div class="part1">
+					<p id="userName"><b>${user.name }</b>님</p>
+					<p id="userId">${user.id }</p>
 				</div>
-				<div id="quit">
-					<a href="/tobe/user/member/userQuit.do">
-						<img src="/tobe/img/quit.png" id="quitImg">
-						<span id="quitText">회원탈퇴</span>
-					</a>
+				<div class="part2">
+					<div id="set">
+						<a href="/tobe/user/member/userModify.do">
+							<img src="/tobe/img/set.png" id="setImg">
+							<span id="setText">회원정보수정</span>
+						</a>
+					</div>
+					<div id="quit">
+						<a href="/tobe/user/member/userQuit.do">
+							<img src="/tobe/img/quit.png" id="quitImg">
+							<span id="quitText">회원탈퇴</span>
+						</a>
+					</div>
 				</div>
-			</div>
-			
-			<div class="pointContainer"><img src="/tobe/img/point.png" id="pointImg">
-				<span id="point">
-					<span id="userPointText"><b>${user.name }</b>님의 잔여포인트</span>
-					<span id="numPointText"> ${user.point } 포인트</span>
-				</span>
-			</div>
-			
-			<div>
 				
+				<div class="pointContainer"><img src="/tobe/img/point.png" id="pointImg">
+					<span id="point">
+						<span id="userPointText"><b>${user.name }</b>님의 잔여포인트</span>
+						<span id="numPointText"><b>${user.point } </b> 포인트</span>
+					</span>
+				</div>
 			</div>
-
+			
 			<div class="mainMenu_bar">
 				<ul>
 					<li class="mainMenu">현재 수강 중인 강좌</li>
@@ -426,7 +410,7 @@ table {
 		                            <td>${vo.cqna_no}</td>
 		                            <td class="url" onclick="location.href='/tobe/user/course/userCourseAskDetail.do?cqna_no=${vo.cqna_no}'">${vo.cq_title}</td>    
 		                            <td>${vo.cq_writedate}</td>
-		                            <td><input type="button" onclick="location.href='/tobe/user/customer/userCourseModAskFrom.do?cqna_no=${vo.cqna_no}'" value="수정하기"/></td>    		                            
+		                            <td><input type="button" onclick="location.href='/tobe/user/course/qna/edit.do?cqna_no=${vo.cqna_no}'" value="수정하기"/></td>    		                            
 		                        </tr>
 		                    </c:forEach>
 		                    <tr></tr>
@@ -435,7 +419,7 @@ table {
 		                            <td>${vo.qna_no}</td>
 		                            <td class="url" onclick="location.href='/tobe/user/customer/userQnaDetail.do?qna_no=${vo.qna_no}'">${vo.q_title}</td>    
 		                            <td>${vo.q_writedate}</td>
-		                            <td><input type="button" onclick="location.href='/tobe/user/customer/userModAskFrom.do?qna_no=${vo.qna_no}'" value="수정하기"/></td>    		                            
+		                            <td><input type="button" onclick="location.href='/tobe/user/customer/userModAskForm.do?qna_no=${vo.qna_no}'" value="수정하기"/></td>    		                            
 		                        </tr>
 	                        </c:forEach>
 	                    </table>
@@ -469,8 +453,9 @@ table {
 				</div>
 			</div>
 		</div>
-	
-	<%@include file="/WEB-INF/views/user/common/userFooter.jsp"%>
+		<div class="footerBox">
+			<%@include file="/WEB-INF/views/user/common/userFooter.jsp"%>
+		</div>
 	</div>
 </body>
 </html>

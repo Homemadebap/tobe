@@ -12,7 +12,7 @@ import lombok.ToString;
 public class CourseVO {
 
 	private int course_no;
-	private int ad_no;
+	private int admin_no;
 	private int education;
 	private int area;
 	private int branch;
@@ -40,6 +40,19 @@ public class CourseVO {
 	private String teacher_img_org;
 	private String teacher_img_real;
 	private double course_rating; 
+	
+	private int startIdx;
+	private int page;
+	
+	private String searchWord;
+	
+	public CourseVO() {
+		this.page = 1;
+	}
+
+	public int getStartIdx() {
+		return (page-1) * 10;
+	}
 	
 	
 }
