@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ page import="kr.co.tobe.util.CodeToString"%>
 <%@ page import="java.time.LocalDate" %>
 <%@ page import="java.time.format.DateTimeFormatter" %>
 <!DOCTYPE html>
@@ -242,6 +243,15 @@ input[type="button"], input[type="submit"] {
 	cursor: pointer;
 }
 
+table {
+	border: 1px solid #ddd;
+	width: 100%;
+	text-align: center;
+}
+
+.pastCourseIndex td {
+	width: 14.285%;
+}
 </style>
 
 
@@ -300,7 +310,7 @@ input[type="button"], input[type="submit"] {
                         </tr>
                     </c:if>
                     <c:if test="${!empty cci}">
-                    	<table style="width: 100%; text-align: center;">
+                    	<table>
                     		<tr style="font-weight: bolder; font-size: 1.25rem;">
                     			<td style="width: 20%;">강좌번호</td>
 								<td colspan="2" style="width: 40%;">강좌명</td>
@@ -326,66 +336,86 @@ input[type="button"], input[type="submit"] {
                             <td class="noIndex">수강 신청한 내역이 없습니다.</td>
                         </tr>
                     </c:if>
-                    <c:if test="${!empty pci}">
-	                    <table style="width: 100%; text-align: center;">
-							<tr style="font-weight: bolder; font-size: 1.25rem; "> 
-								<td>결제일</td>
-								<td>주문번호</td>
-								<td>강좌명</td>
-								<td>가격</td>
-								<td>강좌개강일</td>
-								<td>강좌종강일</td>
-								<td>비고</td>
+                    <c:if test="${!empty pci }">
+                    	 <table>
+							 <tr style="font-weight: bolder; font-size: 1.25rem; "> 
+									<td>결제일</td>
+									<td>주문번호</td>
+									<td>강좌명</td>
+									<td>가격</td>
+									<td>강좌개강일</td>
+									<td>강좌종강일</td>
+									<td>비고</td>
 							</tr>
-                    	
 		                    <c:forEach var="vo" items="${pci}">
-		                        <tr >
-									<td>${vo.pay_date }</td>    
+			                   	<c:if test="${vo.pay_cancel eq 0}">
+		                        <tr style="font-size: 1.15rem;">
+			                    	<td>${vo.pay_date }</td> 
 		                            <td>${vo.detail_no}<input type="button" onclick="location.href='/tobe/user/pay/userPayCompleteDetail.do?detail_no=${vo.detail_no}'" value="주문상세보기"/></td>    
 		                            <td class="url" onclick="location.href='/tobe/user/course/userCourseDetail.do?course_no=${vo.course_no}'">${vo.teacher_img}${vo.i_cname}</td> 
 		                            <td>${vo.i_price}</td>
 		                            <td>${vo.i_startday}</td>
 		                            <td>${vo.i_endday}</td>
-		                            
 		                            <td><form action="/tobe/user/review/write.do" method="get">
 		                            	<input type="hidden" name="infoCourse_no" value="${vo.course_no }">
 		                            	<input type="hidden" name="infoDetail_no" value="${vo.detail_no }">
 		                            	<input type="hidden" name="infoCourseName" value="${vo.i_cname }">
 		                            	
 		                            	<c:forEach var="rvo" items="${mri}">
-		                            			<%
-													  LocalDate currentDate = LocalDate.now();
-													  DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-													  String formattedCurrentDate = currentDate.format(formatter);
-													  pageContext.setAttribute("formattedCurrentDate", formattedCurrentDate);
-												%>
+		                            		<c:if test="${rvo.course_no ne vo.course_no}">
+		                            		</c:if>
 		                            		<c:choose>
 											    <c:when test="${rvo.course_no eq vo.course_no}">
 											        <input type="button" value="나의 후기" onclick="location.href='/tobe/user/review/userReviewDetail.do?review_no=${vo.review_no}'" >
 											    </c:when>
-
-											    <c:when test="${vo.i_endday > formattedCurrentDate && rvo.course_no ne vo.course_no}">
-											        <input type="submit" value="후기작성">
-											    </c:when>
 											    <c:otherwise>
+											        <input type="submit" value="후기작성">
 											    </c:otherwise>
 											</c:choose>
-		                            		
-		                            	</c:forEach>
-		                            </form></td>
-		                        </tr>
-		                    </c:forEach>
+										</c:forEach>
+									</form></td>
+								</tr>
+                      			</c:if>
+                           	</c:forEach>
+                         </table>
+                         <br><br>
+                           	
+                         <table>
+							 <tr style="font-weight: bolder; font-size: 1.25rem; "> 
+									<td>결제취소일</td>
+									<td>주문번호</td>
+									<td>강좌명</td>
+									<td>가격</td>
+									<td>강좌개강일</td>
+									<td>강좌종강일</td>
+									<td>비고</td>
+							</tr>  	
+		                    <c:forEach var="vo" items="${pci}">
+			                   	<c:if test="${vo.pay_cancel eq 1}">
+			                        <tr style="font-size: 1.15rem;">
+				                    	<td>${vo.pay_cancel_date }</td> 
+			                            <td>${vo.detail_no}<input type="button" onclick="location.href='/tobe/user/pay/userPayCancelDetail.do?detail_no=${vo.detail_no}'" value="취소상세보기"/></td>    
+			                            <td class="url" onclick="location.href='/tobe/user/course/userCourseDetail.do?course_no=${vo.course_no}'">${vo.teacher_img}${vo.i_cname}</td> 
+			                            <td>${vo.i_price}</td>
+			                            <td>${vo.i_startday}</td>
+			                            <td>${vo.i_endday}</td>
+				                        <c:set var="pay_refund" value="${CodeToString.payRefundToString(pcdi.pay_refund)}" />
+										<td>${pay_refund }</td>
+									</tr>
+								</c:if>
+                           	</c:forEach>                           	
 	                    </table>
                     </c:if>
 				</div>
-				<div class="askIndex" style="overflow-y:scroll; height: 30rem;" >
+
+				<div class="askIndex" style="overflow-y:scroll; height: 30rem;">
 					<c:if test="${empty mcai}">
                         <tr>
                             <td class="noIndex">문의한 내역이 없습니다.</td>
                         </tr>
                     </c:if>
                     <c:if test="${!empty mcai}">
-	                    <table style="width: 100%; text-align: center;">
+	                    <table>
 							<tr style="font-weight: bolder; font-size: 1.25rem; ">
 								<td>문의번호</td>
 								<td>제목</td>
@@ -419,7 +449,7 @@ input[type="button"], input[type="submit"] {
                         </tr>
                     </c:if>
                     <c:if test="${!empty mri }">
-	                    <table style="width: 100%; text-align: center;">
+	                    <table>
 							<tr style="font-weight: bolder; font-size: 1.25rem; ">
 								<td>후기번호</td>
 								<td>강좌명</td>

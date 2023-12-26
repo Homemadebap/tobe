@@ -27,4 +27,18 @@ public class MemberVO {
 	private int page;
 	
 	private String searchWord;
+	
+	private String startday;
+	private String endday;
+	private String birthDayStartday;
+	private String birthDayEndday;
+	
+	public MemberVO() {
+		this.page = 1;
+	}
+
+	public int getStartIdx() {
+		return (page-1) * 10;
+	}
+	
 }

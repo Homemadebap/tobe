@@ -18,13 +18,67 @@
 
 <script>
 
-var conEduTotal = ${conEduTotal};
+$(function(){
+    $('#today').click(function(){
+    	$("#startday").val(getDates('today').start);
+    	$("#endday").val(getDates('today').end);
+    })
+    $('#week').click(function(){
+    	$("#startday").val(getDates('oneWeek').start);
+    	$("#endday").val(getDates('oneWeek').end);
+    })
+    $('#oneMonth').click(function(){
+    	$("#startday").val(getDates('oneMonth').start);
+    	$("#endday").val(getDates('oneMonth').end);
+    })
+    $('#threeMonth').click(function(){
+    	$("#startday").val(getDates('threeMonths').start);
+    	$("#endday").val(getDates('threeMonths').end);
+    })
+    $('#year').click(function(){
+    	$("#startday").val(getDates('oneYear').start);
+    	$("#endday").val(getDates('oneYear').end);
+    })
+})
 
-// 가져온 정보를 console.log로 출력
-console.log("conEduTotal:", conEduTotal);
+function getDates(period) {
+   var currentDate = new Date();
+   var pastDate = new Date();
 
+   switch (period) {
+    case 'today':
+           pastDate.setDate(currentDate.getDate());
+           break;
+       case 'oneWeek':
+           pastDate.setDate(currentDate.getDate() - 7);
+           break;
+       case 'oneMonth':
+           pastDate.setMonth(currentDate.getMonth() - 1);
+           break;
+       case 'threeMonths':
+           pastDate.setMonth(currentDate.getMonth() - 3);
+           break;
+       case 'oneYear':
+           pastDate.setFullYear(currentDate.getFullYear() - 1);
+           break;
+       default:
+           // 기본값은 현재 날짜
+           pastDate = currentDate;
+           break;
+   }
 
+   return {
+       start: getFormattedDate(pastDate),
+       end: getFormattedDate(currentDate)
+   };
+}
 
+function getFormattedDate(date) {
+    var year = date.getFullYear();
+    var month = (date.getMonth() + 1).toString().padStart(2, '0');
+    var day = date.getDate().toString().padStart(2, '0');
+    return year + '-' + month + '-' + day;
+}
 </script>
 
 </head>
@@ -157,8 +211,14 @@ console.log("conEduTotal:", conEduTotal);
 				<tr>
 					<th>날짜</th>
 					<td>
-						<input type="date" name="startday" class="input"> <b style="margin: 0 0.5rem; font-size: 2rem;">-</b>
-						<input type="date" name="endday" class="input">
+						<input type="date" id="startday" name="startday" class="input"> <b style="margin: 0 0.5rem; font-size: 2rem;">-</b>
+						<input type="date" id="endday" name="endday" class="input">
+						<input id="today" type="button" value="오늘" >
+						<input id ="week" type="button" value="일주일">
+						<input id= "oneMonth" type="button" value="1개월">
+						<input id= "threeMonth" type="button" value="3개월">
+						<input id= "year" type="button" value="1년">
+					</td>
 				</tr>   			
    			</table>
    			<div class="frmBtn">

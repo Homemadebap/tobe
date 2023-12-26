@@ -19,6 +19,13 @@
 		FROM basket
 		 WHERE member_no = #{no}
 	</select>
+	<insert id="cartInsert"  parameterType="kr.co.tobe.vo.BasketVO">
+		INSERT INTO basket(
+			member_no, course_no
+		) VALUES (
+			#{member_no}, #{course_no}
+		)
+	</insert>
 		<!-- WHERE member_no = #{no} -->
 		
 		 
@@ -48,7 +55,7 @@
 		    DATE_FORMAT(pay_date, '%Y-%m-%d') AS i_startday, 
 		    DATE_FORMAT(pay_date, '%Y-%m-%d') AS i_endday,
 		   teacher_img_org,
-		   pay_cancel, pay_cancel_date, pay_refund, pay_refund_date
+		   pay_cancel, DATE_FORMAT(pay_cancel_date, '%Y-%m-%d') AS pay_cancel_date, pay_refund, pay_refund_date
 		FROM member m
 		JOIN pay p ON m.member_no = p.member_no
 		JOIN pay_detail pd ON p.order_no = pd.order_no

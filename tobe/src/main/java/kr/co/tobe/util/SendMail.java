@@ -10,18 +10,50 @@ import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
+import org.apache.ibatis.annotations.Mapper;
+import org.mybatis.spring.annotation.MapperScan;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
+import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
+import lombok.Data;
 
-
+@Data
+@PropertySource("classpath:email.properties")
+@Component
 public class SendMail {
 
+	@Value("${mail.userid}")
+	private String userid;
+	@Value("${mail.username}")
+	private String username;
+	@Value("${mail.password}")
+	private String userpassword;
 	
+	private String id;
+	private String name;
+	private String password;
+	
+
+	public void init() {
+		name = username;
+		id = username;
+		password = userpassword;
+		System.out.println(name+"1111");
+		System.out.println(id+"1111");
+		System.out.println(password+"1111");
+	}
+
 	    
 	// 매개변수로 발신자, 수신자, 제목, 내용
 	public void sendMail(String to, String subject, String content) {
-		System.out.println("");
-		System.out.println("");
-		System.out.println("");
 		// 1. 메일서버 정보 설정 (Property 객체로 처리)
 		Properties prop = System.getProperties();
 		prop.put("mail.smtp.host", "smtp.naver.com");
@@ -33,14 +65,14 @@ public class SendMail {
 		Session session = Session.getDefaultInstance(prop, new Authenticator() {
 			@Override
 			protected PasswordAuthentication getPasswordAuthentication() {
-				return new PasswordAuthentication("", "");
+				return new PasswordAuthentication(id, password);
 			}
 		});
 		session.setDebug(true);
 		// 3. MimeMessage 객체 생성 (발신자, 수신자, 제목, 내용 설정)
 		try {
 			MimeMessage mm = new MimeMessage(session);
-			mm.setFrom(new InternetAddress("")); // 발신자
+			mm.setFrom(new InternetAddress(name)); // 발신자
 			mm.setRecipient(Message.RecipientType.TO, new InternetAddress(to)); // 수신자
 			mm.setSubject(subject); // 제목
 			// mm.setText(content); // 내용 (단순 텍스트로)
