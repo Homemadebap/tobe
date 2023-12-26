@@ -10,5 +10,5 @@ public interface ChiefSalesMapper {
 	
 	List<Map<String, Object>> payList(Map<String, Object> map);
 	List<Map<String, Object>> conEduTotal(Map<String, Object> map);
-	Map<String, Object> pay_chargeTotal();
+	Map<String, Object> pay_chargeTotal(Map<String, Object> map);
 }

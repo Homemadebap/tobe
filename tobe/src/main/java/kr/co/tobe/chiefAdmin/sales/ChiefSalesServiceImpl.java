@@ -23,8 +23,8 @@ public class ChiefSalesServiceImpl implements ChiefSalesService {
 	}
 	
 	@Override
-	public Map<String, Object> pay_chargeTotal() {
-		return mapper.pay_chargeTotal();
+	public Map<String, Object> pay_chargeTotal(Map<String, Object> map) {
+		return mapper.pay_chargeTotal(map);
 	};
 
 }

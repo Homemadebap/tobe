@@ -52,8 +52,8 @@
 		    p.order_no, 
 		    i_cname, 
 		    i_price, 
-		    i_startday, 
-		    i_endday,
+		    DATE_FORMAT(pay_date, '%Y-%m-%d') AS i_startday, 
+		    DATE_FORMAT(pay_date, '%Y-%m-%d') AS i_endday,
 		   teacher_img_org,
 		   pay_cancel, pay_cancel_date, pay_refund, pay_refund_date
 		FROM member m

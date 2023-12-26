@@ -22,9 +22,10 @@ public interface UserMemberMapper {
 	int quit(MemberVO mvo);
 
 	// 아이디 찾기
-	int searchID(MemberVO vo);
 
 	MemberVO findId(MemberVO vo);
+	MemberVO findPwd(MemberVO vo);
+	
 	
 
 }

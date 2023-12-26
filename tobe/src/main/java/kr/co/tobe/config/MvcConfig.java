@@ -124,6 +124,8 @@ public class MvcConfig implements WebMvcConfigurer{
 						.excludePathPatterns("/user/member/userLogin.do")
 						.excludePathPatterns("/user/member/userJoinForm.do")
 						.excludePathPatterns("/user/member/userFindMember.do")
+						.excludePathPatterns("/user/member/userFindPwdNext.do")
+						.excludePathPatterns("/user/member/userJoinPolicy.do")
 						.addPathPatterns("/user/common/userBasket.do")
 						.addPathPatterns("/user/common/userBasketDelete.do")
 						.addPathPatterns("/user/course/qna/insert.do")
