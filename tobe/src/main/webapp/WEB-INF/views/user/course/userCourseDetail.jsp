@@ -115,43 +115,13 @@ document.addEventListener('DOMContentLoaded', function(){
     function showReview() {
         $('#showDetailContent, #showQnaContent').hide();
         $('#showReviewContent').show();
-        ajaxFuncReview();
+        ajaxFuncReview(1);
     }
 
     function showQnA() {
         $('#showDetailContent, #showReviewContent').hide();
         $('#showQnaContent').show();
-        ajaxFuncQna(); // 강좌 문의를 가져오는 함수 호출
-    }
-    
-    function ajaxFuncQna() {
-    	$.ajax({
-			url: "/tobe/user/course/userCourseDetailQnaList.do?course_no=" + course_no,
-			type: 'GET',
-			success: function(courseInfoList){
-				console.log("반가워");
-				console.log(courseInfoList);
-				$("#showQnaContent").html(courseInfoList);
-			},
-			error: function() {
-				console.error('문의 정보를 가져오는데 실패했습니다.');
-			}
-	    });
-    }
-    
-    function ajaxFuncReview() {
-    	$.ajax({
-			url: "/tobe/user/course/userCourseDetailReviewList.do?course_no=" + course_no,
-			type: 'GET',
-			success: function(courseInfoList){
-				console.log("반가워");
-				console.log(courseInfoList);
-				$("#showReviewContent").html(courseInfoList);
-			},
-			error: function() {
-				console.error('후기 정보를 가져오는데 실패했습니다.');
-			}
-	    });
+        ajaxFuncQna(1); // 강좌 문의를 가져오는 함수 호출
     }
     
     window.showDetail = showDetail;
@@ -159,6 +129,35 @@ document.addEventListener('DOMContentLoaded', function(){
     window.showQnA = showQnA;
 });
     
+function ajaxFuncQna(page) {
+	$.ajax({
+		url: "/tobe/user/course/userCourseDetailQnaList.do?course_no=${courseInfo.course_no}&page="+page,
+		type: 'GET',
+		success: function(courseInfoList){
+			console.log("반가워");
+			console.log(courseInfoList);
+			$("#showQnaContent").html(courseInfoList);
+		},
+		error: function() {
+			console.error('문의 정보를 가져오는데 실패했습니다.');
+		}
+    });
+}
+
+function ajaxFuncReview(page) {
+	$.ajax({
+		url: "/tobe/user/course/userCourseDetailReviewList.do?course_no=${courseInfo.course_no}&page="+page,
+		type: 'GET',
+		success: function(courseInfoList){
+			console.log("반가워");
+			console.log(courseInfoList);
+			$("#showReviewContent").html(courseInfoList);
+		},
+		error: function() {
+			console.error('후기 정보를 가져오는데 실패했습니다.');
+		}
+    });
+}
 </script>
 <body>
    <div class="wrap">
