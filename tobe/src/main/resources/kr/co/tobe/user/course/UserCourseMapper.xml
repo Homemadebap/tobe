@@ -102,15 +102,16 @@
 		SELECT *
 		FROM review
 		WHERE course_no = #{course_no}
+		ORDER BY review_no
 		LIMIT #{startIdx}, 10
-		<!--  
-		<include refid="cqnaSql"/>
-		ORDER BY gno DESC, ono ASC
-		LIMIT #{startIdx}, 10-->
 	</select>
-    <!-- <select id="cqnaDetailQnaList" parameterType="kr.co.tobe.vo.ReviewVO" resultType="kr.co.tobe.vo.ReviewVO">
-        SELECT r_title, r_writedate, r_content
+    <select id="reviewCount" parameterType="kr.co.tobe.vo.ReviewVO" resultType="int">
+        SELECT COUNT(*)
         FROM review
-        WHERE review_no = #{reviewNo};
-    </select>  -->
+        WHERE review_no = #{review_no};
+    </select>
+    
+    <select id="cqnaDetail" parameterType="int" resultType="kr.co.tobe.vo.CqnaVO">
+		SELECT * FROM cqna WHERE cqna_no = #{cqna_no}
+	</select>
 </mapper>
