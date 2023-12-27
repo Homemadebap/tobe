@@ -64,4 +64,9 @@ public class UserPayServiceImpl implements UserPayService {
 		// TODO Auto-generated method stub
 		return false;
 	}
+	
+	@Override
+	public Map<String, Object> getorder(int cart_no) {
+		return mapper.getorder(cart_no);
+	}
 }

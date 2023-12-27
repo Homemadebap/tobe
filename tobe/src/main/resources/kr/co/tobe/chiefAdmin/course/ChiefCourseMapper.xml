@@ -27,11 +27,12 @@
 			SELECT LAST_INSERT_ID()
 		</selectKey>
 	</insert>
-
-	<!--  -->
-	<delete id="delete" parameterType="int">
-		DELETE FROM course
-		WHERE
-		course_no = #{course_no}
-	</delete>
+	<select id="modcourse" parameterType="int" resultType="kr.co.tobe.vo.CourseVO">
+		SELECT * FROM course WHERE course_no = #{no}
+	</select>
+	<update id="courseUpdate" parameterType="kr.co.tobe.vo.CourseVO">
+	UPDATE  course SET 
+		point=#{point}
+	WHERE member_no=#{member_no}
+	</update>
 </mapper>

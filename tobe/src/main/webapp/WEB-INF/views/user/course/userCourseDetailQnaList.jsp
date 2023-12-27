@@ -45,6 +45,27 @@
 	.page li {
 		display: inline-block;
 	}
+	button.btn{
+		position: relative;
+		left: 550px;
+		top: 20px;
+		cursor: pointer;
+	   	color: white;
+	   	border: 0;
+	   	/* display: flex; */
+	   	/*align-items: center;
+	   	justify-content: center;
+	   	/* position: inherit; */
+	   	font-size: 16px;
+	   	/* padding: 8px 16px; */
+	   	margin: 5px 10px;
+	   	height: 34px;
+	   	border-radius: 20px;
+	   	background-color: #8ba888;
+	   	border-color: #000;
+	   	/* text-align: center; */
+	   	letter-spacing: -0.5px;
+	}
 </style>
   <div class="board_head">
       <table class="list">
@@ -79,7 +100,7 @@
       </table>
       <div class="btnSet"  style="text-align:center;">
             	<c:if test="${!empty loginInfo}">
-                	<a class="btn" href="userAskForm.do">작성하기</a>
+                	<button type="button" onclick="location.href='/tobe/user/course/userCourseAskForm.do'" class="btn">작성하기</button>
             	</c:if>
 
 			<div class="pagenate clear">

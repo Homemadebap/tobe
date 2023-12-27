@@ -7,6 +7,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import kr.co.tobe.vo.CqnaVO;
 import kr.co.tobe.vo.FaqVO;
 import kr.co.tobe.vo.NoticeVO;
 import kr.co.tobe.vo.QnaVO;
@@ -91,6 +92,11 @@ public class ChiefCustomerServiceImpl implements ChiefCustomerService {
 	@Override
 	public List<FaqVO> getfaqlist(FaqVO vo) {	
 		return mapper.getfaqlist(vo);
+	}
+	
+	@Override
+	public int QnaReply(QnaVO vo) {
+		return mapper.replyInsert(vo);
 	}
 
 }

@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import kr.co.tobe.vo.CqnaVO;
 import kr.co.tobe.vo.FaqVO;
 import kr.co.tobe.vo.NoticeVO;
 import kr.co.tobe.vo.QnaVO;
@@ -94,6 +95,36 @@ public class ChiefCustomerController {
 	          model.addAttribute("cmd", "back");
 	          model.addAttribute("msg", "FAQ 등록에 실패하였습니다.");    
 	       }
+		return "chiefAdmin/common/alert";
+	}
+	
+	@PostMapping("/chiefAdmin/customer/reply.do")
+	public String insert(Model model, QnaVO vo ) {
+		System.out.println("등러왔다ㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏ");
+		int r = service.QnaReply(vo);//, request);
+		if (r > 0) {
+			model.addAttribute("cmd", "move");
+			model.addAttribute("msg", "정상적으로 저장되었습니다.");
+			model.addAttribute("url", "/tobe/chiefAdmin/customer/chiefQnaList.do"); //돌아갈 페이지 박모훈 완성 후 ..
+		} else {
+			model.addAttribute("cmd", "back");
+			model.addAttribute("msg", "등록 오류");
+		}
+		return "chiefAdmin/common/alert";
+	}
+	
+	@PostMapping("/chiefAdmin/customer/edit.do")
+	public String edit(Model model, QnaVO vo ) {
+		System.out.println("등러왔다ㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏ");
+		int r = service.QnaReply(vo);//, request);
+		if (r > 0) {
+			model.addAttribute("cmd", "move");
+			model.addAttribute("msg", "정상적으로 저장되었습니다.");
+			model.addAttribute("url", "/tobe/chiefAdmin/customer/chiefQnaList.do"); //돌아갈 페이지 박모훈 완성 후 ..
+		} else {
+			model.addAttribute("cmd", "back");
+			model.addAttribute("msg", "등록 오류");
+		}
 		return "chiefAdmin/common/alert";
 	}
 }
