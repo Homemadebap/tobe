@@ -23,6 +23,6 @@ public interface UserPayService {
 	boolean pay(PayVO vo, MultipartFile file, HttpServletRequest request);
 	boolean payDetail(PayDetailVO vo, MultipartFile file, HttpServletRequest request);
 	
-	Map<String, Object> getorder(int cart_no);
+	List<Map<String, Object>> getorder(Map map);
 	
 }

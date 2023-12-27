@@ -66,7 +66,7 @@ public class UserPayServiceImpl implements UserPayService {
 	}
 	
 	@Override
-	public Map<String, Object> getorder(int cart_no) {
-		return mapper.getorder(cart_no);
+	public List<Map<String, Object>> getorder(Map map) {
+		return mapper.getorder(map);
 	}
 }
