@@ -44,8 +44,5 @@ public class ChiefCourseServiceImpl implements ChiefCourseService {
 	public CourseVO modcourse(int no) {
 		return mapper.modcourse(no);
 	}
-	
-	public int delete(int no) {
-		return mapper.delete(no);
-	}
+
 }

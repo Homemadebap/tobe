@@ -73,7 +73,7 @@
     					} else {
     						dupCheck = true;
     						alert('사용가능한 아이디입니다.');
-    						$("#id").attr('readonly','readonly');
+    						$("#id").attr();
     					}
     				}
     			})
