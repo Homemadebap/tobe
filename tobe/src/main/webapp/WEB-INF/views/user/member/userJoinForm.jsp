@@ -62,7 +62,7 @@
     	$(function() {
     		$("#idCheck").click(function() {
     			$.ajax({
-    				url:'idCheck.do',
+    				url:'/tobe/user/idCheck.do',
     				data:{id:$('#id').val()},
     				success:function(res) {
     					console.log(res);
@@ -73,7 +73,7 @@
     					} else {
     						dupCheck = true;
     						alert('사용가능한 아이디입니다.');
-    						$("#id").attr('readonly','readonly');
+    						$("#id").attr();
     					}
     				}
     			})
@@ -154,7 +154,7 @@
                             <th>아이디</th>
                             <td>
                                 <input type="text" name="id" id="id" class="inNextBtn" style="float:left;">
-                                <span class="email_check"><a href="javascript:;"  class="btn bgGray" style="float:left; width:auto; clear:none;" id="emailCheck">중복확인</a></span>
+                                <span class="id_check"><a href="javascript:;"  class="btn bgGray" style="float:left; width:auto; clear:none;" id="idCheck", name="idCheck">중복확인</a></span>
                             </td>
                         </tr>
                         <tr>

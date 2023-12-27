@@ -23,4 +23,7 @@ public interface UserPayMapper {
 	
 	int pay(PayVO vo);
 	int payDetail(PayDetailVO vo);
+	
+	List<Map<String, Object>> getorder(Map map);
+	
 }

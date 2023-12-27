@@ -26,6 +26,7 @@ public interface UserMemberMapper {
 	MemberVO findId(MemberVO vo);
 	MemberVO findPwd(MemberVO vo);
 	
-	
+	//임시비밀번호
+	int updatePw(MemberVO vo);
 
 }

@@ -10,7 +10,6 @@
     <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
-   	<!--<link rel="stylesheet" href="/tobe/css/user_Header_Footer.css"/>-->
 
   
     <script>
@@ -55,137 +54,10 @@
 		
     </script>
     <style>
-    @charset "UTF-8";
-
-
-	.wrap {
-		width: 85rem;
-		height: 70rem;
-		margin: 0 auto;	
-		position: relative;
-	}
-	
-	*{
-		box-sizing: border-box;
-	}
-	
-	.header { 
-		width: 75rem;
-		height: 15rem;
-		position: absolute;
-		top: 0;
-		left: 5rem;
-	}
-	
-	.header_memberBar {
-		position: absolute;
-		color: #000;
-		right: 0;
-		top:10%;
-		font-family: Inter;
-		text-align: center;
-		font-size: 1rem;
-		letter-spacing: 0;
-	}
-	
-	.tobe_logo {
-		position: absolute;
-		top: 4.5rem;
-		width: 20rem;	
-	}
-	
-	.menu_container{
-		position: absolute;
-		width: 50rem;
-		right: 0;
-		top: 6.5rem;
-	}
-	
-	a:link {
-		text-decoration: none;
-	}
-	
-	a:visited {
-		text-decoration: none;
-		color: #49654E; 
-	}
-	
-	.menu_container > ul > li {
-	    list-style: none;
-	    float: left;        
-	    height: 3rem;
-	    line-height: 3rem;
-	    width: 25%;
-	    text-align: center;
-	    color: #d3d3d3;
-	    font-size: 2rem;
-	}
-	
-	.menu_container > ul > li:hover {
-	    color: #49654E;
-	    font-weight: bolder;
-	    cursor:pointer; 
-	}
-	
-	
-	
-	
-	
-	.quickMenu {
-		position: absolute;
-		width: 4rem;
-		top: 30rem;
-		right: -5rem;
-		z-index:99999;
-	}
-	
-	.quick {
-		width: 4rem;
-	}
-	
-	#goTop {
-	    cursor: pointer;
-	}
-	
-	
-	
-	
-		
-	.footer { 
-		background-color:#d3d3d3;
-		width:100%;
-		height:12.5rem;
-		position:absolute;
-		top: 65rem;
-	}
-	
-	.footer_content {
-		display: grid;
-	  	place-items: center;
-	}
-	
-	.footer_logo {
-		width: 6rem;
-		display: grid;
-	  	place-items: center;
-	  	float: left;
-		height: 5rem;
-	}
-	.footer_info{
-		width: 37.5rem;
-		display: grid;
-	  	place-items: center;
-	  	float: left;
-	  	height: 5rem;
-		
-	}
-    
-    .sub{
-    position:absolute;
-    top:50%;
-    left:50%;
-    transform:translate(-50%, -50%);
-    }
+.main {
+	width: 75rem;
+	height: 50rem;
+}
     .no_dot{
     list-style-type:none;
     }
@@ -225,18 +97,16 @@
   	textarea{
   	margin:
   	}
-  	#top{
-   position: relative;
-   margin: -580px 0 0 570px; 
-}
+
     </style>
     
 </head> 
 <body>
     <div class="wrap">
-    <%@ include file="/WEB-INF/views/user/common/userHeader.jsp" %>
-    </div>
-    <div id="top">
+		<div class="headerBox">
+			<%@include file="/WEB-INF/views/user/common/userHeader.jsp"%>
+		</div>
+    	<div class="main">
     	<!-- <form name="policy" action="userJoinPolicy.do" method="post" id="joinPolicy">lass="join_box">
     	  -->
     	  <div class="all">
@@ -638,9 +508,12 @@
                 </div>
     	</form>
     	
-</div>
-     </div>
-    	
+			</div>
+    	</div>
+		<div class="footerBox">
+			<%@include file="/WEB-INF/views/user/common/userFooter.jsp"%>
+		</div>
+	</div>    	
 
 
 	

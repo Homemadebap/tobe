@@ -283,6 +283,10 @@
 					<label><input type="checkbox" name="level" value="1700"> 700</label> 
 					<label><input type="checkbox" name="level" value="1800"> 800</label> 
 					<label><input type="checkbox" name="level" value="1900"> 900</label><br>
+					<b style="margin-left:37px">토스</b>
+					<label><input type="checkbox" name="level" value="21">입문</label> 
+					<label><input type="checkbox" name="level" value="22">기본</label> 
+					<label><input type="checkbox" name="level" value="23">중급</label> 
 					<b style="margin-left:37px">토플</b>
 					<label><input type="checkbox" name="level" value="360"> 60</label> 
 					<label><input type="checkbox" name="level" value="370"> 70</label> 

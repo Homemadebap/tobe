@@ -41,7 +41,8 @@ public class ChiefCourseServiceImpl implements ChiefCourseService {
 	}
 	
 	@Override
-	public CourseVO detail(int no) {
-		return mapper.courseModDetail(no);
+	public CourseVO modcourse(int no) {
+		return mapper.modcourse(no);
 	}
+
 }

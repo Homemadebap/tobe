@@ -94,4 +94,11 @@ public class UserReviewController {
         return "user/review/userReviewDetail";
     }
 	
+	@GetMapping("/user/review/userModReviewForm.do")
+	public String getModReviewDetail(Model model, @RequestParam("reviewNo") int reviewNo) {
+		ReviewVO review = service.getReviewDetail(reviewNo);
+		model.addAttribute("review", review);
+		return "user/review/userModReviewForm";
+	}
+	
 }

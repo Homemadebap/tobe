@@ -1,19 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="kr.co.tobe.chiefAdmin.course.ChiefCourseMapper">
+<mapper
+	namespace="kr.co.tobe.chiefAdmin.course.ChiefCourseMapper">
 	<insert id="insert" parameterType="kr.co.tobe.vo.CourseVO">
 		INSERT INTO course (
-		teacher_img_org, teacher_img_real, education, area, branch,
+		teacher_img_org, teacher_img_real, education,
+		area, branch,
 		subject, level, timezone,
-		mon, tue, wed, thu, fri, sat, sun,
+		mon, tue, wed, thu, fri, sat,
+		sun,
 		teacher1, teacher2, startday, endday, postday,
-		cname, detail, time, price
+		cname, detail, time,
+		price
 		) VALUES (
 		#{teacher_img_org}, #{teacher_img_real}, #{education},
 		#{area}, #{branch}, #{subject}, #{level}, #{timezone},
 		#{mon}, #{tue},
 		#{wed}, #{thu}, #{fri}, #{sat}, #{sun},
-		#{teacher1}, #{teacher2}, #{startday}, #{endday}, NOW(),
+		#{teacher1}, #{teacher2},
+		#{startday}, #{endday}, NOW(),
 		#{cname}, #{detail},
 		#{time}, #{price}
 		)
@@ -22,4 +27,12 @@
 			SELECT LAST_INSERT_ID()
 		</selectKey>
 	</insert>
+	<select id="modcourse" parameterType="int" resultType="kr.co.tobe.vo.CourseVO">
+		SELECT * FROM course WHERE course_no = #{no}
+	</select>
+	<update id="courseUpdate" parameterType="kr.co.tobe.vo.CourseVO">
+	UPDATE  course SET 
+		point=#{point}
+	WHERE member_no=#{member_no}
+	</update>
 </mapper>

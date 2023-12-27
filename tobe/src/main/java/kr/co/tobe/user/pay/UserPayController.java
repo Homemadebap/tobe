@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import kr.co.tobe.vo.BasketVO;
+import kr.co.tobe.vo.MemberVO;
+import kr.co.tobe.vo.PayDetailVO;
 import kr.co.tobe.vo.PayVO;
 
 @Controller
@@ -66,7 +68,7 @@ public class UserPayController {
 	}
 	
 	@GetMapping ("/user/pay/userPayDetail.do")
-	public String userPayDetail(Model model, String cartNo) {
+	public String userPayDetail(Model model, String cartNo, MemberVO mvo, PayVO pvo, PayDetailVO pdvo) {
 //		System.out.println(cartNo[0]+" 카트다~~~~~~~~~~~`"+cartNo[1]);
 		List<BasketVO> basket = service.getcart(cartNo);
 		model.addAttribute("cartNo", cartNo);
@@ -75,12 +77,25 @@ public class UserPayController {
 		return "user/pay/userPayDetail";
 	}
 	@PostMapping ("/user/pay/userPayCompleteDetail.do")
-	public String pay(PayVO vo, Model model, MultipartFile file, HttpServletRequest request) {
-		boolean pay = service.pay(vo, file, request);
-	     
-		return "user/pay/userPayCompleteDetail.do?cartNo='+selectedNoList.join(',')";
+	public String pay(PayVO vo, Model model, HttpServletRequest request) {
+//		boolean pay = service.pay(vo, file, request);
+		System.out.println(vo.getMember_no());
+		System.out.println(vo.getPoint_usage());
+		System.out.println(request.getParameter("cartNo"));
+		
+		Map map = new HashMap();
+		map.put("cart_no", request.getParameter("cartNo"));
+		map.put("member_no", vo.getMember_no());
+		
+		List<Map<String, Object>> result = service.getorder(map);
+		for (Map<String, Object> m : result) {
+			System.out.println(m.get("product_no")+":"+m.get("i_price"));
+		}
+		
+		return null;
 	}
-	
+
+
 }
 //	@PostMapping("/user/pay/userPayCompleteDetail.do")
 //		@ResponseBody

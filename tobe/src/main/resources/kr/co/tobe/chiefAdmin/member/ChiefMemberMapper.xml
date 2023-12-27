@@ -2,6 +2,31 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="kr.co.tobe.chiefAdmin.member.ChiefMemberMapper">
 
+	<sql id="whereSql">
+		<where>	
+			<if test="searchWord != null and searchWord != ''">
+				(id LIKE '%${searchWord}%' OR name LIKE '%${searchWord}%' OR email LIKE '%${searchWord}%')
+			</if>
+         	<if test="startday != null and startday != ''">
+            	<if test="searchWord != null and searchWord != ''">
+                   AND
+               </if>
+                  <![CDATA[
+	              registdate BETWEEN STR_TO_DATE(#{startday}, '%Y-%m-%d') AND STR_TO_DATE(#{endday}, '%Y-%m-%d')
+	       		 ]]>
+         	</if>
+         	<if test="birthDayStartday != null and birthDayStartday != ''">
+             	<if test="searchWord != null and searchWord != '' or startday != null and startday != ''">
+                   AND
+               </if>
+                 <![CDATA[
+	              birthday BETWEEN STR_TO_DATE(#{birthDayStartday}, '%Y-%m-%d') AND STR_TO_DATE(#{birthDayEndday}, '%Y-%m-%d')
+	       		 ]]>
+        	</if>
+		</where>	
+	</sql>
+	
+	
 	<select id="cmemberDetail" parameterType="int" resultType="kr.co.tobe.vo.MemberVO">
 		SELECT * FROM member WHERE member_no = #{no}
 	</select>
@@ -15,11 +40,13 @@
 	<select id="cmemberCount" parameterType="kr.co.tobe.vo.MemberVO" resultType="int">
 		SELECT COUNT(*)
 		FROM member
+		<include refid="whereSql"/>
 	</select>
 
  	<select id="cmemberList" parameterType="kr.co.tobe.vo.MemberVO" resultType="kr.co.tobe.vo.MemberVO">
 		SELECT *
-		FROM member	
+		FROM member
+		<include refid="whereSql"/>	
 		LIMIT #{startIdx}, 10
 	</select>
 	<!-- 	

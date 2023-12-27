@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service;
 
 import kr.co.tobe.vo.CourseVO;
 import kr.co.tobe.vo.CqnaVO;
-import kr.co.tobe.vo.NoticeVO;
 import kr.co.tobe.vo.QnaVO;
 import kr.co.tobe.vo.ReviewVO;
 
@@ -99,10 +98,33 @@ public class UserCourseServiceImpl implements UserCourseService {
 		return mapper.lectureDetail(course_no);
 	}
 	
+//	@Override
+//	public List<ReviewVO> ReviewList(int course_no){
+//		System.out.println("반갑다.");
+//		return mapper.ReviewList(course_no);
+//	}
+	
 	@Override
-	public List<ReviewVO> ReviewList(int course_no){
-		System.out.println("반갑다.");
-		return mapper.ReviewList(course_no);
+    public List<ReviewVO> getReviewList(int course_no, int startIdx, int itemsPerPage) {
+        Map<String, Object> params = new HashMap<>();
+        params.put("course_no", course_no);
+        params.put("startIdx", startIdx);
+        params.put("itemsPerPage", itemsPerPage);
+        return mapper.ReviewList(params);
+    }
+
+    @Override
+    public int getreviewCount(int course_no) {
+        Map<String, Object> params = new HashMap<>();
+        params.put("course_no", course_no);
+        return mapper.cqnaCount(params);
+    }
+    
+    @Override
+	public CqnaVO cqnaDetail(CqnaVO vo) {
+		CqnaVO data = mapper.cqnaDetail(vo.getCqna_no());
+		// TODO Auto-generated method stub
+		return data;
 	}
 	
 }

@@ -6,7 +6,44 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>1:1문의</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+
+<script>
+$(function(){
+	//console.log(${map});
+    $(".tog").click(function(){
+    	console.log("dddd");
+        var idx = $(this).index(".tog");
+	     //$(".tog").
+        // 현재 클릭한 토글 외의 다른 토글 닫기
+        $(".content").not(":eq("+idx+")").slideUp(0);
+        //$(".content").slideUp(300);
+        // 클릭한 토글 열기 또는 닫기
+        $(".content").eq(idx).slideToggle(300);
+        
+    });
+    
+$('.viewEdit').click(function () {
+	console.log("aaa");
+    // 현재 클릭된 viewEdit 버튼이 속한 부모 tr에서 edit 클래스를 가진 요소를 찾아 보이게 하고,
+    // viewData 클래스를 가진 부분을 숨깁니다.
+    $(this).closest('tr').find('.edit').show();
+    $(this).closest('tr').find('.viewData').hide();
+});
+
+$('.viewRe').click(function () {
+    // 현재 클릭된 viewRe 버튼이 속한 부모 tr에서 viewData 클래스를 가진 요소를 찾아 보이게 하고,
+    // edit 클래스를 가진 부분을 숨깁니다.
+    $(this).closest('tr').find('.viewData').show();
+    $(this).closest('tr').find('.edit').hide();
+});
+
+})
+</script>
 <style>
 #top{
 	position: relative;
@@ -291,6 +328,7 @@
                             <th>제목</th>
                             <th>작성자</th>
                             <th>작성일</th>
+                            <th>답변여부</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -299,16 +337,50 @@
                
 						    <tr>
 						        <td>${qna.qna_no}</td>
-						        <td>
-						            <a href="/tobe/chiefAdmin/customer/chiefQnaDetail.do?qnaNo=${qna.qna_no}" class="SelectBtn">${qna.q_title}</a>
-						        </td>
+						        <td class ="tog">${qna.q_title }</td>
 						        <td>
 						        	${qna.member_no}
 						        </td>
-						        <td colspan="8">
-						            <fmt:formatDate value="${qna.q_writedate}" pattern="yyyy-MM-dd" />
-						        </td>
-							</tr>    
+						        <td class="writer">
+                                   ${qna.member_name}
+                               </td>
+                               <td class="date" colspan="8"><fmt:formatDate value="${qna.q_writedate }" pattern="YYYY-MM-dd"/></td>
+                               <td> <c:if test="${empty qna.q_reply}"> 미답변</c:if>
+                               		<c:if test="${!empty qna.q_reply}"> 답변 완료</c:if>
+                               </td>
+							</tr>  
+							   <tr>
+                           	<td class="content" style="display:none;" colspan="8">
+                           		<p>${qna.q_content }</p>
+                           		<c:if test="${!empty qna.q_reply}">
+                           			<div class="title">
+	                           			
+	                           			<div class=" viewData">${qna.q_reply }<button class="viewEdit">수정</button></div>
+	                           			
+	                           			
+	                         			 <div class="edit" style="display:none;">
+		                         			 <form action="/tobe/chiefAdmin/customer/edit.do" method="post" >
+			                           	 		  <input type="hidden" id="qna_no" name="qna_no" value="${qna.qna_no} ">
+											      <textarea name="q_reply" cols="100" rows="10">${qna.q_reply }</textarea>
+											      <input type="submit" value="수정">
+										    </form>
+											<button class="viewRe">취소</button>
+	                         			 </div>
+	                         			 
+	                         			 
+                           			</div>	
+                           			                         			 
+                           		</c:if>
+                           	 		
+                           	 	<c:if test="${empty qna.q_reply}">
+	                           	 	<form action="/tobe/chiefAdmin/customer/reply.do" method="post" >
+	                           	 		  <input type="hidden" id="qna_no" name="qna_no" value="${qna.qna_no} ">
+									      <textarea name="q_reply" cols="100" rows="10"></textarea>
+									      <input type="submit" value="등록">
+								    </form>
+                           	 	</c:if>
+                           	</td>
+                            </tr>
 						</c:forEach>
                    </tbody>
                 </table>
@@ -316,18 +388,18 @@
                 		<div class="pagenate clear">
                     		<ul class='paging'>
 			                    <c:if test="${map.prev }">
-			                    	<li><a href="index.do?page=${map.startPage-1 }&searchType=${NoticeVO.searchType}&searchWord=${NoticeVO.searchWord}"> << </a></li>
+			                    	<li><a href="/tobe/chiefAdmin/customer/chiefQnaList.do?page=${map.startPage-1 }&searchType=${QnaVO.searchType}&searchWord=${QnaVO.searchWord}"> << </a></li>
 			                    </c:if>
 			                    <c:forEach var="p" begin="${map.startPage}" end="${map.endPage}">
-			                    	<c:if test="${p == NoticeVO.page}">
+			                    	<c:if test="${p == QnaVO.page}">
 			                        <li><a href='#;' class='current'>${p}</a></li>
 			                        </c:if>
-			                        <c:if test="${p != NoticeVO.page}">
-			                        <li><a href='index.do?page=${p}&searchType=${NoticeVO.searchType}&searchWord=${NoticeVO.searchWord}'>${p}</a></li>
+			                        <c:if test="${p != QnaVO.page}">
+			                        <li><a href='/tobe/chiefAdmin/customer/chiefQnaList.do?page=${p}&searchType=${QnaVO.searchType}&searchWord=${QnaVO.searchWord}'>${p}</a></li>
 			                        </c:if>
 			                    </c:forEach>
                     			<c:if test="${map.next }">
-                    				<li><a href="index.do?page=${map.endPage+1 }&searchType=${NoticeVO.searchType}&searchWord=${NoticeVO.searchWord}"> >> </a></li>
+                    				<li><a href="/tobe/chiefAdmin/customer/chiefQnaList.do?page=${map.endPage+1 }&searchType=${QnaVO.searchType}&searchWord=${QnaVO.searchWord}"> >> </a></li>
                     			</c:if>
                     		</ul> 
                 		</div>

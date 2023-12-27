@@ -30,7 +30,6 @@ table{
 
 #secondLine{
 	width: 75rem;
-	margin: 0 auto;
 
 }
 hr{
@@ -38,7 +37,7 @@ hr{
 }
 .textBox{
 	width: 75rem;
-	margin: 0 auto;
+	height: 45rem;
 
 }
 #realTextBox{
@@ -47,28 +46,37 @@ hr{
 	background-color: #f1f3f5;
 	border: 0;
 }
-.combackBtn{
-	margin: 0 auto;
-	width: 75rem;
-}
-.comBack{
+
+.comeBack{
 	width: 70px;
 	cursor: pointer;
    	color: white;
    	border: 0;
-   	/* display: flex; */
-   	/*align-items: center;
-   	justify-content: center;
-   	/* position: inherit; */
    	font-size: 16px;
-   	/* padding: 8px 16px; */
    	margin: 5px 10px;
    	height: 34px;
    	border-radius: 20px;
    	background-color: #8ba888;
    	border-color: #000;
-   	/* text-align: center; */
    	letter-spacing: -0.5px;
+   	margin: 1rem 0; 
+}
+
+.modify{
+	position: relative;
+	left:1050px;
+	width: 70px;
+	cursor: pointer;
+   	color: white;
+   	border: 0;
+   	font-size: 16px;
+   	margin: 5px 10px;
+   	height: 34px;
+   	border-radius: 20px;
+   	background-color: #8ba888;
+   	border-color: #000;
+   	letter-spacing: -0.5px;
+   	margin: 1rem 0; 
 }
 </style>
 <body>
@@ -95,10 +103,13 @@ hr{
    		<div class = "subContainer">
    			<input type="text" value="${review.r_content}" readonly id="realTextBox">
    		</div>
+   		<button type="button" onclick="location.href='/tobe/user/review/userReviewIndex.do'" class="comeBack">목록</button>
+   		<c:if test="${!empty loginInfo}">
+   			<button type="button" onclick="location.href='/tobe/user/review/userModReviewForm.do?reviewNo=${review.review_no }'" class="modify">수정</a>
+		</c:if>
    	</div>
-   	<div class = "combackBtn">
-  			<button type="button" onclick="location.href='/tobe/user/review/userReviewIndex.do'" class="comBack">목록</button>
- 	</div>
+			
+
 		<div class="footerBox">
 			<%@include file="/WEB-INF/views/user/common/userFooter.jsp"%>
 		</div>

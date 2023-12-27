@@ -7,7 +7,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
+import kr.co.tobe.util.SendMail;
 import kr.co.tobe.vo.MemberVO;
 
 @Controller
@@ -15,6 +18,9 @@ public class UserMemberController {
 
 	@Autowired
 	private UserMemberService service;
+	
+	@Autowired
+	private SendMail sendEmail;
 	
 	@GetMapping("/user/member/userLogin.do")
 	public String userLogin() {
@@ -56,13 +62,30 @@ public class UserMemberController {
 	public String userFindPwd(MemberVO vo, HttpSession sess, Model model) {
 		MemberVO findPwd = service.findPwd(vo); 
 			model.addAttribute("user", findPwd);
+			sendEmail.init();
 //			return "user/member/userFindPwdNext";
 			if (findPwd == null) {
 				model.addAttribute("msg", "등록된 정보가 없습니다.");
 				model.addAttribute("cmd", "back");
 				return "user/common/userAlert";
 			} else { 
-				model.addAttribute("user", findPwd);
+				model.addAttribute("user", findPwd);			
+							
+//				Random random = new Random();
+//				int checkNum = random.nextInt(888888)+111111;
+				
+				String pw="";
+				for (int i=0; i<12; i++) {
+						pw +=(char) ((Math.random()*26)+97);
+				}
+				
+				vo.setPwd(pw);
+				service.updatePw(vo);
+				
+				String content = "TOBE 임시 비밀번호입니다." + "<br><br>" + "임시 번호는" + pw + "입니다.";				
+				
+				sendEmail.sendMail(findPwd.getEmail(), "TOBE 임시 비밀번호 발급", content);				
+				
 				return "user/member/userFindPwdNext";
 			}
 		}
@@ -200,5 +223,12 @@ public class UserMemberController {
 	public String userJoinPolicy() {
 		return "user/member/userJoinPolicy";
 	}
-
+	
+	//아이디 중복확인
+	@ResponseBody
+	@GetMapping("/user/idCheck.do")
+	public String idCheck(@RequestParam String id) {
+		boolean r = service.dupId (id);
+		return String.valueOf(r);
+	}
 }

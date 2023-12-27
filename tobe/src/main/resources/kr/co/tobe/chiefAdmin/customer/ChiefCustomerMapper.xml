@@ -82,4 +82,10 @@
       FROM notice
       <include refid="noticeSql"/>
    </select>
+   
+   <update id="replyInsert" parameterType="kr.co.tobe.vo.QnaVO">
+		UPDATE qna 
+		SET q_reply = #{q_reply}
+		WHERE qna_no =#{qna_no}
+	</update>
 </mapper>
