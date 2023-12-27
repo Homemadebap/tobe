@@ -13,4 +13,5 @@ public interface ChiefCourseService {
 	int update(CourseVO vo);
 	CourseVO modcourse(int no);
 	
+
 }

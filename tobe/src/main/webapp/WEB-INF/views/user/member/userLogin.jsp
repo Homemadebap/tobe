@@ -2,8 +2,10 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+
 <!DOCTYPE html>
 <html lang="ko">
+
 <head> 
     <meta charset="utf-8">
     <title></title>
@@ -41,10 +43,133 @@ function loginCheck() {
    left:27.5rem;
    font-size: 1.25rem;
 }
-
 .no_dot{
    list-style-type:none;
    font-size: 1.25rem;
+}
+.wrap {
+	width: 85rem;
+	height: 70rem;
+	margin: 0 auto;
+	position: relative;
+}
+
+* {
+	box-sizing: border-box;
+}
+
+.header {
+	width: 75rem;
+	height: 15rem;
+	position: absolute;
+	top: 0;
+	left: 5rem;
+}
+
+.header_memberBar {
+	position: absolute;
+	color: #000;
+	right: 0;
+	top: 10%;
+	font-family: Inter;
+	text-align: center;
+	font-size: 1rem;
+	letter-spacing: 0;
+}
+
+.tobe_logo {
+	position: absolute;
+	top: 4.5rem;
+	width: 20rem;
+}
+
+.menu_container {
+	position: absolute;
+	width: 50rem;
+	right: 0;
+	top: 6.5rem;
+}
+
+a:link {
+	text-decoration: none;
+}
+
+a:visited {
+	text-decoration: none;
+	color: #49654E;
+}
+
+.menu_container>ul>li {
+	list-style: none;
+	float: left;
+	height: 3rem;
+	line-height: 3rem;
+	width: 25%;
+	text-align: center;
+	color: #d3d3d3;
+	font-size: 2rem;
+}
+
+.menu_container>ul>li:hover {
+	color: #49654E;
+	font-weight: bolder;
+	cursor: pointer;
+}
+
+.quickMenu {
+	position: absolute;
+	width: 4rem;
+	top: 30rem;
+	right: -5rem;
+	z-index: 99999;
+}
+
+.quick {
+	width: 4rem;
+}
+
+#goTop {
+	cursor: pointer;
+}
+
+.footer {
+	background-color: #d3d3d3;
+	width: 100%;
+	height: 12.5rem;
+	position: absolute;
+	top: 65rem;
+}
+
+.footer_content {
+	display: grid;
+	place-items: center;
+}
+
+.footer_logo {
+	width: 6rem;
+	display: grid;
+	place-items: center;
+	float: left;
+	height: 5rem;
+}
+
+.footer_info {
+	width: 37.5rem;
+	display: grid;
+	place-items: center;
+	float: left;
+	height: 5rem;
+}
+
+.sub {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+.no_dot {
+	list-style-type: none;
 }
 
 .login_btn{
@@ -53,17 +178,19 @@ function loginCheck() {
 	color: #FFFFFF;
 }
 
-.btnSet_clear .btn{
-   text-decoration-line: none;
-   border-radius: 10px;
-   background-color: #F5F5F5;
-   color: #000000;
-   border-color: #000000;
+.btnSet_clear .btn {
+	text-decoration-line: none;
+	border-radius: 10px;
+	background-color: #F5F5F5;
+	color: #000000;
+	border-color: #000000;
 	border-width: thin;
 }
 </style>
-    
-</head> 
+
+</head>
+
+
 <body>
     <div class="wrap">
 		<div class="headerBox">
