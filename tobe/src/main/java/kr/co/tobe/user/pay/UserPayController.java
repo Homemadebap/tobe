@@ -77,13 +77,21 @@ public class UserPayController {
 		return "user/pay/userPayDetail";
 	}
 	@PostMapping ("/user/pay/userPayCompleteDetail.do")
-	public String pay(PayVO vo, Model model, MultipartFile file, HttpServletRequest request,@RequestParam("cart_no") int cart_no) {
+	public String pay(PayVO vo, Model model, HttpServletRequest request) {
 //		boolean pay = service.pay(vo, file, request);
 		System.out.println(vo.getMember_no());
 		System.out.println(vo.getPoint_usage());
 		System.out.println(request.getParameter("cartNo"));
 		
-		model.addAttribute("go", service.getorder(cart_no));
+		Map map = new HashMap();
+		map.put("cart_no", request.getParameter("cartNo"));
+		map.put("member_no", vo.getMember_no());
+		
+		List<Map<String, Object>> result = service.getorder(map);
+		for (Map<String, Object> m : result) {
+			System.out.println(m.get("product_no")+":"+m.get("i_price"));
+		}
+		
 		return null;
 	}
 
