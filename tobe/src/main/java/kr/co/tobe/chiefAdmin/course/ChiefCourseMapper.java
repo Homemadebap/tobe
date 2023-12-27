@@ -11,4 +11,6 @@ public interface ChiefCourseMapper {
 	int insert(CourseVO vo);
 	int courseUpdate (CourseVO vo);
 	CourseVO courseModDetail(int no);
+	
+	int delete (int no);
 }

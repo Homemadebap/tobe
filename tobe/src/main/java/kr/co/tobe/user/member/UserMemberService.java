@@ -17,6 +17,6 @@ public interface UserMemberService {
 	MemberVO findId(MemberVO vo);
 	MemberVO findPwd(MemberVO vo);
 
-	
+	int updatePw(MemberVO vo);
 	
 }

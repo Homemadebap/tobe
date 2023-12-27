@@ -56,6 +56,10 @@ public class UserMemberServiceImpl implements UserMemberService {
 	public MemberVO findPwd(MemberVO vo) {
 		return mapper.findPwd(vo);
 	}
-
+	
+	@Override
+	public int updatePw(MemberVO vo){
+			return mapper.updatePw(vo);
+	}
 	
 }
