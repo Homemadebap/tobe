@@ -23,10 +23,13 @@
 
 <style>
 .main {
-	position: absolute;
+	width: 75rem;
+	height: 55rem;
+}
+
+.userMain {
 	width: 75rem;
 	height: 10rem;
-	top: 12rem;
 	background-color: #E4E6D9;
 }
 
@@ -35,18 +38,9 @@
 	width: 10rem;
 	height: 10rem;
 	text-align: center;
-	font-color: #49654E;
+	font-color: #000;
 	font-size: 1.5rem;
 	left: 1rem;
-	color: #49654E;
-}
-
-.part2 {
-	position: absolute;
-	width: 20rem;
-	height: 10rem;
-	font-size: 1.25rem;
-	left: 15rem;
 	color: #49654E;
 }
 
@@ -59,6 +53,15 @@
 	position: absolute;
 	top: 4rem;
 	left: 1.5rem;
+}
+
+.part2 {
+	position: absolute;
+	width: 20rem;
+	height: 10rem;
+	font-size: 1.25rem;
+	left: 15rem;
+	color: #49654E;
 }
 
 #set {
@@ -92,6 +95,7 @@
 	left: 3.5rem;
 	top: 1.35rem;
 }
+
 #quitText {
 	position: absolute;
 	text-align: center;
@@ -100,38 +104,30 @@
 }
 
 .pointContainer {
-	position: absolute;
-	width: 20rem;
+	margin: 0 0 0 53rem;
+	width: 22rem;
 	height: 10rem;
-	right: 0rem;
 }
 
 #pointImg {
-	position: absolute;
-	left: 0;
-	top: 1.75rem;
+	margin: 1.9rem 0;
+	float: left;
 }
 
 #point {
-	position: absolute;
-	width: 15rem;
-	height: 10rem;
-	right: 0;
+	float: left;
+	margin: 3rem 0 0 1rem;
+	width: 13rem;
+	height: 4rem;
 	color: #49654E;
 }
 
 #userPointText {
-	position: absolute;
 	width: 13rem;
-	top: 3rem;
-	left: 1rem;
 	font-size: 1.25rem;
 }
 #numPointText {
-	position: absolute;
 	width: 11.5rem;
-	top: 6rem;
-	left: 1rem;
 	font-size: 1.25rem;
 }
 
@@ -167,7 +163,7 @@
 
 .quitNotice {
 	position: absolute;
-	top: 10rem;
+	top: 24rem;
 	left: 1rem;
 }
 
@@ -175,7 +171,7 @@
 	position: absolute;
 	width: 71rem;
 	left: 1rem;
-	top: 27rem;
+	top: 42.5rem;
 }
 
 .line {
@@ -204,31 +200,36 @@
 </head>
 <body>
 	<div class="wrap">
-		<%@include file="/WEB-INF/views/user/common/userHeader.jsp"%>
+		<div class="headerBox">
+			<%@include file="/WEB-INF/views/user/common/userHeader.jsp"%>
+		</div>
 		<div class="main">
-			
-			<div class="part1">
-				<p id="userName"><b>${user.name }</b>님</p>
-				<p id="userId">${user.id }</p>
-			</div>
-			<div class="part2">
-				<div id="set">
-					<a href="/tobe/user/member/userModify.do">
-						<img src="/tobe/img/set.png" id="setImg">
-						<span id="setText">회원정보수정</span>
-					</a>
+			<div class="userMain">
+				<div class="part1">
+					<p id="userName"><b>${user.name }</b>님</p>
+					<p id="userId">${user.id }</p>
 				</div>
-				<div id="quit">
-					<img src="/tobe/img/quit.png" id="quitImg">
-					<span id="quitText"><b>회원탈퇴</b></span>
+				<div class="part2">
+					<div id="set">
+						<a href="/tobe/user/member/userModify.do">
+							<img src="/tobe/img/set.png" id="setImg">
+							<span id="setText">회원정보수정</span>
+						</a>
+					</div>
+					<div id="quit">
+						<a href="/tobe/user/member/userQuit.do">
+							<img src="/tobe/img/quit.png" id="quitImg">
+							<span id="quitText">회원탈퇴</span>
+						</a>
+					</div>
 				</div>
-			</div>
-			
-			<div class="pointContainer"><img src="/tobe/img/point.png" id="pointImg">
-				<span id="point">
-					<span id="userPointText"><b>${user.name }</b>님의 잔여포인트</span>
-					<span id="numPointText"> ${user.point } 포인트</span>
-				</span>
+				
+				<div class="pointContainer"><img src="/tobe/img/point.png" id="pointImg">
+					<span id="point">
+						<span id="userPointText"><b>${user.name }</b>님의 잔여포인트</span>
+						<span id="numPointText"><b>${user.point } </b> 포인트</span>
+					</span>
+				</div>
 			</div>
 			
 			<div class="quitNotice">

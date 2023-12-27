@@ -36,17 +36,17 @@
 				}
 			})
 			if (!isCon) return;
-    		if ($("#pw").val() == '') {
+    		if ($("#pwd").val() == '') {
     			alert('비밀번호를 입력하세요');
-    			$("#pw").focus();
+    			$("#pwd").focus();
     			return;
     		}
-    		if ($("#pw").val() != $("#pw_check").val()) {
+    		if ($("#pwd").val() != $("#pw_check").val()) {
     			alert('비밀번호를 확인하세요');
     			return;
     		}
     		var reg = /^[A-Za-z0-9]{8,}$/;
-    		var txt = $("#pw").val();
+    		var txt = $("#pwd").val();
     		if( txt.match(reg) == null ) {
     		    alert("비밀번호는 영문+숫자 조합해서 8자이상 입력하세요");
     		    return false;
