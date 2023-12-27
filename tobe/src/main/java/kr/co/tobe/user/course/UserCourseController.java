@@ -215,4 +215,20 @@ public class UserCourseController {
 		model.addAttribute("vo", service.cqnaDetail(vo));
 		return "user/course/userCourseAskDetail";
 	}
+	
+
+   @GetMapping("/user/course/userCourseAskForm.do")
+   public String write( @RequestParam("infoCourse_no") String infoCourse_no,
+                   @RequestParam("infoDetail_no") String infoDetail_no,
+                   @RequestParam("infoCourseName") String infoCourseName,
+                   Model model, HttpSession sess ) {
+      MemberVO user = (MemberVO)sess.getAttribute("loginInfo");
+
+      model.addAttribute("infoCourse_no", infoCourse_no);
+      model.addAttribute("infoDetail_no", infoDetail_no);
+      model.addAttribute("infoCourseName", infoCourseName );
+      
+      return "/user/course/userCourseAskForm";
+   }
+	   
 }

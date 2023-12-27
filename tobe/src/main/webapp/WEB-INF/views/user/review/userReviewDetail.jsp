@@ -61,6 +61,23 @@ hr{
    	letter-spacing: -0.5px;
    	margin: 1rem 0; 
 }
+
+.modify{
+	position: relative;
+	left:1050px;
+	width: 70px;
+	cursor: pointer;
+   	color: white;
+   	border: 0;
+   	font-size: 16px;
+   	margin: 5px 10px;
+   	height: 34px;
+   	border-radius: 20px;
+   	background-color: #8ba888;
+   	border-color: #000;
+   	letter-spacing: -0.5px;
+   	margin: 1rem 0; 
+}
 </style>
 <body>
    	<div class="wrap">
@@ -87,6 +104,9 @@ hr{
    			<input type="text" value="${review.r_content}" readonly id="realTextBox">
    		</div>
    		<button type="button" onclick="location.href='/tobe/user/review/userReviewIndex.do'" class="comeBack">목록</button>
+   		<c:if test="${!empty loginInfo}">
+   			<button type="button" onclick="location.href='/tobe/user/review/userModReviewForm.do?reviewNo=${review.review_no }'" class="modify">수정</a>
+		</c:if>
    	</div>
 			
 
