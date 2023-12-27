@@ -144,6 +144,11 @@ td{
 	background-color: #F0F8FF;
 	color: #808080;
 }
+.course{
+	position: absolute;
+	margin: 775px 0 0 1145px;
+	text-align: end;
+}
 
 </style>
 
@@ -159,10 +164,14 @@ td{
 			
 			<tr>
 				 <td width="100px;">학원명</td>
-				 <td>
-			 		
-			 		<input type="text" name ="educationName" > <!-- value="${CodeToString.educationToString(adLoginInfo.ad_type) }"  -->
-		 		</td>
+					 <td>
+				 		<select name="educationName">
+				 		<option>전체</option>
+				 		<option>해커스</option>
+				 		<option>파고다</option>
+				 		<option>YBM</option>
+				 		</select>
+			 		</td>
 			</tr>
 			<tr>
 			    <td width="100px;">검 색</td>
@@ -218,7 +227,7 @@ td{
 	   	 		<div class="searchOrReset">
    	 			
 	   	 		<input class ="bnt" type="button" value="강좌등록" onclick="window.location.href='chiefCourseForm.do'">
-				<input class ="bnt" type="reset" onclick="window.location.href='/tobe/chiefAdmin/course/chiefCourseIndex.do'">
+				<input class ="bnt" type="reset" value="초기화" onclick="window.location.href='/tobe/chiefAdmin/course/chiefCourseIndex.do'">
 				<input class ="bnt" type="submit" id="" value="검색">
 			</div>    
 		</table>
@@ -231,7 +240,7 @@ td{
          <table class="tablea">
          	<div class="searchOrReset">
    	 			
-	   	 		<input class ="bnt" type="button" value="수정">
+	   	 		<input class ="bnt" type="button" value="수정" onclick="window.location.href='chiefModCourseForm.do'">
 	   	 		<input class ="bnt" type="button" value="삭제" onclick="ProcessDelete();">
 			</div>    
          <thead>
@@ -239,6 +248,7 @@ td{
       	 		<input type="checkbox" name="checkAll" class="check_all" onclick="courseAllSelect(this);">
           		<label for="checkAll">&nbsp;</label> </span>
 			</th>
+			<th>no</th>
          	<th>학원<th>
          	<th>과목</th>
          	<th>지역</th>
@@ -257,7 +267,7 @@ td{
          	<c:forEach var="vo" items="${map.list}">       
 			    <tr style="text-align:center;">
 			   		<td><input  type="checkbox" class="input_button small" name="course_no" data-no="${vo.course_no }" onclick="checkCl(this);"><label for="checkbox2">&nbsp;</label></td>
-			      	<td> ${CodeToString.educationToString(vo.education)}</td>
+			      	<td> ${CodeToString.educationToString(CourseVO.education)}</td>
 					<td> ${CodeToString.subjectToString(vo.subject)}</td>
 					<td> ${CodeToString.areaToString(vo.area)} </td>
 					<td> ${CodeToString.branchToString(vo.branch)} </td>
@@ -275,28 +285,26 @@ td{
  		</tbody>
          	
          </table>
-        	<div class="email">
+        	<div class="course">
         	 <div class="pagenate clear">
                        <ul class='paging'>
                        <c:if test="${map.prev }">
-                       	<li><a href="/tobe/chiefAdmin/email/chiefEmailIndex.do?page=${map.startPage-1 }"> << </a></li>
+                       	<li><a href="/tobe/chiefAdmin/course/chiefCourseIndex.do?page=${map.startPage-1 }"> << </a></li>
                        </c:if>
                        <c:forEach var="p" begin="${map.startPage}" end="${map.endPage}">
                        	<c:if test="${p == courseVO.page}">
                            <li><a href='#;' class='current'>${p}</a></li>
                            </c:if>
                            <c:if test="${p != courseVO.page}">
-                           <li><a href='/tobe/chiefAdmin/email/chiefEmailIndex.do?page=${p}'>${p}</a></li>
+                           <li><a href='/tobe/chiefAdmin/course/chiefCourseIndex.do?page=${p}'>${p}</a></li>
                            </c:if>
                        </c:forEach>
                        <c:if test="${map.next }">
-                       	<li><a href="/tobe/chiefAdmin/email/chiefEmailIndex.do?page=${map.endPage+1 }"> >> </a></li>
+                       	<li><a href="/tobe/chiefAdmin/course/chiefCourseIndex.do?page=${map.endPage+1 }"> >> </a></li>
                        </c:if>
                        </ul> 
               </div> 
-			<div>
-				<button type="button" name="button3"  class="btn_order">삭제</button>
-			</div>	
+
           </div>
 	</div>
 	</div>

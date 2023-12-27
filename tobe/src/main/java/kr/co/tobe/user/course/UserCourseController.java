@@ -183,12 +183,36 @@ public class UserCourseController {
         return "/user/course/userCourseDetail";
     }
 	
+//	@GetMapping("/user/course/userCourseDetailReviewList.do")
+//    public String getReviewDetail(Model model, @RequestParam("course_no") int course_no) {
+//		List<ReviewVO> reviewList = service.ReviewList(course_no);
+//		model.addAttribute("reviewList", reviewList);
+//      	System.out.println(reviewList);
+//      	System.out.println("안뇽");
+//		return "/user/course/userCourseDetailReviewList";
+//    }
+	
 	@GetMapping("/user/course/userCourseDetailReviewList.do")
-    public String getReviewDetail(Model model, @RequestParam("course_no") int course_no) {
-		List<ReviewVO> reviewList = service.ReviewList(course_no);
-		model.addAttribute("reviewList", reviewList);
-      	System.out.println(reviewList);
-      	System.out.println("안뇽");
-		return "/user/course/userCourseDetailReviewList";
+    public String getReviewList(Model model, @RequestParam(name="course_no", required = true) int course_no, @RequestParam(value = "page", defaultValue = "1") int page) {
+        int itemsPerPage = 10;
+        int startIdx = (page - 1) * itemsPerPage;
+
+        List<ReviewVO> reviewList = service.getReviewList(course_no, startIdx, itemsPerPage);
+        int totalReviewCount = service.getCqnaCount(course_no);
+        int totalPage = (int) Math.ceil((double) totalReviewCount / itemsPerPage);
+
+        model.addAttribute("reviewList", reviewList);
+        model.addAttribute("currentPage", page);
+        model.addAttribute("itemsPerPage", itemsPerPage);
+        model.addAttribute("totalReviewCount", totalReviewCount);
+        model.addAttribute("totalPage", totalPage);
+
+        return "/user/course/userCourseDetailReviewList";
     }
+	
+	@GetMapping("/user/course/userCourseAskDetail.do")
+	public String viewCqnaDetail(Model model,  CqnaVO vo) {
+		model.addAttribute("vo", service.cqnaDetail(vo));
+		return "user/course/userCourseAskDetail";
+	}
 }

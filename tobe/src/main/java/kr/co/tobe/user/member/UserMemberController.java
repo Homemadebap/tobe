@@ -1,7 +1,5 @@
 package kr.co.tobe.user.member;
 
-import java.util.Random;
-
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +7,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import kr.co.tobe.util.SendMail;
 import kr.co.tobe.vo.MemberVO;
@@ -223,5 +223,12 @@ public class UserMemberController {
 	public String userJoinPolicy() {
 		return "user/member/userJoinPolicy";
 	}
-
+	
+	//아이디 중복확인
+	@ResponseBody
+	@GetMapping("/user/idCheck.do")
+	public String idCheck(@RequestParam String id) {
+		boolean r = service.dupId (id);
+		return String.valueOf(r);
+	}
 }
