@@ -8,7 +8,7 @@
 </head>
 <style>
 #con{
-	margin: -680px 0 0 150px;
+	margin: -870px 0 0 150px;
 }
 #boxa{
 	display: flex;

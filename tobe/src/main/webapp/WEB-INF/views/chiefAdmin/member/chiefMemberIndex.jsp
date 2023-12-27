@@ -24,7 +24,7 @@
 <style>
 #top{
    position: relative;
-   margin: -760px 0 0 -90px; 
+   margin: -870px 0 0 -90px; 
 }
 .admin_logo {
    position: absolute;
