@@ -14,8 +14,8 @@
             var idx = $(this).index(".t");
             
             // 현재 클릭한 토글 외의 다른 토글 닫기
-            //$(".c").not(":eq("+idx+")").slideUp(300);
-            $(".c").slideUp(300);
+            $(".c").not(":eq("+idx+")").slideUp(300);
+            //$(".c").slideUp(300);
             // 클릭한 토글 열기 또는 닫기
             $(".c").eq(idx).slideToggle(300);
         });

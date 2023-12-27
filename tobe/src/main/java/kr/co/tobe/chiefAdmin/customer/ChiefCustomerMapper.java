@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
 
+import kr.co.tobe.vo.CqnaVO;
 import kr.co.tobe.vo.FaqVO;
 import kr.co.tobe.vo.NoticeVO;
 import kr.co.tobe.vo.QnaVO;
@@ -25,4 +26,6 @@ public interface ChiefCustomerMapper {
 	List<QnaVO> getqnalist(QnaVO vo);
 
 	public List<FaqVO> getfaqlist(FaqVO vo);	
+	
+	int replyInsert (QnaVO vo);
 }

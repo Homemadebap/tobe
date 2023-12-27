@@ -89,28 +89,30 @@
 	   }
 	 }
    
+   
    $(document).ready(function() {
-	   console.log(${map.branch});
-	   $("#educationS").val(${map.education});
-	   $("#branchS").val(${map.branch});
-	   $("#areaS").val(${map.area});
-	   $("#subjectS").val(${map.subject});
-	   $("#levelS").val(${map.level});
+	   console.log(${map});
+	   $("#educationS").val(map.education).prop("selected", true);
+	   /*$("#educationS").val(${map.education}).prop("selected", true);*/
+	   $("#branchS").val(${map.branch}).prop("selected", true);
+	   $("#areaS").val(${map.area}).prop("selected", true);
+	   $("#subjectS").val(${map.subject}).prop("selected", true);
+	   /*$("#levelS").val(${map.level});*/
 	   $("#timezoneS").val(${map.timezone});
-	   $("#monS").val(${map.mon});
+	  /* $("#monS").val(${map.mon});
 	   $("#tueS").val(${map.tue});
 	   $("#wedS").val(${map.wed});
 	   $("#thuS").val(${map.thu});
 	   $("#friS").val(${map.fri});
 	   $("#satS").val(${map.sat});
-	   $("#sunS").val(${map.sun});
+	   $("#sunS").val(${map.sun});*/
 	   $("#teacher1S").val(${map.teacher1});
-	   $("#teacher2S").val(${map.teacher2});
+	   /*$("#teacher2S").val(${map.teacher2});*/
 	   $("#startdayS").val(${map.startday});
 	   $("#enddayS").val(${map.endday});
 	   $("#cnameS").val(${map.cname});
 	   $("#detail").val(${map.detail});
-	   $("#timeS").val(${map.time});
+	   $("#timeS").val(${map.time}).prop("selected", true);
 	   $("#priceS").val(${map.price});
 	   $("#teacher_img_orgS").val(${map.teacher_img_org});
    });

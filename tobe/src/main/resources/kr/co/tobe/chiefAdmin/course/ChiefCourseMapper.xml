@@ -17,8 +17,6 @@
 		#{cname}, #{detail},
 		#{time}, #{price}
 		)
-		INSERT INTO course (education, admin_no)
-        VALUES (#{education}, #{admin_no})
 		<selectKey keyProperty="course_no" order="AFTER"
 			resultType="int">
 			SELECT LAST_INSERT_ID()

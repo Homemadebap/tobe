@@ -3,6 +3,7 @@ package kr.co.tobe.chiefAdmin.customer;
 import java.util.List;
 import java.util.Map;
 
+import kr.co.tobe.vo.CqnaVO;
 import kr.co.tobe.vo.FaqVO;
 import kr.co.tobe.vo.NoticeVO;
 import kr.co.tobe.vo.QnaVO;
@@ -23,4 +24,6 @@ public interface ChiefCustomerService {
 	List<QnaVO> getqnalist(QnaVO vo);
 	
 	List<FaqVO> getfaqlist(FaqVO vo);
+	
+	int QnaReply (QnaVO vo);
 }

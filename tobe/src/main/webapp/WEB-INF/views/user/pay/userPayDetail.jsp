@@ -6,8 +6,6 @@
 <head>
 <meta charset="UTF-8">
 <title>결제창</title>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
-<link rel="stylesheet" href="/tobe/css/user_Header_Footer.css" />
 <!-- jQuery -->
   <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
   <!-- iamport.payment.js -->
@@ -106,8 +104,8 @@ input[type="checkbox"] {
     background: #000;
     border: none;
   }
-  .payment{
-
+ 
+  .order{
 	position: absolute;
 	top: 60.5rem;
 	left: 56rem;
@@ -125,7 +123,7 @@ $(document).ready(function() {
 	$('#payfinalbyP').text('0원'); 
 });
 
-function requestPay() {
+function re() {
 	var IMP = window.IMP; // 생략 가능
 	IMP.init("store-e48427ce-8dd2-476e-ac6f-992c6044483e"); // 예: imp00000000
   //IMP.request_pay(param, callback) 결제창 호출
@@ -133,7 +131,7 @@ function requestPay() {
   IMP.request_pay({ // param
       pg: "html5_inicis.INIpayTest", //결제대행사 설정에 따라 다르며 공식문서 참고
       pay_method: "card", //결제방법 설정에 따라 다르며 공식문서 참고
-      merchant_uid: map.cart_no, / /주문(db에서 불러옴) 고유번호
+      merchant_uid: map.cart_no, //주문(db에서 불러옴) 고유번호
       name: data.products,
       amount: map.pay_total,
       //buyer_email: "",
@@ -176,19 +174,10 @@ function requestPay() {
 	    
 }
 	
-	function requestPay() {//결제하기 버튼
-		console.log(1);
-	    var selectedNoList = [];
-
-	    $('.input_button.small:checked').each(function() {
-	        var order_no = $(this).data('no');
-	        selectedNoList.push(cartNo);
-	    });
-
-	    if (selectedNoList.length > 0) {
-			 window.location.href= '/tobe/user/pay/userPayCompleteDetail.do?cartNo='+selectedNoList.join(',');
-	    }
+	function requestPay() {
+	    $("#cart").submit();
 	}
+	
 
 </script>
 </head>
@@ -198,7 +187,9 @@ function requestPay() {
 <div class="title">
 <h2 style="margin: 1rem; padding: 0;">주문상품</h2>
 </div>
-<form method="post" name="cart" id="cart" action="/user/pay/userPayDetail">
+<form method="post" name="cart" id="cart" action="/tobe/user/pay/userPayCompleteDetail.do"> 
+<input type="hidden" name="cartNo" value="${param.cartNo}">
+<input type="hidden" name="member_no" value="${loginInfo.member_no}">
 		<table class="info" >
 				<tr id="firstRow">
 					<td>강좌정보</td>
@@ -222,17 +213,15 @@ function requestPay() {
 				</tr>
 				</c:forEach>
 		</table>
-		<c:forEach var="cart" items="${basket}"> 
 		<div class="title2">
 			<h2 style="margin: 1rem; padding: 0;">포인트 사용</h2>
 			<hr width="800px;" style="margin-left:15px;">
 			<strong >결제 예정 금액</strong>  <p id="paytotal"></p>원 <br style="margin-bottom:15px;"> 
 			<br><hr width="800px;">
 			<br>
-			<strong>보유 포인트</strong> <input type="text" style="margin-left:15px;" hiegth="10px;">원 / ${loginInfo.point }원 <button style="margin-left:15px; background-color:#000; color: #fff; border-radius:5px;">전액 사용</button>
+			<strong>보유 포인트</strong> <input type="text" name="point_usage" style="margin-left:15px;" height="10px;">원 / ${loginInfo.point }원 <button style="margin-left:15px; background-color:#000; color: #fff; border-radius:5px;">전액 사용</button>
 			<hr width="800px;">
 		</div>
-		</c:forEach>
 		<div class="title3">
 			<h2 style="margin: 1rem; padding: 0;">결제 수단</h2>
 			<hr width="800px;" >
@@ -266,10 +255,10 @@ function requestPay() {
 					<input  type="checkbox" class="input_button small"  onclick="MathPrice(this);"> 개인정보 수집 및 이용에 대한 동의(필수)<br>
 					<input  type="checkbox" class="input_button small"  onclick="MathPrice(this);"> 개인정보 제3자 제공에 대한 동의(필수)
 				</div>
-				<input type="submit" class="payment" onClick="requestPay()" port="post" value="결제하기">
-					
-				</button>
-</form>
+				
+				<button type="button" name="button3" onclick="requestPay();" class="order" data-CartNo="${vo.cart_no }">결제하기</button>
+</form>				
+
 <%@include file="/WEB-INF/views/user/common/userFooter.jsp"%>
 </div>
 </body>

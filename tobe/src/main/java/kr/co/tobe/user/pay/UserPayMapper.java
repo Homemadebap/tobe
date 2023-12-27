@@ -23,4 +23,7 @@ public interface UserPayMapper {
 	
 	int pay(PayVO vo);
 	int payDetail(PayDetailVO vo);
+	
+	Map<String, Object> getorder(int cart_no);
+	
 }
