@@ -31,9 +31,9 @@ public class ChiefEmailServiceImpl implements ChiefEmailService {
 		
 		int count = mapper.count(param); // 총개수
         // 총페이지수
-        int totalPage = count / 10;
-        if (count % 10 > 0) totalPage++;
-        List<EmailVO> list = mapper.emailList(); // 목록
+        int totalPage = count / 20;
+        if (count % 20 > 0) totalPage++;
+        List<EmailVO> list = mapper.emailList(param); // 목록
         
         Map<String, Object> map = new HashMap<>();
         map.put("count", count);
@@ -41,8 +41,8 @@ public class ChiefEmailServiceImpl implements ChiefEmailService {
         map.put("list", list);
         
         // 하단에 페이징처리
-        int endPage = (int)(Math.ceil(param.getPage()/10.0)*10);
-        int startPage = endPage - 9;
+        int endPage = (int)(Math.ceil(param.getPage()/20.0)*20);
+        int startPage = endPage - 19;
         if (endPage > totalPage) endPage = totalPage;
         boolean prev = startPage > 1;
         boolean next = endPage < totalPage;
