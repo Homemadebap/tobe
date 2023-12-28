@@ -45,6 +45,7 @@ public class ChiefCourseController {
 
 	@GetMapping ("/chiefAdmin/course/chiefModCourseForm.do")
 	public String modcourse(Model model, int no) {
+		
 		model.addAttribute("map", service.modcourse(no));
 		return "chiefAdmin/course/chiefModCourseForm"; 
 	}
