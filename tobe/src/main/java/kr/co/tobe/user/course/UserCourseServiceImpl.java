@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service;
 
 import kr.co.tobe.vo.CourseVO;
 import kr.co.tobe.vo.CqnaVO;
-import kr.co.tobe.vo.QnaVO;
 import kr.co.tobe.vo.ReviewVO;
 
 @Service
@@ -45,37 +44,37 @@ public class UserCourseServiceImpl implements UserCourseService {
 		return mapper.courseSelect(no);
 	}
 	
-	@Override
-	public List<CourseVO> getComplexSelect(CourseVO CVO) {
-		return mapper.complexSelect(CVO);
-	}
-	
 //	@Override
-//	public Map<String, Object> cqnaList(CqnaVO param) {
-//		int count = mapper.cqnaCount(param); //총개수
-//        int totalPage = count / 10; //총 페이지
-//        if (count % 10 > 0) totalPage++;
-//        System.out.println(param.getPage());
-//        System.out.println(param.getStartIdx());
-//        List<CqnaVO> list = mapper.cqnaList(param); //목록
-//        
-//        Map<String, Object> map = new HashMap<>();
-//        map.put("count", count);
-//        map.put("totalPage", totalPage);
-//        map.put("list", list);
-//        
-//        //페이징
-//        int endPage = (int)(Math.ceil(param.getPage()/10.0)*10);
-//        int startPage = endPage - 9;
-//        if (endPage > totalPage) endPage = totalPage;
-//        boolean prev = startPage > 1;
-//        boolean next = endPage < totalPage;
-//        map.put("endPage", endPage);
-//        map.put("startPage", startPage);
-//        map.put("prev", prev);
-//        map.put("next", next);
-//		return map;
+//	public List<CourseVO> getComplexSelect(CourseVO CVO) {
+//		return mapper.complexSelect(CVO);
 //	}
+	
+	@Override
+	public Map<String, Object> getComplexSelect(CourseVO param) {
+		int count = mapper.complexCount(param); //총개수
+        int totalPage = count / 10; //총 페이지
+        if (count % 10 > 0) totalPage++;
+        System.out.println(param.getPage());
+        System.out.println(param.getStartIdx());
+        List<CourseVO> list = mapper.complexSelect(param); //목록
+        
+        Map<String, Object> map = new HashMap<>();
+        map.put("count", count);
+        map.put("totalPage", totalPage);
+        map.put("list", list);
+        
+        //페이징
+        int endPage = (int)(Math.ceil(param.getPage()/10.0)*10);
+        int startPage = endPage - 9;
+        if (endPage > totalPage) endPage = totalPage;
+        boolean prev = startPage > 1;
+        boolean next = endPage < totalPage;
+        map.put("endPage", endPage);
+        map.put("startPage", startPage);
+        map.put("prev", prev);
+        map.put("next", next);
+		return map;
+	}
 	
 	@Override
     public List<CqnaVO> getCqnaDetailList(int course_no, int startIdx, int itemsPerPage) {
@@ -126,5 +125,31 @@ public class UserCourseServiceImpl implements UserCourseService {
 		// TODO Auto-generated method stub
 		return data;
 	}
+    
+//    @Override
+//    public CqnaVO view(CqnaVO vo, boolean isUpdate) {
+//        // isUpdate가 true이면 업데이트 시 필요한 로직 추가
+//        return mapper.view(vo);
+//    }
 	
+    @Override
+    public CqnaVO view(int cqna_no, boolean isUpdate) {
+        return mapper.view(cqna_no);
+    }
+    
+//    @Override
+//    public List<CqnaVO> writeCqna(Map<String, Object> paramMap) {
+//        return mapper.writeCqna(paramMap);
+//    }
+    
+    @Override
+    public CourseVO getCourseById(int course_no) {
+        return mapper.selectCourseById(course_no);
+    }
+
+	@Override
+	public CqnaVO writeCqna(Map<String, Object> paramMap) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }
