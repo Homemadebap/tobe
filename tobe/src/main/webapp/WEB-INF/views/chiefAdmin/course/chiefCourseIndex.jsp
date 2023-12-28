@@ -76,80 +76,6 @@ function ProcessDelete() {
 
 
 <style>
-#top{
-   position: relative;
-   margin: -145px 0 0 -250px; 
-}
-.box {
-	position: absolute;
-	width: 75rem;
-	height: 15rem;
-	top: 5.5rem; 
-	left: 10rem;
-}
-.admin_logo {
-	position: absolute;
-	width: 40rem;
-	height: 5rem;
-	top: 2rem;
-	left: 10rem;
-}
-
-.table {
-	position: absolute;
-	border: solid 1px ;
-	width: 1000px;
-	height: 70px;
-	margin: 140px 0 0 250px;
-	border-collapse: collapse;
-}
-.tablea {
-	position: absolute;
-	border: solid 1px ;
-	width: 1000px;
-	height: 500px;
-	margin: 325px 0 0 250px;
-	border-collapse: collapse;
-}
-
-tr{
-border: solid 1px;
-height: 30px;
-}
-td{
-border: solid 1px;
-}
-#noticeSeachMain { /*검색버튼*/
-			margin-left: 500px;
-			border: 1px solid #808080;
-			text-align: center;
-			width: 50px;
-			height: 32px;
-			background-color: #E4E6D9;
-			cursor: pointer;
-			border-radius: 5px;
-		}
-td{
-	height: 5px;
-}	
-.searchOrReset{
-	position: absolute;
-	margin: 300px 0 0 1145px;
-	text-align: end;
-}
-
-#searchOrReset > .bnt{
-	cursor: pointer;
-	border: 0;
-	background-color: #F0F8FF;
-	color: #808080;
-}
-.course{
-	position: absolute;
-	margin: 775px 0 0 1145px;
-	text-align: end;
-}
-
 .container{
    position: relative;
    margin: -845px 0 0 160px;
@@ -180,6 +106,86 @@ td{
 	border-collapse: collapse;
 	border-top: 1px solid;
 }
+
+.tablea tr {
+	border-bottom: solid 1px;
+	height: 30px;
+}
+
+.table td {
+	border-bottom: solid 1px;
+	height: 50px;
+}
+
+.searchOrReset{
+	display : flex;
+	flex-direction:row-reverse;
+	margin-bottom:10px;
+		
+}
+
+.form_sub{
+
+display : flex;
+flex-direction: column;
+    align-items: stretch;
+}
+
+
+input#today, input#week, input#oneMonth, input#threeMonth, input#year{
+   	border-radius:7px;
+	border-width:thin;
+	display:inline-block;
+	width:50px;
+ }
+ .searchOrReset input{
+ 	 background-color: #E5D1E3;
+     padding: 5px 15px;
+     margin : 5px;
+     text-align: center;
+     border-radius: 15px;
+     border :1px solid #E5D1E3;
+}
+ .tablea th{
+ border:solid 1px #A4A4A4;
+ background-color:#D9D9D9;
+
+ }
+.table td:first-child{
+text-align: center;
+}
+.tablea tr td{
+text-align:center;
+border:solid 1px #A4A4A4;
+
+}
+.searchOrReset{
+	display: flex;
+	flex-direction: row;  
+    justify-content: flex-end
+}
+
+.searchOrReset input:hover {
+	text-decoration: none;
+	background-color : #3F4350;
+	color:white;
+	cursor:pointer;
+}
+.add{
+display:flex;
+flex-direction:row-reverse;
+}
+.resetOrSearch{
+display:flex;
+flex-direction:row-reverse;
+}
+.modOrDelete{
+display:flex;
+flex-direction:row-reverse;
+margin:10px;
+}
+
+
 </style>
 
 </head>
@@ -191,8 +197,10 @@ td{
 	<div class="member_sub">
 		<div class="form_sub">
 			<form action="chiefCourseIndex.do" method="get" >
-			<div>
-			<input class ="bnt" type="button" value="강좌등록" onclick="window.location.href='chiefCourseForm.do'"></div>
+			<div class= "add">
+			<input class ="bnt" type="button" value="강좌등록" onclick="window.location.href='chiefCourseForm.do'">
+			</div>
+				
 				<table class="table">
 				
 					<tr>
@@ -259,11 +267,11 @@ td{
 	       		 </tr>
 	       	</table>
 	       	
-	   	 	<div class="searchOrReset">   	 			
+	   	 	<div class="resetOrSearch">   	 			
 				<input class ="bnt" type="reset" value="초기화" onclick="window.location.href='/tobe/chiefAdmin/course/chiefCourseIndex.do'">
 				<input class ="bnt" type="submit" id="" value="검색">
 			</div>    
-			<div class="searchOrReset">   	 			
+			<div class="modOrDelete">   	 			
 	   	 		<input class ="bnt" type="button" value="수정" onclick="window.location.href='/tobe/chiefAdmin/course/chiefModCourseForm.do'">
 	   	 		<input class ="bnt" type="button" value="삭제" onclick="ProcessDelete();">
 			</div> 
