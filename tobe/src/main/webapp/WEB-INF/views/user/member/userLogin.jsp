@@ -172,11 +172,7 @@ a:visited {
 	list-style-type: none;
 }
 
-.login_btn{
-	border-radius: 30px;
-	background-color: #E4E6D9;
-	color: #FFFFFF;
-}
+
 
 .btnSet_clear .btn {
 	text-decoration-line: none;
@@ -185,6 +181,24 @@ a:visited {
 	color: #000000;
 	border-color: #000000;
 	border-width: thin;
+}
+.login_form{
+	border-radius:15px;
+}
+.top{
+text-align:center;
+color: #424242;
+}
+.find{
+border:none;
+}
+.find:focus{
+outline:none;
+}
+.change li{
+text-align : center;
+float:left;
+list-style:none;
 }
 </style>
 
@@ -206,14 +220,16 @@ a:visited {
 	                        <div class="box">
 	                            <fieldset class="login_form">
 	                                <ul class="no_dot">
-	                                    <li>TOBE</li>
+	                                    <li class="top" style="background-color:#E4E6D9">TOBE</li>
 	                                    <li><input type="text" id="id" name="id" placeholder="아이디" style="width:200px; font-size: 1rem;"></li>
 	                                    <li><input type="password" id="pwd" name="pwd" placeholder="비밀번호" style="width:200px; font-size: 1rem;"></li>
-	                                    <li><label  style="font-size: 0.75rem;"><input type="checkbox" name="reg1" id="reg1" style="width:10px; height:10px;"/>아이디저장</label></li>
-	                                    <!-- <li><a href="userFindMember.do" class="btn" style="font-size:10px">아이디|비밀번호 찾기</a></li>  -->
-	                                    <li><input type="button" value="아이디|비밀번호 찾기" onclick="window.open('userFindMember.do','window_name','width=300,height=700');"></li>
+	                                    <ul class="change">
+		                                    <li><label  style="font-size: 0.75rem;"><input type="checkbox" name="reg1" id="reg1" style="width:10px; height:10px;"/>아이디저장</label></li>
+		                                    <!-- <li><a href="userFindMember.do" class="btn" style="font-size:10px">아이디|비밀번호 찾기</a></li>  -->
+		                                    <li float="left"><input type="button" value="아이디|비밀번호 찾기" onclick="window.open('userFindMember.do','window_name','width=300,height=700');"></li>
+	                                    </ul>
 	                                </ul>
-	                                <div class="login_btn"><input type="submit" value="로그인"/></div>
+	                               	<input type="submit" style="border:none; background:#E4E6D9" text-align="center" value="로그인"/>
 	                            </fieldset>
 	                            <div class="btnSet_clear">
 	                                <div style="color: #2F5720">

@@ -1,6 +1,7 @@
 package kr.co.tobe.chiefAdmin.course;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -9,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.multipart.MultipartFile;
 
+import kr.co.tobe.vo.AdminVO;
 import kr.co.tobe.vo.CourseVO;
 import kr.co.tobe.vo.MemberVO;
 
@@ -42,13 +44,7 @@ public class ChiefCourseController {
 	       }
 		return "chiefAdmin/common/alert";
 	}
-	
-	@GetMapping ("/chiefAdmin/course/chiefCourseIndex.do")
-	public String cheifMemberIndex() {
-				
-		return "chiefAdmin/course/chiefCourseIndex"; 
-	}
-	
+
 	@GetMapping ("/chiefAdmin/course/chiefModCourseForm.do")
 	public String modcourse(Model model, int no) {
 		model.addAttribute("map", service.modcourse(no));
@@ -72,5 +68,17 @@ public class ChiefCourseController {
 		return "chiefAdmin/common/alert";
 	}
 	
+	//
+	@GetMapping ("/chiefAdmin/course/chiefCourseIndex.do")
+	public String chiefCourseIndex(HttpSession sess, Model model, CourseVO vo) {
+		AdminVO admin = (AdminVO)sess.getAttribute("adLoginInfo");
+		model.addAttribute("admin", admin);
+		vo.setAdmin_no(admin.getAdmin_no());
+		model.addAttribute("map", service.courseListS(vo));
+
+		//강좌 리스트 
+		return "chiefAdmin/course/chiefCourseIndex";
+	}
+	//
 
 }
