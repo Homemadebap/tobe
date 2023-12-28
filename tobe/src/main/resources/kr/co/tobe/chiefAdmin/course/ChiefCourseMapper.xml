@@ -35,4 +35,40 @@
 		point=#{point}
 	WHERE member_no=#{member_no}
 	</update>
+	
+<!--  -->	
+	
+	<sql id="whereSql">
+		<where>	
+			 
+		    <if test="searchWord != null and searchWord != ''">
+		        (cname LIKE '%${searchWord}%' OR teacher1 LIKE '%${searchWord}%' OR teacher2 LIKE '%${searchWord}%')
+		    </if>
+		    <if test="education != null and education != '' and education != 0 ">
+		        AND education = #{education}
+		    </if>
+		    <if test="area != null and area != ''">
+		        AND area = #{area}
+		    </if>
+		    <if test="branch != null and branch != ''">
+		        AND branch = #{branch}
+		    </if>
+		    <if test="subject != null and subject != ''">
+		        AND subject = #{subject}
+		    </if>
+		</where>	
+	</sql>
+	
+	<select id="courseCount" parameterType="kr.co.tobe.vo.CourseVO" resultType="int">
+		SELECT COUNT(*) FROM course
+		<include refid="whereSql"/>
+	</select>
+	
+	<select id="courseList" parameterType="kr.co.tobe.vo.CourseVO" resultType="kr.co.tobe.vo.CourseVO">
+		SELECT *
+		FROM course
+		<include refid="whereSql"/>
+		LIMIT #{startIdx}, 10
+	</select>
+
 </mapper>
