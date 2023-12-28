@@ -114,8 +114,8 @@ a:hover {
 }
 
 .modal{
-	max-width: 800px;
-	height: 800px;
+	max-width: 900px;
+	height: 900px;
 	text-align: center;
 	margin: 0 auto;
 	background-color : #E4E6D9; 
