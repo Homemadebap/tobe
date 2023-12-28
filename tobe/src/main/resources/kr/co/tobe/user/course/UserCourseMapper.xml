@@ -7,42 +7,52 @@
 		
 	</select> 
 	<select id="complexSelect" parameterType="kr.co.tobe.vo.CourseVO" resultType="kr.co.tobe.vo.CourseVO">
-      	SELECT *
-      	FROM course
-      	WHERE 0=0
-      		<if test="education != 0"> AND education = #{education}</if>
-          	AND subject = #{subject}
-          	AND area = #{area}
-          	<if test="branch != 0">AND branch = #{branch}</if>
-          	<if test="level != 0">AND level = #{level}</if>
-          	<if test="mon != 0">AND (mon = #{mon}</if>
-         	<if test="tue != 0">OR tue = #{tue}</if>
-         	<if test="wed != 0">OR wed = #{wed}</if>
-         	<if test="thu != 0">OR thu = #{thu}</if>
-         	<if test="fri != 0">OR fri = #{fri}</if>
-         	<if test="sat != 0">OR sat = #{sat}</if>
-         	<if test="sun != 0">OR sun = #{sun})</if>
-          	<if test="timezone != 0">AND timezone = #{timezone}</if>
-       LIMIT ${startIdx}, 10
-   </select>
+	    SELECT *
+	    FROM course
+	    WHERE 0=0
+	        <if test="education != 0"> AND education = #{education}</if>
+	        AND subject = #{subject}
+	        AND area = #{area}
+	        <if test="branch != 0"> AND branch = #{branch}</if>
+	        <if test="level != 0"> AND level = #{level}</if>
+	        <if test="mon != 0 or tue != 0 or wed != 0 or thu != 0 or fri != 0 or sat != 0 or sun != 0">
+	            AND (
+	                <if test="mon != 0"> mon = #{mon}</if>
+	                <if test="tue != 0"> OR tue = #{tue}</if>
+	                <if test="wed != 0"> OR wed = #{wed}</if>
+	                <if test="thu != 0"> OR thu = #{thu}</if>
+	                <if test="fri != 0"> OR fri = #{fri}</if>
+	                <if test="sat != 0"> OR sat = #{sat}</if>
+	                <if test="sun != 0"> OR sun = #{sun}</if>
+	            )
+	        </if>
+	        <if test="timezone != 0"> AND timezone = #{timezone}</if>
+	    LIMIT ${startIdx}, 3
+	</select>
+
 	<select id="complexCount" parameterType="kr.co.tobe.vo.CourseVO" resultType="int">
-      	SELECT COUNT(*)
-      	FROM course
-      	WHERE 0=0
-      		<if test="education != 0"> AND education = #{education}</if>
-          	<if test="subject != 0">AND subject = #{subject}</if>
-          	<if test="area != 0">AND area = #{area}</if>
-          	<if test="branch != 0">AND branch = #{branch}</if>
-          	<if test="level != 0">AND level = #{level}</if>
-          	<if test="mon != 0">AND (mon = #{mon}</if>
-         	<if test="tue != 0">OR tue = #{tue}</if>
-         	<if test="wed != 0">OR wed = #{wed}</if>
-         	<if test="thu != 0">OR thu = #{thu}</if>
-         	<if test="fri != 0">OR fri = #{fri}</if>
-         	<if test="sat != 0">OR sat = #{sat}</if>
-         	<if test="sun != 0">OR sun = #{sun})</if>
-          	<if test="timezone != 0">AND timezone = #{timezone}</if>
-   </select>
+	    SELECT COUNT(*)
+	    FROM course
+	    WHERE 0=0
+	        <if test="education != 0"> AND education = #{education}</if>
+	        <if test="subject != 0"> AND subject = #{subject}</if>
+	        <if test="area != 0"> AND area = #{area}</if>
+	        <if test="branch != 0"> AND branch = #{branch}</if>
+	        <if test="level != 0"> AND level = #{level}</if>
+	        <if test="mon != 0 or tue != 0 or wed != 0 or thu != 0 or fri != 0 or sat != 0 or sun != 0">
+	            AND (
+	                <if test="mon != 0"> mon = #{mon}</if>
+	                <if test="tue != 0"> OR tue = #{tue}</if>
+	                <if test="wed != 0"> OR wed = #{wed}</if>
+	                <if test="thu != 0"> OR thu = #{thu}</if>
+	                <if test="fri != 0"> OR fri = #{fri}</if>
+	                <if test="sat != 0"> OR sat = #{sat}</if>
+	                <if test="sun != 0"> OR sun = #{sun}</if>
+	            )
+	        </if>
+	        <if test="timezone != 0"> AND timezone = #{timezone}</if>
+	</select>
+
 	<update id="qnaUpdate" parameterType="kr.co.tobe.vo.CqnaVO">
 		UPDATE cqna SET 
 			cq_title=#{cq_title},
