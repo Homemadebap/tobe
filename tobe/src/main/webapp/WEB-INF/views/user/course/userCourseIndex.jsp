@@ -147,11 +147,6 @@ caption {
 	align-items: center;
 }
 
-.subChildContainer{
-	height: 400px;
-	margin: 0 auto;
-	display: table;
-}
 .SelectBtn{
 	cursor: pointer;
    	color: black;

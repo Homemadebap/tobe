@@ -106,6 +106,44 @@ a {
 	text-decoration: none;
 	color: #000;
 }
+.SelectBtn{
+	cursor: pointer;
+   	color: black;
+   	border: 0;
+   	/* display: flex; */
+   	/*align-items: center;
+   	justify-content: center;
+   	/* position: inherit; */
+   	font-size: 16px;
+   	/* padding: 8px 16px; */
+   	margin: 5px 10px;
+   	height: 34px;
+   	border-radius: 20px;
+   	background-color: #8ba888;
+   	border-color: #000;
+   	/* text-align: center; */
+   	letter-spacing: -0.5px;
+   	position: relative;
+}
+.payBtn{
+	cursor: pointer;
+   	color: white;
+   	border: 0;
+   	/* display: flex; */
+   	/*align-items: center;
+   	justify-content: center;
+   	/* position: inherit; */
+   	font-size: 16px;
+   	/* padding: 8px 16px; */
+   	margin: 5px 10px;
+   	height: 34px;
+   	border-radius: 20px;
+	background-color: #253528; 
+	border-color: #000;
+   	/* text-align: center; */
+   	letter-spacing: -0.5px;
+   	position: relative;
+}
 </style>
 <script>
 document.addEventListener('DOMContentLoaded', function(){
@@ -188,9 +226,9 @@ function ajaxFuncReview(page) {
             <div class = "subContentBar">
                 <table>
                    <tr>
-                      <td><a href='/tobe/user/common/userBasket.do?course_no=" + lecture.course_no + "' class='DetailSelectBtn'>장바구니 담기</a></td>
-                      <td><button type="button" onclick="location.href='/tobe/user/common/userCompareCourse.do'" class="DetailSelectBtn">비교함 담기</button></td>
-                      <td><a href = '/tobe/user/pay/userPayDetail.do?course_no=" + lecture.course_no + "' class='DetailpayBtn'>결제 하기</a></td>
+					  <td><button type="button" onclick="location.href='/tobe/user/common/userBasket.do?course_no=${courseInfo.course_no}'" class="SelectBtn">장바구니 담기</button></td>
+					  <td><button type="button" onclick="setCourseComp('${courseInfo.course_no}');" class="SelectBtn">비교함 담기</button></td>
+					  <td><button type="button" onclick="location.href='/tobe/user/pay/userPayDetail.do?course_no=${courseInfo.course_no}'" class="payBtn">결제 하기</button></td>
                    </tr>
                 </table>
             </div>
