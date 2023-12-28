@@ -22,9 +22,12 @@
 		WHERE course_no = #{no};
 	</update>
 	
-	<select id="selectReviewNo" parameterType="kr.co.tobe.vo.ReviewVO" resultType="kr.co.tobe.vo.ReviewVO">
-      	SELECT review_no, r_title, r_writedate
-      	FROM review
+	<select id="selectReviewNo" resultType="java.util.Map">
+      	SELECT c.course_no, cname, m.member_no, id, r_title,
+      	<![CDATA[ STR_TO_DATE(r_writedate, '%Y-%m-%d') ]]> as r_writedate
+      	FROM course c 
+        JOIN review r ON r.course_no=c.course_no
+		JOIN member m ON r.member_no=m.member_no;
    	</select>
    	
     <select id="ReviewDetail" parameterType="kr.co.tobe.vo.ReviewVO" resultType="kr.co.tobe.vo.ReviewVO">
