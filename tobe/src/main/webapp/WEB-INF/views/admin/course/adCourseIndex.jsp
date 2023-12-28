@@ -231,7 +231,7 @@ td{
          <table class="tablea">
          	<div class="searchOrReset">
    	 			
-	   	 		<input class ="bnt" type="button" value="수정">
+	   	 		<input class ="bnt" type="button" value="수정" onclick="window.location.href='adCourseModForm.do'">
 	   	 		<input class ="bnt" type="button" value="삭제" onclick="ProcessDelete();">
 			</div>    
          <thead>
