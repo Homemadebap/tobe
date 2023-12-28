@@ -10,9 +10,15 @@
 		float: left;
 		margin:5px;
 	}
+	.subChildContainer{
+		height: 400px;
+		margin: 0 auto;
+		display: table;
+		text-align: center;
+	}
 	.childSelectBox1{
 		position: relative;
-		top: 4rem;
+		top: -0.5rem;
 	}
 	.subContainer{
 		width:33.3333%;
@@ -31,7 +37,7 @@
 </style>
 	<c:forEach var="lecture" items="${map.list }">
 	  		<div class = "subChildContainer">
-				<p><a href="userCourseDetail.do?course_no=${lecture.course_no}"><img src="/tobe/img/course_img/${lecture.teacher_img_org}" alt="강사 이미지" width="50" height="50"></a></p>
+				<p><a href="userCourseDetail.do?course_no=${lecture.course_no}"><img src="/tobe/img/course_img/${lecture.teacher_img_org}" alt="강사 이미지" width="150" height="150"></a></p>
               	<p>${lecture.cname}</p>
               	<p>${lecture.time}</p>
               	<p>${lecture.price}</p>

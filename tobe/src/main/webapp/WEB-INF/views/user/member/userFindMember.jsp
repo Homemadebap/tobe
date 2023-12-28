@@ -65,33 +65,70 @@ function checkPwd() {
 	}
 }
 </script>
+<style>
+ul{
+list-style:none;
+}
+.head{
+display:flex;
+flex-direction:row;
+justify-content:space-around;
+}
+.id_title, .pwd_title{
+cursor:pointer;
+}
+.second{
+margin-left:-15px;
+}
+.id_form li{
+float:left;
+
+}
+.check_btn{
+margin-top:10px;
+width:273px;
+background-color:black;
+color:white;
+}
+#email_bx{
+margin-bottom:20px;
+}
+fieldset{
+margin-top:20px;
+}
+.ok_btn{
+margin-top:10px;
+width:273px;
+background-color:black;
+color:white;
+}
+</style>
 </head>
 
 <body>
 
 <form action="userFindMember.do" method="post" id="board1" name="board1" onsubmit="return checkId()">
-	
-	
-		<div class="id_title">아이디 찾기</div>
-		<div class="pwd_title">비밀번호 찾기</div>
+		
+		<div class="head">
+			<div class="id_title">아이디 찾기&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|</div>
+			<div class="pwd_title">비밀번호 찾기</div>
+		</div>
 			
 				<div class="id_contents" id="id_data">
-					<ul>
+					<ul class="second">
 						<li style="list-style: none;">회원가입 시 등록하신 정보로<br>아이디를 확인하실 수 있습니다.</li>
 					</ul>				
-					<fieldset clss="id_form">
+					<fieldset class="id_form">
 						<ul>
 							<li>이름</li>
-							<li><input type="text" name="name" id="name" placeholder="이름"></li>
+							<li><input type="text" name="name" id="name" ></li>
 						</ul>
 						<ul>
 							<li>이메일 주소</li>
-							<li><input type="email" name="email" id="email" placeholder="이메일을 입력해주세요."></li>
-						</ul>
-						
-							<div class="check_btn"><input type="submit" value="다음"></div>
-						
+							<li id="email_bx"><input type="email" name="email" id="email" ></li>
+						</ul>					
 					</fieldset>
+					<div class="check_btn"><input type="submit" value="다음"></div>
 				</div>
 </form>
 			

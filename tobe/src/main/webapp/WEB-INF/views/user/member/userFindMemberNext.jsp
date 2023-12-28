@@ -66,24 +66,33 @@
 		}
 	}
 </script>
+<style>
+div {
+margin-top:50px;
+display:flex;
+justify-content:center;
+text-align:center;
+}
+</style>
 
 </head>
 
 <body>
 
 
-	<div class="board_area">
+<!-- 		<div class="head">
+			<div class="id_title">아이디 찾기&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|</div>
+			<div class="pwd_title">비밀번호 찾기<div>
+		</div>
 	
-		<div class="id_title">아이디 찾기</div>
-		<div class="pwd_title">비밀번호 찾기</div>
-		
-		<!-- <form action="userFindMember.do" method="get" id="idboard" name="idboard" onsubmit=""> -->
 			<form action="userFindMember.do" method="post" id="board1" name="board1" onsubmit="">
-				<div class="id_contents" id="id_data">
-					<ul>
-						<li style="list-style: none;">이메일로<br>가입한 계정이 있습니다.</li>
-					</ul>				
-					<div>${user.id }</div>					
+				<div class="id_contents" id="id_data">  -->
+
+					<div>
+						<div style="list-style: none;">이메일로 <br> 가입한 계정이 있습니다.<br><br><br>
+						아이디 : ${user.id }</div>
+					</div>				
+										
 				</div>
 			</form>
 			

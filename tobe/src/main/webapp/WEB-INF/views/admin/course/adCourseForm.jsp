@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
    pageEncoding="UTF-8"%>
-   <%@ page import="kr.co.tobe.util.CodeToString"%>
+<%@ page import="kr.co.tobe.util.CodeToString"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -96,7 +96,7 @@
   display: flex;
 }
 #con{
-	margin: -630px 0 0 150px; 
+	margin: -870px 0 0 150px; 
 }
 #boxa{
 	display: flex;
@@ -229,7 +229,6 @@
 					<input type="text" name="educationName" value="${CodeToString.educationToString(adLoginInfo.ad_type)}" readonly/>
 					<input type="hidden" name="education" value="${adLoginInfo.ad_type}" />
 					<input type="hidden" name="admin_no" value="${adLoginInfo.ad_type}" />
-				
 				</div>
 				<div class="br">
 					<b>지점명</b>
@@ -283,6 +282,10 @@
 					<label><input type="checkbox" name="level" value="1700"> 700</label> 
 					<label><input type="checkbox" name="level" value="1800"> 800</label> 
 					<label><input type="checkbox" name="level" value="1900"> 900</label><br>
+					<b style="margin-left:37px">토스</b>
+					<label><input type="checkbox" name="level" value="21">입문</label> 
+					<label><input type="checkbox" name="level" value="22">기본</label> 
+					<label><input type="checkbox" name="level" value="23">중급</label> 
 					<b style="margin-left:37px">토플</b>
 					<label><input type="checkbox" name="level" value="360"> 60</label> 
 					<label><input type="checkbox" name="level" value="370"> 70</label> 
@@ -359,7 +362,7 @@
 	            <div align="center">
 		            <div colspan="2" id="put">
 			            <input type="submit" value="등록하기"> 
-			            <input type="button" value="목록보기"  onclick="window.location.href='/tobe/admin/course/adCourseIndex.do'">
+			            <input type="button" value="목록보기" onclick="backToList(this.form)">
 		            </div>
 	            </div>
 	         </div>

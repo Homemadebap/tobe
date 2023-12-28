@@ -53,6 +53,13 @@ public class AdCommonController {
 		model.addAttribute("admin", admin);
 		return "admin/course/adCourseForm"; 
 	}
+	@GetMapping("/admin/course/adCourseModForm.do") 
+	public String adCourseModForm(HttpSession sess, Model model) {
+		AdminVO admin = (AdminVO)sess.getAttribute("adLoginInfo");
+		model.addAttribute("admin", admin);
+		return "admin/course/adCourseModForm"; 
+	}
+	
 	
 	//login
 	@GetMapping("/admin/common/adLogin.do")

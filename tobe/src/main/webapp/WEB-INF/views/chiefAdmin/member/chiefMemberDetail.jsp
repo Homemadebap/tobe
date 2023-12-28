@@ -70,6 +70,12 @@
 		.sub_title{
 		color:#8B6858;
 		}
+		.btnSet_clear : hover{
+		text-decoration: none;
+		background-color : #3F4350;
+		color:white;
+		cursor:pointer;		
+		}
 
 		
 

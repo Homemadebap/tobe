@@ -16,7 +16,7 @@
 <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
-
+<link rel="stylesheet" href="/tobe/css/bbs.css"/>
 <style>
 
 .top {
@@ -194,7 +194,7 @@
 					<div class="pagenate clear">
 						<ul class='paging'>
 							<c:if test="${map.prev }">
-								<li><a href="index.do?page=${map.startPage-1 }&searchType=${QnaVO.searchType}&searchWord=${QnaVO.searchWord}"></a></li>
+								<li><a href="index.do?page=${map.startPage-1 }&searchType=${QnaVO.searchType}&searchWord=${QnaVO.searchWord}"> << </a></li>
 							</c:if>
 							<c:forEach var="p" begin="${map.startPage}" end="${map.endPage}">
 								<c:if test="${p == QnaVO.page}">
@@ -205,7 +205,7 @@
 								</c:if>
 							</c:forEach>
 							<c:if test="${map.next }">
-								<li><a href="userQna.do?page=${map.endPage+1 }&searchType=${QnaVO.searchType}&searchWord=${QnaVO.searchWord}"></a></li>
+								<li><a href="userQna.do?page=${map.endPage+1 }&searchType=${QnaVO.searchType}&searchWord=${QnaVO.searchWord}"> >> </a></li>
 							</c:if>
 						</ul>
 					</div>

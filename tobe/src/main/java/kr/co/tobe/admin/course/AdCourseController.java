@@ -38,4 +38,5 @@ public class AdCourseController {
 			
 		return "admin/common/adAlert";
 	}
+
 }
