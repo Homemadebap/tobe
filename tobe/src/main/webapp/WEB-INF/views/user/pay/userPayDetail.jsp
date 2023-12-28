@@ -31,6 +31,7 @@
 	font-size: 1.25rem;
 	height: 3rem;
 	width: 2rem;
+	colspan: 2;
 }
 
 #secondRow {
@@ -183,7 +184,9 @@ function re() {
 </head>
 <body>
 <div class="wrap">
-<%@include file="/WEB-INF/views/user/common/userHeader.jsp"%>
+		<div class="headerBox">
+			<%@include file="/WEB-INF/views/user/common/userHeader.jsp"%>
+		</div>
 <div class="title">
 <h2 style="margin: 1rem; padding: 0;">주문상품</h2>
 </div>
@@ -192,12 +195,14 @@ function re() {
 <input type="hidden" name="member_no" value="${loginInfo.member_no}">
 		<table class="info" >
 				<tr id="firstRow">
+					<td></td>
 					<td>강좌정보</td>
 					<td>가격</td>
-					<td>총상품금액</td>
 				</tr>
-				 <c:forEach var="cart" items="${basket}"> 
-				<tr id="secondRow">
+				 <c:forEach var="cart" items="${basket}">
+				 <tr>
+				 	<td><img src="/tobe/img/course_img/${vo.teacher_img_org}" style="width:100px; height:100px"></td>
+				
 					<td>
 						  학원명 : ${CodeToString.educationToString(cart.education)}<br>
                           과정명 : ${cart.cname}<br>
@@ -208,19 +213,22 @@ function re() {
                           요일 : ${CodeToString.dateToStirng(cart.mon, cart.tue, cart.wed, cart.thu, cart.fri, cart.sat, cart.sun)}<br></td>
                        
 					</td>
+				
 					<td class="price">${cart.price }</td>
-					<td class="totalprice">${cart.pay_total}</td>
+					
 				</tr>
-				</c:forEach>
+				<!--</c:forEach>-->
 		</table>
+		<c:forEach var="cart" items="${basket}"> 
 		<div class="title2">
+		
 			<h2 style="margin: 1rem; padding: 0;">포인트 사용</h2>
 			<hr width="800px;" style="margin-left:15px;">
-			<strong >결제 예정 금액</strong>  <p id="paytotal"></p>원 <br style="margin-bottom:15px;"> 
-			<br><hr width="800px;">
-			<br>
 			<strong>보유 포인트</strong> <input type="text" name="point_usage" style="margin-left:15px;" height="10px;">원 / ${loginInfo.point }원 <button style="margin-left:15px; background-color:#000; color: #fff; border-radius:5px;">전액 사용</button>
 			<hr width="800px;">
+			<br>
+			<strong >결제 예정 금액</strong>  ${cart.price }- <p>원</p>
+			<br><hr width="800px;">
 		</div>
 		<div class="title3">
 			<h2 style="margin: 1rem; padding: 0;">결제 수단</h2>
@@ -231,35 +239,45 @@ function re() {
 			<hr width="800px;" >
 		</div>
 			<table class="finalpay">
-				<tr id="firstRow">
-					<td>최종결제금액</td>
+				
+				<tr id="firstRow" colspan="2">
+					<th>최종결제금액</th>
 				</tr>
 				<tr id="secondRow">
 					<td>총 상품 금액</td>
-						<tr>
-							<td>포인트</td>
-						</tr>
+					<td>${cart.price }</td>
 				</tr>
+				<tr>
+					<td>사용포인트</td>
+					<td></td>
+				</tr>
+				
 				<tr id="secondRow">
 					<td>최종 결제 금액</td>
-					<tr>
-						<td>적립예정 포인트</td>
-					</tr>
+					<td></td>
+				<tr>
+				<tr>
+					<td>적립예정 포인트</td>
+					<td></td>
 				</tr>
+			
 				</table>
-				
+				</c:forEach>
 				<div class="agree">
 					<input type="checkbox" name="checkAll" class="check_all" onclick="AgreetAllSelect(this);"> 주문 정보를 확인하였으며, 약관 전체에 동의합니다.<br>
-					<input  type="checkbox" class="input_button small"  onclick="MathPrice(this);"> 주문 상품정보에 동의(필수)<br>
-					<input  type="checkbox" class="input_button small"  onclick="MathPrice(this);"> 결제대행서비스 이용을 위한 개인정보 제3자 제공 및 위탁 동의(필수)<br>
-					<input  type="checkbox" class="input_button small"  onclick="MathPrice(this);"> 개인정보 수집 및 이용에 대한 동의(필수)<br>
-					<input  type="checkbox" class="input_button small"  onclick="MathPrice(this);"> 개인정보 제3자 제공에 대한 동의(필수)
+					<input type="checkbox" class="input_button small"  onclick="MathPrice(this);"> 주문 상품정보에 동의(필수)<br>
+					<input type="checkbox" class="input_button small"  onclick="MathPrice(this);"> 결제대행서비스 이용을 위한 개인정보 제3자 제공 및 위탁 동의(필수)<br>
+					<input type="checkbox" class="input_button small"  onclick="MathPrice(this);"> 개인정보 수집 및 이용에 대한 동의(필수)<br>
+					<input type="checkbox" class="input_button small"  onclick="MathPrice(this);"> 개인정보 제3자 제공에 대한 동의(필수)
 				</div>
 				
 				<button type="button" name="button3" onclick="requestPay();" class="order" data-CartNo="${vo.cart_no }">결제하기</button>
+
 </form>				
 
-<%@include file="/WEB-INF/views/user/common/userFooter.jsp"%>
+<div class="footerBox">
+			<%@include file="/WEB-INF/views/user/common/userFooter.jsp"%>
+		</div>
 </div>
 </body>
 </html>
