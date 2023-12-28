@@ -32,6 +32,11 @@
 	height: 10rem;
 	background-color: #E4E6D9;
 }
+.userMain a:link, a:visited {
+	text-decoration: none;
+	color: #49654E;
+}
+
 
 .part1 {
 	position: absolute;

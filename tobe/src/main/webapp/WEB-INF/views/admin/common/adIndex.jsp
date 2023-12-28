@@ -153,7 +153,7 @@ p {
 			<p style="position: absolute; left: 4rem; bottom: 1rem;">지난 달 수수료</p>
 		</div>
 		<div class="mbox" id="typt">
-			<span style="position: absolute; left: 3.5rem; top: 1rem; font-size: 2rem; color: #848484;">${typt.sum }</span>
+			<span style="position: absolute; left: 2.5rem; top: 1rem; font-size: 2rem; color: #848484;">${typt.sum }</span>
 			<b style="position: absolute; right: 2.5rem; top: 1.4rem; font-size: 1.5rem; color: #848484;">원</b>
 			<p style="position: absolute; left: 5.5rem; bottom: 1rem;">연 매출</p>
 		</div>
@@ -199,7 +199,6 @@ p {
 					<tr>
 					    <td style="width: 20%;">${vo.cqna_no}</td>
 						<td class="url" style="width: 40%; cursor:pointer;" onclick="location.href='/tobe/user/course/userCourseAskDetail.do?cqna_no=${vo.cqna_no}'">${vo.cq_title}</td>    
-						<td style="width: 40%;">${vo.cq_writedate}</td>
 					</tr>
 				</c:forEach>
 				</table>
