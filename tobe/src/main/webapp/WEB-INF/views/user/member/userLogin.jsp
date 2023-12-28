@@ -196,7 +196,8 @@ a:visited {
 	
 .top{
 text-align:center;
-color: #424242;
+color: #0C4C2D;
+margin-bottom:10px;
 }
 .find{
 border:none;
@@ -213,6 +214,8 @@ list-style:none;
 border:none;
 background-color:rgba(0,0,0,0);
 font-size:10px;
+margin-left:75px;
+cursor: pointer;
 }
 
 fieldset li{
@@ -245,7 +248,7 @@ margin:0 10px;
 	                                    <ul class="change">
 		                                    <!-- <li><label  style="font-size: 0.75rem;"><input type="checkbox" name="reg1" id="reg1" style="width:10px; height:10px;"/>아이디저장</label></li>  -->
 		                                    <!-- <li><a href="userFindMember.do" class="btn" style="font-size:10px">아이디|비밀번호 찾기</a></li>  -->
-		                                    <li float="left"><input class="id_pwd" type="button" value="아이디 | 비밀번호 찾기" onclick="window.open('userFindMember.do','window_name','width=300,height=700');"></li>
+		                                    <li float="left"><input class="id_pwd" type="button" value="아이디 | 비밀번호 찾기" onclick="window.open('userFindMember.do','window_name','width=500,height=600');"></li>
 	                                    </ul>
 	                                </ul>
 	                               	<input class= "login_btn" type="submit" value="로그인"/>

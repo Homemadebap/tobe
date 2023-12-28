@@ -34,23 +34,31 @@ $(function(){
 	
 });
 </script>
+<style>
+div {
+margin-top:50px;
+display:flex;
+justify-content:center;
+text-align:center;
+}
+</style>
 </head>
 
 <body>
 
 
-	<div class="board_area">
 	
-		<div class="id_title">아이디 찾기</div>
+	<!--<div class="id_title">아이디 찾기</div>
 		<div class="pwd_title">비밀번호 찾기</div>
 		
-		<!-- <form action="userFindMember.do" method="get" id="idboard" name="idboard" onsubmit=""> -->
 			<form action="userFindMember.do" method="post" id="board1" name="board1" onsubmit="">
-				<div class="id_contents" id="id_data">
-					<ul>
-						<li style="list-style: none;">해당 이메일로<br>임시 비밀번호를 전송하였습니다.</li>
-					</ul>				
-					<div>${user.email }</div>					
+				<div class="id_contents" id="id_data">  -->
+
+					<div>
+						<div style="list-style: none;">해당 이메일로<br>임시 비밀번호를 전송하였습니다.<br><br><br>
+						이메일 : ${user.email }</div>
+					</div>				
+										
 				</div>
 			</form>
 

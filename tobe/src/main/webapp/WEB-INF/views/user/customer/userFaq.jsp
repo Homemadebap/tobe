@@ -13,7 +13,7 @@
 <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
 <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
-
+<link rel="stylesheet" href="/tobe/css/bbs.css"/>
 <style>
 .top {
 	width: 75rem;
