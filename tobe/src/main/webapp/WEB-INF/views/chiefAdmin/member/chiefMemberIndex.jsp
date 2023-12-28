@@ -88,9 +88,9 @@
 
 
 <style>
-#top {
-	position: relative;
-	margin: -760px 0 0 -90px;
+#top{
+   position: relative;
+   margin: -845x 0 0 -90px; 
 }
 
 .admin_logo {

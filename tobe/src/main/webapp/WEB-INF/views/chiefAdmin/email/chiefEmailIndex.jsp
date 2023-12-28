@@ -1,29 +1,74 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+<style>
+.container{
+	position: relative;
+	margin: -845px 0 0 160px;
+	width : 1340px ;
+	height : 850px;
+	border: 1px solid #ddd;
+	box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+	 
+}
+.email_sub{
+	width : 1340px ;
+	height : 650px;
+	display: flex;
+	flex-direction: row;  
+	justify-content : space-around;
+	align-items: center; 
+}
+.mail{
+	width : 250px ;
+	height : 250px;
+ 	border: 1px solid #ddd;
+	box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+	align-items: center;
+	display: flex;
+	flex-direction: column; 
+	justify-content : space-evenly;
+}
+.mailImg{
+	width : 120px ;
+	height:120px;
+}
+.image{
+	width : 100% ;
+	height : 100%;
+
+}
+</style>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
 <body>
-<%@include file="/WEB-INF/views/chiefAdmin/common/chiefSideBar_logo.jsp" %>
-  <div id="con">
-	   <div id="boxa">
-    	  <div id="a">
-            <a href="/tobe/chiefAdmin/email/chiefEmailForm.do" id="dd"><font size=1px;>메일작성하기</a></font>
-            <img src="/tobe/img/mail.png" onclick="location.href='/tobe/chiefAdmin/email/chiefEmailForm.do';" id="mail"><br>
-         </div>
-           <div id="a">
-            <a href="/tobe/chiefAdmin/email/chiefEmailBox.do" id="dd"><font size=1px;>보낸메일함</a></font>
-            <img src="/tobe/img/mail.png" onclick="location.href='/tobe/chiefAdmin/email/chiefEmailBox.do';" id="mail"><br>
-            <a href="/tobe/chiefAdmin/email/chiefEmailIndex.do" id="mailp">메일작성 바로가기</a>
-         </div>
-         <div id="a">
-            <a href="/tobe/chiefAdmin/email/chiefMemberListEmail.do" id="dd"><font size=1px;>회원목록바로가기</a></font>
-            <img src="/tobe/img/mail.png" onclick="location.href='/tobe/chiefAdmin/email/chiefMemberListEmail.do';" id="mail"><br>
-         </div>
-      </div>
-  </div>    	
+<div class="wrqp">
+	<%@include file="/WEB-INF/views/chiefAdmin/common/chiefSideBar_logo.jsp" %>
+	<div class="container">
+		<div class="email_sub">
+			<div class="mail" style="background-color:#F8FFF5;">
+				<div class="mailImg" >
+					<img class="image" src="/tobe/img/emailSend.png" onclick="location.href='/tobe/chiefAdmin/email/chiefEmailForm.do';" >
+				</div>
+			     <a href="/tobe/chiefAdmin/email/chiefEmailForm.do"><b>메일작성하기</b></a></font>
+			</div>
+			<div class="mail" style="background-color:#FDFFF3;">
+				<div class="mailImg" >
+					<img class="image" src="/tobe/img/eamilBoxpng.png" onclick="location.href='/tobe/chiefAdmin/email/chiefEmailBox.do';" id="mail"><br>
+				</div>  	
+				<a href="/tobe/chiefAdmin/email/chiefEmailBox.do" ><b>보낸메일함</b></a>
+			</div>
+			<div class="mail" style="background-color:#F9FFFE;">
+				<div class="mailImg">
+				   <img class="image" src="/tobe/img/emailMember.png" onclick="location.href='/tobe/chiefAdmin/email/chiefMemberListEmail.do';"><br>
+				</div>
+				   <a href="/tobe/chiefAdmin/email/chiefMemberListEmail.do" ><b>회원목록바로가기</b></a>
+			</div>
+		</div>
+	</div>  
+</div>
 </body>
 </html>
