@@ -9,6 +9,16 @@
 		    ON c.course_no=pd.course_no
 		    JOIN pay p ON pd.order_no=p.order_no
 	</select>
+	<select id="totalCount" parameterType="map" resultType="int">
+		select count(*) 
+		from member
+	</select>
 	
+		<select id="qna" parameterType="kr.co.tobe.vo.QnaVO" resultType="java.util.Map">
+			SELECT qna_no, q_title, STR_TO_DATE(q_writedate, '%Y-%m-%d') as q_writedate
+			FROM qna q 
+			WHERE q_reply is null
+			 
+	</select>
 	
 </mapper>

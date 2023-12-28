@@ -171,7 +171,7 @@ a:hover {
 		</div>
 		<div>
 	   		<button id="btna" onclick="location.href='';">
-	       		<img src="/tobe/img/admin_admin.png">
+	       		
 		    </button>
 	 	</div>
 	 	<div id="btna"></div>

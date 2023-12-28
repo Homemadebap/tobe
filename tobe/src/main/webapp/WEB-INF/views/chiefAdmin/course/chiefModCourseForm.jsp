@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
    pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -90,32 +91,6 @@
 	 }
    
    
-   $(document).ready(function() {
-	   console.log(${map});
-	   $("#educationS").val(map.education).prop("selected", true);
-	   /*$("#educationS").val(${map.education}).prop("selected", true);*/
-	   $("#branchS").val(${map.branch}).prop("selected", true);
-	   $("#areaS").val(${map.area}).prop("selected", true);
-	   $("#subjectS").val(${map.subject}).prop("selected", true);
-	   /*$("#levelS").val(${map.level});*/
-	   $("#timezoneS").val(${map.timezone});
-	  /* $("#monS").val(${map.mon});
-	   $("#tueS").val(${map.tue});
-	   $("#wedS").val(${map.wed});
-	   $("#thuS").val(${map.thu});
-	   $("#friS").val(${map.fri});
-	   $("#satS").val(${map.sat});
-	   $("#sunS").val(${map.sun});*/
-	   $("#teacher1S").val(${map.teacher1});
-	   /*$("#teacher2S").val(${map.teacher2});*/
-	   $("#startdayS").val(${map.startday});
-	   $("#enddayS").val(${map.endday});
-	   $("#cnameS").val(${map.cname});
-	   $("#detail").val(${map.detail});
-	   $("#timeS").val(${map.time}).prop("selected", true);
-	   $("#priceS").val(${map.price});
-	   $("#teacher_img_orgS").val(${map.teacher_img_org});
-   });
    
    </script>
 <style>
@@ -240,7 +215,6 @@
   
   
    <form name="cheifModForm" method="post" action="chiefCourseIndex.do" enctype="multipart/form-data" onsubmit="return goSave()">   
-		<c:forEach var="map" items="${list}">   
 	  <div id="con">
 	    <div id="boxa">      
 	        <div class="filebox">
@@ -256,34 +230,34 @@
 			
 					<b>학원명</b>
 					<select name="education" id="educationS">
-	                  <option value="1">해커스</option>
-	                  <option value="2">파고다</option>
-	                  <option value="3">YBM</option>
+	                  <option value="1" <c:if test="${map.education == 1 }">selected</c:if>>해커스</option>
+	                  <option value="2" <c:if test="${map.education == 2 }">selected</c:if>>파고다</option>
+	                  <option value="3" <c:if test="${map.education == 3 }">selected</c:if>>YBM</option>
 	            	</select>
 				</div>
 				<div class="br">
 					<b>지점명</b>
 					 <select name="branch" id="branchS">
-		                  <option value="1">강남</option>
-		                  <option value="2">종로</option>
-		                  <option value="3">종로e4u</option>
-		                  <option value="4">신촌</option>
-		                  <option value="5">건대</option>
-		                  <option value="6">대구동성로</option>
-		                  <option value="7">서면</option>
-		                  <option value="8">부산대</option>
-		                  <option value="9">대연</option>
-		                  <option value="10">부산광복</option>
-		                  <option value="11">인천센터</option>
+		                  <option value="1" <c:if test="${map.branch == 1 }">selected</c:if>>강남</option>
+		                  <option value="2" <c:if test="${map.branch == 2 }">selected</c:if>>종로</option>
+		                  <option value="3" <c:if test="${map.branch == 3 }">selected</c:if>>종로e4u</option>
+		                  <option value="4" <c:if test="${map.branch == 4 }">selected</c:if>>신촌</option>
+		                  <option value="5" <c:if test="${map.branch == 5 }">selected</c:if>>건대</option>
+		                  <option value="6" <c:if test="${map.branch == 6 }">selected</c:if>>대구동성로</option>
+		                  <option value="7" <c:if test="${map.branch == 7 }">selected</c:if>>서면</option>
+		                  <option value="8" <c:if test="${map.branch == 8 }">selected</c:if>>부산대</option>
+		                  <option value="9" <c:if test="${map.branch == 9 }">selected</c:if>>대연</option>
+		                  <option value="10" <c:if test="${map.branch == 10 }">selected</c:if>>부산광복</option>
+		                  <option value="11" <c:if test="${map.branch == 11 }">selected</c:if>>인천센터</option>
 	           		 </select>		
 				</div>
 				<div class="ar">
 					<b>지역</b>
 					<select name="area" id="areaS">
-	                  <option value="2">서울</option>
-	                  <option value="32">인천</option>
-	                  <option value="51">부산</option>
-	                  <option value="53">대구</option>
+	                  <option value="2" <c:if test="${map.area == 2 }">selected</c:if>>서울</option>
+	                  <option value="32" <c:if test="${map.area == 32 }">selected</c:if>>인천</option>
+	                  <option value="51" <c:if test="${map.area == 51 }">selected</c:if>>부산</option>
+	                  <option value="53" <c:if test="${map.area == 53 }">selected</c:if>>대구</option>
 	            	</select>
 				</div>				
 			</div>
@@ -291,65 +265,65 @@
 				<div id="su">
 					<b>과목</b>
 					<select name="subject" id="subjectS">
-		                 <option value="1">토익</option>
-		                 <option value="2">토스</option>
-		                 <option value="3">토플</option>
-		                 <option value="4">아이엘츠</option>
-		                 <option value="5">텝스</option>
-		                 <option value="6">오픽</option>
-		                 <option value="7">gre</option>
-		                 <option value="8">g-telp</option>
+		                 <option value="1" <c:if test="${map.subject == 1 }">selected</c:if>>토익</option>
+		                 <option value="2" <c:if test="${map.subject == 2 }">selected</c:if>>토스</option>
+		                 <option value="3" <c:if test="${map.subject == 3 }">selected</c:if>>토플</option>
+		                 <option value="4" <c:if test="${map.subject == 4 }">selected</c:if>>아이엘츠</option>
+		                 <option value="5" <c:if test="${map.subject == 5 }">selected</c:if>>텝스</option>
+		                 <option value="6" <c:if test="${map.subject == 6 }">selected</c:if>>오픽</option>
+		                 <option value="7" <c:if test="${map.subject == 7 }">selected</c:if>>gre</option>
+		                 <option value="8" <c:if test="${map.subject == 8 }">selected</c:if>>g-telp</option>
 	        		 </select>
 				</div>	
 				<div id="cn">
-					<b style="margin-right:10px">과목명</b>  <input type="text" name="cname" id="cnameS" size="70" value="${map.cname}	">  
+					<b style="margin-right:10px">과목명</b>  <input type="text" name="cname" id="cnameS" size="70" value="${map.cnam}">  
 				</div>
 			</div>
 			<div>
 				<div id="le" >
 					<b>수준</b> <b>토익</b>
-					<label><input type="checkbox" name="level" class="levelS" value="1500"> 500</label>
-					<label><input type="checkbox" name="level" class="levelS" value="1600"> 600</label> 
-					<label><input type="checkbox" name="level" class="levelS" value="1700"> 700</label> 
-					<label><input type="checkbox" name="level" class="levelS" value="1800"> 800</label> 
-					<label><input type="checkbox" name="level" class="levelS" value="1900"> 900</label><br>
+					<label><input type="checkbox" name="level" value="1500" <c:if test="${map.level == 1500 }">checked</c:if>> 500</label>
+					<label><input type="checkbox" name="level" value="1600" <c:if test="${map.level == 1600 }">checked</c:if>> 600</label> 
+					<label><input type="checkbox" name="level" value="1700" <c:if test="${map.level == 1700 }">checked</c:if>> 700</label> 
+					<label><input type="checkbox" name="level" value="1800" <c:if test="${map.level == 1800 }">checked</c:if>> 800</label> 
+					<label><input type="checkbox" name="level" value="1900" <c:if test="${map.level == 1900 }">checked</c:if>> 900</label><br>
 					<b style="margin-left:37px">토스</b>
-					<label><input type="checkbox" name="level" class="levelS" value="21">입문</label> 
-					<label><input type="checkbox" name="level" class="levelS" value="22">기본</label> 
-					<label><input type="checkbox" name="level" class="levelS" value="23">중급</label> 
+					<label><input type="checkbox" name="level" value="21" <c:if test="${map.level == 21 }">checked</c:if>>입문</label> 
+					<label><input type="checkbox" name="level"  value="22" <c:if test="${map.level == 22 }">checked</c:if>>기본</label> 
+					<label><input type="checkbox" name="level"  value="23" <c:if test="${map.level == 23 }">checked</c:if>>중급</label> 
 					<b style="margin-left:37px">토플</b>
-					<label><input type="checkbox" name="level" class="levelS" value="360"> 60</label> 
-					<label><input type="checkbox" name="level" class="levelS" value="370"> 70</label> 
-					<label><input type="checkbox" name="level" class="levelS" value="380"> 80</label> 
-					<label><input type="checkbox" name="level" class="levelS" value="390"> 90</label><br>
+					<label><input type="checkbox" name="level"  value="360" <c:if test="${map.level == 360 }">checked</c:if>> 60</label> 
+					<label><input type="checkbox" name="level"  value="370" <c:if test="${map.level == 370 }">checked</c:if>> 70</label> 
+					<label><input type="checkbox" name="level"  value="380" <c:if test="${map.level == 380 }">checked</c:if>> 80</label> 
+					<label><input type="checkbox" name="level"  value="390" <c:if test="${map.level == 390 }">checked</c:if>> 90</label><br>
 					<b style="margin-left:37px">ielts</b>
-					<label><input type="checkbox" name="level" class="levelS" value="45">5</label> 
-					<label><input type="checkbox" name="level" class="levelS" value="46">6</label>
-					<label><input type="checkbox" name="level" class="levelS" value="47">7</label><br>
+					<label><input type="checkbox" name="level"  value="45" <c:if test="${map.level == 45 }">checked</c:if>>5</label> 
+					<label><input type="checkbox" name="level"  value="46" <c:if test="${map.level == 46 }">checked</c:if>>6</label>
+					<label><input type="checkbox" name="level"  value="47" <c:if test="${map.level == 47 }">checked</c:if>>7</label><br>
 				    <b style="margin-left:37px">텝스</b>
-				    <label><input type="checkbox" name="level" class="levelS" value="5300"> 300</label>
-				    <label><input type="checkbox" name="level" class="levelS" value="5350"> 350</label> 
-				    <label><input type="checkbox" name="level" class="levelS" value="5400"> 400</label> 
-				    <label><input type="checkbox" name="level" class="levelS" value="5500"> 500</label><br>
+				    <label><input type="checkbox" name="level"  value="5300" <c:if test="${map.level == 5300 }">checked</c:if>> 300</label>
+				    <label><input type="checkbox" name="level"  value="5350" <c:if test="${map.level == 5350 }">checked</c:if>> 350</label> 
+				    <label><input type="checkbox" name="level"  value="5400" <c:if test="${map.level == 5400 }">checked</c:if>> 400</label> 
+				    <label><input type="checkbox" name="level"  value="5500" <c:if test="${map.level == 5500 }">checked</c:if>> 500</label><br>
 				    <b style="margin-left:37px">오픽</b>
-					<label><input type="checkbox" name="level" class="levelS" value="61">입문</label>
-					<label><input type="checkbox" name="level" class="levelS" value="62">기본</label>
-					<label><input type="checkbox" name="level" class="levelS" value="63">중급</label><br>
+					<label><input type="checkbox" name="level"  value="61" <c:if test="${map.level == 61 }">checked</c:if>>입문</label>
+					<label><input type="checkbox" name="level"  value="62" <c:if test="${map.level == 62 }">checked</c:if>>기본</label>
+					<label><input type="checkbox" name="level"  value="63" <c:if test="${map.level == 63 }">checked</c:if>>중급</label><br>
 				    <b style="margin-left:37px">gre</b>
-					<label><input type="checkbox" name="level" class="levelS" value="71"> 기본</label>
-					<label><input type="checkbox" name="level" class="levelS" value="72"> 정규</label> 
-					<label><input type="checkbox" name="level" class="levelS" value="73"> 실전</label><br>
+					<label><input type="checkbox" name="level"  value="71" <c:if test="${map.level == 71 }">checked</c:if>> 기본</label>
+					<label><input type="checkbox" name="level"  value="72" <c:if test="${map.level == 72 }">checked</c:if>> 정규</label> 
+					<label><input type="checkbox" name="level"  value="73" <c:if test="${map.level == 73 }">checked</c:if>> 실전</label><br>
 					<b style="margin-left:37px">g-telp</b>
-					<label><input type="checkbox" name="level" class="levelS" value="81"> 30</label> 
-					<label><input type="checkbox" name="level" class="levelS" value="82"> 40</label>
+					<label><input type="checkbox" name="level"  value="81" <c:if test="${map.level == 81 }">checked</c:if>> 30</label> 
+					<label><input type="checkbox" name="level"  value="82" <c:if test="${map.level == 82 }">checked</c:if>> 40</label>
 				</div>
 			</div>
 			<div id="te">
-				<b>강사명1</b> <input type="text" name="teacher1" id="teacher1S"><b style="margin-left:10px" style="margin-right:10px" >강사명2</b> <input type="text" name="teacher2" id="teachers2S"> 
+				<b>강사명1</b> <input type="text" name="teacher1" id="teacher1S" value="${map.teacher1}"><b style="margin-left:10px" style="margin-right:10px" >강사명2</b> <input type="text" name="teacher2" value="${map.teacher2}"> 
 			</div>
 			<div id="da">
 				<div id="pr">
-					<b style="margin-right:10px">가격</b> <input type="text" name="price" id="priceS">원
+					<b style="margin-right:10px">가격</b> <input type="text" name="price" value="${map.price}">원
 				</div>
 				<div id="st">
 					<b>개강일</b>	<input type="date" name="startday" id="startdayS">			
@@ -361,32 +335,32 @@
 			<div>
 				<div id="mo">
 					<B>요일</B>
-					<label><input type="checkbox" name="mon" id="monS" value="1">월</label> 
-					<label><input type="checkbox" name="tue" id="tueS" value="2">화</label> 
-		            <label><input type="checkbox" name="wed" id="wedS" value="3">수</label> 
-		            <label><input type="checkbox" name="thu" id="thuS" value="4">목</label> 
-		            <label><input type="checkbox" name="fri" id="friS" value="5">금</label> 
-		            <label><input type="checkbox" name="sat" id="satS" value="6">토</label> 
-		            <label><input type="checkbox" name="sun" id="sunS" value="7">일</label>
+					<label><input type="checkbox" name="mon" value="1" <c:if test="${map.mon == 1 }">checked</c:if>>월</label> 
+					<label><input type="checkbox" name="tue" value="2" <c:if test="${map.tue == 2 }">checked</c:if>>화</label> 
+		            <label><input type="checkbox" name="wed" value="3" <c:if test="${map.wed == 3 }">checked</c:if>>수</label> 
+		            <label><input type="checkbox" name="thu" value="4" <c:if test="${map.thu == 4 }">checked</c:if>>목</label> 
+		            <label><input type="checkbox" name="fri" value="5" <c:if test="${map.fri == 5 }">checked</c:if>>금</label> 
+		            <label><input type="checkbox" name="sat" value="6" <c:if test="${map.sat == 6 }">checked</c:if>>토</label> 
+		            <label><input type="checkbox" name="sun" value="7" <c:if test="${map.sun == 7 }">checked</c:if>>일</label>
 				</div>
 			</div>
 			<div id="tt">
 				<div id="ti">
 					<b style="margin-right:10px">수업시간대</b>
 					<select name="timezone">
-	                  <option value="9" id="timezoneS">오전(9시이전)</option>
-	                  <option value="912" id="timezoneS">오전(9시~12시)</option>
-	                  <option value="1218" id="timezoneS">오후(12시~18시)</option>
-	                  <option value="18" id="timezoneS">저녁(18시이후)</option>
+	                  <option value="9" <c:if test="${map.timezone == 9 }">selected</c:if>>오전(9시이전)</option>
+	                  <option value="912" <c:if test="${map.timezone == 912 }">selected</c:if>>오전(9시~12시)</option>
+	                  <option value="1218" <c:if test="${map.timezone == 1218 }">selected</c:if>>오후(12시~18시)</option>
+	                  <option value="18" <c:if test="${map.timezone == 18 }">selected</c:if>>저녁(18시이후)</option>
 	            	</select>
 				</div>
 				<div id="dti">
-					<b style="margin-right:10px">상세시간</b> <input type="text" name="time" id="timeS">
+					<b style="margin-right:10px">상세시간</b> <input type="text" name="time" value="${map.time}">
 				</div>
 			</div>
 		</div>
 		<div id="de">
-			<textarea name="detail" id="detail"></textarea> <!-- name이랑 id는 컬럼명 -->
+			<textarea name="detail" id="detail" value="${map.detail}"></textarea> <!-- name이랑 id는 컬럼명 -->
 		</div>
 	 </div>
 	 
@@ -398,7 +372,6 @@
 		            </div>
 	            </div>
 	         </div>
-	  </c:forEach>      
    </form>
  </div>  
 </body>

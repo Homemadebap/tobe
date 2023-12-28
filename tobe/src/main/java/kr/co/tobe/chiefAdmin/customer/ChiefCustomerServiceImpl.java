@@ -69,6 +69,8 @@ public class ChiefCustomerServiceImpl implements ChiefCustomerService {
 	      return map;
 	   }
 	
+
+	 
 	@Override
 	public List<NoticeVO> getlist(NoticeVO vo) {	
 		return mapper.getlist(vo);

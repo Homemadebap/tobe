@@ -99,6 +99,7 @@ body {
 }
 #main {
    display: flex;
+   
 }
 
 a:link, a:visited {

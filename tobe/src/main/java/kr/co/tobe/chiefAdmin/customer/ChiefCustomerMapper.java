@@ -12,6 +12,7 @@ import kr.co.tobe.vo.ReviewVO;
 
 @Mapper
 public interface ChiefCustomerMapper {
+	
 	public int insert(NoticeVO vo);
 	public int faqinsert(FaqVO vo);
 	public int noticeCount(NoticeVO vo);
@@ -28,4 +29,28 @@ public interface ChiefCustomerMapper {
 	public List<FaqVO> getfaqlist(FaqVO vo);	
 	
 	int replyInsert (QnaVO vo);
+	
+	
+	// 상건
+	int insert(QnaVO vo);
+	int qnaUpdate(QnaVO vo);
+	int qnaDelete(int no);
+	int qnaInsert(QnaVO vo);
+	int updateGno(int no);
+	
+	int qnaCount(QnaVO vo);
+	List<QnaVO> qnaList(QnaVO vo);
+	QnaVO qnaDetail(int no);
+	
+	
+	//notice
+	int noticeInsert(NoticeVO vo);
+
+	//상세페이지
+	NoticeVO detail(int no);
+	
+	//faq
+	int faqCount(FaqVO vo);
+	List<FaqVO> faqList(FaqVO vo);
+
 }
