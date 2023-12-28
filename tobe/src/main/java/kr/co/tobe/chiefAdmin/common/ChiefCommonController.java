@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import kr.co.tobe.vo.AdminVO;
+import kr.co.tobe.vo.QnaVO;
 
 @Controller
 public class ChiefCommonController {
@@ -17,8 +18,11 @@ public class ChiefCommonController {
 	
 	@GetMapping ("/chiefAdmin/common/chiefIndex.do")
 
-	public String index(HttpSession sess, Model model) {
+	public String index(HttpSession sess, Model model,QnaVO qvo) {
 		AdminVO admin = (AdminVO)sess.getAttribute("adLoginInfo"); 
+		
+		
+		model.addAttribute("q", service.qna(qvo));
 		return "chiefAdmin/common/chiefIndex";
 	}
 	
@@ -27,5 +31,7 @@ public class ChiefCommonController {
 //		model.addAttribute("pay_chargeTotal", service.pay_chargeTotal());
 		return "chiefAdmin/sales/chiefSalesIndex";
 	}
+	
+	
 	
 }

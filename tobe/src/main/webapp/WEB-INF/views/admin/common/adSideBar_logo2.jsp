@@ -104,6 +104,7 @@ body {
 }
 #main {
    display: flex;
+   
    	height: 950px;
     width: 1500px;
 }
