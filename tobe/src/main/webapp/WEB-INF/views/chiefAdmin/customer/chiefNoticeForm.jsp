@@ -39,19 +39,33 @@ function goSave() {
  	width: 
  	margin: -400px 0 0 15px;
  }
+ .container{
+   position: relative;
+   margin: -845px 0 0 160px;
+   width : 1340px ;
+   height : 850px;
+  } 
+  .title {
+  size: 1000px;
+  
+  }
+  #detail{
+  
+  }
+} 
 </style>
 <body>
 <%@include file="/WEB-INF/views/chiefAdmin/common/chiefSideBar_logo.jsp" %>
-
+<div class="container">
 <form name="frm" method="post" action="chiefNoticeInsert.do" enctype="multipart/form-data" onsubmit="return goSave()">   
-	제목 : <input name="n_title" tpye="text" />
-	<textarea name="n_content" id="detail">  </textarea>
+	제목 : <input name="n_title" tpye="text" class="title"/>
+	<textarea name="n_content" id="detail" rows="4" cols="50">  </textarea>
 		  <div colspan="2" id="put">
             <input type="submit" value="등록하기" /> 
-            <input type="button" value="목록보기" onclick="backToList(this.form)" />
+            <input type="button" value="목록보기" onclick="location.href='/tobe/chiefAdmin/customer/chiefCustomerIndex.do';" />
         </div>
   </form>
 
-   
+</div>  
 </body>
 </html>

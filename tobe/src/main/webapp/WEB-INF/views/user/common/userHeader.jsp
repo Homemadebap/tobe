@@ -61,13 +61,14 @@
 	font-size: 
 }
 
-a:link {
-	text-decoration: none;
-}
 
-a:visited {
+a:link, a:visited {
 	text-decoration: none;
-	color: #49654E; 
+	
+}
+a:hover {
+	text-decoration: none;
+	color: #d3d3d3;
 }
 
 .menu_container > ul > li {
@@ -112,6 +113,8 @@ a:visited {
 	height: 800px;
 	text-align: center;
 	margin: 0 auto;
+	background-color : #E4E6D9; 
+	pont-size : 15px;
 }
     
 .main {

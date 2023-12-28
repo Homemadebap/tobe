@@ -44,7 +44,7 @@
 }
 
 .select img{
-	width: 10rem;
+	width: 5rem;
 }
 
 .search-wrap {
@@ -123,15 +123,15 @@
 					<tr>
 						<td>
 							<p>공지사항</p>
-							<a href="/tobe/user/customer/userCustomer.do"><img src="/img/notice.png"></a>
+							<a href="/tobe/user/customer/userCustomer.do"><img src="/tobe/img/chiefAdmin_notice.png"></a>
 						</td>
 						<td>
 							<p>1:1 문의사항</p>
-							<a href="/tobe/user/customer/userQna.do"><img src="/img/qna.png"></a>
+							<a href="/tobe/user/customer/userQna.do"><img src="/tobe/img/chiefAdmin_qna.png"></a>
 						</td>
 						<td>
 							<p>FAQ</p>
-							<a href="/tobe/user/customer/userFaq.do"><img src="/img/faq.png"></a>
+							<a href="/tobe/user/customer/userFaq.do"><img src="/tobe/img/chiefAdmin_faq.png"></a>
 						</td>
 					</tr>
 				</table>

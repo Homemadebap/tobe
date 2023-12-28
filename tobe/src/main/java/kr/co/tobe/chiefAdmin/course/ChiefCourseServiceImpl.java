@@ -74,5 +74,4 @@ public class ChiefCourseServiceImpl implements ChiefCourseService {
         map.put("next", next);
 		return map;
 	}
-
 }

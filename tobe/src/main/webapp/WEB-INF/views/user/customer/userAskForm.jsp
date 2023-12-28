@@ -40,12 +40,11 @@
     
 </script>
 <style>
+.main {
+	width: 75rem;
+	height: 50rem;
+}
 
-	.sub {
-	   
-	    position: relative;
-	    top: 13rem;
-	}
 	.board_write{
 		width: 80%;
 
@@ -56,8 +55,10 @@
 </head> 
 <body>
     <div class="wrap">
-       <%@ include file="/WEB-INF/views/user/common/userHeader.jsp" %>
-        <div class="sub">
+		<div class="headerBox">
+			<%@include file="/WEB-INF/views/user/common/userHeader.jsp"%>
+		</div>
+        <div class="main">
             <div class="size">
                 <h3 class="sub_title">문의 등록</h3>
     
@@ -87,9 +88,9 @@
                         <tr>
                         	<td>
                          	<div class="btnSet"  style="text-align:right;">
-                        	<a class="btn" href="javascript:goSave();">저장</a>
-                        	<a href="javascript:;" class="btn" onclick="history.back();">취소</a></div>
-                        	</div></td>
+	                        	<a class="btn" href="javascript:goSave();">저장</a>
+	                        	<a href="javascript:;" class="btn" onclick="history.back();">취소</a></div>
+                        	</td>
                         </tr>
                         </tbody>
                     </table>
@@ -98,7 +99,9 @@
                 </div>
             </div>
         </div>
-		<%@include file="/WEB-INF/views/user/common/userFooter.jsp"%>
+		<div class="footerBox">
+			<%@include file="/WEB-INF/views/user/common/userFooter.jsp"%>
+		</div>
     </div>
 </body> 
 </html>

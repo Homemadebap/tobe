@@ -45,52 +45,55 @@
 </script>
 <style>
 
-	.sub {
-	   
-	    position: relative;
-	    top: 13rem;
-	}
-	.board_write{
-		width: 80%;
+.main {
+	width: 75rem;
+	height: 50rem;
+}
 
-	}
- 	 .rating {
- 	 		direction: rtl;
-            text-align: left;
-            position: relative;
-            font-size: 25px;
-        }
+.size {
+	width: 70rem;
+	margin: 0 auto;
+}
+.board_write{
+	width: 80%;
 
-        .star {
-            display: none;
-        }
+}
+ .rating {
+	direction: rtl;
+    text-align: left;
+    font-size: 25px;
+}
 
-        .label {
-            display: inline-block;
-            padding: 10px;
-            cursor: pointer;
-            position: relative;
-           
-        }
+.star {
+    display: none;
+}
 
-        .label::before {
- 			content: '★';
-            top: 0;
-            left: 0;
-            color: #ccc;
-            transition: color 0.3s ease-in-out;
-        }
+.label {
+    display: inline-block;
+    padding: 10px;
+    cursor: pointer;
+}
 
-        .star:checked ~ .label::before {
-            color: black;
-        }
-	
+.label::before {
+	content: '★';
+    top: 0;
+    left: 0;
+    color: #ccc;
+    transition: color 0.3s ease-in-out;
+}
+
+.star:checked ~ .label::before {
+    color: black;
+}
+
 </style>
 </head> 
 <body>
     <div class="wrap">
-       <%@ include file="/WEB-INF/views/user/common/userHeader.jsp" %>
-        <div class="sub">
+		<div class="headerBox">
+			<%@include file="/WEB-INF/views/user/common/userHeader.jsp"%>
+		</div>
+        <div class="main">
             <div class="size">
                 <h3 class="sub_title">수강후기 작성</h3>
     
@@ -165,7 +168,9 @@
                 </div>
             </div>
         </div>
-		<%@include file="/WEB-INF/views/user/common/userFooter.jsp"%>
+		<div class="footerBox">
+			<%@include file="/WEB-INF/views/user/common/userFooter.jsp"%>
+		</div>
     </div>
 </body> 
 </html>

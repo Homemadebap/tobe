@@ -10,7 +10,7 @@ import kr.co.tobe.vo.MemberVO;
 @Mapper
 public interface ChiefEmailMapper {
 	int emailInsert (EmailVO vo);
-	List<EmailVO> emailList ();
+	List<EmailVO> emailList (EmailVO vo);
 	String emailSelect (int no);
 	int memberSelect (String email);
 	int count(EmailVO vo);

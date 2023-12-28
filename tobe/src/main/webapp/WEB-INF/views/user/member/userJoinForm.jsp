@@ -122,7 +122,8 @@
 		}
 		th, td{
 		border:1px solid;
-		font-size:20px
+		font-size:15px;
+		border-width: thin;
 		}
 		th{
 			background-color:#E4E6D9;
@@ -142,6 +143,47 @@
 		position: absolute;
 		top: 65rem;
 		}
+		
+		.board_write{
+		width:700px;
+		}
+		
+		input#name, input#id, input#pwd, input#pw_check,
+		input#email,input#birthday,input#hp,input#zipcode,
+		input#addr1,input#addr2{
+		border-radius:7px;
+		border-width:thin;
+		
+		}
+		 
+		a#idCheck, a#zipNum{
+		background-color:#E7E7E7;
+		border:solid;
+		border-radius:7px;
+		border-width:thin;
+		font-size:13px;
+		}
+		a:link{
+		color:black;
+		}
+		.content th{
+		color:#44546A
+		}
+	
+		.btnSet_clear{
+		text-align:center;
+		}
+		.btnSet_clear .btn{
+		background-color:#E7E7E7;
+		border:solid;
+		border-radius:7px;
+		border-width:thin;
+		font-size:13px;
+		}
+		.ptxt{
+		font-size:10px;
+		}
+
 			
 	</style>
 </head> 
@@ -160,9 +202,9 @@
                         <col width="20%" />
                         <col width="80%" />
                     </colgroup>
-                    <tbody>
+                    <tbody class="content">
                     	<tr>
-                    		<th>이름</th>
+                      		<th>이름</th>
                     		<td><input type="text" name="name" id="name" style="float:left;"></td>
                     	</tr>
                         <tr>
@@ -174,7 +216,7 @@
                         </tr>
                         <tr>
                             <th>비밀번호</th>
-                            <td><input type="password" name="pwd" id="pwd" style="float:left;"> <span class="ptxt"></span> </td>
+                            <td><input type="password" name="pwd" id="pwd" style="float:left;"> <span class="ptxt">비밀번호는 숫자, 영문 조합으로 8자 이상으로 입력해주세요.</span> </td>
                         </tr>
                         <tr>
                             <th>비밀번호<span>확인</span></th>
@@ -208,14 +250,14 @@
                             
                             <td>
                                 <input type="text" name="zipcode" id="zipcode" value=""  maxlength="6" style="float:left;" readonly>
-                                <span class="email_check"><a href="javascript:zipcode();"  class="btn bgGray" style="float:left; width:auto; clear:none;">우편번호</a></span>
+                                <span class="email_check"><a href="javascript:zipcode();"  class="btn bgGray" id="zipNum">우편번호</a></span>
                             </td>
                         </tr>
                      	<tr>
                      		<th>상세 주소</th>
                             <td>
                                 <input type="text" name="addr1" id="addr1" value=""  maxlength="15" style="float:left;" readonly>
-                                <input type="text" name="addr2" id="addr2" value=""  maxlength="15" style="float:left;" readonly>
+                                <input type="text" name="addr2" id="addr2" value=""  maxlength="15" style="float:left;">
                             </td>
                         </tr>
                     </tbody>
@@ -224,7 +266,7 @@
                         <input type="hidden" name="checkEmail" id="checkEmail" value="0"/>
                 </form>
                 <!-- //write--->
-                <div class="btnSet clear">
+                <div class="btnSet_clear">
                     <div><a href="javascript:;" class="btn" onclick="goSave();">가입</a> <a href="javascript:;" class="btn" onclick="history.back();">취소</a></div>
                 </div>
             </div>

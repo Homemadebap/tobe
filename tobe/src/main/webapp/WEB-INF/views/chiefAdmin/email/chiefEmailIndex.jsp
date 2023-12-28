@@ -6,9 +6,7 @@
 	position: relative;
 	margin: -845px 0 0 160px;
 	width : 1340px ;
-	height : 850px;
-	border: 1px solid #ddd;
-	box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+	height : 840px;
 	 
 }
 .email_sub{
@@ -22,8 +20,7 @@
 .mail{
 	width : 250px ;
 	height : 250px;
- 	border: 1px solid #ddd;
-	box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+ 	border: 2px solid #ddd;
 	align-items: center;
 	display: flex;
 	flex-direction: column; 
