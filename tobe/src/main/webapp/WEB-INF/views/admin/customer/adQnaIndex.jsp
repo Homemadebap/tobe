@@ -75,14 +75,71 @@ $(function(){
 	align-items: center;
 }
 .bbs{
-	font-size: 12px;
+
 	
 }
 .title_con{
 	margin-bottom: 23px;
 	display : flex;
 	justify-content: space-between;
-	align-items: center;
+}
+.bbs .list td.content {
+	text-align: left;
+	
+}
+
+.con_content {
+	margin : 30px;
+	font-size : 15px;
+}
+
+.viewData {
+	padding-top: 25px;
+	
+}
+
+.view_content{
+
+	padding-bottom: 25px;
+	border-bottom : 1px solid #dfdfdf;
+}
+
+.bnt{
+     background-color: #E5D1E3;
+     padding: 5px 15px;
+     margin-top : 10px;
+     margin-left : 1200px;
+     text-align: center;
+     border-radius: 15px;
+     border : none;
+}
+
+.bnt_a{
+     background-color: #E5D1E3;
+     padding: 5px 15px;
+     margin-top : 10px;
+     margin-left : 1100px;
+     text-align: center;
+     border-radius: 15px;
+     border : none;
+}
+
+.bnt_b{
+	display : inline ;
+     background-color: #E5D1E3;
+     padding: 5px 15px;
+     margin-top : 10px;
+     text-align: center;
+     border-radius: 15px;
+     border : none;
+}
+
+textarea {
+    width: 100%;
+    height: 10em;
+    border: none;
+    resize: none;
+  }
 }
 </style>
 
@@ -134,41 +191,42 @@ $(function(){
                                </td>
                            </tr>
                            <tr>
-                           	<td class="content" style="display:none;" colspan="5">
-                           		<p>${vo.cq_content }</p>
-                           		<c:if test="${!empty vo.cq_reply}">
-                           			<div class="title">
-	                           			
-	                           			<div class=" viewData">${vo.cq_reply }<button class="viewEdit">수정</button></div>
-	                           			
-	                           			
-	                         			 <div class="edit" style="display:none;">
-		                         			 <form action="/tobe/admin/customer/edit.do" method="post" >
-			                           	 		  <input type="hidden" id="cqna_no" name="cqna_no" value="${vo.cqna_no} ">
-											      <textarea name="cq_reply" cols="100" rows="10">${vo.cq_reply }</textarea>
-											      <input type="submit" value="수정">
-										    </form>
-											<button class="viewRe">취소</button>
-	                         			 </div>
-	                         			 
-	                         			 
-                           			</div>	
+                           	<td class="content" style="display:none;" colspan="8">
+                           		<div class="con_content">
+	                           		<div class="view_content">
+		                           		<p>${vo.cq_content }</p>
+	                           		
+	                           		</div>
+	                           		<c:if test="${!empty vo.cq_reply}">
+	                           			<div class="replytitle">
+		                           			
+		                           			<div class=" viewData">${vo.cq_reply }<button class="viewEdit bnt_a">수정</button></div>
+		                           			
+		                           			
+		                         			 <div class="edit" style="display:none;">
+			                         			 <form action="/tobe/admin/customer/edit.do" method="post" >
+				                           	 		  <input type="hidden" id="cqna_no" name="cqna_no" value="${vo.cqna_no} ">
+												      <textarea class="cq_reply" name="cq_reply" cols="500" rows="10">${vo.cq_reply }</textarea><br>
+												      <input type="submit" value="수정" class="bnt_a" >
+												      <button class="viewRe bnt_b">취소</button>
+											    </form>
+												
+		                         			 </div>
+	                           			</div>	
                            			                         			 
-                           		</c:if>
+                           			</c:if>
+                       			</div>
                            	 		
                            	 	<c:if test="${empty vo.cq_reply}">
 	                           	 	<form action="/tobe/admin/customer/reply.do" method="post" >
 	                           	 		  <input type="hidden" id="cqna_no" name="cqna_no" value="${vo.cqna_no} ">
 									      <textarea name="cq_reply" cols="100" rows="10"></textarea>
-									      <input type="submit" value="등록">
+									      <input type="submit" value="등록" class="bnt">
 								    </form>
                            	 	</c:if>
                            	</td>
                             </tr>
 
-                           <tr>
-                           	 	
-                           </tr>
                       </c:forEach>
                        </tbody>
                    </table> 

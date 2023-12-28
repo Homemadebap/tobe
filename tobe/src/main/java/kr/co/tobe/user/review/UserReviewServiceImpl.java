@@ -1,6 +1,7 @@
 package kr.co.tobe.user.review;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -29,8 +30,8 @@ public class UserReviewServiceImpl implements UserReviewService {
 	}
 	
 	@Override
-	public List<ReviewVO> getSelectReviewNo (ReviewVO rvo){
-		return mapper.selectReviewNo(rvo);
+	public List<Map<String,Object>> getSelectReviewNo (){
+		return mapper.selectReviewNo();
 	}
 
 	@Override
