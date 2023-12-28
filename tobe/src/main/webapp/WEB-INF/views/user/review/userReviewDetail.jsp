@@ -105,7 +105,7 @@ hr{
    		</div>
    		<button type="button" onclick="location.href='/tobe/user/review/userReviewIndex.do'" class="comeBack">목록</button>
    		<c:if test="${!empty loginInfo}">
-   			<button type="button" onclick="location.href='/tobe/user/course/qna/edit.do?reviewNo=${review.review_no }'" class="modify">수정</a>
+   			<button type="button" onclick="location.href='/tobe/user/course/qna/edit.do?review_no=${review.review_no }'" class="modify">수정</a>
 		</c:if>
    	</div>
 			

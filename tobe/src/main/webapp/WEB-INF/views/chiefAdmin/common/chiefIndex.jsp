@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,6 +9,11 @@
 <title>관리자 페이지</title>
 </head>
 <style>
+.main {
+	width: 75rem;
+	height: 50rem;
+}
+
 #con{
 	margin: -870px 0 0 150px;
 }
@@ -130,6 +137,7 @@ div {
 </style>
 <body>
 <div class="main">
+<%@include file="/WEB-INF/views/chiefAdmin/common/chiefSideBar_logo.jsp" %>
 	<div class="container">
 	  <div id="con">
 		   <div id="boxa">
