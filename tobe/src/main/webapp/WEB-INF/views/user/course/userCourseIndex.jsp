@@ -145,12 +145,8 @@ caption {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	border: 1px solid #000; /* 나중에 강좌들 잘 나오는 거 확인하면 지워용*/
 }
-.subContainer{
-	width:33.3333%;
-	height: 50rem;
-}
+
 .subChildContainer{
 	height: 400px;
 	margin: 0 auto;
@@ -205,10 +201,6 @@ caption {
 }
 #td_city button[data-cicycd="11"]{
 	display: none;
-}
-.childSelectBox1{
-	position: relative;
-	bottom: 15rem;
 }
 </style>
 
@@ -421,7 +413,7 @@ caption {
           return selectedDays;
       }
    // 초기 데이터 로드 함수
-      function loadInitialData() {
+      function loadInitialData(page) {
           var selectedAcademy = $("#td_academy button.on").data("academycd");
           var selectedLecture = $("#td_lecture button.on").data("lecturecd");
           var selectedLocal = $("#td_local button.on").data("localcd");
@@ -437,7 +429,7 @@ caption {
           var selectedTime = $("#td_time button.on").data("timecd");
 
           $.ajax({
-              url: "/tobe/user/course/userCourseIndex2.do",
+              url: "/tobe/user/course/userCourseList.do",
               method: "get",
               data: {
                   "education": selectedAcademy,
@@ -453,18 +445,14 @@ caption {
                   "sat": selectedWeekSat,
                   "sun": selectedWeekSun,
                   "timezone": selectedTime,
-                  "page":1
+                  "page":page
               },
               headers: {
                   "Content-Type": "application/x-www-form-urlencoded;charset=utf-8"
               },
-              dataType: 'json',
+              dataType: 'html',
               success: function (data) {
-                  console.log("초기 데이터 로드 결과:", data);
-                  // 초기 데이터로 UI 업데이트
-                  console.log('page:'+data.page);
-                  console.log('totalpage:'+data.totalPage);
-                  updateSearchResults(data.list);
+            	  $(".subContainer").html(data);
               },
               error: function (error) {
                   // 서버로부터의 오류 응답 처리
@@ -472,55 +460,12 @@ caption {
               }
           });
       }
-      function updateSearchResults(results) {
-    	  
-  	    var searchResultsContainer = $(".subContainer");
-  	    searchResultsContainer.empty(); // 기존 결과 비우기
-  	    
-  	    // 각 결과를 순회하면서 UI에 추가
-  	    for (var i = 0; i < results.length; i++) {
-  	        var lecture = results[i];
-				console.log(lecture);
-				console.log(lecture.course_no);
-  	        var resultHtml = "<div class='subChildContainer'>";
-  	        resultHtml += "<p><a href='/tobe/user/course/userCourseDetail.do?course_no="+lecture.course_no+"'><img src="+ lecture.teacher_img_org +" alt='강사 이미지' width='50' height='50'></a></p>";
-  	        resultHtml += "<p>" + lecture.cname + "</p>";
-  	        resultHtml += "<p>" + lecture.time + "</p>";
-  	        resultHtml += "<p>" + lecture.price + "</p>";
-  	        resultHtml += "</div>";
-
-  	        resultHtml += "<div class='childSelectBox1'>";
-  	        resultHtml += "<table>";
-  	        resultHtml += "<tr>";
-  	        resultHtml += "<td><a href='/tobe/user/common/userBasket.do?course_no=" + lecture.course_no + "' class='SelectBtn'>장바구니 담기</a></td>";
-  	      	resultHtml += "<td><button type='button' onclick='setCourseComp(" + lecture.course_no + ");' class='SelectBtn'>비교함 담기</button></td>";
-  	        //resultHtml += "<td><button type='button' onclick=\"location.href='/tobe/user/pay/userPayDetail.do?'\" class='payBtn'>결제 하기</button></td>";
-  	        resultHtml += "<td><a href = '/tobe/user/pay/userPayDetail.do?course_no=" + lecture.course_no + "' class='payBtn'>결제 하기</a></td>";
-  	        resultHtml += "</tr>";
-  	        resultHtml += "</table>";
-  	        resultHtml += "</div>";
-console.log('html:'+resultHtml);
-				/*var existingContent = searchResultsContainer.html();
-				if (existingContent) {
-				    searchResultsContainer.append(resultHtml);
-				} else {
-				    searchResultsContainer.html(resultHtml);
-				}*/
-				//document.querySelector('.subContainer').innerHTML = resultHtml;
-				$(".subContainer").append(resultHtml);
-				//$(".subContainer").innerTEXT(resultHtml);
-  	        //searchResultsContainer.append(resultHtml);
-  	        /*${".subContainer"}.innerHTML(resultHtml);*/
-  	    }
-  	    
-  	}
       $(document).ready(function() {
          $('#td_time button').on('click', function(){
             $(this).addClass('on').siblings().removeClass('on');
             var timecd = $(this).data('timecd');
             console.log('시간 코드 : ' , timecd);
          });
-         loadInitialData();
       });
       $(document).ready(function () {
     	// 초기에 서울이 선택되도록 설정
@@ -529,60 +474,10 @@ console.log('html:'+resultHtml);
           $('#td_lecture button[data-lecturecd="1"]').click();
 
           // 초기 데이터 로드
-          loadInitialData();
+          loadInitialData(1);
 			
           $("#se").on("click", function () {
-              // 선택된 데이터 수집
-              var selectedAcademy = $("#td_academy button.on").data("academycd");
-              console.log("찍혔당 : ", selectedAcademy);
-              var selectedLecture = $("#td_lecture button.on").data("lecturecd");
-              var selectedLocal = $("#td_local button.on").data("localcd");
-              var selectedCity = $("#td_city button.on").data("citycd");
-              var selectedLevel = $("#td_level button.on").data("levelcd");
-              var selectedWeekMon = $("#td_week button.on").data("weekmoncd");
-              var selectedWeekTue = $("#td_week button.on").data("weektuecd");
-              var selectedWeekWed = $("#td_week button.on").data("weekwedcd");
-              var selectedWeekThu = $("#td_week button.on").data("weekthucd");
-              var selectedWeekFri = $("#td_week button.on").data("weekfricd");
-              var selectedWeekSat = $("#td_week button.on").data("weeksatcd");
-              var selectedWeekSun = $("#td_week button.on").data("weeksuncd");
-              var selectedTime = $("#td_time button.on").data("timecd");
-
-              //test
-              $.ajax({
-                  url: "/tobe/user/course/userCourseIndex2.do",
-                  method: "get",
-                  data: {
-                      "education": selectedAcademy,
-                      "subject": selectedLecture,
-                      "area": selectedLocal,
-                      "branch": selectedCity,
-                      "level": selectedLevel,
-                      "mon": selectedWeekMon,
-                      "tue": selectedWeekTue,
-                      "wed": selectedWeekWed,
-                      "thu": selectedWeekThu,
-                      "fri": selectedWeekFri,
-                      "sat": selectedWeekSat,
-                      "sun": selectedWeekSun,
-                      "timezone": selectedTime
-                	  },
-                  headers:{
-                	  "Content-Type": "application/x-www-form-urlencoded;charset=utf-8"
-                  },
-                  dataType: 'json',
-                  success: function (data) {
-                      console.log("검색 결과:", data);
-                      // 검색 결과로 UI 업데이트
-                      console.log('page:'+data.page);
-                      console.log('totalpage:'+data.totalPage);
-                      updateSearchResults(data.list);
-                  },
-                  error: function (error) {
-                      // 서버로부터의 오류 응답 처리
-                      console.error("검색 중 오류 발생:", error);
-                  }
-              });
+        	  loadInitialData(1);
            // 각 카테고리에 대한 버튼 클릭 처리
               $("button[name='btnAcademy'], button[name='lectureName'], button[name='local'], button[name='city'], button[name='level'], button[name='week'], button[name='time']").on("click", function () {
                   // 선택된 버튼을 강조하기 위해 'on' 클래스를 토글
@@ -592,20 +487,6 @@ console.log('html:'+resultHtml);
           
           
 
-        	        resultHtml += "<div class='childSelectBox1'>";
-        	        resultHtml += "<table>";
-        	        resultHtml += "<tr>";
-        	        resultHtml += "<td><a href='/tobe/user/common/userBasket.do?course_no=" + lecture.course_no + "' class='SelectBtn'>장바구니 담기</a></td>";
-        	        resultHtml += "<td><button type='button' onclick='setCourseComp(50);' class='SelectBtn'>비교함 담기</button></td>";
-        	        //resultHtml += "<td><button type='button' onclick=\"location.href='/tobe/user/pay/userPayDetail.do?'\" class='payBtn'>결제 하기</button></td>";
-        	        resultHtml += "<td><a href = '/tobe/user/pay/userPayDetail.do?course_no=" + lecture.course_no + "' class='payBtn'>결제 하기</a></td>";
-        	        resultHtml += "</tr>";
-        	        resultHtml += "</table>";
-        	        resultHtml += "</div>";
-console.log('html:'+resultHtml);
-        	        searchResultsContainer.append(resultHtml);
-        	    }
-        	}
 
           // 각 카테고리에 대한 버튼 클릭 처리
           $("button[name='btnAcademy'], button[name='lectureName'], button[name='local'], button[name='city'], button[name='level'], button[name='week'], button[name='time']").on("click", function () {
@@ -614,23 +495,6 @@ console.log('html:'+resultHtml);
           });
           
       });
-      
-      /*document.addEventListener("DOMContentLoaded", function() {
-    	    // 강의 목록에 있는 모든 a 태그에 클릭 이벤트 추가
-    	    var courseLinks = document.querySelectorAll('.subChildContainer a');
-
-    	    courseLinks.forEach(function(link) {
-    	        link.addEventListener('click', function(event) {
-    	            // 클릭된 강의의 course_no 값을 가져오기
-    	            var courseNo = event.currentTarget.getAttribute('data-course-no');
-
-    	            // URL에 course_no를 추가하여 새로운 페이지로 이동
-    	            var newURL = '/tobe/user/course/userCourseDetail.do?courseNo=' + courseNo;
-    	            window.location.href = newURL;
-    	        });
-    	    });
-    	});*/
-
 </script>
 <script>  
 function setCourseComp(no) {

@@ -13,5 +13,6 @@
 	inner join tobe.pay p on m.member_no = p.member_no
 	inner join tobe.pay_detail d on p.order_no = d.order_no
      </select>      
-            
+         
+        
 </mapper>

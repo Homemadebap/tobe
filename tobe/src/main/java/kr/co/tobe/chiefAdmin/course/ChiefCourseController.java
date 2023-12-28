@@ -30,13 +30,11 @@ public class ChiefCourseController {
 		System.out.println(vo);
 		boolean r = service.insert(vo, file, request);
 	      if (r) { // 정상적으로 DB에 insert 
-	          model.addAttribute("cmd", "move");         
+	          model.addAttribute("cmd", "back");         
 	          model.addAttribute("msg", "수업등록이 완료되었습니다.");
-	          model.addAttribute("url", "/tobe/chiefAdmin/course/chiefCourseForm.do");
 	          if(educationName != null) {
-	        	  model.addAttribute("cmd", "move");         
+	        	  model.addAttribute("cmd", "back");         
 		          model.addAttribute("msg", "수업등록이 완료되었습니다.");
-		          model.addAttribute("url", "/tobe/admin/course/adCourseIndex.do");
 	          }
 	       } else { // 등록안됨
 	          model.addAttribute("cmd", "back");
@@ -47,6 +45,7 @@ public class ChiefCourseController {
 
 	@GetMapping ("/chiefAdmin/course/chiefModCourseForm.do")
 	public String modcourse(Model model, int no) {
+		
 		model.addAttribute("map", service.modcourse(no));
 		return "chiefAdmin/course/chiefModCourseForm"; 
 	}

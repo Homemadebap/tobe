@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
  <%@ page import="kr.co.tobe.util.CodeToString"%>
+ <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -47,13 +48,13 @@
 }
 .title2 {
 	position:absolute;
-	top: 32rem;
+	top: 42rem;
 	left: 3rem;
 }
 
 .title3 {
 	position:absolute;
-	top: 50rem;
+	top: 60rem;
 	left: 3rem;
 }
 #orderbox{
@@ -87,10 +88,13 @@ hr, strong{
 .agree{
 	border: 0.5px solid #000;
 	position: absolute;
-	top: 45rem;
+	top: 45.2rem;
 	left: 56rem;
 	width:  15rem;
+	font-size: 13px;
+	vertical-align:10px;
 }
+
 input[type="checkbox"] {
     width: 1rem;
     height: 1rem;
@@ -108,12 +112,18 @@ input[type="checkbox"] {
  
   .order{
 	position: absolute;
-	top: 60.5rem;
+	top: 57rem;
 	left: 56rem;
 	width:  15rem;
 	height: 2.5rem;
 	color: #fff;
 	background-color: #000;
+}
+input[type=checkbox] {
+zoom: 0.8;
+}
+.footer{
+	margin: 1000px 0 0 0;
 }
 </style>
 <script>
@@ -178,7 +188,8 @@ function re() {
 	function requestPay() {
 	    $("#cart").submit();
 	}
-	
+
+
 
 </script>
 </head>
@@ -190,9 +201,9 @@ function re() {
 <div class="title">
 <h2 style="margin: 1rem; padding: 0;">주문상품</h2>
 </div>
-<form method="post" name="cart" id="cart" action="/tobe/user/pay/userPayCompleteDetail.do"> 
-<input type="hidden" name="cartNo" value="${param.cartNo}">
-<input type="hidden" name="member_no" value="${loginInfo.member_no}">
+	<form method="post" name="cart" id="cart" action="/tobe/user/pay/userPayCompleteDetail.do"> 
+		<input type="hidden" name="cartNo" value="${param.cartNo}">
+		<input type="hidden" name="member_no" value="${loginInfo.member_no}">
 		<table class="info" >
 				<tr id="firstRow">
 					<td></td>
@@ -215,9 +226,9 @@ function re() {
 					</td>
 				
 					<td class="price">${cart.price }</td>
+				</tr>	
 					
-				</tr>
-				<!--</c:forEach>-->
+				</c:forEach>
 		</table>
 		<c:forEach var="cart" items="${basket}"> 
 		<div class="title2">
@@ -226,22 +237,23 @@ function re() {
 			<hr width="800px;" style="margin-left:15px;">
 			<strong>보유 포인트</strong> <input type="text" name="point_usage" style="margin-left:15px;" height="10px;">원 / ${loginInfo.point }원 <button style="margin-left:15px; background-color:#000; color: #fff; border-radius:5px;">전액 사용</button>
 			<hr width="800px;">
-			<br>
-			<strong >결제 예정 금액</strong>  ${cart.price }- <p>원</p>
+		
+			<strong style="margin-right:10px;">결제 예정 금액</strong>  <b>${cart.price } 원</b>
 			<br><hr width="800px;">
 		</div>
 		<div class="title3">
 			<h2 style="margin: 1rem; padding: 0;">결제 수단</h2>
 			<hr width="800px;" >
 			<input type="radio" name="myRadio" style="margin-left:30px;"> 무통장입금
-			<hr width="800px;" >
+			<hr width="800px;">
 			<input type="radio" name="myRadio" style="margin-left:30px;"> 신용카드
-			<hr width="800px;" >
+			<hr width="800px;">
 		</div>
 			<table class="finalpay">
 				
 				<tr id="firstRow" colspan="2">
-					<th>최종결제금액</th>
+					<th colspan="2">최종결제금액</th>
+					<td></td>
 				</tr>
 				<tr id="secondRow">
 					<td>총 상품 금액</td>
@@ -249,7 +261,7 @@ function re() {
 				</tr>
 				<tr>
 					<td>사용포인트</td>
-					<td></td>
+					<td>${loginInfo.point }</td>
 				</tr>
 				
 				<tr id="secondRow">
@@ -264,20 +276,20 @@ function re() {
 				</table>
 				</c:forEach>
 				<div class="agree">
-					<input type="checkbox" name="checkAll" class="check_all" onclick="AgreetAllSelect(this);"> 주문 정보를 확인하였으며, 약관 전체에 동의합니다.<br>
-					<input type="checkbox" class="input_button small"  onclick="MathPrice(this);"> 주문 상품정보에 동의(필수)<br>
-					<input type="checkbox" class="input_button small"  onclick="MathPrice(this);"> 결제대행서비스 이용을 위한 개인정보 제3자 제공 및 위탁 동의(필수)<br>
-					<input type="checkbox" class="input_button small"  onclick="MathPrice(this);"> 개인정보 수집 및 이용에 대한 동의(필수)<br>
-					<input type="checkbox" class="input_button small"  onclick="MathPrice(this);"> 개인정보 제3자 제공에 대한 동의(필수)
+					<input type="checkbox" name="checkAll" class="check_all" onclick="AgreetAllSelect(this);"> 주문 정보를 확인하였으며, 약관 전<br>&nbsp;&nbsp;&nbsp; 체에 동의합니다.<br>
+					<input type="checkbox" class="input_button small"  onclick="MathPrice(this);"> 주문 상품정보에 동의 &nbsp;(필수)<br>
+					<input type="checkbox" class="input_button small"  onclick="MathPrice(this);"> 결제대행서비스 이용을 위한 개인<br>&nbsp;&nbsp;&nbsp;정보 제3자 제공 및 위탁 동의 (필수)<br>
+					<input type="checkbox" class="input_button small"  onclick="MathPrice(this);"> 개인정보 수집 및 이용에 대한 동의<br>&nbsp;&nbsp;&nbsp;(필수)<br>
+					<input type="checkbox" class="input_button small"  onclick="MathPrice(this);"> 개인정보 제3자 제공에 대한 동의<br>&nbsp;(필수)
 				</div>
 				
 				<button type="button" name="button3" onclick="requestPay();" class="order" data-CartNo="${vo.cart_no }">결제하기</button>
 
-</form>				
+	</form>				
 
-<div class="footerBox">
-			<%@include file="/WEB-INF/views/user/common/userFooter.jsp"%>
-		</div>
+	<div class="footerBox">
+		<%@include file="/WEB-INF/views/user/common/userFooter.jsp"%>
+	</div>
 </div>
 </body>
 </html>
