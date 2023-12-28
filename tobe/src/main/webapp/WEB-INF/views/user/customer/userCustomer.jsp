@@ -85,6 +85,8 @@
 .list a {
 	display: inline-block;
 	vertical-align: middle;
+	text-decoration: none;
+	color: #000;
 }
 
 .context td {

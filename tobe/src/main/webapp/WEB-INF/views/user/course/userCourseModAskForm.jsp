@@ -59,7 +59,7 @@
        <%@ include file="/WEB-INF/views/user/common/userHeader.jsp" %>
         <div class="sub">
             <div class="size">
-                <h3 class="sub_title">문의 등록</h3>
+                <h3 class="sub_title">문의 수정</h3>
     
                 <div class="bbs">
                 <form method="post" name="frm" id="frm" action="/tobe/user/course/qna/update.do" enctype="multipart/form-data" >
