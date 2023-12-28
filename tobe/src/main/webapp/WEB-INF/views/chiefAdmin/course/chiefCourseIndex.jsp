@@ -14,6 +14,7 @@
 <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+<link rel="stylesheet" href="/tobe/css/bbs.css"/>
 
 <script>
 	
@@ -105,16 +106,17 @@ function ProcessDelete() {
 	width: 100%;
 	border-collapse: collapse;
 	border-top: 1px solid;
+	margin-bottom:15px;
 }
 
 .tablea tr {
 	border-bottom: solid 1px;
-	height: 30px;
+	height: 40px;
 }
 
 .table td {
 	border-bottom: solid 1px;
-	height: 50px;
+	height: 30px;
 }
 
 .searchOrReset{
@@ -138,7 +140,7 @@ input#today, input#week, input#oneMonth, input#threeMonth, input#year{
 	display:inline-block;
 	width:50px;
  }
- .searchOrReset input{
+ .add input, .resetOrSearch input, .modOrDelete input {
  	 background-color: #E5D1E3;
      padding: 5px 15px;
      margin : 5px;
@@ -146,6 +148,7 @@ input#today, input#week, input#oneMonth, input#threeMonth, input#year{
      border-radius: 15px;
      border :1px solid #E5D1E3;
 }
+
  .tablea th{
  border:solid 1px #A4A4A4;
  background-color:#D9D9D9;
@@ -159,13 +162,8 @@ text-align:center;
 border:solid 1px #A4A4A4;
 
 }
-.searchOrReset{
-	display: flex;
-	flex-direction: row;  
-    justify-content: flex-end
-}
 
-.searchOrReset input:hover {
+.add input:hover, .resetOrSearch input:hover, .modOrDelete input:hover {
 	text-decoration: none;
 	background-color : #3F4350;
 	color:white;
@@ -174,17 +172,20 @@ border:solid 1px #A4A4A4;
 .add{
 display:flex;
 flex-direction:row-reverse;
+margin-bottom:10px;
 }
 .resetOrSearch{
 display:flex;
 flex-direction:row-reverse;
+margin-bottom:10px;
 }
 .modOrDelete{
 display:flex;
 flex-direction:row-reverse;
-margin:10px;
 }
-
+#total{
+margin-bottom:10px;
+}
 
 </style>
 
@@ -281,7 +282,7 @@ margin:10px;
 		
 
 	
-		<div id=> <p><span><strong>총 ${map.count }개</strong>  |  ${courseVO.page }/${map.totalPage }페이지</span></p></div>
+		<div id="total"><p><span><strong>총 ${map.count }개</strong>  |  ${courseVO.page }/${map.totalPage }페이지</span></p></div>
          
          <table class="tablea">
             <thead>
@@ -326,7 +327,7 @@ margin:10px;
       </table>
          
          
-        	<div class="course">
+        	
         	 <div class="pagenate clear">
                        <ul class='paging'>
                        <c:if test="${map.prev }">
@@ -346,7 +347,7 @@ margin:10px;
                        </ul> 
               </div> 
 
-        	</div>
+        	
 		</div>
 	</div>
 
