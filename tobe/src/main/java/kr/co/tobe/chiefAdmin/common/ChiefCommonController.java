@@ -20,7 +20,7 @@ public class ChiefCommonController {
 
 	public String index(HttpSession sess, Model model,QnaVO qvo) {
 		AdminVO admin = (AdminVO)sess.getAttribute("adLoginInfo"); 
-		
+		model.addAttribute("totalCount", service.totalCount());
 		
 		model.addAttribute("q", service.qna(qvo));
 		return "chiefAdmin/common/chiefIndex";

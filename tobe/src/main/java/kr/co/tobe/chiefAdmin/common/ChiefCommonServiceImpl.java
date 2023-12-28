@@ -25,8 +25,7 @@ public class ChiefCommonServiceImpl implements ChiefCommonService {
 	}
 
 	@Override
-	public Map<String, Object> count(Map<String, Object> map) {
-		// TODO Auto-generated method stub
-		return null;
+	public int totalCount() {
+		return mapper.totalCount();
 	}
 }	
