@@ -48,6 +48,18 @@ public class UserCourseController {
 		
 	@GetMapping("/user/course/userCourseIndex.do")
 	public String getLectureList(Model model, CourseVO courseVO) {
+		int pageSize = 10; // 페이지당 아이템 개수
+	    courseVO.setPage(pageSize);
+	    courseVO.setStartIdx((pageSize - 1) * pageSize);
+
+	    // 페이징 관련 서비스 메서드를 호출하여 결과를 가져옴
+	    Map<String, Object> pagingResult = service.getComplexSelect(courseVO);
+
+	    // 결과에서 필요한 정보를 모델에 추가
+	    model.addAttribute("lectureList", pagingResult.get("list"));
+	    model.addAttribute("currentPage", pageSize);
+	    model.addAttribute("totalPages", pagingResult.get("totalPage"));
+
 		return "user/course/userCourseIndex";
 	}
 	
@@ -60,6 +72,12 @@ public class UserCourseController {
 		//model.addAttribute("lectureList", lectureList);
 		model.addAttribute("complexSelectResult", complexSelectResult);
 		return complexSelectResult;
+	}
+	@GetMapping("/user/course/userCourseList.do")
+	public String userCourseList(Model model, CourseVO courseVO) {
+		Map<String, Object> complexSelectResult = service.getComplexSelect(courseVO);
+		model.addAttribute("map", complexSelectResult);
+		return "user/course/userCourseList";
 	}
 	
 //	@GetMapping("/user/course/userCourseIndex.do")

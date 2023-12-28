@@ -174,7 +174,7 @@ function ajaxFuncReview(page) {
                       <p>${lecture.price}</p>
                   </c:forEach> -->
                   	<c:if test="${not empty courseInfo}">
-                   		<p><img src="${courseInfo.teacher_img_org}" alt="강사 이미지" width="50" height="50"></p>
+						<p><img src="/tobe/img/course_img/${courseInfo.teacher_img_org}" alt="강사 이미지" width="50" height="50"></p>
                    		<p>${courseInfo.cname}</p>
                    		<p>${courseInfo.time}</p>
                    		<p>${courseInfo.price}</p>
