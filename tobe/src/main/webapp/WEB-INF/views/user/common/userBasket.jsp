@@ -160,6 +160,7 @@ function ProcessOrder() {
 							  <input  type="checkbox" class="input_button small" name="cart_no" data-no="${vo.cart_no }" value="${vo.price }" onclick="MathPrice(this);"><label for="checkbox2">&nbsp;</label></span></td>
 							  <td class="img"><a></a></td>
 							  <td class="product"> 
+							  	<img src="/tobe/img/${vo.teacher_img_org}" style="width:50px; height:50px">
 							  	학원명 : ${CodeToString.educationToString(vo.education)}<br>
 							  	과정명 : ${vo.cname}<br>
 							  	과목 : ${CodeToString.subjectToString(vo.subject)}<br>

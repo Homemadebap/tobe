@@ -3,7 +3,7 @@
 <mapper namespace="kr.co.tobe.user.common.UserCommonMapper">
 
 	<select id="list" resultType="java.util.Map" parameterType="int">
-		SELECT education, area, branch, subject, mon, tue, wed, thu, fri, sat, sun, time, price, cname, cart_no
+		SELECT education, area, branch, subject, mon, tue, wed, thu, fri, sat, sun, time, price, cname, cart_no, teacher_img_org
 		FROM basket INNER JOIN course
 		ON basket.course_no = course.course_no
 		WHERE member_no = #{no}
