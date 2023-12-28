@@ -104,10 +104,27 @@ $(function(){
 
 
 <style>
-#top{
+.container{
    position: relative;
-   margin: -145px 0 0 -250px; 
+   margin: -845px 0 0 160px;
+   width : 1340px ;
+   height : 840px;  
+}	
+.member_sub{
+	margin-left : 20px; 
+	margin-right : 20px; 
+	width : 1300px ;
+	height : 850px;
+	display: flex;
+	flex-direction: column;  
 }
+.form_sub{
+
+display : flex;
+flex-direction: column;
+    align-items: stretch;
+}
+
 .box {
 	position: absolute;
 	width: 75rem;
@@ -126,136 +143,162 @@ $(function(){
 .table {
 	position: absolute;
 	border: solid 1px ;
-	width: 1000px;
+	width: 100%;
 	height: 70px;
-	margin: 140px 0 0 250px;
+	margin: 10px 0 0 5px;
 	border-collapse: collapse;
 }
 .tablea {
+	width: 100%;
+	border-collapse: collapse;
+	border-top: 1px solid;
 	position: absolute;
 	border: solid 1px ;
-	width: 1000px;
-	height: 500px;
-	margin: 270px 0 0 250px;
-	border-collapse: collapse;
+	margin: 60px 0 0 5px;
+
 }
 
-tr{
-border: solid 1px;
-height: 30px;
+.tablea tr {
+	border-bottom: solid 1px;
+	height: 30px;
 }
-td{
-border: solid 1px;
+
+ .tablea th{
+ border:solid 1px #A4A4A4;
+ background-color:#D9D9D9;
+
+ }
+ 
+.table td:first-child{
+text-align: center;
 }
-#noticeSeachMain { /*검색버튼*/
-			margin-left: 500px;
-			border: 1px solid #808080;
-			text-align: center;
-			width: 50px;
-			height: 32px;
-			background-color: #E4E6D9;
-			cursor: pointer;
-			border-radius: 5px;
-		}
+.tablea tr td{
+text-align:center;
+border:solid 1px #A4A4A4;
+
+}
+.table td {
+	border-bottom: solid 1px;
+	height: 50px;
+}
+
 td{
 	height: 5px;
 }	
-#searchOrReset{
-	position: absolute;
-	margin: 234px 0 0 1145px;
-	text-align: end;
+
+input#today, input#week, input#oneMonth, input#threeMonth, input#year{
+   	border-radius:7px;
+	border-width:thin;
+	display:inline-block;
+	width:50px;
+ }
+ 
+ .searchOrReset{
+	display : flex;
+	flex-direction:row-reverse;
+	margin: 230px 0 0 90px;
+		
 }
-#searchOrReset > button{
-	cursor: pointer;
-	border: 0;
-	background-color: #F0F8FF;
-	color: #808080;
+
+ .searchOrReset input{
+ 	 background-color: #E5D1E3;
+     padding: 5px 15px;
+     margin : 5px;
+     text-align: center;
+     border-radius: 15px;
+     border :1px solid #E5D1E3;
 }
 </style>
 
 </head>
 <body>
 <%@include file="/WEB-INF/views/admin/common/adSideBar_logo2.jsp" %>
-<div class="box">
-<div id="top">
+<div class="container">
+	<div class="member_sub">
+		<div class="form_sub">
+			<form action="adPayIndex.do" method="get" >
 		<table class="table">
-		<tr>
-		    <td width="100px;">검색어</td>
-		    <td>
-				<input type="text" id="sval" name="searchWord" width="50%" value="${MemberVO.searchWord}"  title="검색어 입력" placeholder="주문자명, 아이디, 이메일">
-			</td>
-		</tr>
-		<tr>   
-		    <td>날   짜</td>
-		    <td>
-					<input type="date" name="startday" id="startday"> - <input type="date" name="endday" id="endday">
-					<input id="today" type="button" value="오늘" >
-					<input id ="week" type="button" value="일주일">
-					<input id= "oneMonth" type="button" value="1개월">
-					<input id= "threeMonth" type="button" value="3개월">
-					<input id= "year" type="button" value="1년">
-			</td>
-		</tr>
-		<tr>
-		    <td>주문상태</td>
-		    <td>
-				<label><input type="checkbox" name="">주문접수</label>
-				<label><input type="checkbox" name="pay_complete">결제완료</label>
-				<label><input type="checkbox" name="pay_cancel">입금대기</label>
-				<label><input type="checkbox" name="pay_cancel">주문취소</label>
-				<label><input type="checkbox" name="pay_cancel">결제실패</label>
-				<label><input type="checkbox" name="pay_cancel">환 불</label>
-			</td>
-		</tr>
-		<tr>
-		    <td>과    목</td>
-		    <td>
-				<select name="subject">
-		                 <option value="1">토익</option>
-		                 <option value="2">토스</option>
-		                 <option value="3">토플</option>
-		                 <option value="4">아이엘츠</option>
-		                 <option value="5">텝스</option>
-		                 <option value="6">오픽</option>
-		                 <option value="7">gre</option>
-		                 <option value="8">g-telp</option>
-	        		 </select>
-			</td>
-		</tr>
+			<tr>
+				<td width="100px;">검색어</td>
+				<td>&nbsp;<input type="text" id="searchWord" name="searchWord"
+					value="${MemberVO.searchWord}" title="검색"></td>
+			</tr>
+			
+			<tr class="date_btn">   
+		    	<td>날   짜</td>
+				    <td>
+							<input type="date" name="startday" id="startday"> - <input type="date" name="endday" id="endday">
+							<input id="today" type="button" value="오늘" >
+							<input id ="week" type="button" value="일주일">
+							<input id= "oneMonth" type="button" value="1개월">
+							<input id= "threeMonth" type="button" value="3개월">
+							<input id= "year" type="button" value="1년">
+					</td>
+			</tr>
+			<tr>
+			    <td>주문상태</td>
+			    <td>
+					<label><input type="checkbox" name="">주문접수</label>
+					<label><input type="checkbox" name="pay_complete">결제완료</label>
+					<label><input type="checkbox" name="pay_cancel">입금대기</label>
+					<label><input type="checkbox" name="pay_cancel">주문취소</label>
+					<label><input type="checkbox" name="pay_cancel">결제실패</label>
+					<label><input type="checkbox" name="pay_cancel">환 불</label>
+				</td>
+			</tr>
+			<tr>
+			    <td>과    목</td>
+			    <td>
+					<select name="subject">
+			                 <option value="1">토익</option>
+			                 <option value="2">토스</option>
+			                 <option value="3">토플</option>
+			                 <option value="4">아이엘츠</option>
+			                 <option value="5">텝스</option>
+			                 <option value="6">오픽</option>
+			                 <option value="7">gre</option>
+			                 <option value="8">g-telp</option>
+		        		 </select>
+				</td>
+			</tr>
 	    </table>
-	 	 <div id="searchOrReset">
-						<input type="reset" >
-						<button>검색</button>
-		 </div>    
+	 	 				<div class="searchOrReset">
+							<input type="reset" >
+							<input type="submit" id="" value="검색">
+						</div>  
+		   
          <table class="tablea">
-         <tr  style="text-align:center;">
-         	<td class="ti">주문번호</td>
-         	<td>이름</td>
-         	<td>아이디</td>
-         	<td>이메일</td>
-         	<td>과목</td>
-         	<td>강좌명</td>
-         	<td>주문상태</td>
-         	<td>포인트사용금액</td>
-         	<td>결제일</td>
-         	<td>결제총액</td>
-         	<c:forEach var="member" items="${list}">       
-			    <tr style="text-align:center;">
-			        <td>${member.product_no}</td>
-			        <td>${member.name}</td>
-			        <td>${member.id}</td>
-			        <td>${member.email}</td>
-			        <td>${member.i_subject}</td>
-			        <td>${member.i_cname}</td>
-			        <td>준비중</td>
-			        <td>${member.point_usage}</td>
-			        <td>${member.pay_date}</td>
-			        <td>${member.pay_total}</td> 
-			    </tr>
-			</c:forEach>
-         	
+         	<thead>
+				<th style="border-left:none;">주문번호</th>
+				<th>이름</th>
+				<th>아이디</th>
+				<th>이메일</th>
+				<th>과목</th>
+				<th>강좌명</th>
+				<th>주문상태</th>
+				<th>포인트사용금액</th>
+				<th>결제일</th>
+				<th style="border-right:none;">결제총액</th>
+			</thead>
+			<tbody>
+	         	<c:forEach var="member" items="${list}">       
+				    <tr>
+				        <td style="border-left:none;">${member.product_no}</td>
+				        <td>${member.name}</td>
+				        <td>${member.id}</td>
+				        <td>${member.email}</td>
+				        <td>${member.i_subject}</td>
+				        <td>${member.i_cname}</td>
+				        <td>준비중</td>
+				        <td>${member.point_usage}</td>
+				        <td>${member.pay_date }</td>
+				        <td>${member.pay_total}</td> 
+				    </tr>
+				</c:forEach>
+         	</tbody>
          </table>
           </div>  
-         </div>    
+   </div>    
+</div>
 </body>
 </html>

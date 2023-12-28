@@ -137,7 +137,6 @@ div {
 }
 </style>
 <body>
-<%@include file="/WEB-INF/views/chiefAdmin/common/chiefSideBar_logo.jsp" %>
 <div class="main">
 <%@include file="/WEB-INF/views/chiefAdmin/common/chiefSideBar_logo.jsp" %>
 	<div class="container">
