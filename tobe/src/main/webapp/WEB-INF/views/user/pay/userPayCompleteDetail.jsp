@@ -106,14 +106,14 @@ $(function(){
 
 #minusImg {
 	position: absolute;
-	top: 40.25rem;
+	top: 41.5rem;
 	left: 25rem;
 	width: 2rem;
 }
 
 #equalImg {
 	position: absolute;
-	top: 40.25rem;
+	top: 41.5rem;
 	left: 48.25em;
 	width: 2rem;
 }
@@ -146,9 +146,8 @@ $(function(){
     display: none;
  	position: fixed;
  	top: 25rem;
- 	left: 35rem;
+ 	left: 45rem;
   	z-index: 9999;
-    background-color: #000;
     padding: 20px;
     border: 1px solid #ccc;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -160,7 +159,7 @@ $(function(){
 .popup-content {
 	height: 14.5rem;
     text-align: center;
-    background-color: #d3d3d3;
+    background-color: #fff;
 }
 
 #confirm {
@@ -208,7 +207,7 @@ $(function(){
 						<th>총상품금액</th>
 					</tr>
 					<tr id="secondRow">
-						<td><img src="/tobe/img/${pdvo.teacher_img_real }"></td>
+						<td><img src="/tobe/img/course_img/${pdvo.teacher_img_org}" style="width: 8rem;"></td>
 						<td>
 							<span style="font-size: 1.25rem;">강좌명 : ${pdvo.i_cname }</span><br>
 							<span style="font-size: 1rem; font-weight: normal;">개강일 : ${pdvo.i_startday }</span><br>

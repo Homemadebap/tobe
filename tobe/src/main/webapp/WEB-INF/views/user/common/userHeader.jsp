@@ -14,7 +14,6 @@
 <style>
 .wrap {
 	width: 85rem;
-	height: 80rem;
 	margin: 0 auto;	
 	position: relative;
 }
@@ -62,9 +61,15 @@
 }
 
 
-a:link, a:visited {
+.menu_container a:link, .menu_container a:visited {
 	text-decoration: none;
+	color: #49654E;
 	
+}
+
+.header_memberBar a:link, .header_memberBar a:visited {
+	text-decoration: none;
+	color: #49654E;
 }
 a:hover {
 	text-decoration: none;
@@ -82,7 +87,7 @@ a:hover {
     font-size: 2rem;
 }
 
-.menu_container > ul > li:hover {
+.menu_container > ul > li > a:hover {
     color: #49654E;
     font-weight: bolder;
     cursor:pointer; 

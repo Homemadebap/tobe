@@ -2,6 +2,7 @@ package kr.co.tobe.user.review;
 
 
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -13,8 +14,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import kr.co.tobe.vo.CourseVO;
-import kr.co.tobe.vo.CqnaVO;
 import kr.co.tobe.vo.MemberVO;
 import kr.co.tobe.vo.ReviewVO;
 
@@ -82,14 +81,14 @@ public class UserReviewController {
 	
 	@GetMapping("/user/review/userReviewIndex.do")
 	public String getSelectReviewNo(Model model, ReviewVO rvo) {
-		List<ReviewVO> ReviewList = service.getSelectReviewNo(rvo);
+		List<Map<String, Object>> ReviewList = service.getSelectReviewNo();
 		model.addAttribute("ReviewList", ReviewList);
 		return "user/review/userReviewIndex";
 	}
 	
 	@GetMapping("/user/review/userReviewDetail.do")
-    public String getReviewDetail(Model model, @RequestParam("reviewNo") int reviewNo) {
-        ReviewVO review = service.getReviewDetail(reviewNo);
+    public String getReviewDetail(Model model, @RequestParam("review_no") int review_no) {
+        ReviewVO review = service.getReviewDetail(review_no);
         model.addAttribute("review", review);
         return "user/review/userReviewDetail";
     }
