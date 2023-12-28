@@ -173,6 +173,18 @@ text-align:center;
 border:solid 1px #A4A4A4;
 
 }
+.searchOrReset{
+	display: flex;
+	flex-direction: row;  
+    justify-content: flex-end
+}
+
+.searchOrReset input:hover {
+	text-decoration: none;
+	background-color : #3F4350;
+	color:white;
+	cursor:pointer;
+}
 
 
 </style>

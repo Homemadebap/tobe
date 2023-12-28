@@ -150,100 +150,133 @@ td{
 	text-align: end;
 }
 
+.container{
+   position: relative;
+   margin: -845px 0 0 160px;
+   width : 1340px ;
+   height : 840px;  
+}	
+
+.member_sub{
+	margin-left : 20px; 
+	margin-right : 20px; 
+	width : 1300px ;
+	height : 850px;
+	display: flex;
+	flex-direction: column;  
+}
+
+
+.table {
+ 	border: solid 1px; 
+ 	width: 100%;
+	border-collapse: collapse;
+	margin-bottom : 10px;
+	
+}
+
+.tablea {
+	width: 100%;
+	border-collapse: collapse;
+	border-top: 1px solid;
+}
 </style>
 
 </head>
 <body>
-<%@include file="/WEB-INF/views/chiefAdmin/common/chiefSideBar_logo.jsp" %>
-<div class="box">
-<div id="top">
-		
-		
-		<form action="chiefCourseIndex.do" method="get" >
-		<table class="table">
-			
-			<tr>
-				 <td width="100px;">학원명</td>
-					 <td>
-				 		<select name="education">
-				 		<option value="0">전체</option>
-				 		<option value= "1">해커스</option>
-				 		<option value= "2">파고다</option>
-				 		<option value= "3">YBM</option>
-				 		</select>
-			 		</td>
-			</tr>
-			<tr>
-			    <td width="100px;">검 색</td>
-			    <td>
-					<input type="text" id="searchWord" name="searchWord" value=""  title="검색" placeholder="강좌명, 강사명을 입력하세요"/>
-				</td>
-			</tr>
+<body>
+	<%@include
+		file="/WEB-INF/views/chiefAdmin/common/chiefSideBar_logo.jsp"%>
+<div class="container">
+	<div class="member_sub">
+		<div class="form_sub">
+			<form action="chiefCourseIndex.do" method="get" >
+			<div>
+			<input class ="bnt" type="button" value="강좌등록" onclick="window.location.href='chiefCourseForm.do'"></div>
+				<table class="table">
+				
+					<tr>
+						 <td width="100px;">학원명</td>
+							 <td>
+						 		<select name="education">
+						 		<option value="0">전체</option>
+						 		<option value= "1">해커스</option>
+						 		<option value= "2">파고다</option>
+						 		<option value= "3">YBM</option>
+						 		</select>
+					 		</td>
+					</tr>
+				<tr>
+				    <td width="100px;">검 색</td>
+				    <td>
+						<input type="text" id="searchWord" name="searchWord" value=""  title="검색" placeholder="강좌명, 강사명을 입력하세요"/>
+					</td>
+				</tr>
 
-			<tr>
-				<td width="100px;">지 역</td>
-				<td>	
-					<select name="area">
-	                 <option value="2">서울</option>
-	                 <option value="32">인천</option>
-	                 <option value="51">부산</option>
-	                 <option value="53">대구</option>
-	      			</select>
-      			</td>
-       		 </tr>
-       		 <tr>
-       		 	<td width="100px;">지 점</td>
-       		 	<td>
-					<select name="branch">
-	                   <option value="1">강남</option>
-		                 <option value="2">종로</option>
-		                 <option value="3">종로e4u</option>
-		                 <option value="4">신촌</option>
-		                 <option value="5">건대</option>
-		                 <option value="6">대구동성로</option>
-		                 <option value="7">서면</option>
-		                 <option value="8">부산대</option>
-		                 <option value="9">대연</option>
-		                 <option value="10">부산광복</option>
-		                 <option value="11">인천센터</option>
-	      			</select>
-      			</td>
-       		 </tr>
-			<tr>
-				<td width="100px;">과목</td>
-				<td>
-					<select name="subject">
-	                 <option value="1">토익</option>
-	                 <option value="2">토스</option>
-	                 <option value="3">토플</option>
-	                 <option value="4">아이엘츠</option>
-	                 <option value="5">텝스</option>
-	                 <option value="6">오픽</option>
-	                 <option value="7">gre</option>
-	                 <option value="8">g-telp</option>
-	      			</select>
-      			</td>
-       		 </tr>
-	   	 		<div class="searchOrReset">
-   	 			
-	   	 		<input class ="bnt" type="button" value="강좌등록" onclick="window.location.href='chiefCourseForm.do'">
+				<tr>
+					<td width="100px;">지 역</td>
+					<td>	
+						<select name="area">
+		                 <option value="2">서울</option>
+		                 <option value="32">인천</option>
+		                 <option value="51">부산</option>
+		                 <option value="53">대구</option>
+		      			</select>
+	      			</td>
+	       		 </tr>
+	       		 <tr>
+	       		 	<td width="100px;">지 점</td>
+	       		 	<td>
+						<select name="branch">
+		                   <option value="1">강남</option>
+			                 <option value="2">종로</option>
+			                 <option value="3">종로e4u</option>
+			                 <option value="4">신촌</option>
+			                 <option value="5">건대</option>
+			                 <option value="6">대구동성로</option>
+			                 <option value="7">서면</option>
+			                 <option value="8">부산대</option>
+			                 <option value="9">대연</option>
+			                 <option value="10">부산광복</option>
+			                 <option value="11">인천센터</option>
+		      			</select>
+	      			</td>
+	       		 </tr>
+				<tr>
+					<td width="100px;">과목</td>
+					<td>
+						<select name="subject">
+		                 <option value="1">토익</option>
+		                 <option value="2">토스</option>
+		                 <option value="3">토플</option>
+		                 <option value="4">아이엘츠</option>
+		                 <option value="5">텝스</option>
+		                 <option value="6">오픽</option>
+		                 <option value="7">gre</option>
+		                 <option value="8">g-telp</option>
+		      			</select>
+	      			</td>
+	       		 </tr>
+	       	</table>
+	       	
+	   	 	<div class="searchOrReset">   	 			
 				<input class ="bnt" type="reset" value="초기화" onclick="window.location.href='/tobe/chiefAdmin/course/chiefCourseIndex.do'">
 				<input class ="bnt" type="submit" id="" value="검색">
 			</div>    
-		</table>
-		</form>
+			<div class="searchOrReset">   	 			
+	   	 		<input class ="bnt" type="button" value="수정" onclick="window.location.href='/tobe/chiefAdmin/course/chiefModCourseForm.do'">
+	   	 		<input class ="bnt" type="button" value="삭제" onclick="ProcessDelete();">
+			</div> 
+		
+			</form>
+		</div>
 		
 
 	
-		<div id=> <p><span><strong>총 ${map.count }개</strong>  |  ${courseVO.page }/${map.totalPage }페이지</span></p>
-	  	</div>
+		<div id=> <p><span><strong>총 ${map.count }개</strong>  |  ${courseVO.page }/${map.totalPage }페이지</span></p></div>
+         
          <table class="tablea">
-         	<div class="searchOrReset">
-   	 			
-	   	 		<input class ="bnt" type="button" value="수정" onclick="window.location.href='/tobe/chiefAdmin/course/chiefModCourseForm.do'">
-	   	 		<input class ="bnt" type="button" value="삭제" onclick="ProcessDelete();">
-			</div>    
-         <thead>
+            <thead>
          	<th><span >
       	 		<input type="checkbox" name="checkAll" class="check_all" onclick="courseAllSelect(this);">
           		<label for="checkAll">&nbsp;</label> </span>
@@ -262,8 +295,8 @@ td{
          	<th>개강일</th>
          	<th>종강일</th>
          </thead>
-        <tbody>
- 
+        
+        <tbody> 
          	<c:forEach var="vo" items="${map.list}">       
 			    <tr style="text-align:center;">
 			   		<td><input  type="checkbox" class="input_button small" name="course_no" data-no="${vo.course_no }" onclick="checkCl(this);"><label for="checkbox2">&nbsp;</label></td>
@@ -280,11 +313,11 @@ td{
 					<td> ${vo.startday} </td>
 					<td> ${vo.endday} </td>
 			    </tr>
-			</c:forEach>
-			
- 		</tbody>
-         	
-         </table>
+			</c:forEach>			
+ 		</tbody>         	
+      </table>
+         
+         
         	<div class="course">
         	 <div class="pagenate clear">
                        <ul class='paging'>
@@ -305,8 +338,8 @@ td{
                        </ul> 
               </div> 
 
-          </div>
-	</div>
+        	</div>
+		</div>
 	</div>
 
 </body>

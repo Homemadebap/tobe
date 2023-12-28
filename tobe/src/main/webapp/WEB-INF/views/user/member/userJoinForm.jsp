@@ -108,11 +108,10 @@
 	    }
 	</script>
 	<style>
-	
 		.size{
 	    position:absolute;
-	    top:50%;
-	    left:50%;
+	    top:40%;
+	    left:45%;
 	    transform:translate(-50%, -50%);
         }
 
@@ -163,12 +162,15 @@
 		border-radius:7px;
 		border-width:thin;
 		font-size:13px;
+		text-decoration-line:none;
+		border-color:#D9D9D9;
+		color:#44546A;
 		}
 		a:link{
 		color:black;
 		}
 		.content th{
-		color:#44546A
+		color:#44546A;
 		}
 	
 		.btnSet_clear{
@@ -184,6 +186,7 @@
 		display:inline-block;
 		width:50px;
 		text-align:center;
+		text-decoration-line:none;
 		}
 		.ptxt{
 		font-size:10px;
@@ -197,15 +200,25 @@
 	   width : 1340px ;
 	   height : 850px;  
 	   }
-
+.main {
+	width: 75rem;
+	height: 50rem;
+}
+	.wrap {
+	width: 85rem;
+	height: 70rem;
+	margin: 0 auto;
+	position: relative;
+}
 			
 	</style>
 </head> 
 <body>
-    <div class="wrap">
-       <%@ include file="/WEB-INF/views/user/common/userHeader.jsp" %>
-       </div>
-       <div class="main">
+     <div class="wrap">
+		<div class="headerBox">
+			<%@include file="/WEB-INF/views/user/common/userHeader.jsp"%>
+		</div>
+    	<div class="main">
 	        <div class="sub">
 	            <div class="size">
 	                <h2 class="sub_title">회원가입</h2>
@@ -287,6 +300,7 @@
 	            </div>
 	        </div>
 		<%@ include file= "/WEB-INF/views/user/common/userFooter.jsp" %>
+    	</div>
     	</div>
 </body> 
 </html>
