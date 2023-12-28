@@ -12,7 +12,7 @@ public interface ChiefCommonMapper {
 	
 	Map<String, Object> pay_chargeTotal();
 	
-	int totalCount(Map<String, Object> map);
+	int totalCount();
 	
 	List<Map<String, Object>> qna(QnaVO qvo);
 }

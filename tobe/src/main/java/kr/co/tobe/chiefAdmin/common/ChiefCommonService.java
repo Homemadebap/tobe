@@ -9,7 +9,7 @@ public interface ChiefCommonService {
 	
 	Map<String, Object> pay_chargeTotal();
 	
-	Map<String, Object> count(Map<String, Object> map);
+	int totalCount();
 	
 	List<Map<String, Object>> qna(QnaVO qvo);
 }
