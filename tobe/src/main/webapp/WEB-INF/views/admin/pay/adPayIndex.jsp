@@ -15,7 +15,88 @@
 <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
 
 <script>
+$(function(){
+	
+    
+    $('#today').click(function(){
+    	$("#startday").val(getDates('today').start);
+    	$("#endday").val(getDates('today').end);
+    })
+    $('#week').click(function(){
+    	$("#startday").val(getDates('oneWeek').start);
+    	$("#endday").val(getDates('oneWeek').end);
+    })
+    $('#oneMonth').click(function(){
+    	$("#startday").val(getDates('oneMonth').start);
+    	$("#endday").val(getDates('oneMonth').end);
+    })
+    $('#threeMonth').click(function(){
+    	$("#startday").val(getDates('threeMonths').start);
+    	$("#endday").val(getDates('threeMonths').end);
+    })
+    $('#year').click(function(){
+    	$("#startday").val(getDates('oneYear').start);
+    	$("#endday").val(getDates('oneYear').end);
+    })
+    
 
+})
+
+	function getDates(period) {
+    var currentDate = new Date();
+    var pastDate = new Date();
+
+    switch (period) {
+	    case 'today':
+            pastDate.setDate(currentDate.getDate());
+            break;
+        case 'oneWeek':
+            pastDate.setDate(currentDate.getDate() - 7);
+            break;
+        case 'oneMonth':
+            pastDate.setMonth(currentDate.getMonth() - 1);
+            break;
+        case 'threeMonths':
+            pastDate.setMonth(currentDate.getMonth() - 3);
+            break;
+        case 'oneYear':
+            pastDate.setFullYear(currentDate.getFullYear() - 1);
+            break;
+        default:
+            // 기본값은 현재 날짜
+            pastDate = currentDate;
+            break;
+    }
+
+    return {
+        start: getFormattedDate(pastDate),
+        end: getFormattedDate(currentDate)
+    };
+ 
+	}
+
+ function getFormattedDate(date) {
+	    var year = date.getFullYear();
+	    var month = (date.getMonth() + 1).toString().padStart(2, '0');
+	    var day = date.getDate().toString().padStart(2, '0');
+	    return year + '-' + month + '-' + day;
+}
+ 
+ function ProcessSendEmail() {
+		console.log(1);
+	    var selectedNoList = [];
+
+	    $('.input_button.small:checked').each(function() {
+	        var member_no = $(this).data('no');
+	        console.log(member_no);
+	        selectedNoList.push(member_no);
+	    });
+
+	    if (selectedNoList.length > 0) {
+			 window.location.href= '/tobe/chiefAdmin/email/chiefEmailForm.do?member_no='+selectedNoList.join(',');
+			 
+	    }
+ }
 
 
 </script>
@@ -107,16 +188,12 @@ td{
 		<tr>   
 		    <td>날   짜</td>
 		    <td>
-		    <form>
-				<input type="date" path="searchDtFrom" cssClass="datepicker onlyDate essential" title="검색시작일" enddate="searchEndDate" readonly="true"/> - 
-				<input type="date" path="searchDtTo" cssClass="datepicker onlyDate essential" title="검색종료일" startdate="searchStartDate" readonly="true"/>
-				     <!-- <input type="date" name="startday"> - <input type="date" name="startday"> -->   
-				<span class="btn_pack type10"><button type="button" name="search" class="date_range d0">오늘</button></span>
-				<input type="button" value="일주일">
-				<input type="button" value="1개월">
-				<input type="button" value="3개월">
-				<input type="button" value="전체">
-			</form>	
+					<input type="date" name="startday" id="startday"> - <input type="date" name="endday" id="endday">
+					<input id="today" type="button" value="오늘" >
+					<input id ="week" type="button" value="일주일">
+					<input id= "oneMonth" type="button" value="1개월">
+					<input id= "threeMonth" type="button" value="3개월">
+					<input id= "year" type="button" value="1년">
 			</td>
 		</tr>
 		<tr>
@@ -176,8 +253,6 @@ td{
 			        <td>${member.pay_total}</td> 
 			    </tr>
 			</c:forEach>
-			
- 
          	
          </table>
           </div>  

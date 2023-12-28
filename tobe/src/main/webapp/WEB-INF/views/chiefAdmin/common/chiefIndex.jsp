@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+		<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -129,6 +130,7 @@ div {
 }
 </style>
 <body>
+<%@include file="/WEB-INF/views/chiefAdmin/common/chiefSideBar_logo.jsp" %>
 <div class="main">
 	<div class="container">
 	  <div id="con">
@@ -178,22 +180,14 @@ div {
 	         </div>
 	         <div id="b">
 	            <a href="/tobe/chiefAdmin/customer/chiefCustomerIndex.do" id="bb"><font size=1px;>고객센터관리→ </font></a>
-	            <table>
-		            <thead>
-		              <tr>
-		                  <th>번호</th>
-		                  <th>제목</th>
-		                  <th>작성일</th>
-		              </tr>
-		             </thead>
-	             </table>
+	          
 	             <div style="overflow-y:scroll; height: 10rem; width: 15.5rem; position: absolute; left: 39rem; top: 27rem;">
 				<c:if test="${!empty q}">
-					<table style="width: 100%; text-align: center;">
+					<table style="width: 100%; text-align: center; position: absolute;">
 					<c:forEach var="vo" items="${q}">
 						<tr>
 						    <td style="width: 20%;">${vo.qna_no}</td>
-							<td class="url" style="width: 40%; cursor:pointer;" onclick="location.href='/tobe/chiefAdmin/customer/chiefCustomerIndex.do?qna_no=${vo.qna_no}'">${vo.q_title}</td>    
+							<td class="url" style="width: 40%; cursor:pointer;" onclick="location.href='/tobe/chiefAdmin/customer/chiefQnaList.do?qna_no=${vo.qna_no}'">${vo.q_title}</td>    
 							<td style="width: 40%;">${vo.q_writedate}</td>
 						</tr>
 					</c:forEach>
