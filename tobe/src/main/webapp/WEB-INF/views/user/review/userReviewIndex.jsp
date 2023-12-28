@@ -104,7 +104,7 @@ caption {display:none;}
 						<tr>
 						    <td>${review.review_no}</td>
 							<td>
-		    					<a href="/tobe/user/review/userReviewDetail.do?reviewNo=${review.review_no}" class="SelectBtn">${review.r_title}</a>
+		    					<a href="/tobe/user/review/userReviewDetail.do?reviewNo=${review.review_no}" class="SelectBtn" style="text-decoration: none; color: #000;">${review.r_title}</a>
 							</td>
 							<td>${review.member_no}</td>
 							<td>

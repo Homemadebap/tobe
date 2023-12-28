@@ -22,6 +22,7 @@ public class CqnaVO {
 	private String searchWord;
 	
 	private String member_name;
+	private String infoCourseName;
 	   
 	public CqnaVO() {
 		this.page = 1;
@@ -30,4 +31,14 @@ public class CqnaVO {
 	public int getStartIdx() {
 		return (page-1) * 10;
 	}
+	
+	public String getInfoCourseName() {
+        return infoCourseName;
+    }
+
+    public void setInfoCourseName(String infoCourseName) {
+        this.infoCourseName = infoCourseName;
+    }
+	
+	
 }

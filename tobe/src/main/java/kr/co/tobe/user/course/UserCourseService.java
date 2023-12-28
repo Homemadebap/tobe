@@ -14,7 +14,7 @@ public interface UserCourseService {
 	int cQnaUpdate(CqnaVO vo);//, MultipartFile file, HttpServletRequest request);
 	int cQnaDelete(CqnaVO vo);//, HttpServletRequest request);
 	CourseVO getSelectCourse(int no);
-	List<CourseVO> getComplexSelect(CourseVO CVO);
+	Map<String, Object> getComplexSelect(CourseVO CVO);
 	
 	/*강좌 상세 문의*/
 	List<CqnaVO> getCqnaDetailList(int course_no, int startIdx, int itemsPerPage);
@@ -27,4 +27,12 @@ public interface UserCourseService {
     int getreviewCount(int course_no);
     
     CqnaVO cqnaDetail(CqnaVO vo);
+    
+//    CqnaVO view(CqnaVO vo, boolean isUpdate);
+    CqnaVO view(int cqna_no, boolean isUpdate);
+    CqnaVO writeCqna(Map<String, Object> paramMap);
+    
+    CourseVO getCourseById(int course_no);
+
+    
 }

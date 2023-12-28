@@ -6,13 +6,6 @@
 <%@ page import="java.text.SimpleDateFormat" %>
 <%@ page import="java.util.Date" %>
 
-<%
-    // 현재 시간을 가져오기
-    Date currentDate = new Date();
-    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-    String currentTime = sdf.format(currentDate);
-    pageContext.setAttribute("currentTime", currentTime);
-%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -73,6 +66,11 @@ $(function(){
 	width: 75rem;
 	height: 10rem;
 	background-color: #E4E6D9;
+}
+
+.userMain a:link, a:visited {
+	text-decoration: none;
+	color: #49654E;
 }
 
 .part1 {
@@ -242,9 +240,12 @@ table {
 	text-align: center;
 }
 
-.pastCourseIndex td {
-	width: 14.285%;
+.myReviewIndex a {
+	text-decoration: none;
+	color: #000;
 }
+
+
 </style>
 
 
@@ -275,7 +276,7 @@ table {
 						</a>
 					</div>
 				</div>
-				
+
 				<div class="pointContainer"><img src="/tobe/img/point.png" id="pointImg">
 					<span id="point">
 						<span id="userPointText"><b>${user.name }</b>님의 잔여포인트</span>
@@ -312,8 +313,12 @@ table {
 		                    <c:forEach var="vo" items="${cci}">
 								<tr style="text-align: center;">
 	                        		<td>${vo.course_no }</td>
-		                            <td class="url" onclick="location.href='/tobe/user/course/userCourseDetail.do?course_no=${vo.course_no}'"><img src="/tobe/img/${vo.teacher_img}"></td>
-		                            <td class="url" onclick="location.href='/tobe/user/course/userCourseDetail.do?course_no=${vo.course_no}'">${vo.i_cname}</td>    
+		                            <td class="url" onclick="location.href='/tobe/user/course/userCourseDetail.do?course_no=${vo.course_no}'">
+		                            	<img src="/tobe/img/course_img/${vo.teacher_img}" style="width: 7rem;">
+	                            	</td>
+		                            <td class="url" onclick="location.href='/tobe/user/course/userCourseDetail.do?course_no=${vo.course_no}'">
+		                            	<b style="font-size: 1.25rem;">${vo.i_cname}</b>
+	                            	</td>    
 		                            <td>${vo.i_startday}</td>
 		                            <td>${vo.i_endday}</td>
 		                        </tr>
@@ -321,7 +326,7 @@ table {
                     	</table>
                     </c:if>
 				</div>
-
+				
 				<div class="pastCourseIndex">
 					<c:if test="${empty pci}">
                         <tr>
@@ -331,20 +336,22 @@ table {
                     <c:if test="${!empty pci }">
                     	 <table>
 							 <tr style="font-weight: bolder; font-size: 1.25rem; "> 
-									<td>결제일</td>
-									<td>주문번호</td>
-									<td>강좌명</td>
-									<td>가격</td>
-									<td>강좌개강일</td>
-									<td>강좌종강일</td>
-									<td>비고</td>
+									<td style="width: 12%;">결제일</td>
+									<td style="width: 12%;">주문번호</td>
+									<td style="width: 28%;">강좌명</td>
+									<td style="width: 12%;">가격</td>
+									<td style="width: 12%;">강좌개강일</td>
+									<td style="width: 12%;">강좌종강일</td>
+									<td style="width: 12%;">비고</td>
 							</tr>
 		                    <c:forEach var="vo" items="${pci}">
 			                   	<c:if test="${vo.pay_cancel eq 0}">
-		                        <tr style="font-size: 1.15rem;">
+		                        <tr style="font-size: 1rem;">
 			                    	<td>${vo.pay_date }</td> 
 		                            <td>${vo.detail_no}<input type="button" onclick="location.href='/tobe/user/pay/userPayCompleteDetail.do?detail_no=${vo.detail_no}'" value="주문상세보기"/></td>    
-		                            <td class="url" onclick="location.href='/tobe/user/course/userCourseDetail.do?course_no=${vo.course_no}'">${vo.teacher_img}${vo.i_cname}</td> 
+		                            <td class="url" onclick="location.href='/tobe/user/course/userCourseDetail.do?course_no=${vo.course_no}'">
+		                            	<b>${vo.i_cname}</b>
+	                            	</td> 
 		                            <td>${vo.i_price}</td>
 		                            <td>${vo.i_startday}</td>
 		                            <td>${vo.i_endday}</td>
@@ -353,8 +360,15 @@ table {
 		                            	<input type="hidden" name="infoDetail_no" value="${vo.detail_no }">
 		                            	<input type="hidden" name="infoCourseName" value="${vo.i_cname }">
 		                            	
+										<%
+										    // 현재 시간을 가져오기
+										    Date currentDate = new Date();
+										    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+										    String currentTime = sdf.format(currentDate);
+										    pageContext.setAttribute("currentTime", currentTime);
+										%>
 		                            	<c:forEach var="rvo" items="${mri}">
-		                            		<c:choose>
+										    <c:choose>
 											    <c:when test="${rvo.course_no eq vo.course_no}">
 											        <input type="button" value="나의 후기" onclick="location.href='/tobe/user/review/userReviewDetail.do?review_no=${vo.review_no}'" >
 											    </c:when>
@@ -372,20 +386,20 @@ table {
                            	
                          <table>
 							 <tr style="font-weight: bolder; font-size: 1.25rem; "> 
-									<td>결제취소일</td>
-									<td>주문번호</td>
-									<td>강좌명</td>
-									<td>가격</td>
-									<td>강좌개강일</td>
-									<td>강좌종강일</td>
-									<td>비고</td>
+									<td style="width: 12%;">결제취소일</td>
+									<td style="width: 12%;">주문번호</td>
+									<td style="width: 28%;">강좌명</td>
+									<td style="width: 12%;">가격</td>
+									<td style="width: 12%;">강좌개강일</td>
+									<td style="width: 12%;">강좌종강일</td>
+									<td style="width: 12%;">비고</td>
 							</tr>  	
 		                    <c:forEach var="vo" items="${pci}">
 			                   	<c:if test="${vo.pay_cancel eq 1}">
-			                        <tr style="font-size: 1.15rem;">
+			                        <tr style="font-size: 1rem;">
 				                    	<td>${vo.pay_cancel_date }</td> 
 			                            <td>${vo.detail_no}<input type="button" onclick="location.href='/tobe/user/pay/userPayCancelDetail.do?detail_no=${vo.detail_no}'" value="취소상세보기"/></td>    
-			                            <td class="url" onclick="location.href='/tobe/user/course/userCourseDetail.do?course_no=${vo.course_no}'">${vo.teacher_img}${vo.i_cname}</td> 
+			                            <td class="url" onclick="location.href='/tobe/user/course/userCourseDetail.do?course_no=${vo.course_no}'"><b>${vo.i_cname}</b></td> 
 			                            <td>${vo.i_price}</td>
 			                            <td>${vo.i_startday}</td>
 			                            <td>${vo.i_endday}</td>
@@ -399,12 +413,12 @@ table {
 				</div>
 
 				<div class="askIndex" style="overflow-y:scroll; height: 30rem;">
-					<c:if test="${empty mcai}">
+					<c:if test="${empty mcai && empty ai}">
                         <tr>
                             <td class="noIndex">문의한 내역이 없습니다.</td>
                         </tr>
                     </c:if>
-                    <c:if test="${!empty mcai}">
+                    <c:if test="${!empty mcai || !empty ai}">
 	                    <table>
 							<tr style="font-weight: bolder; font-size: 1.25rem; ">
 								<td>문의번호</td>
@@ -414,7 +428,7 @@ table {
 		                    <c:forEach var="vo" items="${mcai}">
 		                        <tr>
 		                            <td>${vo.cqna_no}</td>
-		                            <td class="url" onclick="location.href='/tobe/user/course/userCourseAskDetail.do?cqna_no=${vo.cqna_no}'">${vo.cq_title}</td>    
+		                            <td class="url" onclick="location.href='/tobe/user/course/userCourseAskDetail.do?cqna_no=${vo.cqna_no}'" >${vo.cq_title}</td>    
 		                            <td>${vo.cq_writedate}</td>
 		                            <td><input type="button" onclick="location.href='/tobe/user/course/qna/edit.do?cqna_no=${vo.cqna_no}'" value="수정하기"/></td>    		                            
 		                        </tr>
