@@ -133,7 +133,7 @@ function ProcessOrder() {
 				<table class="cart_product">
 					<colgroup>
 						<col style="width: 30px">
-						<col style="width: 80px">
+						<col style="width: 300px">
 						<col style="width: 300px">
 						<col style="width: 100px">
 					</colgroup>
@@ -158,8 +158,11 @@ function ProcessOrder() {
 							<tr>
 							  <td class="input_btn" ><span>
 							  <input  type="checkbox" class="input_button small" name="cart_no" data-no="${vo.cart_no }" value="${vo.price }" onclick="MathPrice(this);"><label for="checkbox2">&nbsp;</label></span></td>
-							  <td class="img"><a></a></td>
+							  <td class="img">
+								  <img src="/tobe/img/course_img/${vo.teacher_img_org}" style="width:100px; height:100px">
+							  </td>
 							  <td class="product"> 
+							  	
 							  	학원명 : ${CodeToString.educationToString(vo.education)}<br>
 							  	과정명 : ${vo.cname}<br>
 							  	과목 : ${CodeToString.subjectToString(vo.subject)}<br>

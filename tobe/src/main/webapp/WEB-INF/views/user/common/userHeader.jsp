@@ -14,7 +14,6 @@
 <style>
 .wrap {
 	width: 85rem;
-	height: 80rem;
 	margin: 0 auto;	
 	position: relative;
 }

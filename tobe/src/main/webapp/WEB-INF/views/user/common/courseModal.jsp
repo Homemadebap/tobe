@@ -3,6 +3,12 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page import="kr.co.tobe.util.*" %> 
 <style>
+button {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+      font-style: none;
+}
 	.result{
 		max-width: 800px;
 		height: 800px;
@@ -28,31 +34,36 @@
 	.child{
 		display: flex;
 		justify-content:center;
-		flex-direction: column;  
+		flex-direction: column; 
+		align-items: center; 
 	}
 	
 	.bnt{
     	 background-color: #49654E;
-     	padding: 5px 15px;
-     	margin : 5px;
+     	padding: 5px 5px;
+     	margin : 20px;
     	 text-align: center;
      	border-radius: 15px;
     	 color : white;
+    	 width : 200px;
+    	  font-size : 20px;
     	
 	}
 	
 	.removeBtn{
     	 background-color: #49654E;
-     	padding: 5px 15px;
-     	margin : 5px;
+     	padding: 5px 5px;
+     	margin : 20px;
     	 text-align: center;
      	border-radius: 15px;
     	 color : white;
-    	
+    	 width : 200px;
+   		 border: none;
+   		 font-size : 20px;
 
 	}
-	
-	
+
+
 
 
 </style>
@@ -85,27 +96,27 @@ $(function(){
 				<div class="child">
 					<c:if test="${!empty map.cosComp1 }" >
 						<div class="child">
-						<img class="cImg" src="<c:url value="/download.do"/>?uploadPath=/upload&teacher_img_org=${URLEncoder.encode(map.cosComp1.teacher_img_org)}&teacher_img_real=${map.cosComp1.teacher_img_real}" target="_blank"></dd>
+						<img src="/tobe/img/course_img/${map.cosComp1.teacher_img_org}" class="cImg">
 						${CodeToString.educationToString(map.cosComp1.education)} ${CodeToString.areaToString(map.cosComp1.area)} ${CodeToString.branchToString(map.cosComp1.branch)}<br>
 			    						${map.cosComp1.cname}<br></div>
-			    		<button class="removeBtn " value="cosComp1">삭제</button>				
+			    		<button class="removeBtn " value="cosComp1">삭제하기</button>				
 					</c:if>
 					<c:if test="${empty map.cosComp1 }">
-						<img class="cImg" src="/tobe/img/addCourse.png" onclick="location.href='/tobe/user/course/userCourseIndex.do';" >
-						<a href="/tobe/user/course/userCourseIndex.do" class="bnt" >강좌추가</b></a>
+						<img class="cImg" src="/tobe/img/addCourse.png" onclick="location.href='/tobe/user/course/userCourseIndex.do';" ><br><br>
+						<a href="/tobe/user/course/userCourseIndex.do" class="bnt" >강좌추가</a>
 					</c:if>
 				</div>
 				<div class="child">
 					<c:if test="${!empty map.cosComp2 }">
 						<div class="child">
-						<img class="cImg" src="<c:url value="/download.do"/>?uploadPath=/upload&teacher_img_org=${URLEncoder.encode(map.cosComp2.teacher_img_org)}&teacher_img_real=${map.cosComp2.teacher_img_real}" target="_blank"></dd>
-						${CodeToString.educationToString(map.cosComp1.education)} ${CodeToString.areaToString(map.cosComp1.area)} ${CodeToString.branchToString(map.cosComp1.branch)}<br>
+						<img src="/tobe/img/course_img/${map.cosComp2.teacher_img_org}" class="cImg">
+						${CodeToString.educationToString(map.cosComp2.education)} ${CodeToString.areaToString(map.cosComp2.area)} ${CodeToString.branchToString(map.cosComp2.branch)}<br>
 			    						${map.cosComp1.cname}<br></div>
-			    		<button class="removeBtn " value="cosComp2" >삭제</button>				
+			    		<button class="removeBtn " value="cosComp2" >삭제하기</button>				
 					</c:if>
-					<c:if test="${empty map.cosComp2 }">
-						<img class="cImg"  src="/tobe/img/addCourse.png" onclick="location.href='/tobe/user/course/userCourseIndex.do';">
-						<a href="/tobe/user/course/userCourseIndex.do" class="bnt" > 강좌추가</a>
+					<c:if test="${empty map.cosComp2 }" >
+						<img class="cImg"  src="/tobe/img/addCourse.png" onclick="location.href='/tobe/user/course/userCourseIndex.do';"><br><br>
+						<a href="/tobe/user/course/userCourseIndex.do" class="bnt" >강좌추가</a>
 					</c:if>
 				</div>
 	  	 	</div>
@@ -118,7 +129,7 @@ $(function(){
 			<div class="flex">
 				<div class="child">
 					
-					<img class="cImg" src="<c:url value="/download.do"/>?uploadPath=/upload&teacher_img_org=${URLEncoder.encode(map.cosComp1.teacher_img_org)}&teacher_img_real=${map.cosComp1.teacher_img_real}" target="_blank"></dd>
+					<img src="/tobe/img/course_img/${map.cosComp1.teacher_img_org}" >
 					과정명 : ${map.cosComp1.cname} <br>
 					학원 : ${CodeToString.educationToString(map.cosComp1.education)}<br>
 					요일 : ${CodeToString.dateToStirng(map.cosComp1.mon, map.cosComp1.tue, map.cosComp1.wed, map.cosComp1.thu, map.cosComp1.fri, map.cosComp1.sat, map.cosComp1.sun)}<br>
@@ -131,7 +142,7 @@ $(function(){
 					후기 갯수 : ${map.cosCompRe1}
 				</div>
 				<div class="child">
-					<img class="cImg" src="<c:url value="/download.do"/>?uploadPath=/upload&teacher_img_org=${URLEncoder.encode(map.cosComp2.teacher_img_org)}&teacher_img_real=${map.cosComp2.teacher_img_real}" target="_blank"></dd>
+					<img src="/tobe/img/course_img/${map.cosComp2.teacher_img_org}" >
 					과정명 : ${map.cosComp2.cname}<br>
 					학원 : ${CodeToString.educationToString(map.cosComp2.education)}<br>
 					요일 : ${CodeToString.dateToStirng(map.cosComp2.mon, map.cosComp2.tue, map.cosComp2.wed, map.cosComp2.thu, map.cosComp2.fri, map.cosComp2.sat, map.cosComp2.sun)}<br>

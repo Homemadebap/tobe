@@ -3,7 +3,7 @@
 <mapper namespace="kr.co.tobe.user.pay.UserPayMapper">
 	
 	<select id="payDetailIndex" parameterType="int" resultType="java.util.Map">
-		SELECT pd.*, p.*, teacher_img_real, DATE_FORMAT(pay_date,'%Y-%m-%d %H:%i') AS pay_date2, ad_name, ad_account, 
+		SELECT pd.*, p.*, teacher_img_org, DATE_FORMAT(pay_date,'%Y-%m-%d %H:%i') AS pay_date2, ad_name, ad_account, 
 		(SELECT name FROM member WHERE member_no = p.member_no) as member_name ,
 		(SELECT email FROM member WHERE member_no = p.member_no) as member_email,
 		(SELECT hp FROM member WHERE member_no = p.member_no) as member_hp

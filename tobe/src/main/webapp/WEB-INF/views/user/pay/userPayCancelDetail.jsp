@@ -146,7 +146,7 @@
 						<th>총상품금액</th>
 					</tr>
 					<tr id="secondRow">
-						<td><img src="/tobe/img/${pcdi.teacher_img_org }"></td>
+						<td><img src="/tobe/img/course_img/${pcdi.teacher_img_org }" style="width: 8rem;"></td>
 						<td>
 							<span style="font-size: 1.25rem;">강좌명 : ${pcdi.i_cname }</span><br>
 							<span style="font-size: 1rem; font-weight: normal;">개강일 : ${pcdi.i_startday }</span><br>

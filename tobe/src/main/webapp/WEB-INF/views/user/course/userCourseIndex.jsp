@@ -592,6 +592,26 @@ console.log('html:'+resultHtml);
           
           
 
+        	        resultHtml += "<div class='childSelectBox1'>";
+        	        resultHtml += "<table>";
+        	        resultHtml += "<tr>";
+        	        resultHtml += "<td><a href='/tobe/user/common/userBasket.do?course_no=" + lecture.course_no + "' class='SelectBtn'>장바구니 담기</a></td>";
+        	        resultHtml += "<td><button type='button' onclick='setCourseComp(50);' class='SelectBtn'>비교함 담기</button></td>";
+        	        //resultHtml += "<td><button type='button' onclick=\"location.href='/tobe/user/pay/userPayDetail.do?'\" class='payBtn'>결제 하기</button></td>";
+        	        resultHtml += "<td><a href = '/tobe/user/pay/userPayDetail.do?course_no=" + lecture.course_no + "' class='payBtn'>결제 하기</a></td>";
+        	        resultHtml += "</tr>";
+        	        resultHtml += "</table>";
+        	        resultHtml += "</div>";
+console.log('html:'+resultHtml);
+        	        searchResultsContainer.append(resultHtml);
+        	    }
+        	}
+
+          // 각 카테고리에 대한 버튼 클릭 처리
+          $("button[name='btnAcademy'], button[name='lectureName'], button[name='local'], button[name='city'], button[name='level'], button[name='week'], button[name='time']").on("click", function () {
+              // 선택된 버튼을 강조하기 위해 'on' 클래스를 토글
+              $(this).removeClass("on").toggleClass("on").siblings();
+          });
           
       });
       
@@ -760,7 +780,24 @@ function setCourseComp(no) {
 	   	</div>
 	    <div class = "container">
 	    	<div class = "subContainer">
-	    	
+	    	<c:forEach var="lecture" items="${complexSelectResult }">
+	    		<div class = "subChildContainer">
+	    			<h2>강의 목록</h2>
+		    			<p><img src="${lecture.teacher_img_org}" alt="강사 이미지" width="50" height="50"></p>
+		                <p>${lecture.cname}</p>
+		                <p>${lecture.time}</p>
+		                <p>${lecture.price}</p>
+	    		</div>
+	    		<div class = "childSelectBox1">
+	    			<table>
+	    				<tr>
+	    					<td><button type="button" onclick="" class="SelectBtn">장바구니 담기</button></td>
+	    					<td><button type="button" onclick="setCourseComp(23);" class="SelectBtn">비교함 담기</button></td>
+	    					<td><button type="button" onclick="location.href='/tobe/user/pay/userPayDetail.do?'+" class="payBtn">결제 하기</button></td>
+	    				</tr>
+	    			</table>
+	    		</div>
+	    		</c:forEach>
 	    	</div>
 	   	</div>
 		<div class="footerBox">
