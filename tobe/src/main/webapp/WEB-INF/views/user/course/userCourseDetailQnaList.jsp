@@ -100,7 +100,8 @@
       </table>
       <div class="btnSet"  style="text-align:center;">
             	<c:if test="${!empty loginInfo}">
-                	<button type="button" onclick="location.href='/tobe/user/course/userCourseAskForm.do'" class="btn">작성하기</button>
+					<!-- JSP를 사용하는 경우 -->
+					<button type="button" onclick="location.href='/tobe/user/course/userCourseAskForm.do?infoCourse_no=${infoCourse_no}&infoCourseName=${infoCourseName}'" class="btn">작성하기</button>                	<button type="button" onclick="location.href='/tobe/user/course/userCourseAskForm.do?course_no=원하는값&infoDetail_no=원하는값&infoCourseName=원하는값'" class="btn">작성하기</button>
             	</c:if>
 
 			<div class="pagenate clear">

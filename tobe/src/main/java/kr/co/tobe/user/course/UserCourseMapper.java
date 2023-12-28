@@ -4,10 +4,10 @@ import java.util.List;
 import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 import kr.co.tobe.vo.CourseVO;
 import kr.co.tobe.vo.CqnaVO;
-import kr.co.tobe.vo.QnaVO;
 import kr.co.tobe.vo.ReviewVO;
 
 @Mapper
@@ -19,6 +19,7 @@ public interface UserCourseMapper {
 	int updateGno(int no);
 	CourseVO courseSelect(int no);
 	List<CourseVO> complexSelect(CourseVO CVO);
+	int complexCount(CourseVO CVO);
 	
 	/*강좌 상세 문의*/
 	List<CqnaVO> cqnaDetailList(Map<String, Object> params);
@@ -33,4 +34,10 @@ public interface UserCourseMapper {
 	int reviewCount(Map<String, Object> params);
 	
 	CqnaVO cqnaDetail(int no);
+	
+//	CqnaVO view(CqnaVO vo);
+	CqnaVO view(int cqna_no);
+	
+	CourseVO selectCourseById(@Param("course_no") int courseId);
+	
 }

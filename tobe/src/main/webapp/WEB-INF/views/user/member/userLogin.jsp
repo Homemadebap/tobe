@@ -46,6 +46,7 @@ function loginCheck() {
 .no_dot{
    list-style-type:none;
    font-size: 1.25rem;
+   padiing: 0;
 }
 .wrap {
 	width: 85rem;
@@ -161,15 +162,10 @@ a:visited {
 	height: 5rem;
 }
 
-.sub {
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
-}
 
 .no_dot {
 	list-style-type: none;
+	padding: 0 ;
 }
 
 
@@ -183,8 +179,21 @@ a:visited {
 	border-width: thin;
 }
 .login_form{
+	border:1px solid black;
 	border-radius:15px;
+	text-align:center;
+	width:250px;
+	}
+.login_form .login_btn{
+	background:#E4E6D9; 
+	width:200px; 
+	border-radius:10px;
+	border:none;
+	text-align:center; 
+	color:white;
+	font-weight:bold;
 }
+	
 .top{
 text-align:center;
 color: #424242;
@@ -199,6 +208,16 @@ outline:none;
 text-align : center;
 float:left;
 list-style:none;
+}
+.id_pwd{
+border:none;
+background-color:rgba(0,0,0,0);
+font-size:10px;
+}
+
+fieldset li{
+
+margin:0 10px;
 }
 </style>
 
@@ -218,23 +237,24 @@ list-style:none;
 	                    	
 	                    <div class="member">
 	                        <div class="box">
-	                            <fieldset class="login_form">
-	                                <ul class="no_dot">
-	                                    <li class="top" style="background-color:#E4E6D9">TOBE</li>
+	                            <div class="login_form">
+	                                <ul class="no_dot">	                                	
+	                                    <li class="top" style="font-size:30px; font-weight:bold">TOBE</li>	                                
 	                                    <li><input type="text" id="id" name="id" placeholder="아이디" style="width:200px; font-size: 1rem;"></li>
 	                                    <li><input type="password" id="pwd" name="pwd" placeholder="비밀번호" style="width:200px; font-size: 1rem;"></li>
 	                                    <ul class="change">
-		                                    <li><label  style="font-size: 0.75rem;"><input type="checkbox" name="reg1" id="reg1" style="width:10px; height:10px;"/>아이디저장</label></li>
+		                                    <!-- <li><label  style="font-size: 0.75rem;"><input type="checkbox" name="reg1" id="reg1" style="width:10px; height:10px;"/>아이디저장</label></li>  -->
 		                                    <!-- <li><a href="userFindMember.do" class="btn" style="font-size:10px">아이디|비밀번호 찾기</a></li>  -->
-		                                    <li float="left"><input type="button" value="아이디|비밀번호 찾기" onclick="window.open('userFindMember.do','window_name','width=300,height=700');"></li>
+		                                    <li float="left"><input class="id_pwd" type="button" value="아이디 | 비밀번호 찾기" onclick="window.open('userFindMember.do','window_name','width=300,height=700');"></li>
 	                                    </ul>
 	                                </ul>
-	                               	<input type="submit" style="border:none; background:#E4E6D9" text-align="center" value="로그인"/>
-	                            </fieldset>
-	                            <div class="btnSet_clear">
-	                                <div style="color: #2F5720">
-	                                    <p>아직 TOBE회원이 아니신가요?<a href="userJoinPolicy.do" class="btn">회원가입</a></p>
-	                               </div>
+	                               	<input class= "login_btn" type="submit" value="로그인"/>
+	                               	<div class="btnSet_clear">
+		                                <div style="color: #2F5720; font-size:xx-small; font-weight:bolder">
+		                                    <p>아직 TOBE회원이 아니신가요?<a href="userJoinPolicy.do" class="btn">    회원가입    </a></p>
+		                               </div>
+	                            </div>
+	                     
 	                            </div>
 	                        </div>
 	                    </div>
