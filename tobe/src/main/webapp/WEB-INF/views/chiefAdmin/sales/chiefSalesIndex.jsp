@@ -293,9 +293,5 @@ function getFormattedDate(date) {
 			</c:if>
 		</tr>
 	</table>
-	
-	
-
-   
 </body>
 </html>

@@ -15,6 +15,7 @@
 	src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+<link rel="stylesheet" href="/tobe/css/bbs.css"/>
 
 <script>
 	$(function(){
@@ -88,137 +89,136 @@
 
 
 <style>
-#top{
+
+.container{
    position: relative;
-   margin: -845x 0 0 -90px; 
+   margin: -845px 0 0 160px;
+   width : 1340px ;
+   height : 840px;  
+}	
+
+.member_sub{
+	margin-left : 20px; 
+	margin-right : 20px; 
+	width : 1300px ;
+	height : 850px;
+	display: flex;
+	flex-direction: column;  
 }
 
-.admin_logo {
-	position: absolute;
-	width: 40rem;
-	height: 5rem;
-	top: 2rem;
-	left: 10rem;
-}
-/*.box{
-   position: absolute;
-   width: 75rem;
-   height: 22rem;
-   top: 6rem; 
-   left: 15.5rem;
-   border: 1px solid #ddd;
-}*/
+
 .table {
-	position: absolute;
-	border: solid 1px;
-	width: 1000px;
-	height: 70px;
-	margin: 140px 0 0 250px;
+ 	border: solid 1px; 
+ 	width: 100%;
 	border-collapse: collapse;
+	margin-bottom : 10px;
+	
 }
 
 .tablea {
-	position: absolute;
-	border: solid 1px;
-	width: 1000px;
-	margin: 260px 0 0 250px;
+	width: 100%;
 	border-collapse: collapse;
-	top: 2rem;
+	border-top: 1px solid;
 }
 
-tr {
-	border: solid 1px;
+.tablea tr {
+	border-bottom: solid 1px;
 	height: 30px;
 }
 
-td {
-	border: solid 1px;
+.table td {
+	border-bottom: solid 1px;
+	height: 50px;
 }
 
-#noticeSeachMain { /*검색버튼*/
-	margin-left: 500px;
-	border: 1px solid #808080;
-	text-align: center;
-	width: 50px;
-	height: 32px;
-	background-color: #E4E6D9;
-	cursor: pointer;
-	border-radius: 5px;
-}
-
-.ti {
-	margin:
-}
-
-#searchOrReset {
-	margin: 5px;
-	text-align: end;
-}
-
-#searchOrReset>button {
-	cursor: pointer;
-	border: 0;
-	background-color: #F0F8FF;
-	color: #808080;
-}
-
-.searchWord {
-	margin: 1000px 0 0 500px;
-	position: relative;
-	top: 265px;
-}
 .searchOrReset{
-	position: absolute;
-	margin: 234px 0 0 1145px;
-	text-align: end;
+	display : flex;
+	flex-direction:row-reverse;
+	margin-bottom:10px;
+		
 }
-.paging{
-	position: absolute;
-	margin: 775px 0 0 1145px;
-	text-align: end;
+
+.form_sub{
+
+display : flex;
+flex-direction: column;
+    align-items: stretch;
 }
+
+
+input#today, input#week, input#oneMonth, input#threeMonth, input#year{
+   	border-radius:7px;
+	border-width:thin;
+	display:inline-block;
+	width:50px;
+ }
+ .searchOrReset input{
+ 	 background-color: #E5D1E3;
+     padding: 5px 15px;
+     margin : 5px;
+     text-align: center;
+     border-radius: 15px;
+     border :1px solid #E5D1E3;
+}
+ .tablea th{
+ border:solid 1px #A4A4A4;
+ background-color:#D9D9D9;
+
+ }
+.table td:first-child{
+text-align: center;
+}
+.tablea tr td{
+text-align:center;
+border:solid 1px #A4A4A4;
+
+}
+
+
 </style>
 
 </head>
 <body>
 	<%@include
 		file="/WEB-INF/views/chiefAdmin/common/chiefSideBar_logo.jsp"%>
-
-	<div id="top">
-
-		<form action="chiefMemberIndex.do" method="get">
-			<table class="table">
-				<tr>
-					<td width="100px;">검색어</td>
-					<td><input type="text" id="searchWord" name="searchWord"
-						value="${MemberVO.searchWord}" title="검색"></td>
-				</tr>
-				<thead>
-
+<div class="container">
+	<div class="member_sub">
+		<div class="form_sub">
+			<form action="chiefMemberIndex.do" method="get" >
+				<table class="table">
 					<tr>
-					<td>가입일</td>
-				    	<td>
-							<input type="date" name="startday" id="startday"> - <input type="date" name="endday" id="endday">
-							<input id="today" type="button" value="오늘" >
-							<input id ="week" type="button" value="일주일">
-							<input id= "oneMonth" type="button" value="1개월">
-							<input id= "threeMonth" type="button" value="3개월">
-							<input id= "year" type="button" value="1년">
-						</td>
+						<td width="100px;">검색어</td>
+						<td>&nbsp;<input type="text" id="searchWord" name="searchWord"
+							value="${MemberVO.searchWord}" title="검색"></td>
 					</tr>
+	
+	
+					<tr class="date_btn">
+						<td>가입일</td>
+					    	<td>
+							&nbsp;<input type="date" name="startday" id="startday"> - <input type="date" name="endday" id="endday">
+									<input id="today" type="button" value="오늘" >
+									<input id ="week" type="button" value="일주일">
+									<input id= "oneMonth" type="button" value="1개월">
+									<input id= "threeMonth" type="button" value="3개월">
+									<input id= "year" type="button" value="1년">							
+							</td>
+					</tr>
+	
+						<tr>
+							<td>생년월일</td>
+							<td>&nbsp;<input type="date" name="birthDayStartday" id="birthDayStartday"> - <input type="date" name="birthDayEndday" id="birthDayEndday"></td>
+						</tr>
+						
 
-					<tr>
-						<td>생년월일</td>
-						<td><input type="date" name="birthDayStartday" id="birthDayStartday"> - <input type="date" name="birthDayEndday" id="birthDayEndday"></td>
-					</tr>
-					
-					<div class="searchOrReset">
-						<input type="reset" >
-						<input type="submit" id="" value="검색">
-					</div> 
-				</thead>
-			</table>
-		</form>
+				</table>
+				
+						<div class="searchOrReset">
+							<input type="reset" >
+							<input type="submit" id="" value="검색">
+						</div> 
+			</form>
+		</div>
 		<!--
        <form method ="get" name="searchForm" id="searchForm" action="chiefMemberIndex.do">
 		   <span class="searchWord">
@@ -232,62 +232,59 @@ td {
 
 
 		<table class="tablea">
-			<tr stlye="text-align: center;">
-				<td>no</td>
-				<td>이름</td>
-				<td>아이디</td>
-				<td>성별</td>
-				<td>가입일</td>
-				<td>생년월일</td>
-				<td>이메일</td>
-				<td>전화번호</td>
-				<td>포인트</td>
-				<td>주소</td>
+			<thead>
+				<th style="border-left:none;">no</th>
+				<th>이름</th>
+				<th>아이디</th>
+				<th>가입일</th>
+				<th>생년월일</th>
+				<th>이메일</th>
+				<th>전화번호</th>
+				<th>포인트</th>
+				<th style="border-right:none;">주소</th>
+			</thead>
+			<tbody>
 				<c:forEach var="MemberVO" items="${map.list }">
 					<tr>
-						<td>${MemberVO.member_no }</td>
+						<td style="border-left:none;">${MemberVO.member_no }</td>
 						<td>${MemberVO.name }</td>
-						<td>${MemberVO.id }</td>
-						<td>${MemberVO.gender }</td>
+						<td>${MemberVO.id }</td>						
 						<td>${MemberVO.registdate }</td>
 						<td>${MemberVO.birthday }</td>
 						<td>${MemberVO.email }</td>
 						<td>${MemberVO.hp }</td>
 						<td><a href="chiefMemberDetail.do?no=${MemberVO.member_no }">
 						<input type="text" name="point" id="point" style="float: left;" value="${MemberVO.point }"></a>point</td>
-						<td>${MemberVO.addr1 }</td>
-						<td>${MemberVO.addr2 }</td>
+						<td style="border-right:none;">${MemberVO.addr1 }</td>						
 					</tr>
 				</c:forEach>
-			</tr>
+			</tbody>
 		</table>
+		
 
-		<tbody>
+	
 
-		</tbody>
-
-	</div>
-
-	<div class="pagenate_clear">
-		<ul class='paging'>
-			<c:if test="${map.prev }">
-				<li><a href="chiefMemberIndex.do?page=${map.startPage-1 }"> &lt;&lt; </a></li>
-			</c:if>
-			<c:forEach var="p" begin="${map.startPage ge 0 ? map.startPage : 0}"
-				end="${map.endPage}">
-				<c:if test="${p == MemberVO.page}">
-					<li><a href='#;' class='current'>${p}></a></li>
+		<div class="pagenate clear">
+			<ul class='paging'>
+				<c:if test="${map.prev }">
+					<li><a href="chiefMemberIndex.do?page=${map.startPage-1 }"> << </a></li>
 				</c:if>
-				<c:if test="${p != MemberVO.page}">
-					<li><a href="chiefMemberIndex.do?page=${p}">${p}></a></li>
+				<c:forEach var="p" begin="${map.startPage ge 0 ? map.startPage : 0}"
+					end="${map.endPage}">
+					<c:if test="${p == MemberVO.page}">
+						<li><a href='#;' class='current'>${p}</a></li>
+					</c:if>
+					<c:if test="${p != MemberVO.page}">
+						<li><a href="chiefMemberIndex.do?page=${p}">${p}</a></li>
+					</c:if>
+				</c:forEach>
+				<c:if test="${map.next }">
+					<li><a href="chiefMemberIndex.do?page=${map.endPage+1 }">
+							>> </a></li>
 				</c:if>
-			</c:forEach>
-			<c:if test="${map.next }">
-				<li><a href="chiefMemberIndex.do?page=${map.endPage+1 }">
-						&gt;&gt; </a></li>
-			</c:if>
-		</ul>
-	</div>
-
+			</ul>
+		</div>
+</div>
+</div>
 </body>
 </html>

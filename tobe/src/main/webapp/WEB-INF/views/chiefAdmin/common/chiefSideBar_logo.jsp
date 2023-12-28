@@ -96,6 +96,7 @@
    background-color: #fff;
    max-width: 500px;
    max-height: 500px;
+   cursor:pointer;
 }
 #main {
    display: flex;
@@ -120,11 +121,6 @@ a:hover {
 
 }
 
-
-#mainlogo > img {
-	cursor:pointer;
-	
-}
 #mainlogo {
 	margin : 20px;
 }
