@@ -1,6 +1,7 @@
 package kr.co.tobe.chiefAdmin.customer;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -9,11 +10,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import kr.co.tobe.vo.CqnaVO;
 import kr.co.tobe.vo.FaqVO;
 import kr.co.tobe.vo.NoticeVO;
 import kr.co.tobe.vo.QnaVO;
-import kr.co.tobe.vo.ReviewVO;
 
 @Controller
 public class ChiefCustomerController {
@@ -23,8 +22,8 @@ public class ChiefCustomerController {
 	
 	@GetMapping ("/chiefAdmin/customer/chiefCustomerIndex.do")
 	public String index(Model model, NoticeVO vo) {
-		List<NoticeVO> NoticeList = service.getlist(vo);
-		model.addAttribute("list", NoticeList);
+		Map<String, Object> NoticeList = service.noticeList(vo);
+		model.addAttribute("map", NoticeList);
 	return "chiefAdmin/customer/chiefCustomerIndex";
 	}
 	
@@ -42,8 +41,8 @@ public class ChiefCustomerController {
 	
 	@GetMapping ("/chiefAdmin/customer/chiefQnaList.do")
 		public String QnaList(Model model, QnaVO vo) {
-			List<QnaVO> QnaList = service.getqnalist(vo);
-			model.addAttribute("list", QnaList);
+		List<QnaVO> QnaList = service.getqnalist(vo);
+		model.addAttribute("list", QnaList);
 		return "chiefAdmin/customer/chiefQnaList";
 	}
 	@GetMapping ("/chiefAdmin/customer/chiefQnaDetail.do")

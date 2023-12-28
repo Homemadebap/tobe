@@ -26,4 +26,5 @@ public interface ChiefCustomerService {
 	List<FaqVO> getfaqlist(FaqVO vo);
 	
 	int QnaReply (QnaVO vo);
+	//Map<String, Object> qnaList(QnaVO vo);
 }
