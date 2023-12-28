@@ -88,7 +88,7 @@ caption {display:none;}
 		        <caption>게시판 목록</caption>
 				<thead>
 				    <tr>
-				        <th style="width: 20%;">번호</th>
+				        <th style="width: 20%;">강좌명</th>
 				        <th style="width: 40%;">제목</th>
 				        <th style="width: 20%;">작성자</th>
 				        <th style="width: 20%;">작성일</th>
@@ -102,14 +102,12 @@ caption {display:none;}
 					</c:if>
 					<c:forEach var="review" items="${ReviewList}">       
 						<tr>
-						    <td>${review.review_no}</td>
+						    <td>${review.cname}</td>
 							<td>
-		    					<a href="/tobe/user/review/userReviewDetail.do?reviewNo=${review.review_no}" class="SelectBtn" style="text-decoration: none; color: #000;">${review.r_title}</a>
+		    					<a href="/tobe/user/review/userReviewDetail.do?review_no=${review.review_no}" class="SelectBtn" style="text-decoration: none; color: #000;">${review.r_title}</a>
 							</td>
-							<td>${review.member_no}</td>
-							<td>
-							    <fmt:formatDate value="${review.r_writedate}" pattern="yyyy-MM-dd" />
-						    </td>
+							<td>${review.id}</td>
+							<td>${review.r_writedate}</td>
 						</tr>
 					</c:forEach>
 	    		</tbody>
@@ -117,7 +115,7 @@ caption {display:none;}
 			<div class="pagenate clear">
    				<ul class='paging'>
 			    	<c:if test="${map.prev }">
-						<li><a href="index.do?page=${map.startPage-1 }&searchType=${ReviewVO.searchType}&searchWord=${ReviewVO.searchWord}"> << </a></li>
+						<li><a href="index.do?page=${map.startPage-1 }&searchType=${ReviewVO.searchType}&searchWord=${ReviewVO.searchWord}"></a></li>
 					</c:if>
 					<c:forEach var="p" begin="${map.startPage}" end="${map.endPage}">
 						<c:if test="${p == ReviewVO.page}">

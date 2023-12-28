@@ -92,6 +92,7 @@ label {
      padding: 5px 15px;
      margin : 5px;
      text-align: center;
+      border: none;
      border-radius: 15px;
 }
 
