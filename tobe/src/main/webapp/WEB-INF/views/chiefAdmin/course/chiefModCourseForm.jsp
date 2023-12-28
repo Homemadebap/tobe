@@ -276,7 +276,7 @@
 	        		 </select>
 				</div>	
 				<div id="cn">
-					<b style="margin-right:10px">과목명</b>  <input type="text" name="cname" id="cnameS" size="70" value="${map.cnam}">  
+					<b style="margin-right:10px">과목명</b>  <input type="text" name="cname" id="cnameS" size="70" value="${map.cname}">  
 				</div>
 			</div>
 			<div>
