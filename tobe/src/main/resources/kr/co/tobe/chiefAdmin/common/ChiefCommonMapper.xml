@@ -9,7 +9,7 @@
 		    ON c.course_no=pd.course_no
 		    JOIN pay p ON pd.order_no=p.order_no
 	</select>
-	<select id="totalCount" parameterType="map" resultType="int">
+	<select id="totalCount" resultType="int">
 		select count(*) 
 		from member
 	</select>

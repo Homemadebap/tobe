@@ -1,5 +1,7 @@
 package kr.co.tobe.chiefAdmin.common;
 
+import java.util.Map;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,8 +22,6 @@ public class ChiefCommonController {
 
 	public String index(HttpSession sess, Model model,QnaVO qvo) {
 		AdminVO admin = (AdminVO)sess.getAttribute("adLoginInfo"); 
-		
-		
 		model.addAttribute("q", service.qna(qvo));
 		return "chiefAdmin/common/chiefIndex";
 	}
