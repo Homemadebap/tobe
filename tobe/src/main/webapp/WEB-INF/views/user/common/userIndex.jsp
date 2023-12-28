@@ -8,15 +8,18 @@
 <meta charset="UTF-8" >
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Tobe 사용자 메인페이지</title>
+ 
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 
-<META name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, user-scalable=no">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
-<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
-<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
 </head>
-
+<script>
+var swiper = new Swiper('.swiper-container', {
+    // 설정 옵션들
+  });
+</script>
 <style>
 
 .visual{
@@ -120,9 +123,9 @@ strong{
 		<div class="visual">
 			<div class="swiper swiper-visual">
 			    <div class="swiper-wrapper">
-			        <img class="swiper-slide" style="background-image:url('/tobe/img/pa.png');">
-			        <img class="swiper-slide" style="background-image:url('/tobe/img/ybm.png');">
-			        <img class="swiper-slide" style="background-image:url('/tobe/img/ha.png');">
+			        <div class="swiper-slide" style="background-image:url('/tobe/img/ybm.png');">
+			        <div class="swiper-slide" style="background-image:url('/tobe/img/pa.png');">
+			        <div class="swiper-slide" style="background-image:url('/tobe/img/ha.png');">
 			    </div>
 			</div>
 		</div>
