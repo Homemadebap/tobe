@@ -108,6 +108,7 @@
 	    }
 	</script>
 	<style>
+	
 		.size{
 	    position:absolute;
 	    top:50%;
@@ -171,18 +172,31 @@
 		}
 	
 		.btnSet_clear{
-		text-align:center;
+		text-align:right;
 		}
 		.btnSet_clear .btn{
-		background-color:#E7E7E7;
+		background-color:#49654E;
 		border:solid;
 		border-radius:7px;
 		border-width:thin;
 		font-size:13px;
+		color:white;
+		display:inline-block;
+		width:50px;
+		text-align:center;
 		}
 		.ptxt{
 		font-size:10px;
 		}
+		.sub_title, h4{
+		color:#44546A;
+		}
+		.container{
+	   position: relative;
+	   margin: -845px 0 0 160px;
+	   width : 1340px ;
+	   height : 850px;  
+	   }
 
 			
 	</style>
@@ -191,87 +205,88 @@
     <div class="wrap">
        <%@ include file="/WEB-INF/views/user/common/userHeader.jsp" %>
        </div>
-        <div class="sub">
-            <div class="size">
-                <h2 class="sub_title">회원가입</h2>
-                <form name="frm" id="frm" action="userJoinForm.do" method="post">
-                <h4>필수입력</h4>
-                <table class="board_write" cellspacing = "0">
-                    <!-- <caption style="float:left;">필수입력</caption> -->
-                    <colgroup>
-                        <col width="20%" />
-                        <col width="80%" />
-                    </colgroup>
-                    <tbody class="content">
-                    	<tr>
-                      		<th>이름</th>
-                    		<td><input type="text" name="name" id="name" style="float:left;"></td>
-                    	</tr>
-                        <tr>
-                            <th>아이디</th>
-                            <td>
-                                <input type="text" name="id" id="id" class="inNextBtn" style="float:left;">
-                                <span class="id_check"><a href="javascript:;"  class="btn bgGray" style="float:left; width:auto; clear:none;" id="idCheck", name="idCheck">중복확인</a></span>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th>비밀번호</th>
-                            <td><input type="password" name="pwd" id="pwd" style="float:left;"> <span class="ptxt">비밀번호는 숫자, 영문 조합으로 8자 이상으로 입력해주세요.</span> </td>
-                        </tr>
-                        <tr>
-                            <th>비밀번호<span>확인</span></th>
-                            <td><input type="password" name="pw_check" id="pw_check" style="float:left;"></td>
-                        </tr>
-                            <th>이메일</th>
-                            <td>
-                                <input type="text" name="email" id="email" style="float:left;">
-                            </td>
-                        <tr>
-                            <th>성별</th>
-                            <td>
-                            <select name="gender" id="gender">
-                            <option value="1">남성</option>
-                            <option value="2">여성</option>
-                            </select> 
-                            </td>
-                        </tr>
-                        <tr>
-                            <th>생년월일</th>
-                            <td><input type="text" name="birthday" id="birthday" style="float:left;"> </td>
-                        </tr>
-                        <tr>
-                            <th>휴대폰 번호</th>
-                            <td>
-                                <input type="text" name="hp" id="hp" value=""  maxlength="15" style="float:left;">
-                            </td>
-                        </tr>
-                        <tr>
-                            <th>주소</th>
-                            
-                            <td>
-                                <input type="text" name="zipcode" id="zipcode" value=""  maxlength="6" style="float:left;" readonly>
-                                <span class="email_check"><a href="javascript:zipcode();"  class="btn bgGray" id="zipNum">우편번호</a></span>
-                            </td>
-                        </tr>
-                     	<tr>
-                     		<th>상세 주소</th>
-                            <td>
-                                <input type="text" name="addr1" id="addr1" value=""  maxlength="15" style="float:left;" readonly>
-                                <input type="text" name="addr2" id="addr2" value=""  maxlength="15" style="float:left;">
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-                        <input type="hidden" name="cmd" value="write.do"/>
-                        <input type="hidden" name="checkEmail" id="checkEmail" value="0"/>
-                </form>
-                <!-- //write--->
-                <div class="btnSet_clear">
-                    <div><a href="javascript:;" class="btn" onclick="goSave();">가입</a> <a href="javascript:;" class="btn" onclick="history.back();">취소</a></div>
-                </div>
-            </div>
-        </div>
+       <div class="main">
+	        <div class="sub">
+	            <div class="size">
+	                <h2 class="sub_title">회원가입</h2>
+	                <form name="frm" id="frm" action="userJoinForm.do" method="post">
+	                <h4>필수입력</h4>
+	                <table class="board_write" cellspacing = "0">
+	                    <!-- <caption style="float:left;">필수입력</caption> -->
+	                    <colgroup>
+	                        <col width="20%" />
+	                        <col width="80%" />
+	                    </colgroup>
+	                    <tbody class="content">
+	                    	<tr>
+	                      		<th>&nbsp;이름</th>
+	                    		<td>&nbsp;<input type="text" name="name" id="name" style="float:left;"></td>
+	                    	</tr>
+	                        <tr>
+	                            <th>&nbsp;아이디</th>
+	                            <td>
+	                                <input type="text" name="id" id="id" class="inNextBtn" style="float:left;">
+	                                <span class="id_check"><a href="javascript:;"  class="btn bgGray" style="float:left; width:auto; clear:none;" id="idCheck", name="idCheck">&nbsp;중복확인&nbsp;</a></span>
+	                            </td>
+	                        </tr>
+	                        <tr>
+	                            <th>&nbsp;비밀번호</th>
+	                            <td><input type="password" name="pwd" id="pwd" style="float:left;"> <span class="ptxt">비밀번호는 숫자, 영문 조합으로 8자 이상으로 입력해주세요.</span> </td>
+	                        </tr>
+	                        <tr>
+	                            <th>&nbsp;비밀번호 확인</th>
+	                            <td><input type="password" name="pw_check" id="pw_check" style="float:left;"></td>
+	                        </tr>
+	                            <th>&nbsp;이메일</th>
+	                            <td>
+	                                <input type="text" name="email" id="email" style="float:left;">
+	                            </td>
+	                        <tr>
+	                            <th>&nbsp;성별</th>
+	                            <td>
+	                            <select name="gender" id="gender">
+	                            <option value="1">남성</option>
+	                            <option value="2">여성</option>
+	                            </select> 
+	                            </td>
+	                        </tr>
+	                        <tr>
+	                            <th>&nbsp;생년월일</th>
+	                            <td><input type="text" name="birthday" id="birthday" style="float:left;"> </td>
+	                        </tr>
+	                        <tr>
+	                            <th>&nbsp;휴대폰 번호</th>
+	                            <td>
+	                                <input type="text" name="hp" id="hp" value=""  maxlength="15" style="float:left;">
+	                            </td>
+	                        </tr>
+	                        <tr>
+	                            <th>&nbsp;주소</th>
+	                            
+	                            <td>
+	                                <input type="text" name="zipcode" id="zipcode" value=""  maxlength="6" style="float:left;" readonly>
+	                                <span class="email_check"><a href="javascript:zipcode();"  class="btn bgGray" id="zipNum">&nbsp;우편번호&nbsp;</a></span>
+	                            </td>
+	                        </tr>
+	                     	<tr>
+	                     		<th>&nbsp;상세 주소</th>
+	                            <td>
+	                                <input type="text" name="addr1" id="addr1" value=""  maxlength="15" style="float:left;" readonly>
+	                                <input type="text" name="addr2" id="addr2" value=""  maxlength="15" style="float:left;">
+	                            </td>
+	                        </tr>
+	                    </tbody>
+	                </table>
+	                        <input type="hidden" name="cmd" value="write.do"/>
+	                        <input type="hidden" name="checkEmail" id="checkEmail" value="0"/>
+	                </form>
+	                <!-- //write--->
+	                <div class="btnSet_clear">
+	                    <div><a href="javascript:;" class="btn" onclick="goSave();">가입</a> <a href="javascript:;" class="btn" onclick="history.back();">취소</a></div>
+	                </div>
+	            </div>
+	        </div>
 		<%@ include file= "/WEB-INF/views/user/common/userFooter.jsp" %>
-    </div>
+    	</div>
 </body> 
 </html>

@@ -21,12 +21,8 @@
 
 </script>
 <style>
-		.size{
-	    position:absolute;
-	    top:50%;
-	    left:50%;
-	    transform:translate(-50%, -50%);
-        }
+		
+	
 
         
 		table{
@@ -36,22 +32,60 @@
 		th, td{
 		border:1px solid;
 		font-size:20px
+		
 		}
 		th{
 			background-color:#D9D9D9;
 			text-align:left;
 		}
+		.container{
+	   position: relative;
+	   margin: -845px 0 0 160px;
+	   width : 1340px ;
+	   height : 850px;  
+	   }
+	   	.size{
+	    position:absolute;
+	    top:45%;
+	    left:50%;
+	    transform:translate(-50%, -50%);
+        } 
+	   
+	   	.board_write{
+		width:700px;
+		}
+		.btnSet_clear{
+		text-align:right;
+		}
+		.btnSet_clear .btn{
+		background-color:#F0F5F8;
+		border:solid;
+		border-radius:7px;
+		border-width:thin;
+		font-size:13px;
+		display:inline-block;
+		width:50px;
+		text-align:center;
+		}
+		.sub_title{
+		color:#8B6858;
+		}
+
+		
 
 	</style>
 
 </head>
 <body>
+
     <div class="wrap">
        <%@include file="/WEB-INF/views/chiefAdmin/common/chiefSideBar_logo.jsp" %>
        </div>
+       <div class="container">
         <div class="sub">
             <div class="size">
                 <h2 class="sub_title">회원정보</h2>
+               	<br></br>
                 <form name="frm" id="frm" method="post" action="chiefMemberIndex.do">
                 <table class="board_write" cellspacing = "0">
                     <!-- <caption style="float:left;">필수입력</caption> -->
@@ -61,45 +95,45 @@
                     </colgroup>
                     <tbody>
                     	<tr>
-                    		<th>이름</th>
-                    		<td>${map.name}</td>
+                    		<th>&nbsp;이름</th>
+                    		<td>&nbsp;${map.name}</td>
                     	</tr>
                         <tr>
-                    		<th>아이디</th>
-                    		<td>${map.id }</td>
+                    		<th>&nbsp;아이디</th>
+                    		<td>&nbsp;${map.id }</td>
                     	</tr>
                         <tr>
-                            <th>성별</th>
-                            <td>${map.gender }</td>
+                            <th>&nbsp;성별</th>
+                            <td>&nbsp;${map.gender }</td>
                         </tr>
                         <tr>
-                            <th>가입일</th>
-                            <td>${map.registdate }</td>
+                            <th>&nbsp;가입일</th>
+                            <td>&nbsp;${map.registdate }</td>
                         </tr>
                         <tr>
-                    		<th>생년월일</th>
-                    		<td>${map.birthday }</td>
+                    		<th>&nbsp;생년월일</th>
+                    		<td>&nbsp;${map.birthday }</td>
                     	</tr>
                     	<tr>
-                    		<th>이메일</th>
-                    		<td>${map.email }</td>
+                    		<th>&nbsp;이메일</th>
+                    		<td>&nbsp;${map.email }</td>
                     	</tr>
                     	<tr>
-                    		<th>전화번호</th>
-                    		<td>${map.hp }</td>
+                    		<th>&nbsp;전화번호</th>
+                    		<td>&nbsp;${map.hp }</td>
                     	</tr>
                     	<tr>
-                    		<th>포인트</th>
-                    		<td><input type="text" name="point" id="point" style="float:left;" value="${map.point }">point
+                    		<th>&nbsp;포인트</th>
+                    		<td><input type="text" name="point" id="point" style="margin-left:10px;" value="${map.point }">&nbsp;point
                     		<input type="hidden" name="member_no" value="${map.member_no }"/></td>
                     	</tr>
                         <tr>
-                            <th>주소</th>
-							<td>${map.addr1 }</td>
+                            <th>&nbsp;주소</th>
+							<td>&nbsp;${map.addr1 }</td>
                         </tr>
                      	<tr>
-                     		<th>상세 주소</th>
-							<td>${map.addr2 }</td>
+                     		<th>&nbsp;상세 주소</th>
+							<td>&nbsp;${map.addr2 }</td>
                         </tr>
                     </tbody>
                 </table>
@@ -107,12 +141,14 @@
                         <input type="hidden" name="checkEmail" id="checkEmail" value="0"/>
                 </form>
                 <!-- //write--->
-                <div class="btnSet clear">
+                <div class="btnSet_clear">
+                	<br>
                     <div><a href="javascript:;" class="btn" onclick="goSave();">수정</a> <a href="javascript:;" class="btn" onclick="history.back();">취소</a></div>
                 </div>
             </div>
         </div>
 		
-    </div>
+</div>
+ 
 </body> 
 </html>
