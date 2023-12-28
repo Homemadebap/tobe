@@ -21,7 +21,7 @@
 	}
 	.pagenate.clear{
 		position:absolute;
-		bottom:20rem;
+		bottom:10rem;
 		margin-left: 27rem;
 	}
 	a{

@@ -487,20 +487,6 @@ caption {
           
           
 
-        	        resultHtml += "<div class='childSelectBox1'>";
-        	        resultHtml += "<table>";
-        	        resultHtml += "<tr>";
-        	        resultHtml += "<td><a href='/tobe/user/common/userBasket.do?course_no=" + lecture.course_no + "' class='SelectBtn'>장바구니 담기</a></td>";
-        	        resultHtml += "<td><button type='button' onclick='setCourseComp(50);' class='SelectBtn'>비교함 담기</button></td>";
-        	        //resultHtml += "<td><button type='button' onclick=\"location.href='/tobe/user/pay/userPayDetail.do?'\" class='payBtn'>결제 하기</button></td>";
-        	        resultHtml += "<td><a href = '/tobe/user/pay/userPayDetail.do?course_no=" + lecture.course_no + "' class='payBtn'>결제 하기</a></td>";
-        	        resultHtml += "</tr>";
-        	        resultHtml += "</table>";
-        	        resultHtml += "</div>";
-console.log('html:'+resultHtml);
-        	        searchResultsContainer.append(resultHtml);
-        	    }
-        	}
 
           // 각 카테고리에 대한 버튼 클릭 처리
           $("button[name='btnAcademy'], button[name='lectureName'], button[name='local'], button[name='city'], button[name='level'], button[name='week'], button[name='time']").on("click", function () {
@@ -509,23 +495,6 @@ console.log('html:'+resultHtml);
           });
           
       });
-      
-      /*document.addEventListener("DOMContentLoaded", function() {
-    	    // 강의 목록에 있는 모든 a 태그에 클릭 이벤트 추가
-    	    var courseLinks = document.querySelectorAll('.subChildContainer a');
-
-    	    courseLinks.forEach(function(link) {
-    	        link.addEventListener('click', function(event) {
-    	            // 클릭된 강의의 course_no 값을 가져오기
-    	            var courseNo = event.currentTarget.getAttribute('data-course-no');
-
-    	            // URL에 course_no를 추가하여 새로운 페이지로 이동
-    	            var newURL = '/tobe/user/course/userCourseDetail.do?courseNo=' + courseNo;
-    	            window.location.href = newURL;
-    	        });
-    	    });
-    	});*/
-
 </script>
 <script>  
 function setCourseComp(no) {
