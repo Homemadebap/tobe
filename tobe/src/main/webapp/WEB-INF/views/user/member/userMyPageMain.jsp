@@ -312,7 +312,7 @@ table {
 		                    <c:forEach var="vo" items="${cci}">
 								<tr style="text-align: center;">
 	                        		<td>${vo.course_no }</td>
-		                            <td class="url" onclick="location.href='/tobe/user/course/userCourseDetail.do?course_no=${vo.course_no}'"><img src="/tobe/img/${vo.teacher_img}"></td>
+		                            <td class="url" onclick="location.href='/tobe/user/course/userCourseDetail.do?course_no=${vo.course_no}'"><img src="/tobe/img/course_img/${vo.teacher_img}"></td>
 		                            <td class="url" onclick="location.href='/tobe/user/course/userCourseDetail.do?course_no=${vo.course_no}'">${vo.i_cname}</td>    
 		                            <td>${vo.i_startday}</td>
 		                            <td>${vo.i_endday}</td>
@@ -344,7 +344,7 @@ table {
 		                        <tr style="font-size: 1.15rem;">
 			                    	<td>${vo.pay_date }</td> 
 		                            <td>${vo.detail_no}<input type="button" onclick="location.href='/tobe/user/pay/userPayCompleteDetail.do?detail_no=${vo.detail_no}'" value="주문상세보기"/></td>    
-		                            <td class="url" onclick="location.href='/tobe/user/course/userCourseDetail.do?course_no=${vo.course_no}'">${vo.teacher_img}${vo.i_cname}</td> 
+		                            <td class="url" onclick="location.href='/tobe/user/course/userCourseDetail.do?course_no=${vo.course_no}'">${vo.teacher_img_org}${vo.i_cname}</td> 
 		                            <td>${vo.i_price}</td>
 		                            <td>${vo.i_startday}</td>
 		                            <td>${vo.i_endday}</td>
@@ -385,7 +385,7 @@ table {
 			                        <tr style="font-size: 1.15rem;">
 				                    	<td>${vo.pay_cancel_date }</td> 
 			                            <td>${vo.detail_no}<input type="button" onclick="location.href='/tobe/user/pay/userPayCancelDetail.do?detail_no=${vo.detail_no}'" value="취소상세보기"/></td>    
-			                            <td class="url" onclick="location.href='/tobe/user/course/userCourseDetail.do?course_no=${vo.course_no}'">${vo.teacher_img}${vo.i_cname}</td> 
+			                            <td class="url" onclick="location.href='/tobe/user/course/userCourseDetail.do?course_no=${vo.course_no}'">${vo.teacher_img_org}${vo.i_cname}</td> 
 			                            <td>${vo.i_price}</td>
 			                            <td>${vo.i_startday}</td>
 			                            <td>${vo.i_endday}</td>
@@ -399,12 +399,12 @@ table {
 				</div>
 
 				<div class="askIndex" style="overflow-y:scroll; height: 30rem;">
-					<c:if test="${empty mcai}">
+					<c:if test="${empty mcai && empty ai}">
                         <tr>
                             <td class="noIndex">문의한 내역이 없습니다.</td>
                         </tr>
                     </c:if>
-                    <c:if test="${!empty mcai}">
+                    <c:if test="${!empty mcai || !empty ai}">
 	                    <table>
 							<tr style="font-weight: bolder; font-size: 1.25rem; ">
 								<td>문의번호</td>
