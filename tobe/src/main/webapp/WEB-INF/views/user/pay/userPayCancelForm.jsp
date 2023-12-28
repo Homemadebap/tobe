@@ -29,11 +29,14 @@
 </script>
 
 <style>
+.main {
+	width: 75rem;
+	height: 50rem;
+}
+
 .container {
-	position: absolute;
-	top: 13rem;
-	left:3rem;
 	width: 70rem;
+	margin: 0 auto;
 }
 
 .btitle {
@@ -129,95 +132,100 @@
 </head>
 <body>
 	<div class="wrap">
-		<%@include file="/WEB-INF/views/user/common/userHeader.jsp"%>
-		<div class="container">
-			<div class="btitle">
-				 <h1>결제취소</h1>
-			</div>
-			<div class="title">
-				<h2>주문상품</h2>
-			</div>
-			
-			<div>
-				<table class="courseInfo">
-					<tr id="firstRow">
-						<th></th>
-						<th>강좌정보</th>
-						<th>가격</th>
-						<th>총상품금액</th>
-					</tr>
-					<tr id="secondRow">
-						<td><img src="/tobe/img/${pdvo.teacher_img_real }"></td>
-						<td>
-							<span style="font-size: 1.25rem;">강좌명 : ${pdvo.i_cname }</span><br>
-							<span style="font-size: 1rem; font-weight: normal;">개강일 : ${pdvo.i_startday }</span><br>
-							<span style="font-size: 1rem; font-weight: normal;">종강일 : ${pdvo.i_endday}</span>
-						</td>
-						<td>${pdvo. pay_single}원</td>
-						<td>${pdvo. i_price}원</td>
-					</tr>
-				</table>
-			</div>
-			
-			<div class="title">
-				<h2>결제 정보</h2>
-			</div>
-			
-			<div>
-				<table class="payInfo">
-					<tr>
-						<td style="width: 40%">
-							<span style="width: 50%; float: left;">결제 금액</span>
-							<span style="width: 50%; float: left;">${pdvo.pay_single}원</span>	
-						</td>
-						<td style="width: 60%;">주문취소 사유</td>
-					</tr>
-					<tr>
-						<td style="font-size: 1.25rem;">
-							<c:set var="pay_complete" value="${CodeToString.payCompleteToString(pdvo.pay_complete)}" />
-							<c:set var="pay_by" value="${CodeToString.paybyToString(pdvo.pay_by)}" />
-							<span style="width: 50%; float: left;">진행상황</span>
-							<span style="width: 50%; float: left;">${pay_complete}</span>
-							<span style="width: 50%; float: left;">결제 방법</span>
-							<span style="width: 50%; float: left;">${pay_by}</span>	
-							<span style="width: 50%; float: left;">입금계좌</span>
-							<span style="width: 50%; float: left;">${pdvo.ad_account}</span>
-							<span style="width: 50%; float: left;">예금주</span>
-							<span style="width: 50%; float: left;">${pdvo.ad_name}</span>
-							<span style="width: 50%; float: left;">결제 완료</span>
-							<c:if test="${pdvo.pay_date != null}">
-								<span style="width: 50%; float: left;">${pdvo.pay_date2}</span>
-							</c:if>
-							<c:if test="${pdvo.pay_date == null}">
-								<span style="width: 50%; float: left;">결제 미완료</span>
-							</c:if>
-						</td>
-						<td>
-							<p style="height: 1rem; padding: 0; margin: 0;"></p>
-							<form method="post" action="userPayCancel.do">
-								<div>
-									<select id="pay_cancel_reason" name="pay_cancel_reason" class="input">
-										<option value="1">단순변심</option>
-										<option value="2">수업 불만족</option>
-										<option value="3">학원 불만족</option>
-										<option value="4">결제방법 변경</option>
-										<option value="5">기타</option>
-									</select>
-								</div>
-								<textarea id="pay_cancel_reason_detail" name="pay_cancel_reason_detail" placeholder="주문 취소 사유를 입력해주세요." cols="50" rows="6"></textarea><br><br>
-								<button id="cancelBtn" >주문취소하기</button><br><br>
-								<input type="hidden" name="detail_no" value="${pdvo.detail_no }">
-							</form>
-						</td>
-					</tr>
-				</table>			
-			</div>
-			<div id="btnBox">
-				<button id="backBtn" onclick="location.href='/tobe/user/pay/userPayCompleteDetail.do?detail_no=${pdvo.detail_no}'">이전</button>
+		<div class="headerBox">
+			<%@include file="/WEB-INF/views/user/common/userHeader.jsp"%>
+		</div>
+		<div class="main">
+			<div class="container">
+				<div class="btitle">
+					 <h1>결제취소</h1>
+				</div>
+				<div class="title">
+					<h2>주문상품</h2>
+				</div>
+				
+				<div>
+					<table class="courseInfo">
+						<tr id="firstRow">
+							<th></th>
+							<th>강좌정보</th>
+							<th>가격</th>
+							<th>총상품금액</th>
+						</tr>
+						<tr id="secondRow">
+							<td><img src="/tobe/img/${pdvo.teacher_img_real }"></td>
+							<td>
+								<span style="font-size: 1.25rem;">강좌명 : ${pdvo.i_cname }</span><br>
+								<span style="font-size: 1rem; font-weight: normal;">개강일 : ${pdvo.i_startday }</span><br>
+								<span style="font-size: 1rem; font-weight: normal;">종강일 : ${pdvo.i_endday}</span>
+							</td>
+							<td>${pdvo. pay_single}원</td>
+							<td>${pdvo. i_price}원</td>
+						</tr>
+					</table>
+				</div>
+				
+				<div class="title">
+					<h2>결제 정보</h2>
+				</div>
+				
+				<div>
+					<table class="payInfo">
+						<tr>
+							<td style="width: 40%">
+								<span style="width: 50%; float: left;">결제 금액</span>
+								<span style="width: 50%; float: left;">${pdvo.pay_single}원</span>	
+							</td>
+							<td style="width: 60%;">주문취소 사유</td>
+						</tr>
+						<tr>
+							<td style="font-size: 1.25rem;">
+								<c:set var="pay_complete" value="${CodeToString.payCompleteToString(pdvo.pay_complete)}" />
+								<c:set var="pay_by" value="${CodeToString.paybyToString(pdvo.pay_by)}" />
+								<span style="width: 50%; float: left;">진행상황</span>
+								<span style="width: 50%; float: left;">${pay_complete}</span>
+								<span style="width: 50%; float: left;">결제 방법</span>
+								<span style="width: 50%; float: left;">${pay_by}</span>	
+								<span style="width: 50%; float: left;">입금계좌</span>
+								<span style="width: 50%; float: left;">${pdvo.ad_account}</span>
+								<span style="width: 50%; float: left;">예금주</span>
+								<span style="width: 50%; float: left;">${pdvo.ad_name}</span>
+								<span style="width: 50%; float: left;">결제 완료</span>
+								<c:if test="${pdvo.pay_date != null}">
+									<span style="width: 50%; float: left;">${pdvo.pay_date2}</span>
+								</c:if>
+								<c:if test="${pdvo.pay_date == null}">
+									<span style="width: 50%; float: left;">결제 미완료</span>
+								</c:if>
+							</td>
+							<td>
+								<p style="height: 1rem; padding: 0; margin: 0;"></p>
+								<form method="post" action="userPayCancel.do">
+									<div>
+										<select id="pay_cancel_reason" name="pay_cancel_reason" class="input">
+											<option value="1">단순변심</option>
+											<option value="2">수업 불만족</option>
+											<option value="3">학원 불만족</option>
+											<option value="4">결제방법 변경</option>
+											<option value="5">기타</option>
+										</select>
+									</div>
+									<textarea id="pay_cancel_reason_detail" name="pay_cancel_reason_detail" placeholder="주문 취소 사유를 입력해주세요." cols="50" rows="6"></textarea><br><br>
+									<button id="cancelBtn" >주문취소하기</button><br><br>
+									<input type="hidden" name="detail_no" value="${pdvo.detail_no }">
+								</form>
+							</td>
+						</tr>
+					</table>			
+				</div>
+				<div id="btnBox">
+					<button id="backBtn" onclick="location.href='/tobe/user/pay/userPayCompleteDetail.do?detail_no=${pdvo.detail_no}'">이전</button>
+				</div>
 			</div>
 		</div>
-
-		<%@include file="/WEB-INF/views/user/common/userFooter.jsp"%>
+		<div class="footerBox">
+			<%@include file="/WEB-INF/views/user/common/userFooter.jsp"%>
+		</div>
 	</div>
 </body>
 </html>

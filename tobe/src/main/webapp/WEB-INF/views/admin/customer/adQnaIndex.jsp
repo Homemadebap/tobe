@@ -13,6 +13,8 @@
 <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+<link rel="stylesheet" href="/tobe/css/bbs.css"/>
+
 
 <script>
 $(function(){
@@ -51,50 +53,57 @@ $(function(){
 
 
 <style>
-* {
-	box-sizing: border-box;
-}
 
-body {
+.container{
 	position: relative;
+	margin: -845px 0 0 160px;
+	width : 1340px ;
+	height : 840px;
+	 
 }
-.box {
-	position: absolute;
-	width: 75rem;
-	height: 38rem;
-	top: 5.5rem; 
-	left: 10rem;
-	border: 1px solid #ddd;
-	box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+.qna_sub{
+	margin-left : 20px; 
+	margin-right : 20px; 
+	width : 1300px ;
+	height : 850px;
+	display: flex;
+	flex-direction: column;  
 }
+.list{
+	width : 100% ;
 
-.sbox {
-	position: absolute;
-	width: 17.5rem;
-	height: 16rem;
-	top: 29rem;
-	border: 1px solid #ddd;
-	box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+	align-items: center;
 }
-
+.bbs{
+	font-size: 12px;
+	
+}
+.title_con{
+	margin-bottom: 23px;
+	display : flex;
+	justify-content: space-between;
+	align-items: center;
+}
 </style>
 
 </head>
 <body>
 	<%@include file="/WEB-INF/views/admin/common/adSideBar_logo2.jsp" %>
-	<div class="sub box">
-           <div class="size">
-               <h3 class="sub_title">답변게시판</h3>
+	<div class="container">
+		<div class="qna_sub">
+           <div class="title_con">
+               <h3 class="sub_title" style="font-size: 25px;">답변게시판</h3>
+               <p><span><strong>총 ${map.count }개</strong>  |  ${cqnaVO.page }/${map.totalPage }페이지</span></p>
+             </div>  
                <div class="bbs">
                    <table class="list" >
-                   <p><span><strong>총 ${map.count }개</strong>  |  ${cqnaVO.page }/${map.totalPage }페이지</span></p>
-                       <caption>문의 목록</caption>
+                   
                        <colgroup>
-                           <col width="80px" />
-                           <col width="*" />
-                           <col width="100px" />
-                           <col width="100px" />
-                           <col width="100px" />
+                           <col width="15%" />
+                           <col width="40%" />
+                           <col width="15%" />
+                           <col width="15%" />
+                           <col width="15%" />
                        </colgroup>
                        <thead>
                            <tr>
@@ -186,11 +195,10 @@ body {
                        </ul> 
                    </div> 
                
-                
+                </div>
                          
                </div>
            </div>
-        </div>
 
 </body>
 </html>

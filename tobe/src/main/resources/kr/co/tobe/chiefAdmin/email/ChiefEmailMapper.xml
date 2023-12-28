@@ -40,8 +40,10 @@
 	
 	<select id="emailList" resultType="kr.co.tobe.vo.EmailVO" >
 		SELECT email_no, member_no
-		,e_title, e_content, e_senddate
+		,e_title, e_content, e_senddate, 
+		(SELECT name from member where member_no =email.member_no) as member_name
 		FROM email
+		LIMIT #{startIdx}, 20
 	</select>
 	
 	<select id="emailSelect" resultType="String" parameterType="int">
