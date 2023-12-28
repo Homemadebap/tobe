@@ -259,10 +259,11 @@ function getFormattedDate(date) {
 				</c:if>
 			</th>
 		</tr>
+		
 		<tr style="height:5rem;">
-			<td><b>해커스</b></td>
-			<td><b>파고다</b></td>
-			<td><b>ybm</b></td>
+		<c:forEach var="vo" items="${conEduTotal}">
+			<td><b>${CodeToString.educationToString(vo.education)}</b></td>
+		</c:forEach>
 		</tr>
 		<tr style="height: 5rem;">
 			<c:if test="${!empty conEduTotal}">
@@ -271,6 +272,7 @@ function getFormattedDate(date) {
 				</c:forEach>
 			</c:if>
 		</tr>
+		
 		<tr style="background-color: #D9D9D9; height: 3.5rem;">
 			<th colspan="3" style="font-size: 1.15rem;">총수수료:
 				<c:if test="${!empty pay_chargeTotal}">
@@ -279,13 +281,13 @@ function getFormattedDate(date) {
 			</th>
 		</tr>
 		<tr style="height:5rem;">
-			<td><b>해커스</b></td>
-			<td><b>파고다</b></td>
-			<td><b>ybm</b></td>
+			<c:forEach var="vo" items="${conEduTotal}">
+				<td><b>${CodeToString.educationToString(vo.education)}</b></td>
+			</c:forEach>
 		</tr>
 		<tr style="height: 5rem;">
 			<c:if test="${!empty conEduTotal}">
-				<c:forEach var="vo" items="${conEduTotal }">
+				<c:forEach var="vo" items="${conEduTotal}">
 					<td>${vo.charge_total }</td>
 				</c:forEach>
 			</c:if>

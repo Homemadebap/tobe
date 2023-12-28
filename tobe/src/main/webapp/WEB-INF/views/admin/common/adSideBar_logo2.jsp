@@ -11,12 +11,17 @@
 <style>
 * {
 	box-sizing: border-box;
+	 margin:0;
+    padding:0;
 }
 
 body {
 	position: relative;
 }
-
+#contain{
+   width: 125px;
+   background-color: #3F4350;
+}
 
 #logo {
    background-color: #3F4350;
@@ -100,6 +105,8 @@ body {
 #main {
    display: flex;
    
+   	height: 950px;
+    width: 1500px;
 }
 
 a:link, a:visited {
@@ -131,6 +138,9 @@ a:hover {
 	height: 5rem;
 	top: 1rem;
 	left: 10rem;
+}
+#mainlogo {
+	margin : 20px;
 }
 
 </style>

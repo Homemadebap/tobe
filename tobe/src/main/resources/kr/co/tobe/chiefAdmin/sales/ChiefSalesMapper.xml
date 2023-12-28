@@ -32,7 +32,7 @@
 	</select>
 	
 	<select id="conEduTotal" parameterType="java.util.Map" resultType="java.util.Map">
-	    SELECT sum(pay_total) as pay_total, sum(charge_total) as charge_total
+	    SELECT sum(pay_total) as pay_total, sum(charge_total) as charge_total, education
 	    FROM course c JOIN pay_detail pd
 	    ON c.course_no=pd.course_no
 	    JOIN pay p ON pd.order_no=p.order_no

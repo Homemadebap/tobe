@@ -3,8 +3,16 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ page import="kr.co.tobe.util.CodeToString"%>
-<%@ page import="java.time.LocalDate" %>
-<%@ page import="java.time.format.DateTimeFormatter" %>
+<%@ page import="java.text.SimpleDateFormat" %>
+<%@ page import="java.util.Date" %>
+
+<%
+    // 현재 시간을 가져오기
+    Date currentDate = new Date();
+    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+    String currentTime = sdf.format(currentDate);
+    pageContext.setAttribute("currentTime", currentTime);
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -346,15 +354,13 @@ table {
 		                            	<input type="hidden" name="infoCourseName" value="${vo.i_cname }">
 		                            	
 		                            	<c:forEach var="rvo" items="${mri}">
-		                            		<c:if test="${rvo.course_no ne vo.course_no}">
-		                            		</c:if>
 		                            		<c:choose>
 											    <c:when test="${rvo.course_no eq vo.course_no}">
 											        <input type="button" value="나의 후기" onclick="location.href='/tobe/user/review/userReviewDetail.do?review_no=${vo.review_no}'" >
 											    </c:when>
-											    <c:otherwise>
-											        <input type="submit" value="후기작성">
-											    </c:otherwise>
+											    <c:when test="${currentTime ge vo.i_endday}">
+											    	<input type="submit" value="후기작성">
+											    </c:when>
 											</c:choose>
 										</c:forEach>
 									</form></td>

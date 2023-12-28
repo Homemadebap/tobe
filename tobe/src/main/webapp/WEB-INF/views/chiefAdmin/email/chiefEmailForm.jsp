@@ -47,13 +47,13 @@
 	position: relative;
 	margin: -845px 0 0 160px;
 	width : 1340px ;
-	height : 850px;
+	height : 840px;
 	
 	 
 }
 .email_sub{
 	width : 1340px ;
-	height : 845px;
+	height : 840px;
 	display: flex;
 	flex-direction: column;  
 	justify-content :  flex-start;
@@ -123,7 +123,7 @@ a:hover {
 				<a class="bnt" href="/tobe/chiefAdmin/email/chiefMemberListEmail.do">회원목록</a>	
 			</div>
 			<div class="email_form">
-				<form method="post" name="frm"  action="/tobe/chiefAdmin/email/send.do" enctype="multipart/form-data" >
+				<form method="post" name="frm" id="frm" action="/tobe/chiefAdmin/email/send.do" enctype="multipart/form-data" >
 					<div class="title_con">
 						<label><b>제 목</b></label><input type="text" name="e_title" value="" class="title"/><br>
 						<c:if test="${empty email}">

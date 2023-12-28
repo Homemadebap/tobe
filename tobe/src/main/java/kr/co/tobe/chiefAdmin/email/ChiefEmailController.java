@@ -28,7 +28,9 @@ public class ChiefEmailController {
 		}else {
 			for(int i=0; i<member_no.length;i++) {
 				email +=service.memberEmail(member_no[i]); //회원 emai주소 가져오기 
-				email += " "; //회원 emai주소 가져오기 
+				if((member_no.length -1) != i) {
+					email += ", "; //회원 emai주소 가져오기 
+				}
 				
 			}
 			model.addAttribute("email", email);

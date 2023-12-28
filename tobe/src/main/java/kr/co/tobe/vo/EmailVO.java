@@ -15,12 +15,13 @@ public class EmailVO {
 	
 	private int startIdx;
 	private int page;
+	private String member_name;
 	
 	public EmailVO() {
 		this.page = 1;
 	}
 	
 	public int getStartIdx() {
-		return (page-1) * 10;
+		return (page-1) * 20;
 	}
 }

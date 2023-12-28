@@ -14,8 +14,6 @@
 }
 
 #contain{
-
-   
    width: 125px;
    background-color: #3F4350;
 }
