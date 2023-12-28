@@ -73,7 +73,7 @@
     					} else {
     						dupCheck = true;
     						alert('사용가능한 아이디입니다.');
-    						$("#id").attr('readonly','readonly');
+    						$("#id").attr();
     					}
     				}
     			})
@@ -128,6 +128,21 @@
 			background-color:#E4E6D9;
 			text-align:left;
 		}
+		.wrap {
+		width: 85rem;
+		height: 70rem;
+		margin: 0 auto;
+		position: relative;
+		}
+		
+		.footer {
+		background-color: #d3d3d3;
+		width: 100%;
+		height: 12.5rem;
+		position: absolute;
+		top: 65rem;
+		}
+			
 	</style>
 </head> 
 <body>

@@ -1,5 +1,7 @@
 package kr.co.tobe.chiefAdmin.course;
 
+import java.util.Map;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.web.multipart.MultipartFile;
@@ -13,5 +15,7 @@ public interface ChiefCourseService {
 	int update(CourseVO vo);
 	CourseVO modcourse(int no);
 	
+	//
+	Map<String, Object> courseListS(CourseVO vo);
 
 }

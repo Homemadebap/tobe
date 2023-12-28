@@ -7,6 +7,19 @@
 <title>관리자 페이지</title>
 </head>
 <style>
+* {
+    box-sizing: border-box;
+    margin:0;
+    padding:0;
+}
+
+#contain{
+
+   
+   width: 125px;
+   background-color: #3F4350;
+}
+
 #logo {
    background-color: #3F4350;
    img_size: 30px;
@@ -83,13 +96,15 @@
 
 #mainlogo>img {
    background-color: #fff;
-   border: 0px;
-   margin: 0 0 0 40px;
    max-width: 500px;
    max-height: 500px;
 }
 #main {
    display: flex;
+/*    height: 100vh; */
+	height: 950px;
+    width: 1500px;
+/*    width: 100vW; */
 }
 
 a:link, a:visited {
@@ -100,14 +115,21 @@ a:hover {
 	text-decoration: none;
 	color: #d3d3d3;
 }
-#logout{
-	margin: 0 0 0 300px;
+.logout{
+	margin-top: 25px;
+	margin-left: 750px;
 	font-size: 90%;
-}
-#mainlogo > img {
-	cursor:pointer;
+
 }
 
+
+#mainlogo > img {
+	cursor:pointer;
+	
+}
+#mainlogo {
+	margin : 20px;
+}
 </style>
 <body>
 <div id="main">
@@ -157,8 +179,8 @@ a:hover {
 	<div id="mainlogo">
 	      <img src="/tobe/img/admin_logoa.png" onclick="location.href='/tobe/chiefAdmin/common/chiefIndex.do';">
 	</div>
-	<div id="logout">
-		<a href="/tobe/admin/common/adLogout.do" id="logout">로그아웃</a>
+	<div class="logout">
+		<a href="/tobe/admin/common/adLogout.do"> 로그아웃</a>
 	</div>
 	
 </div>

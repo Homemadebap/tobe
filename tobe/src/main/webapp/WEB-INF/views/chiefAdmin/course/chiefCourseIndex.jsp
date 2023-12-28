@@ -154,22 +154,22 @@ td{
 
 </head>
 <body>
-<%@include file="/WEB-INF/views/admin/common/adSideBar_logo2.jsp" %>
+<%@include file="/WEB-INF/views/chiefAdmin/common/chiefSideBar_logo.jsp" %>
 <div class="box">
 <div id="top">
 		
 		
-		<form action="adCourseIndex.do" method="get" >
+		<form action="chiefCourseIndex.do" method="get" >
 		<table class="table">
 			
 			<tr>
 				 <td width="100px;">학원명</td>
 					 <td>
-				 		<select name="educationName">
-				 		<option>전체</option>
-				 		<option>해커스</option>
-				 		<option>파고다</option>
-				 		<option>YBM</option>
+				 		<select name="education">
+				 		<option value="0">전체</option>
+				 		<option value= "1">해커스</option>
+				 		<option value= "2">파고다</option>
+				 		<option value= "3">YBM</option>
 				 		</select>
 			 		</td>
 			</tr>
@@ -240,7 +240,7 @@ td{
          <table class="tablea">
          	<div class="searchOrReset">
    	 			
-	   	 		<input class ="bnt" type="button" value="수정" onclick="window.location.href='chiefModCourseForm.do'">
+	   	 		<input class ="bnt" type="button" value="수정" onclick="window.location.href='/tobe/chiefAdmin/course/chiefModCourseForm.do'">
 	   	 		<input class ="bnt" type="button" value="삭제" onclick="ProcessDelete();">
 			</div>    
          <thead>
@@ -267,7 +267,7 @@ td{
          	<c:forEach var="vo" items="${map.list}">       
 			    <tr style="text-align:center;">
 			   		<td><input  type="checkbox" class="input_button small" name="course_no" data-no="${vo.course_no }" onclick="checkCl(this);"><label for="checkbox2">&nbsp;</label></td>
-			      	<td> ${CodeToString.educationToString(CourseVO.education)}</td>
+			      	<td> ${CodeToString.educationToString(vo.education)}</td>
 					<td> ${CodeToString.subjectToString(vo.subject)}</td>
 					<td> ${CodeToString.areaToString(vo.area)} </td>
 					<td> ${CodeToString.branchToString(vo.branch)} </td>

@@ -123,7 +123,7 @@
   display: flex;
 }
 #con{
-	margin: -630px 0 0 150px; 
+	margin: -870px 0 0 150px; 
 }
 #boxa{
 	display: flex;
@@ -313,6 +313,10 @@
 					<label><input type="checkbox" name="level" class="levelS" value="1700"> 700</label> 
 					<label><input type="checkbox" name="level" class="levelS" value="1800"> 800</label> 
 					<label><input type="checkbox" name="level" class="levelS" value="1900"> 900</label><br>
+					<b style="margin-left:37px">토스</b>
+					<label><input type="checkbox" name="level" class="levelS" value="21">입문</label> 
+					<label><input type="checkbox" name="level" class="levelS" value="22">기본</label> 
+					<label><input type="checkbox" name="level" class="levelS" value="23">중급</label> 
 					<b style="margin-left:37px">토플</b>
 					<label><input type="checkbox" name="level" class="levelS" value="360"> 60</label> 
 					<label><input type="checkbox" name="level" class="levelS" value="370"> 70</label> 

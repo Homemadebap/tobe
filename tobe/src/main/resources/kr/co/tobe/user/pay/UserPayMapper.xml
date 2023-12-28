@@ -48,11 +48,11 @@
 	 VALUES (#{order_no}, #{course_no}, #{product_no}, #{pay_single}, #{pay_charge}, #{i_education}, #{i_area}, #{i_branch}, #{i_subject}, #{i_level}, #{i_mon}, #{i_tue}, #{i_wed}, #{i_thu}, #{i_fri}, #{i_sat}, #{i_sun}, #{i_startday}, #{i_endday}, #{i_cname}, #{i_time}, #{i_price});
 	</insert>
 	
-	<select id="getorder" resultType="java.util.Map" parameterType="int">
+	<select id="getorder" resultType="java.util.Map" parameterType="map">
 	 SELECT pd.product_no, pd.i_price, p.pay_total
 		FROM basket b JOIN pay p ON b.member_no=p.member_no
 			JOIN pay_detail pd ON p.order_no=pd.order_no
-		WHERE cart_no= #{cart_no} 
+		WHERE cart_no in (#{cart_no}) and b.member_no=#{member_no}
 	</select>
 	
 </mapper>
