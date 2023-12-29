@@ -1,5 +1,8 @@
 package kr.co.tobe.chiefAdmin.pay;
 
-public interface ChiefPayService {
+import java.util.List;
+import java.util.Map;
 
+public interface ChiefPayService {
+	List<Map> getlist();
 }

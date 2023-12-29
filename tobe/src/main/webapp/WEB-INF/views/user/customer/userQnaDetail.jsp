@@ -101,7 +101,7 @@ hr{
 		                </td>
 		   				<td>
 		   					<c:if test="${!empty loginInfo}">
-			                     <a class="btn" href="delete.do?qna_no=${vo.qna_no }">삭제</a>
+			                     <a class="btn" href="/tobe/user/customer/qna/delete.do?qna_no=${vo.qna_no }">삭제</a>
 			                </c:if>
 		                </td>
 		   			</tr>

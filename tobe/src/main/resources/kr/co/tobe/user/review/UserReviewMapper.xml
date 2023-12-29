@@ -33,6 +33,6 @@
     <select id="ReviewDetail" parameterType="kr.co.tobe.vo.ReviewVO" resultType="kr.co.tobe.vo.ReviewVO">
         SELECT r_title, r_writedate, r_content
         FROM review
-        WHERE review_no = #{reviewNo};
+        WHERE review_no = #{review_no};
     </select>
 </mapper>

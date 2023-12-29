@@ -54,7 +54,7 @@ text-align:center;
 			<form action="userFindMember.do" method="post" id="board1" name="board1" onsubmit="">
 				<div class="id_contents" id="id_data">  -->
 
-					<div>
+					<div style="font-weight:bolder">
 						<div style="list-style: none;">해당 이메일로<br>임시 비밀번호를 전송하였습니다.<br><br><br>
 						이메일 : ${user.email }</div>
 					</div>				

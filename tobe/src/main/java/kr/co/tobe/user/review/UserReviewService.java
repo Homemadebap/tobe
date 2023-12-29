@@ -10,5 +10,5 @@ public interface UserReviewService {
 	double selectCourseRating(int no);
 	int updateCourseRating(String no, String rating);
 	List<Map<String, Object>> getSelectReviewNo();
-	ReviewVO getReviewDetail(int reviewNo);
+	ReviewVO getReviewDetail(int review_no);
 }
