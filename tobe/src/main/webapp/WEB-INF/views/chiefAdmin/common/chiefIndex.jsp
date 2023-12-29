@@ -33,7 +33,7 @@
 
 #b{
 	margin: 100px 0 0 40px;
-	width:400px; 
+	width:360px; 
 	height:200px; 
 	background-color:#fff;
 	border-color: #A4A4A4;
@@ -44,9 +44,10 @@
 	margin: 0 0 0 190px;
 	text-decoration: none;
 	color: #585858;
+	width: 
 }
 #bb{
-	margin: 0 0 0 320px;
+	margin: 0 0 0 280px;
 	text-decoration: none;
 	color: #585858;
 }
@@ -134,7 +135,7 @@
 div {
 	border-color: #D8D8D8;
 }
-}
+
 </style>
 <body>
 <div class="main">
@@ -188,13 +189,14 @@ div {
 	         <div id="b">
 	            <a href="/tobe/chiefAdmin/customer/chiefCustomerIndex.do" id="bb"><font size=1px;>고객센터관리→ </font></a>
 	          
-	             <div style="overflow-y:scroll; height: 10rem; width: 15.5rem; position: absolute; left: 39rem; top: 27rem;">
+	             <div style="overflow-y:scroll; height: 10rem; width:360px; position: absolute; left: 29.5rem; top: 27rem;">
 				<c:if test="${!empty q}">
 					<table style="width: 100%; text-align: center; position: absolute;">
 					<c:forEach var="vo" items="${q}">
 						<tr>
 						    <td style="width: 20%;">${vo.qna_no}</td>
-							<td class="url" style="width: 40%; cursor:pointer;" onclick="location.href='/tobe/chiefAdmin/customer/chiefQnaList.do?qna_no=${vo.qna_no}'">${vo.q_title}</td>    
+							<td class="url" style="width: 40%; cursor:pointer;"
+								onclick="location.href='/tobe/chiefAdmin/customer/chiefQnaList.do?qna_no=${vo.qna_no}'">${vo.q_title}</td>    
 							<td style="width: 40%;">${vo.q_writedate}</td>
 						</tr>
 					</c:forEach>
@@ -204,8 +206,8 @@ div {
 	         </div>
 	         <div id="a">
 	            <a href="/tobe/chiefAdmin/sales/chiefSalesIndex.do" id="aa"><font size=1px;>정산관리→ </font></a>
-	         	<div style="position:absolute; top: 29rem; left: 61rem; font-size: 2rem; color: #7401DF">10,000,000</div>
-	         	<div style="position:absolute; top: 32rem; left: 62.8rem; font-size: 1rem;">이번 달 매출</div>                             
+	         	<div style="position:absolute; top: 29rem; left: 58rem; font-size: 2rem; color: #7401DF">10,000,000</div>
+	         	<div style="position:absolute; top: 33rem; left: 60rem; font-size: 1rem;">이번 달 매출</div>                             
 	         </div>
 	      </div>   
 	  </div>

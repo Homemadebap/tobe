@@ -19,7 +19,7 @@
 <style>
 
 .bbsSearch {width: 75rem; height: 4rem; padding: 0 0 0 45rem;}
-.bbs {width: 75rem; height: 40rem;}
+.bbs {width: 75rem; height: 48rem;}
 .dSelect {width:5rem; height: 2rem; color:#666; font-size: 1rem; text-align:center;}
 #sval {width: 20rem; height: 2rem;}
 #reviewSeachMain {

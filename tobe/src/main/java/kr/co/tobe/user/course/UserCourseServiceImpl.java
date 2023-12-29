@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import kr.co.tobe.vo.CourseVO;
 import kr.co.tobe.vo.CqnaVO;
+import kr.co.tobe.vo.QnaVO;
 import kr.co.tobe.vo.ReviewVO;
 
 @Service
@@ -152,4 +153,11 @@ public class UserCourseServiceImpl implements UserCourseService {
 		// TODO Auto-generated method stub
 		return null;
 	}
+	
+	
+	@Override
+    public CourseVO getInfoByCourse(CourseVO course_no, boolean isUpdate) {
+        return mapper.selectInfoByCourse(course_no);
+    }
+
 }

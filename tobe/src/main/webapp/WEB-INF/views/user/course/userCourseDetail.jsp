@@ -202,6 +202,29 @@ function ajaxFuncReview(page) {
     });
 }
 </script>
+<script>  
+function setCourseComp(no) {
+	  var compT;	
+	  $.ajax({    	
+        url: "/tobe/user/course/setCourseComp.do",
+        data: {
+            course_no: no,
+        },
+        success: function(res) {
+			if (res == "success") {
+				console.log("등록 성공");
+			}
+			if(res=="full"){
+				console.log("full");
+				alert('비교함이 꽉차있습니다 비교함을 비워주세요.');
+			}
+        },
+        error: function(xhr, status, error) {
+            console.error("에러 발생", status, error);
+        }
+   		});
+	}
+</script>
 <body>
    <div class="wrap">
 		<div class="headerBox">

@@ -181,17 +181,23 @@
       		AND cq.user_id = #{loginInfo.userId}
 	</select> -->
 	
-	<!-- 강좌 문의 작성 -->
+	<!-- 강좌 문의 작성
 	<resultMap id="courseResultMap" type="kr.co.tobe.vo.CourseVO">
         <result property="infoCourse_no" column="course_no"/>
         <result property="infoCourseName" column="cname"/>
-        <!-- 나머지 필요한 컬럼들을 추가로 매핑해주세요 -->
     </resultMap>
     
     <select id="selectCourseById" parameterType="int" resultMap="courseResultMap">
         SELECT *
         FROM course
         WHERE course_no = #{course_no}
+    </select> -->
+    
+    <!-- 강좌 문의 작성 -->
+    <select id="selectInfoByCourse" parameterType="kr.co.tobe.vo.CourseVO" resultType="kr.co.tobe.vo.CourseVO">
+        SELECT * 
+        FROM course
+        WHERE course_no = #{infoCourseNo}
     </select>
 	
 </mapper>
