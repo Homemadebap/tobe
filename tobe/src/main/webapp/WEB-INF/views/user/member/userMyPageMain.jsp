@@ -427,14 +427,14 @@ table {
 		                            <td>${vo.cqna_no}</td>
 		                            <td class="url" onclick="location.href='/tobe/user/course/userCourseAskDetail.do?cqna_no=${vo.cqna_no}'" >${vo.cq_title}</td>    
 		                            <td>${vo.cq_writedate}</td>
-		                            <td><input type="button" onclick="location.href='/tobe/user/course/qna/edit.do?cqna_no=${vo.cqna_no}'" value="수정하기"/></td>    		                            
+		                            <td><input type="button" onclick="location.href='/tobe/user/course/userCourseModAskForm.do?cqna_no=${vo.cqna_no}'" value="수정하기"/></td>    		                            
 		                        </tr>
 		                    </c:forEach>
 		                    <tr></tr>
 		                    <c:forEach var="vo" items="${ai}">
 		                        <tr>
 		                            <td>${vo.qna_no}</td>
-		                            <td class="url" onclick="location.href='/tobe/user/customer/userQnaDetail.do?qna_no=${vo.qna_no}'">${vo.q_title}</td>    
+		                            <td class="url" onclick="location.href='/tobe/user/customer/userModAskForm.do?qna_no=${vo.qna_no}'">${vo.q_title}</td>    
 		                            <td>${vo.q_writedate}</td>
 		                            <td><input type="button" onclick="location.href='/tobe/user/customer/userModAskForm.do?qna_no=${vo.qna_no}'" value="수정하기"/></td>    		                            
 		                        </tr>
