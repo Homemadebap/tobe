@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ page import="kr.co.tobe.util.CodeToString"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,6 +12,7 @@
 <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+ <link rel="stylesheet" href="/tobe/css/bbs.css"/>
 <title>1:1문의</title>
 <script>
 $(function(){
@@ -85,65 +87,7 @@ $('.viewRe').click(function () {
 #fi> img{
 	margin: 10px 0 0 0;
 }
-		/* list */
-		.bbs {height:20px;}
-		.bbs .list{border-collapse:collapse; border-spacing:0; box-sizing:border-box;}  /* tr에 shadow_down 클래스 사용하는 경우 border-collapse:separate; 으로 변경*/
-		.bbs .list thead{border-bottom:2px solid #221f1f;}
-		.bbs .list thead th{padding:15px 20px; font-size:13px; height:20px; line-height:14px; color:#333;}
-		.bbs .list li{text-align:center; padding:8px 10px; border-bottom:1px solid #d9d9d9;}
-		.bbs .list tbody tr:hover{background:#f6f6f6;} /*마우스오버 배경칼라지정*/
-		.bbs .list .notice{background:#f9f9f9; } /*탑공지  배경칼라지정*/
-		.bbs .list span.comment{color:#999; font-size:12px !important; font-weight:normal !important;} /*댓글수*/
-		.bbs .list .notice_ico{display:none;}
-		.bbs .list .image img{width:80px; height:auto;}
-		.bbs .list .title span{font-size:15px; font-weight:bold;}
-		/** tr에 shadow_down 클래스 사용하는 경우 -  테두리 박스에 그림자처리 **/
-		.bbs .list tr.shadow_down th{height:35px;  background:#fff; box-shadow:0 2px 3px rgba(0, 0, 0, 0.08); -webkit-box-shadow:0 2px 3px rgba(0, 0, 0, 0.08); -moz-box-shadow:0 2px 3px rgba(0, 0, 0, 0.08); border-top:1px solid #d4d4d4; border-bottom:1px solid #d4d4d4; border-left:none; border-right:none; font-size:12px;}
-		.bbs .list tr.shadow_down th:first-child{border-left:1px solid #d4d4d4; box-shadow:0;}
-		.bbs .list tr.shadow_down th:last-child{border-right:1px solid #d4d4d4; box-shadow:0;}
-		/** tr에 bgColor 클래스 사용하는 경우 -  배경칼라처리 **/
-		.bbs .list thead.bgColor{border-top:none; border-bottom:none;}
-		.bbs .list thead.bgColor th{padding:10px 20px; font-size:13px; height:20px; line-height:14px; color:#fff; background:#404143;}
-		
-		/* 페이징처리 */
-		.pagenate {width:100%; clear:both;}
-		.pagenate {text-align:center; margin:20px auto 0;}
-		.pagenate li {display:inline-block;}
-		.pagenate li:first-child { margin-left:0px; }
-		.pagenate li a{display:inline-block; text-decoration:none; padding:0; width:30px; height:30px; line-height:30px; border:1px solid #c7c8cc; box-sizing:border-box; margin-left:-1px; vertical-align:middle;}
-		.pagenate li a:hover{background:#f6f6f6; font-weight:bold; text-decoration:none !important;}
-		.pagenate li a.board { text-indent:-9999em; margin-left:4px; }
-		.pagenate li a.board.first {background:#f3f3f3 url('/img/ico_first.png') no-repeat center center;}
-		.pagenate li a.board.prev {margin-right:30px; background:#efefef url('/img/ico_prev.png') no-repeat center center;}
-		.pagenate li a.board.next {margin-left:30px; background:#efefef url('/img/ico_next.png') no-repeat center center;}
-		.pagenate li a.board.last {background:#f3f3f3 url('/img/ico_last.png') no-repeat center center;}
-		.pagenate li a.current {color:#fff; background-color:#221f1f; font-weight:bold;  border:1px solid #221f1f;}
-
-		
-		.size { /*리스트*/
-			margin: 100px 0 0 100px;
-			width : 1200px;
-		    position: relative;
-		}	
-		table {/*리스트선*/
-			 width:100%; 
-			 border-collapse: collapse;
-			}
-		a, a:link, a:visited, a:hover, a:active { /*작은 글씨들 색*/
-			 color:inherit; 
-			 text-decoration: none;
-			}	
-
-
-		/*input*/
-		input[type="text"]  {border:1px solid #d1d1d1; height:32px; /*padding:0 10px; */vertical-align:middle;}
-		select {border:1px solid #d1d1d1; height:24px; padding:3px 3px 3px 4px; vertical-align:middle; line-height:24px;}
-		input[type="file"] {vertical-align:middle; height:22px; width:80%; margin-right:6px;}
-		
-		a[href^=tel]{color:inherit;text-decoration:none;}
-		
-		legend, caption{display:none;}
-		.search-wrap {
+.search-wrap {
 	width: 30rem;
 	height: 2rem;
 	margin: 60px 0 -180px 450px;;
@@ -170,6 +114,7 @@ $('.viewRe').click(function () {
 	width : 100% ;
 	align-items: center;
 }
+
 </style>
 </head>
 <body>
@@ -218,21 +163,19 @@ $('.viewRe').click(function () {
 				</div>
 			</div>
         <div class="size">
-            <div class="bbs">
+            <div class="bbs" style="overflow-y:scroll; height: 35rem; position: absolute; left: 2rem; top: 12rem;">
                 <table class="list">
-                    <caption>게시판 목록</caption>
                      <colgroup>
                            <col width="15%" />
                            <col width="40%" />
                            <col width="15%" />
                            <col width="15%" />
-                           <col width="15%" />
                        </colgroup>
                     <thead>
+                    <div style="margin-bottom: 10px;"></div>
                         <tr>
                             <th>번호</th>
                             <th>제목</th>
-                            <th>작성자</th>
                             <th>작성일</th>
                             <th>답변여부</th>
                         </tr>
@@ -240,23 +183,16 @@ $('.viewRe').click(function () {
                     <tbody>
 					<c:if test="${empty map.list }"></c:if>
                     <c:forEach var="qna" items="${list}">      
-               
 						    <tr>
 						        <td>${qna.qna_no}</td>
 						        <td class ="tog">${qna.q_title }</td>
-						        <td>
-						        	${qna.member_no}
-						        </td>
-						        <td class="writer">
-                                   ${qna.member_name}
-                               </td>
-                               <td class="date" colspan="8"><fmt:formatDate value="${qna.q_writedate }" pattern="YYYY-MM-dd"/></td>
+                               <td class="date"><fmt:formatDate value="${qna.q_writedate }" pattern="YYYY-MM-dd"/></td>
                                <td> <c:if test="${empty qna.q_reply}"> 미답변</c:if>
                                		<c:if test="${!empty qna.q_reply}"> 답변 완료</c:if>
                                </td>
 							</tr>  
 							   <tr>
-                           	<td class="content" style="display:none;" colspan="8">
+                           	<td class="content" style="display:none;" colspan="6">
                            		<p>${qna.q_content }</p>
                            		<c:if test="${!empty qna.q_reply}">
                            			<div class="title">
@@ -289,26 +225,8 @@ $('.viewRe').click(function () {
                             </tr>
 						</c:forEach>
                    </tbody>
+                   
                 </table>
-             
-                		<div class="pagenate clear">
-                    		<ul class='paging'>
-			                    <c:if test="${map.prev }">
-			                    	<li><a href="/tobe/chiefAdmin/customer/chiefQnaList.do?page=${map.startPage-1 }&searchType=${QnaVO.searchType}&searchWord=${QnaVO.searchWord}"> << </a></li>
-			                    </c:if>
-			                    <c:forEach var="p" begin="${map.startPage}" end="${map.endPage}">
-			                    	<c:if test="${p == QnaVO.page}">
-			                        <li><a href='#;' class='current'>${p}</a></li>
-			                        </c:if>
-			                        <c:if test="${p != QnaVO.page}">
-			                        <li><a href='/tobe/chiefAdmin/customer/chiefQnaList.do?page=${p}&searchType=${QnaVO.searchType}&searchWord=${QnaVO.searchWord}'>${p}</a></li>
-			                        </c:if>
-			                    </c:forEach>
-                    			<c:if test="${map.next }">
-                    				<li><a href="/tobe/chiefAdmin/customer/chiefQnaList.do?page=${map.endPage+1 }&searchType=${QnaVO.searchType}&searchWord=${QnaVO.searchWord}"> >> </a></li>
-                    			</c:if>
-                    		</ul> 
-                		</div>
                		</div>
         		</div>
         	</div>	

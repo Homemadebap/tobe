@@ -146,25 +146,25 @@ div {
 	         <div id="a">
 	            <a href="/tobe/chiefAdmin/member/chiefMemberIndex.do" id="aa"><font size=1px;>회원관리→ </font></a>
 	            <div id="wrap">
-		            <div id="cnt" style="position:absolute; top: 7rem; left: 18rem; font-size: 5rem; color: #A9E2F3">6</div>
+		            <div id="cnt" style="position:absolute; top: 7rem; left: 17rem; font-size: 5rem; color: #A9E2F3">23</div>
 		            <div id="today" style="position:absolute; top: 13.5rem; left: 16rem; font-size: 1rem;">오늘 신규 회원 수</div>
-		            <div id="all" style="position:absolute; top: 16rem; left: 17rem; font-size: 1rem;">총 회원 ${totalCount}</div> 
+		            <div id="all" style="position:absolute; top: 16rem; left: 17rem; font-size: 1rem;">총 회원 36,715</div> 
 	            </div>
 	         </div>
 	         <div id="b">
-	            <a href="/tobe/chiefAdmin/pay/chiefPayIndex.do" id="cc"><font size=1px;>결제관리→ </font></a>
+	            <a href="/tobe/chiefAdmin/pay/chiefPayIndex.do" id="cc"><font size=1px; style="margin-left:-40px;">결제관리→ </font></a>
 	             <div>
 	             	<div id="today">
-	             		<div style="position:absolute; top: 7rem; left: 34rem; font-size: 5rem; color: #7401DF">3</div>
-	             		<div style="position:absolute; top: 13.5rem; left: 33rem; font-size: 1rem;">오늘 결제</div>
+	             		<div style="position:absolute; top: 8rem; left: 33rem; font-size: 5rem; color: #7401DF">3</div>
+	             		<div style="position:absolute; top: 14.5rem; left: 32rem; font-size: 1rem;">오늘 결제</div>
 	             	</div>
 	             	<div>
-	             		<div style="position:absolute; top: 7rem; left: 41rem; font-size: 5rem; color: #A4A4A4">1</div>
-	             		<div style="position:absolute; top: 13.5rem; left: 40rem; font-size: 1rem;">주문 취소</div>
+	             		<div style="position:absolute; top: 8rem; left: 40rem; font-size: 5rem; color: #A4A4A4">1</div>
+	             		<div style="position:absolute; top: 14.5rem; left: 39rem; font-size: 1rem;">주문 취소</div>
 	             	</div>
 	             	<div>
-	             		<div style="position:absolute; top: 7rem; left: 48rem; font-size: 5rem; color: #FAAC58">2</div>
-	             	    <div style="position:absolute; top: 13.5rem; left: 47rem; font-size: 1rem;">입금 대기</div>
+	             		<div style="position:absolute; top: 8rem; left: 47rem; font-size: 5rem; color: #FAAC58">2</div>
+	             	    <div style="position:absolute; top: 14.5rem; left: 46rem; font-size: 1rem;">입금 대기</div>
 	             	</div>
 	             </div>
 	         </div>

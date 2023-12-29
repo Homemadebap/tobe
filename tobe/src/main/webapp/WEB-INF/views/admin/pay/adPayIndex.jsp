@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+   <%@ page import="kr.co.tobe.util.CodeToString"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -179,7 +180,7 @@ border:solid 1px #A4A4A4;
 }
 .table td {
 	border-bottom: solid 1px;
-	height: 50px;
+	height: 40px;
 }
 
 td{
@@ -281,15 +282,18 @@ input#today, input#week, input#oneMonth, input#threeMonth, input#year{
 				<th style="border-right:none;">결제총액</th>
 			</thead>
 			<tbody>
-	         	<c:forEach var="member" items="${list}">       
+	         	<c:forEach var="member" items="${list}">  
+	         	<c:set var="i_subject" value="${CodeToString.subjectToString(member.i_subject)}" />      
+	         	<c:set var="pay_by" value="${CodeToString.paybyToString(member.pay_by)}" />      
+	         	     
 				    <tr>
 				        <td style="border-left:none;">${member.product_no}</td>
 				        <td>${member.name}</td>
 				        <td>${member.id}</td>
 				        <td>${member.email}</td>
-				        <td>${member.i_subject}</td>
+				        <td>${i_subject}</td>
 				        <td>${member.i_cname}</td>
-				        <td>준비중</td>
+				        <td>${pay_by}</td>
 				        <td>${member.point_usage}</td>
 				        <td>${member.pay_date }</td>
 				        <td>${member.pay_total}</td> 
