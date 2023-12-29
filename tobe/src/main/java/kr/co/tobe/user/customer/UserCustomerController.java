@@ -80,7 +80,7 @@ public class UserCustomerController {
 			return "user/customer/userModAskForm";
 		}
 		//강좌 문의 수정 
-		@GetMapping("/user/customer/qna/update.do")
+		@PostMapping("/user/customer/qna/update.do")
 		public String update(Model model, HttpServletRequest request, QnaVO vo){//, MultipartFile file) {
 			int r = service.qnaUpdate(vo);//, file, request);
 			if (r > 0) {
