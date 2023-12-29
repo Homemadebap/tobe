@@ -7,6 +7,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import kr.co.tobe.vo.CqnaVO;
 import kr.co.tobe.vo.FaqVO;
 import kr.co.tobe.vo.NoticeVO;
 import kr.co.tobe.vo.QnaVO;
@@ -48,7 +49,7 @@ public class UserCustomerServiceImpl implements UserCustomerService {
 	@Override
 	public int qnaInsert(QnaVO vo) {
 		int r = mapper.qnaInsert(vo);
-		if (r > 0) mapper.updateGno(vo.getQna_no());
+		//if (r > 0) mapper.updateGno(vo.getQna_no());
 		return r;
 	}
 
@@ -146,6 +147,11 @@ public class UserCustomerServiceImpl implements UserCustomerService {
 		return map;
 	}
 
+	
+	@Override
+    public QnaVO view(QnaVO qna_no, boolean isUpdate) {
+        return mapper.view(qna_no);
+    }
 
 
 

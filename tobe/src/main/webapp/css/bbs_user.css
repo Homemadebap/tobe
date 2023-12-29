@@ -3,7 +3,7 @@
 .sub {
     width: 100%;
     position: relative;
-    margin-top: 80px;
+    margin-top: 30px;
 }
 
 .sub .size {width: 100%; max-width: 1200px; height:auto; margin:0 auto;}

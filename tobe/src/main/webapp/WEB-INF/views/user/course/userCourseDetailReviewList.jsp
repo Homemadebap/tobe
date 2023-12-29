@@ -52,9 +52,6 @@
           </tbody>
       </table>
       <div class="btnSet"  style="text-align:center;">
-            	<c:if test="${!empty loginInfo}">
-                	<a class="btn" href="userAskForm.do">작성하기</a>
-            	</c:if>
 
 			<!-- <div class="pagenate clear">
 			    <ul class='paging'>

@@ -75,7 +75,7 @@ public class UserCustomerController {
 		//수정 이동 view
 		@GetMapping("/user/customer/userModAskForm.do")
 		public String edit(Model model, QnaVO vo) {
-//			model.addAttribute("vo", service.view(vo, false)); 
+			model.addAttribute("vo", service.view(vo, false)); 
 			
 			return "user/customer/userModAskForm";
 		}
