@@ -67,7 +67,7 @@ public class UserPayController {
 	}
 	
 	@GetMapping ("/user/pay/userPayDetail.do")
-	public String userPayDetail(Model model, String cartNo, MemberVO mvo, PayVO pvo, PayDetailVO pdvo, @RequestParam("course_no") int course_no) {
+	public String userPayDetail(Model model, String cartNo, MemberVO mvo, PayVO pvo, PayDetailVO pdvo) {
 //		System.out.println(cartNo[0]+" 카트다~~~~~~~~~~~`"+cartNo[1]);
 		List<BasketVO> basket = service.getcart(cartNo);
 		model.addAttribute("cartNo", cartNo);
