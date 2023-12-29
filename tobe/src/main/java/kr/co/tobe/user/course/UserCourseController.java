@@ -255,17 +255,23 @@ public class UserCourseController {
 //			return "user/course/userCourseAskForm";
 //		}
 	
-	   @GetMapping("/user/course/userCourseAskForm.do")
-	   public String getInfoByCourse( @RequestParam("infoCourse_no") String infoCourse_no,
-	                   		Model model, HttpSession sess ) {
-	      MemberVO user = (MemberVO)sess.getAttribute("loginInfo");
-	
-	      System.out.println("Received infoCourseNo: " + infoCourse_no);
-	      
-	      model.addAttribute("infoCourse_no", String.valueOf(infoCourse_no));
-	      
-	      return "/user/course/userCourseAskForm";
-	   }
+//	   @GetMapping("/user/course/userCourseAskForm.do")
+//	   public String getInfoByCourse( @RequestParam("infoCourse_no") String infoCourse_no,
+//	                   		Model model, HttpSession sess ) {
+//	      MemberVO user = (MemberVO)sess.getAttribute("loginInfo");
+//	
+//	      System.out.println("Received infoCourseNo: " + infoCourse_no);
+//	      
+//	      model.addAttribute("infoCourse_no", String.valueOf(infoCourse_no));
+//	      
+//	      return "/user/course/userCourseAskForm";
+//	   }
 	   
+	   @GetMapping("/user/course/userCourseDetailList.do")
+	    public String CourseDetailList(Model model, @RequestParam("course_no") int course_no) {
+	        CourseVO courseInfo = service.getlectureDetail(course_no);
+	        model.addAttribute("courseInfo", courseInfo);
+	        return "/user/course/userCourseDetailList";
+	    }
 	   
 }
