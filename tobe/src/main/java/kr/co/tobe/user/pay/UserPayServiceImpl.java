@@ -1,10 +1,11 @@
 package kr.co.tobe.user.pay;
 
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
-import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -47,11 +48,6 @@ public class UserPayServiceImpl implements UserPayService {
 		return mapper.CartMap(cart_no);
 	}
 
-	@Override
-	public List<PayVO> getcart(Map<Object, Object> cartmap) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 	@Override
 	public boolean pay(PayVO vo, MultipartFile file, HttpServletRequest request) {
