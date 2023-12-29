@@ -8,6 +8,7 @@ import org.apache.ibatis.annotations.Param;
 
 import kr.co.tobe.vo.CourseVO;
 import kr.co.tobe.vo.CqnaVO;
+import kr.co.tobe.vo.QnaVO;
 import kr.co.tobe.vo.ReviewVO;
 
 @Mapper
@@ -39,5 +40,8 @@ public interface UserCourseMapper {
 	CqnaVO view(int cqna_no);
 	
 	CourseVO selectCourseById(@Param("course_no") int courseId);
+	
+	CourseVO selectInfoByCourse(CourseVO course_no);
+
 	
 }

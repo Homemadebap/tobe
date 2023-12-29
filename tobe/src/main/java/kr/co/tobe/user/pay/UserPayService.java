@@ -19,7 +19,6 @@ public interface UserPayService {
 	Map<String, Object> payCancelDetailIndex(int detail_no);
 	List<BasketVO> getcart(String cartNo);
 	Map<String, Object> CartMap(int cart_no);
-	List<PayVO> getcart(Map<Object, Object> cartmap);
 	boolean pay(PayVO vo, MultipartFile file, HttpServletRequest request);
 	boolean payDetail(PayDetailVO vo, MultipartFile file, HttpServletRequest request);
 	

@@ -52,7 +52,7 @@
 	color: #585858;
 }
 #cc{
-	margin: 0 0 0 340px;
+	margin: 0 0 0 300px;
 	text-decoration: none;
 	color: #585858;
 }

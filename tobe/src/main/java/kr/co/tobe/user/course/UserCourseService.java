@@ -35,4 +35,7 @@ public interface UserCourseService {
     CourseVO getCourseById(int course_no);
 
     
+
+	CourseVO getInfoByCourse(CourseVO course_no, boolean isUpdate);
+
 }

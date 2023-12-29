@@ -46,7 +46,7 @@
 
 
 	<select id="pastCourseIndex" parameterType="kr.co.tobe.vo.MemberVO" resultType="java.util.Map">
-       SELECT 
+         SELECT 
 		    m.member_no, pd.detail_no, c.course_no,
 		    DATE_FORMAT(pay_date, '%Y-%m-%d') AS pay_date,
 		    p.order_no, 

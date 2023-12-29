@@ -26,8 +26,8 @@ button {
 	}
 	
 	.cImg{
-		width : 300px ;
-		height:300px;
+		width : 350px ;
+		height:350px;
 		border: 1px solid #ddd;
 		margin : 10px;
 	}
@@ -36,6 +36,7 @@ button {
 		justify-content:center;
 		flex-direction: column; 
 		align-items: center; 
+		width: 450px;
 	}
 	
 	.bnt{
@@ -47,6 +48,7 @@ button {
     	 color : white;
     	 width : 200px;
     	  font-size : 20px;
+    	  
     	
 	}
 	
@@ -64,11 +66,14 @@ button {
 	}
 	.text_s{
 		display : flex;
-		
+		justify-content:center;
+		flex-direction: row; 
+		width: 450px;
 		margin : 30px;
 		color : #253528;
 		text-align :left;
-		font-size : 17px;
+		font-size : 18px;
+		padding : 0 10px 0 10px; 
 	}
 
 	.sub_co{
@@ -138,7 +143,7 @@ $(function(){
 		<div id="sub-modal" class="modal" style="display=none;">
 			<div class="flex">
 				<div class="child">
-					<img src="/tobe/img/course_img/${map.cosComp1.teacher_img_org}" >
+					<img src="/tobe/img/course_img/${map.cosComp1.teacher_img_org}" class="cImg">
 					<div class="text_s">
 						<div>
 							<b>과정명</b> <br>
@@ -157,7 +162,7 @@ $(function(){
 							${CodeToString.educationToString(map.cosComp1.education)}<br>
 							${CodeToString.dateToStirng(map.cosComp1.mon, map.cosComp1.tue, map.cosComp1.wed, map.cosComp1.thu, map.cosComp1.fri, map.cosComp1.sat, map.cosComp1.sun)}<br>
 							${map.cosComp1.time}<br>
-							${map.cosComp1.price}<br>
+							${map.cosComp1.price}원<br>
 							${map.cosComp1.teacher1} , ${map.cosComp1.teacher2}<br>
 							${map.cosComp1.startday}<br>
 							${map.cosComp1.endday}<br>
@@ -167,9 +172,9 @@ $(function(){
 					
 					</div>
 				</div>
-				<div class="child">
+				<div class="child" style="border-left: 1px solid #D9D9D9;">
 					
-					<img src="/tobe/img/course_img/${map.cosComp2.teacher_img_org}" >
+					<img src="/tobe/img/course_img/${map.cosComp2.teacher_img_org}" class="cImg">
 					<div class="text_s">
 						<div>
 							<b>과정명</b> <br>

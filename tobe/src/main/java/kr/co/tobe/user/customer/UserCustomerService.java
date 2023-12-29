@@ -2,6 +2,7 @@ package kr.co.tobe.user.customer;
 
 import java.util.Map;
 
+import kr.co.tobe.vo.CqnaVO;
 import kr.co.tobe.vo.FaqVO;
 import kr.co.tobe.vo.NoticeVO;
 import kr.co.tobe.vo.QnaVO;
@@ -23,6 +24,8 @@ public interface UserCustomerService {
 	//faq
 	Map<String, Object> faqList(FaqVO vo);
 	
+	
+	QnaVO view(QnaVO vo, boolean isUpdate);
 	
 	
 }

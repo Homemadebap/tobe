@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
     <script src="/tobe/smarteditor/js/HuskyEZCreator.js"></script>
     <link rel="stylesheet" href="/tobe/css/user_Header_Footer.css" />
+     <link rel="stylesheet" href="/tobe/css/bbs_user.css"/>
     <script>
     var oEditors = [];
     $(function() {
@@ -40,74 +41,68 @@
 
 </script>
 <style>
-
-	.sub {
-	   
-	    position: relative;
-	    top: 13rem;
-	}
-	.board_write{
-		width: 80%;
-
-	}
-
+.main {
+	width: 75rem;
+	height: 50rem;
+}
+.size{
 	
+}
 </style>
 </head> 
 <body>
     <div class="wrap">
-       <%@ include file="/WEB-INF/views/user/common/userHeader.jsp" %>
-        <div class="sub">
-            <div class="size">
-                <h3 class="sub_title">문의 수정</h3>
-    
-                <div class="bbs">
-                <form method="post" name="frm" id="frm" action="/tobe/user/course/qna/update.do" enctype="multipart/form-data" >
-                	  <input type="hidden" name="cqna_no" value="${vo.cqna_no}">
-                	  <input type="hidden" name="course_no" value="${vo.course_no}">
-                    <table class="board_write">
-                  
-                        <tbody>
-                        <tr>
-                        	<th>제목</th>
-                            <td>
-                                <input type="text" name="cq_title" id="cq_title" style="width:100%;"value="${vo.cq_title}"/>
-                            </td>
-                        </tr>
-                        <tr>
-                        	<th>작성자</th>
-                            <td>
-                                ${loginInfo.name }
-                            </td>
-                        </tr>
-                        <tr>
-                        	<th>강좌명</th>
-                            <td>
-                                ${infoCourseName }
-                            </td>
-                        </tr>
-                                    
-                        <tr>
-                        	<th>문의 내용</th>
-                            <td>
-                                <textarea name="cq_content" id="cq_content" style="width:100%;">${vo.cq_content }</textarea>
-                            </td>
-                        </tr>
-                        <tr>
-                        	<td>
-                         	<div class="btnSet"  style="text-align:right;">
-                        	<a class="btn" href="javascript:goSave();">저장</a>
-                        	<a href="javascript:;" class="btn" onclick="history.back();">취소</a></div>
-                        	</div></td>
-                        </tr>
-                        </tbody>
-                    </table>
-                
+    	<div class="headerBox">
+       		<%@ include file="/WEB-INF/views/user/common/userHeader.jsp" %>
+       	</div>
+       	<div class="main">
+	        <div class="sub">
+    	        <div class="size">
+        	        <h3 class="sub_title">강좌문의 수정</h3>
+                	<div class="bbs">
+                	<form method="post" name="frm" id="frm" action="/tobe/user/course/qna/update.do" enctype="multipart/form-data" >
+                		<input type="hidden" name="cqna_no" value="${vo.cqna_no}">
+                	  	<input type="hidden" name="course_no" value="${vo.course_no}">
+                    	<table class="board_write">
+	                        <tbody>
+	                        <tr>
+	                        	<th>제목</th>
+	                            <td>
+	                                <input type="text" name="cq_title" id="cq_title" style="width:100%;"value="${vo.cq_title}"/>
+	                            </td>
+	                        </tr>
+	                        <tr>
+	                        	<th>작성자</th>
+	                            <td>
+	                                ${loginInfo.name }
+	                            </td>
+	                        </tr>
+	                        <tr>
+	                        	<th>강좌명</th>
+	                            <td>
+	                                ${infoCourseName }
+	                            </td>
+	                        </tr>
+	                        <tr>
+	                        	<th>문의 내용</th>
+	                            <td>
+	                                <textarea name="cq_content" id="cq_content" style="width:100%;">${vo.cq_content }</textarea>
+	                            </td>
+	                        </tr>
+	                        </tbody>
+                    	</table>
+                		<div class="btnSet"  style="text-align:right;">
+	                        	<a class="btn" href="javascript:goSave();">저장</a>
+	                        	<a href="javascript:;" class="btn" onclick="history.back();">취소</a></div>
+                       	</div>
                     </form>
                 </div>
             </div>
         </div>
-		<%@include file="/WEB-INF/views/user/common/userFooter.jsp"%>
+        <div class="footerBox">
+			<%@include file="/WEB-INF/views/user/common/userFooter.jsp"%>
+		</div>	
     </div>
+  </div>
 </body> 
 </html>

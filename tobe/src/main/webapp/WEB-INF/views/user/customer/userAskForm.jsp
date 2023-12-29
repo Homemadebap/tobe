@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
     <script src="/tobe/smarteditor/js/HuskyEZCreator.js"></script>
     <link rel="stylesheet" href="/tobe/css/user_Header_Footer.css" />
+    <link rel="stylesheet" href="/tobe/css/bbs.css"/>
     <script>
     var oEditors = [];
     $(function() {
@@ -44,12 +45,9 @@
 	width: 75rem;
 	height: 50rem;
 }
-
-	.board_write{
-		width: 80%;
-
-	}
-
+.size{
+	
+}
 	
 </style>
 </head> 
@@ -59,13 +57,12 @@
 			<%@include file="/WEB-INF/views/user/common/userHeader.jsp"%>
 		</div>
         <div class="main">
+          <div class="sub">
             <div class="size">
                 <h3 class="sub_title">문의 등록</h3>
-    
                 <div class="bbs">
                 <form method="post" name="frm" id="frm" action="/tobe/user/customer/qna/insert.do" enctype="multipart/form-data" >
                     <table class="board_write">
-                  
                         <tbody>
                         <tr>
                         	<th>제목</th>
@@ -85,17 +82,13 @@
                                 <textarea name="q_content" id="q_content" style="width:100%;"></textarea>
                             </td>
                         </tr>
-                        <tr>
-                        	<td>
-                         	<div class="btnSet"  style="text-align:right;">
-	                        	<a class="btn" href="javascript:goSave();">저장</a>
-	                        	<a href="javascript:;" class="btn" onclick="history.back();">취소</a></div>
-                        	</td>
-                        </tr>
-                        </tbody>
-                    </table>
-                
-                    </form>
+                         </tbody>
+                   </table>
+                   	<div class="btnSet"  style="text-align:right;">
+                      	<a class="btn" href="javascript:goSave();">저장</a>
+                      	<a href="javascript:;" class="btn" onclick="history.back();">취소</a>
+                    </div>
+                  </form>
                 </div>
             </div>
         </div>
@@ -103,5 +96,6 @@
 			<%@include file="/WEB-INF/views/user/common/userFooter.jsp"%>
 		</div>
     </div>
+  </div>
 </body> 
 </html>

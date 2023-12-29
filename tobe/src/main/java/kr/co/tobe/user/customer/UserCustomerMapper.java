@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
 
+import kr.co.tobe.vo.CqnaVO;
 import kr.co.tobe.vo.FaqVO;
 import kr.co.tobe.vo.NoticeVO;
 import kr.co.tobe.vo.QnaVO;
@@ -14,9 +15,9 @@ public interface UserCustomerMapper {
 	//qna
 	int insert(QnaVO vo);
 	int qnaUpdate(QnaVO vo);
-	int qnaDelete(int no);
+	int qnaDelete(int qna_no);
 	int qnaInsert(QnaVO vo);
-	int updateGno(int no);
+	//int updateGno(int no);
 	
 	int qnaCount(QnaVO vo);
 	List<QnaVO> qnaList(QnaVO vo);
@@ -33,6 +34,7 @@ public interface UserCustomerMapper {
 	//faq
 	int faqCount(FaqVO vo);
 	List<FaqVO> faqList(FaqVO vo);
-
+	
+	QnaVO view(QnaVO qna_no);
 
 }

@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import kr.co.tobe.vo.CourseVO;
 import kr.co.tobe.vo.CqnaVO;
 import kr.co.tobe.vo.MemberVO;
+import kr.co.tobe.vo.QnaVO;
 import kr.co.tobe.vo.ReviewVO;
 
 @Controller
@@ -117,11 +118,12 @@ public class UserCourseController {
 		HttpSession sess = request.getSession();
 		MemberVO login = (MemberVO)sess.getAttribute("loginInfo");
 		vo.setMember_no(login.getMember_no());
+		System.out.println(vo+"nnnnn");
 		int r = service.cQnaInsert(vo);//, request);
 		if (r > 0) {
 			model.addAttribute("cmd", "move");
 			model.addAttribute("msg", "정상적으로 저장되었습니다.");
-			model.addAttribute("url", "/tobe/user/course/userCourseDetail.do"); //돌아갈 페이지 박모훈 완성 후 ..
+			model.addAttribute("url", "/tobe/user/course/userCourseDetail.do"+"?course_no="+vo.getCourse_no()); //돌아갈 페이지 박모훈 완성 후 ..
 		} else {
 			model.addAttribute("cmd", "back");
 			model.addAttribute("msg", "등록 오류");
@@ -157,7 +159,7 @@ public class UserCourseController {
 		if (r > 0) {
 			model.addAttribute("cmd", "move");
 			model.addAttribute("msg", "정상적으로 수정되었습니다.");
-			model.addAttribute("url", "/tobe/user/course/userCourseDetail.do");
+			model.addAttribute("url", "/tobe/user/course/userCourseDetail.do"+"?course_no="+vo.getCourse_no());
 		} else {
 			model.addAttribute("cmd", "back");
 			model.addAttribute("msg", "등록 오류");
@@ -302,30 +304,46 @@ public class UserCourseController {
 //		return "/user/course/userCourseAskForm";
 //	}
 	
+	
+//	@GetMapping("/user/course/userCourseAskForm.do")
+//    public String userCourseAskForm(
+//            @RequestParam(name = "infoCourse_no", required = false) String infoCourseNo,
+//            @RequestParam(name = "infoCourseName", required = false) String infoCourseName,
+//            Model model
+//    ) {
+//        // infoCourse_no와 infoCourseName을 이용하여 특정 정보 조회
+//        CourseVO info = service.getInfoByCourse(infoCourseNo, infoCourseName);
+//
+//        // 조회 결과를 모델에 추가
+//        model.addAttribute("info", info);
+//        model.addAttribute("infoCourseNo", infoCourseNo);  
+//        model.addAttribute("infoCourseName", infoCourseName); 
+//        // 작성하기 폼으로 이동
+//        return "user/course/userCourseAskForm";
+//    }
+	
+//	@GetMapping("/user/course/userCourseAskForm.do")
+//	public String edit(Model model, @RequestParam String infoCourse_no) {
+//		if (infoCourse_no.isEmpty()) {
+//	        // 빈 문자열 처리 또는 예외 처리
+//	    } else {
+//	        try {
+//	            int courseNo = Integer.parseInt(infoCourse_no);
+//	            CourseVO vo = new CourseVO();
+//	            vo.setCourse_no(courseNo);
+//	            model.addAttribute("vo", service.getInfoByCourse(vo, false)); 
+//	        } catch (NumberFormatException e) {
+//	            // 숫자로 변환할 수 없는 문자열이 입력된 경우 처리
+//	        }
+//	    }
+//		return "user/course/userCourseAskForm";
+//	}
+	
 	@GetMapping("/user/course/userCourseAskForm.do")
-	public String write(
-			@RequestParam("infoCourse_no") String infoCourse_no,
-	        @RequestParam("infoCourseName") String infoCourseName,
-	        Model model,
-	        HttpSession sess
-	    ){
-	    // 주석 처리된 부분에서 필요한 클래스와 서비스를 주입하도록 변경
-
-	    MemberVO user = (MemberVO) sess.getAttribute("loginInfo");
-
-	    // 새로운 CqnaVO 인스턴스를 생성하고 속성을 설정합니다
-	    CqnaVO vo = new CqnaVO();
-	    vo.setCourse_no(Integer.parseInt(infoCourse_no));
-	    vo.setMember_no(user.getMember_no());
-
-	    // 서비스의 cQnaInsert 메서드를 호출하여 CqnaVO를 삽입합니다
-//	    int result = service.cQnaInsert(vo);
-
-	    // 뷰에서 사용할 모델에 속성을 추가합니다
-	    model.addAttribute("infoCourse_no", vo.getCourse_no());
-	    model.addAttribute("infoCourseName", infoCourseName);
-
-	    return "/user/course/userCourseAskForm";
+	public String edit(Model model, CourseVO vo) {
+		model.addAttribute("vo", service.getInfoByCourse(vo, false)); 
+		
+		return "user/course/userCourseAskForm";
 	}
 	   
 }
