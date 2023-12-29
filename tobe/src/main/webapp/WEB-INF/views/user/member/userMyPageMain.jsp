@@ -367,16 +367,13 @@ table {
 										    String currentTime = sdf.format(currentDate);
 										    pageContext.setAttribute("currentTime", currentTime);
 										%>
-		                            	<c:forEach var="rvo" items="${mri}">
-										    <c:choose>
-											    <c:when test="${rvo.course_no eq vo.course_no}">
-											        <input type="button" value="나의 후기" onclick="location.href='/tobe/user/review/userReviewDetail.do?review_no=${rvo.review_no}'" >
-											    </c:when>
-											    <c:when test="${currentTime ge vo.i_endday and rvo.course_no ne vo.course_no}">
-											    	<input type="submit" value="후기작성">
-											    </c:when>
-											</c:choose>
-										</c:forEach>
+										
+										<c:if test="${vo.review_cnt gt 0 }">
+											<input type="button" value="나의 후기" onclick="location.href='/tobe/user/review/userReviewDetail.do?review_no=${rvo.review_no}'" >
+										</c:if>
+										<c:if test="${currentTime gt vo.i_endday and vo.review_cnt eq 0}">
+											<input type="submit" value="후기작성">
+										</c:if>
 									</form></td>
 								</tr>
                       			</c:if>
