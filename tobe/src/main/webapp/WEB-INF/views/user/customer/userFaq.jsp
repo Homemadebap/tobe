@@ -109,7 +109,7 @@ td.t{
 font-weight: bolder;
 }
 td.content{
-text-align:left;
+text-align:center;
 }
 </style>
 <script>
