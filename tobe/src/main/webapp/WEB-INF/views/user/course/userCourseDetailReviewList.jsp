@@ -45,16 +45,13 @@
 			<c:forEach var="vo" items="${reviewList }">       
                   <tr>
                       <td>${vo.review_no }</td>
-                      <td><a href = "">${vo.r_title }</a></td>                     
+                      <td><a href ="/tobe/user/review/userReviewDetail.do?review_no=${vo.review_no}">${vo.r_title }</a></td>                     
                       <td class="date"><fmt:formatDate value="${vo.r_writedate }" pattern="YYYY-MM-dd"/></td>
                   </tr>
              </c:forEach>
           </tbody>
       </table>
       <div class="btnSet"  style="text-align:center;">
-            	<c:if test="${!empty loginInfo}">
-                	<a class="btn" href="userAskForm.do">작성하기</a>
-            	</c:if>
 
 			<!-- <div class="pagenate clear">
 			    <ul class='paging'>

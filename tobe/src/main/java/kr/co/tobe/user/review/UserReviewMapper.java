@@ -14,5 +14,5 @@ public interface UserReviewMapper {
 	double selectCourse (int no);
 	int updateCouse(@Param("rating") String userId, @Param("no") String ownerId);
 	List<Map<String, Object>> selectReviewNo();
-	ReviewVO ReviewDetail(int reviewNo);
+	ReviewVO ReviewDetail(int review_no);
 }

@@ -13,6 +13,9 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
 </head>
 <style>
+p{
+	font-size: large;
+}
 .mainContent{
    width: 75rem;
    display: block;
@@ -40,27 +43,27 @@
       position: relative;
 }
 .DetailpayBtn{
-   	  cursor: pointer;
-      color: white;
-      border: 0;
-      /* display: flex; */
-      /*align-items: center;
-      justify-content: center;
-      /* position: inherit; */
-      font-size: 16px;
-      /* padding: 8px 16px; */
-      margin: 5px 10px;
-      height: 34px;
-      border-radius: 20px;
-   	  background-color: #253528; 
-   	  border-color: #000;
-      /* text-align: center; */
-      letter-spacing: -0.5px;
-      position: relative;
+	cursor: pointer;
+	color: white;
+	border: 0;
+	/* display: flex; */
+	/*align-items: center;
+	justify-content: center;
+	/* position: inherit; */
+	font-size: 16px;
+	/* padding: 8px 16px; */
+	margin: 5px 10px;
+	height: 34px;
+	border-radius: 20px;
+	background-color: #253528; 
+	border-color: #000;
+	/* text-align: center; */
+	letter-spacing: -0.5px;
+	position: relative;
 }
 .reviewQnA{
-   width: 1200px;
-   border-collapse: collapse;
+	width: 1200px;
+	border-collapse: collapse;
 }
 
 .reviewQnA td {
@@ -100,6 +103,7 @@
 	margin: 0 auto;
 	width: 75rem;
 	height: 35rem;
+	background-color: #f8f9fa;
 }
 
 a {
@@ -153,6 +157,7 @@ document.addEventListener('DOMContentLoaded', function(){
     function showDetail() {
         $('#showReviewContent, #showQnaContent').hide();
         $('#showDetailContent').show();
+        ajaxFuncDetail();
     }
 
     function showReview() {
@@ -171,6 +176,21 @@ document.addEventListener('DOMContentLoaded', function(){
     window.showReview = showReview;
     window.showQnA = showQnA;
 });
+
+function ajaxFuncDetail(page) {
+	$.ajax({
+		url: "/tobe/user/course/userCourseDetailList.do?course_no=${courseInfo.course_no}&page="+page,
+		type: 'GET',
+		success: function(courseInfoList){
+			console.log("반가워");
+			console.log(courseInfoList);
+			$("#showDetailContent").html(courseInfoList);
+		},
+		error: function() {
+			console.error('강좌 상세 정보를 가져오는데 실패했습니다.');
+		}
+    });
+}
     
 function ajaxFuncQna(page) {
 	$.ajax({
@@ -201,6 +221,29 @@ function ajaxFuncReview(page) {
 		}
     });
 }
+</script>
+<script>  
+function setCourseComp(no) {
+	  var compT;	
+	  $.ajax({    	
+        url: "/tobe/user/course/setCourseComp.do",
+        data: {
+            course_no: no,
+        },
+        success: function(res) {
+			if (res == "success") {
+				console.log("등록 성공");
+			}
+			if(res=="full"){
+				console.log("full");
+				alert('비교함이 꽉차있습니다 비교함을 비워주세요.');
+			}
+        },
+        error: function(xhr, status, error) {
+            console.error("에러 발생", status, error);
+        }
+   		});
+	}
 </script>
 <body>
    <div class="wrap">

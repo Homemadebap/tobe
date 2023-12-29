@@ -33,7 +33,7 @@
 
 #b{
 	margin: 100px 0 0 40px;
-	width:400px; 
+	width:360px; 
 	height:200px; 
 	background-color:#fff;
 	border-color: #A4A4A4;
@@ -44,14 +44,15 @@
 	margin: 0 0 0 190px;
 	text-decoration: none;
 	color: #585858;
+	width: 
 }
 #bb{
-	margin: 0 0 0 320px;
+	margin: 0 0 0 280px;
 	text-decoration: none;
 	color: #585858;
 }
 #cc{
-	margin: 0 0 0 340px;
+	margin: 0 0 0 300px;
 	text-decoration: none;
 	color: #585858;
 }
@@ -134,7 +135,7 @@
 div {
 	border-color: #D8D8D8;
 }
-}
+
 </style>
 <body>
 <div class="main">
@@ -145,25 +146,25 @@ div {
 	         <div id="a">
 	            <a href="/tobe/chiefAdmin/member/chiefMemberIndex.do" id="aa"><font size=1px;>회원관리→ </font></a>
 	            <div id="wrap">
-		            <div id="cnt" style="position:absolute; top: 7rem; left: 18rem; font-size: 5rem; color: #A9E2F3">6</div>
+		            <div id="cnt" style="position:absolute; top: 7rem; left: 17rem; font-size: 5rem; color: #A9E2F3">23</div>
 		            <div id="today" style="position:absolute; top: 13.5rem; left: 16rem; font-size: 1rem;">오늘 신규 회원 수</div>
-		            <div id="all" style="position:absolute; top: 16rem; left: 17rem; font-size: 1rem;">총 회원 ${totalCount}</div> 
+		            <div id="all" style="position:absolute; top: 16rem; left: 17rem; font-size: 1rem;">총 회원 36,715</div> 
 	            </div>
 	         </div>
 	         <div id="b">
-	            <a href="/tobe/chiefAdmin/pay/chiefPayIndex.do" id="cc"><font size=1px;>결제관리→ </font></a>
+	            <a href="/tobe/chiefAdmin/pay/chiefPayIndex.do" id="cc"><font size=1px; style="margin-left:-40px;">결제관리→ </font></a>
 	             <div>
 	             	<div id="today">
-	             		<div style="position:absolute; top: 7rem; left: 34rem; font-size: 5rem; color: #7401DF">3</div>
-	             		<div style="position:absolute; top: 13.5rem; left: 33rem; font-size: 1rem;">오늘 결제</div>
+	             		<div style="position:absolute; top: 8rem; left: 33rem; font-size: 5rem; color: #7401DF">3</div>
+	             		<div style="position:absolute; top: 14.5rem; left: 32rem; font-size: 1rem;">오늘 결제</div>
 	             	</div>
 	             	<div>
-	             		<div style="position:absolute; top: 7rem; left: 41rem; font-size: 5rem; color: #A4A4A4">1</div>
-	             		<div style="position:absolute; top: 13.5rem; left: 40rem; font-size: 1rem;">주문 취소</div>
+	             		<div style="position:absolute; top: 8rem; left: 40rem; font-size: 5rem; color: #A4A4A4">1</div>
+	             		<div style="position:absolute; top: 14.5rem; left: 39rem; font-size: 1rem;">주문 취소</div>
 	             	</div>
 	             	<div>
-	             		<div style="position:absolute; top: 7rem; left: 48rem; font-size: 5rem; color: #FAAC58">2</div>
-	             	    <div style="position:absolute; top: 13.5rem; left: 47rem; font-size: 1rem;">입금 대기</div>
+	             		<div style="position:absolute; top: 8rem; left: 47rem; font-size: 5rem; color: #FAAC58">2</div>
+	             	    <div style="position:absolute; top: 14.5rem; left: 46rem; font-size: 1rem;">입금 대기</div>
 	             	</div>
 	             </div>
 	         </div>
@@ -188,13 +189,14 @@ div {
 	         <div id="b">
 	            <a href="/tobe/chiefAdmin/customer/chiefCustomerIndex.do" id="bb"><font size=1px;>고객센터관리→ </font></a>
 	          
-	             <div style="overflow-y:scroll; height: 10rem; width: 15.5rem; position: absolute; left: 39rem; top: 27rem;">
+	             <div style="overflow-y:scroll; height: 10rem; width:360px; position: absolute; left: 29.5rem; top: 27rem;">
 				<c:if test="${!empty q}">
 					<table style="width: 100%; text-align: center; position: absolute;">
 					<c:forEach var="vo" items="${q}">
 						<tr>
 						    <td style="width: 20%;">${vo.qna_no}</td>
-							<td class="url" style="width: 40%; cursor:pointer;" onclick="location.href='/tobe/chiefAdmin/customer/chiefQnaList.do?qna_no=${vo.qna_no}'">${vo.q_title}</td>    
+							<td class="url" style="width: 40%; cursor:pointer;"
+								onclick="location.href='/tobe/chiefAdmin/customer/chiefQnaList.do?qna_no=${vo.qna_no}'">${vo.q_title}</td>    
 							<td style="width: 40%;">${vo.q_writedate}</td>
 						</tr>
 					</c:forEach>
@@ -204,8 +206,8 @@ div {
 	         </div>
 	         <div id="a">
 	            <a href="/tobe/chiefAdmin/sales/chiefSalesIndex.do" id="aa"><font size=1px;>정산관리→ </font></a>
-	         	<div style="position:absolute; top: 29rem; left: 61rem; font-size: 2rem; color: #7401DF">10,000,000</div>
-	         	<div style="position:absolute; top: 32rem; left: 62.8rem; font-size: 1rem;">이번 달 매출</div>                             
+	         	<div style="position:absolute; top: 29rem; left: 58rem; font-size: 2rem; color: #7401DF">10,000,000</div>
+	         	<div style="position:absolute; top: 33rem; left: 60rem; font-size: 1rem;">이번 달 매출</div>                             
 	         </div>
 	      </div>   
 	  </div>

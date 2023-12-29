@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import kr.co.tobe.vo.CourseVO;
 import kr.co.tobe.vo.CqnaVO;
 import kr.co.tobe.vo.MemberVO;
+import kr.co.tobe.vo.QnaVO;
 import kr.co.tobe.vo.ReviewVO;
 
 @Controller
@@ -117,11 +118,12 @@ public class UserCourseController {
 		HttpSession sess = request.getSession();
 		MemberVO login = (MemberVO)sess.getAttribute("loginInfo");
 		vo.setMember_no(login.getMember_no());
+		System.out.println(vo+"nnnnn");
 		int r = service.cQnaInsert(vo);//, request);
 		if (r > 0) {
 			model.addAttribute("cmd", "move");
 			model.addAttribute("msg", "정상적으로 저장되었습니다.");
-			model.addAttribute("url", "/tobe/user/course/userCourseDetail.do"); //돌아갈 페이지 박모훈 완성 후 ..
+			model.addAttribute("url", "/tobe/user/course/userCourseDetail.do"+"?course_no="+vo.getCourse_no()); //돌아갈 페이지 박모훈 완성 후 ..
 		} else {
 			model.addAttribute("cmd", "back");
 			model.addAttribute("msg", "등록 오류");
@@ -157,7 +159,7 @@ public class UserCourseController {
 		if (r > 0) {
 			model.addAttribute("cmd", "move");
 			model.addAttribute("msg", "정상적으로 수정되었습니다.");
-			model.addAttribute("url", "/tobe/user/course/userCourseDetail.do");
+			model.addAttribute("url", "/tobe/user/course/userCourseDetail.do"+"?course_no="+vo.getCourse_no());
 		} else {
 			model.addAttribute("cmd", "back");
 			model.addAttribute("msg", "등록 오류");
@@ -245,87 +247,19 @@ public class UserCourseController {
 	}
 	
 
-//	@GetMapping("/user/course/userCourseAskForm.do")
-//	public String write(
-//	        @RequestParam("infoCourse_no") String infoCourse_no,
-//	        @RequestParam("infoDetail_no") String infoDetail_no,
-//	        @RequestParam("infoCourseName") String infoCourseName,
-//	        Model model,
-//	        HttpSession sess
-//		){
-//	    MemberVO user = (MemberVO) sess.getAttribute("loginInfo");
-//
-//	    // 새로운 CqnaVO 인스턴스를 생성하고 속성을 설정합니다
-//	    CqnaVO vo = new CqnaVO();
-//	    vo.setCourse_no(Integer.parseInt(infoCourse_no));
-//	    vo.setMember_no(user.getMember_no());
-//	    vo.setCq_title("원하는 제목"); // 원하는 제목으로 설정하세요
-//	    vo.setCq_content("원하는 내용"); // 원하는 내용으로 설정하세요
-//
-//	    // 서비스의 cQnaInsert 메서드를 호출하여 CqnaVO를 삽입합니다
-//	    int result = service.cQnaInsert(vo);
-//
-//	    // 뷰에서 사용할 모델에 속성을 추가합니다
-//	    model.addAttribute("infoCourse_no", vo.getCourse_no());
-//	    model.addAttribute("infoDetail_no", infoDetail_no); // infoDetail_no가 변경되지 않았다고 가정합니다
-//	    model.addAttribute("infoCourseName", infoCourseName);
-//
-//	    return "/user/course/userCourseAskForm";
-//	}
 
-//	@GetMapping("/user/course/userCourseAskForm.do")
-//	public String write( @RequestParam("infoCourse_no") String infoCourse_no,
-//				@RequestParam("infoDetail_no") String infoDetail_no,
-//				@RequestParam("infoCourseName") String infoCourseName,
-//				Model model, HttpSession sess ) {
-//		MemberVO user = (MemberVO)sess.getAttribute("loginInfo");
-//
-//		 	CqnaVO vo = new CqnaVO();
-//		    vo.setCourse_no(infoCourse_no);
-//		    vo.setDetail_no(infoDetail_no);
-//		    vo.setCourseName(infoCourseName);
-//		    vo.setMember_no(user.getMember_no());
-//
-//		    // 서비스의 cQnaInsert 메서드 호출
-//		    int result = qnaService.cQnaInsert(vo);
-//
-//		    // write 메서드에서 사용할 vo를 model에 추가
-//		    model.addAttribute("infoCourse_no", vo.getInfoCourse_no());
-//		    model.addAttribute("infoDetail_no", vo.getInfoDetail_no());
-//		    model.addAttribute("infoCourseName", vo.getInfoCourseName());
-//		  
-//		    return "/user/course/userCourseAskForm";
-//		model.addAttribute("infoCourse_no", infoCourse_no);
-//		model.addAttribute("infoDetail_no", infoDetail_no);
-//		model.addAttribute("infoCourseName", infoCourseName );
-//      
-//		return "/user/course/userCourseAskForm";
-//	}
 	
 	@GetMapping("/user/course/userCourseAskForm.do")
-	public String write(
-			@RequestParam("infoCourse_no") String infoCourse_no,
-	        @RequestParam("infoCourseName") String infoCourseName,
-	        Model model,
-	        HttpSession sess
-	    ){
-	    // 주석 처리된 부분에서 필요한 클래스와 서비스를 주입하도록 변경
-
-	    MemberVO user = (MemberVO) sess.getAttribute("loginInfo");
-
-	    // 새로운 CqnaVO 인스턴스를 생성하고 속성을 설정합니다
-	    CqnaVO vo = new CqnaVO();
-	    vo.setCourse_no(Integer.parseInt(infoCourse_no));
-	    vo.setMember_no(user.getMember_no());
-
-	    // 서비스의 cQnaInsert 메서드를 호출하여 CqnaVO를 삽입합니다
-//	    int result = service.cQnaInsert(vo);
-
-	    // 뷰에서 사용할 모델에 속성을 추가합니다
-	    model.addAttribute("infoCourse_no", vo.getCourse_no());
-	    model.addAttribute("infoCourseName", infoCourseName);
-
-	    return "/user/course/userCourseAskForm";
+	public String getInfoByCourse(Model model, @RequestParam("course_no") int course_no) {
+		model.addAttribute("vo", service.getInfoByCourse(course_no, false)); 
+		return "user/course/userCourseAskForm";
 	}
+	
+	@GetMapping("/user/course/userCourseDetailList.do")
+    public String getcourseDetail(Model model, @RequestParam("course_no") int course_no) {
+        CourseVO courseInfo = service.getlectureDetail(course_no);
+        model.addAttribute("courseInfo", courseInfo);
+        return "/user/course/userCourseDetailList";
+    }
 	   
 }

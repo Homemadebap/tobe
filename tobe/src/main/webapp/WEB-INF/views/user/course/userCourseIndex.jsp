@@ -143,6 +143,8 @@ caption {
 .container {
 	width:75rem;
 	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
 	justify-content: space-between;
 	align-items: center;
 }

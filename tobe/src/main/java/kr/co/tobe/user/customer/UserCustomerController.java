@@ -75,12 +75,12 @@ public class UserCustomerController {
 		//수정 이동 view
 		@GetMapping("/user/customer/userModAskForm.do")
 		public String edit(Model model, QnaVO vo) {
-//			model.addAttribute("vo", service.view(vo, false)); 
+			model.addAttribute("vo", service.view(vo, false)); 
 			
 			return "user/customer/userModAskForm";
 		}
 		//강좌 문의 수정 
-		@GetMapping("/user/customer/qna/update.do")
+		@PostMapping("/user/customer/qna/update.do")
 		public String update(Model model, HttpServletRequest request, QnaVO vo){//, MultipartFile file) {
 			int r = service.qnaUpdate(vo);//, file, request);
 			if (r > 0) {

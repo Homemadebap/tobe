@@ -17,7 +17,7 @@
 
 .top {
 	width: 75rem;
-	height: 50rem;
+	height: 52rem;
 }
 
 .main {

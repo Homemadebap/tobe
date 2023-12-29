@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import kr.co.tobe.vo.CourseVO;
 import kr.co.tobe.vo.CqnaVO;
+import kr.co.tobe.vo.QnaVO;
 import kr.co.tobe.vo.ReviewVO;
 
 @Service
@@ -142,14 +143,27 @@ public class UserCourseServiceImpl implements UserCourseService {
 //        return mapper.writeCqna(paramMap);
 //    }
     
-    @Override
-    public CourseVO getCourseById(int course_no) {
-        return mapper.selectCourseById(course_no);
-    }
-
 	@Override
 	public CqnaVO writeCqna(Map<String, Object> paramMap) {
 		// TODO Auto-generated method stub
 		return null;
 	}
+	
+	
+	@Override
+    public CourseVO getInfoByCourse(int course_no, boolean isUpdate) {
+        return mapper.selectInfoByCourse(course_no);
+    }
+
+	@Override
+	public CourseVO getcourseDetail(int course_no) {
+		return mapper.courseDetail(course_no);
+	}
+
+	@Override
+	public CourseVO getCourseById(int course_no) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
 }

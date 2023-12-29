@@ -96,12 +96,12 @@ hr{
 		   			<tr>
 		   				<td>
 			   				<c:if test="${!empty loginInfo}">
-			                     <a class="btn" href="userAskForm.do">수정</a>
+			                     <a class="btn" href="userModAskForm.do?qna_no=${vo.qna_no }">수정</a>
 			                </c:if>
 		                </td>
 		   				<td>
 		   					<c:if test="${!empty loginInfo}">
-			                     <a class="btn" href="userQna.do">삭제</a>
+			                     <a class="btn" href="/tobe/user/customer/qna/delete.do?qna_no=${vo.qna_no }">삭제</a>
 			                </c:if>
 		                </td>
 		   			</tr>

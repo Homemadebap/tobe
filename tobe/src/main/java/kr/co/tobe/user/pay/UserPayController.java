@@ -12,7 +12,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.multipart.MultipartFile;
 
 import kr.co.tobe.vo.BasketVO;
 import kr.co.tobe.vo.MemberVO;
@@ -68,7 +67,7 @@ public class UserPayController {
 	}
 	
 	@GetMapping ("/user/pay/userPayDetail.do")
-	public String userPayDetail(Model model, String cartNo, MemberVO mvo, PayVO pvo, PayDetailVO pdvo) {
+	public String userPayDetail(Model model, String cartNo, MemberVO mvo, PayVO pvo, PayDetailVO pdvo, @RequestParam("course_no") int course_no) {
 //		System.out.println(cartNo[0]+" 카트다~~~~~~~~~~~`"+cartNo[1]);
 		List<BasketVO> basket = service.getcart(cartNo);
 		model.addAttribute("cartNo", cartNo);
