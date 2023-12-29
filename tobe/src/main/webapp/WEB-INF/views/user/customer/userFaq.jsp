@@ -102,6 +102,15 @@
 #click3{
     background-color: #F1F8E0;
 }
+.content{
+background-color: #F1F8E0;
+}
+td.t{
+font-weight: bolder;
+}
+td.content{
+text-align:left;
+}
 </style>
 <script>
 	$(function() {

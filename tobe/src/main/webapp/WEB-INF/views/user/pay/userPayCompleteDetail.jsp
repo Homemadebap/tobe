@@ -46,7 +46,7 @@ $(function(){
 
 <style>
 .container {
-	width: 70rem;
+	width: 75rem;
 	padding: 0 2.5rem;
 }
 
@@ -182,6 +182,7 @@ $(function(){
 	cursor: pointer;
 }
 
+
 </style>
 
 </head>
@@ -270,15 +271,15 @@ $(function(){
 		
 		<table class = "orderer">
 			<tr>
-				<td>주문하시는 분</td>
-				<td>${pdvo.member_name}</td>
+				<td style="width:300px; background-color:#F5F5F5">주문하시는 분</td>
+				<td style="width:1000px">${pdvo.member_name}</td>
 			</tr>
 			<tr>
-				<td>이메일 주소</td>
+				<td style="background-color:#F5F5F5">이메일 주소</td>
 				<td>${pdvo.member_email}</td>
 			</tr>
 			<tr>
-				<td>휴대폰 번호</td>
+				<td style="background-color:#F5F5F5">휴대폰 번호</td>
 				<td>${pdvo.member_hp}</td>
 			</tr>			
 		</table>
@@ -289,11 +290,11 @@ $(function(){
 		
 		<table class = "payment">
 			<tr>
-				<td>카드 결제</td>
-				<td>${pdvo.pay_single}원</td>
+				<td style="width:300px; background-color:#F5F5F5;">카드 결제</td>
+				<td style="width:1000px">${pdvo.pay_single}원</td>
 			</tr>
 			<tr>
-				<td>포인트 할인</td>
+				<td style="background-color:#F5F5F5">포인트 할인</td>
 				<td><c:out value="${discount }원"/></td>
 			</tr>
 		</table>
