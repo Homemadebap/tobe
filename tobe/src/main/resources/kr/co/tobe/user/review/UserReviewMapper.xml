@@ -23,7 +23,7 @@
 	</update>
 	
 	<select id="selectReviewNo" resultType="java.util.Map">
-      	SELECT c.course_no, cname, m.member_no, id, r_title,
+      	SELECT c.course_no, cname, m.member_no, id, r_title, r.review_no,
       	<![CDATA[ STR_TO_DATE(r_writedate, '%Y-%m-%d') ]]> as r_writedate
       	FROM course c 
         JOIN review r ON r.course_no=c.course_no
