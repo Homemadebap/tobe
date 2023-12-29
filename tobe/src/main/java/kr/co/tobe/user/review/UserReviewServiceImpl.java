@@ -35,8 +35,8 @@ public class UserReviewServiceImpl implements UserReviewService {
 	}
 
 	@Override
-	public ReviewVO getReviewDetail(int reviewNo) {
-		return mapper.ReviewDetail(reviewNo);
+	public ReviewVO getReviewDetail(int review_no) {
+		return mapper.ReviewDetail(review_no);
 	}
 
 }

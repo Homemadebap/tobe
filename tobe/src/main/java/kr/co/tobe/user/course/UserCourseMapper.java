@@ -39,9 +39,8 @@ public interface UserCourseMapper {
 //	CqnaVO view(CqnaVO vo);
 	CqnaVO view(int cqna_no);
 	
-	CourseVO selectCourseById(@Param("course_no") int courseId);
 	
-	CourseVO selectInfoByCourse(CourseVO course_no);
+	CourseVO selectInfoByCourse(int course_no);
 
-	
+	CourseVO courseDetail(int course_no);
 }

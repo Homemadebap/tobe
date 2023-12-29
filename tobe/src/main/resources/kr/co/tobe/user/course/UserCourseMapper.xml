@@ -27,7 +27,7 @@
 	            )
 	        </if>
 	        <if test="timezone != 0"> AND timezone = #{timezone}</if>
-	    LIMIT ${startIdx}, 3
+	    LIMIT ${startIdx}, 12
 	</select>
 
 	<select id="complexCount" parameterType="kr.co.tobe.vo.CourseVO" resultType="int">
@@ -146,14 +146,6 @@
 		SELECT * FROM cqna WHERE cqna_no = #{cqna_no}
 	</select>
 	
-	<!-- 강좌 상세 문의 수정 
-    <select id="view" parameterType="int" resultType="kr.co.tobe.vo.CqnaVO">
-		SELECT cq.*,
-		(SELECT cname FROM course c INNER JOIN cqna cq ON cq.course_no = c.course_no) as infoCourseName
-		 FROM cqna WHERE cqna_no = #{cqna_no}
-	</select>
-	-->
-	
 	<!-- 강좌 상세 문의 수정 -->
 	<select id="view" parameterType="int" resultType="kr.co.tobe.vo.CqnaVO">
 	    SELECT cq.*,
@@ -162,42 +154,18 @@
 	    LEFT JOIN course c ON cq.course_no = c.course_no
 	    WHERE cqna_no = #{cqna_no}
 	</select>
-	
-	
-	<!-- <select id="userCourseAskFormInfo" resultType="kr.co.tobe.vo.CqnaVO">
-	    SELECT *
-	    FROM cqna
-	    WHERE cqna_no = #{cqna_no}
-	</select> -->
-	
-	<!-- 강좌 문의 작성 -->
-	<!-- <select id="writeCqna" parameterType="int" resultType="kr.co.tobe.vo.CqnaVO">
-	    SELECT cq.*,
-           	c.cname AS infoCourseName,
-           	c.course_no AS infoCourse_no
-	    FROM cqna cq
-	    LEFT JOIN course c ON cq.course_no = c.course_no
-	    WHERE cq.course_no = #{infoCourse_no}
-      		AND cq.user_id = #{loginInfo.userId}
-	</select> -->
-	
-	<!-- 강좌 문의 작성
-	<resultMap id="courseResultMap" type="kr.co.tobe.vo.CourseVO">
-        <result property="infoCourse_no" column="course_no"/>
-        <result property="infoCourseName" column="cname"/>
-    </resultMap>
-    
-    <select id="selectCourseById" parameterType="int" resultMap="courseResultMap">
-        SELECT *
-        FROM course
-        WHERE course_no = #{course_no}
-    </select> -->
     
     <!-- 강좌 문의 작성 -->
-    <select id="selectInfoByCourse" parameterType="kr.co.tobe.vo.CourseVO" resultType="kr.co.tobe.vo.CourseVO">
+    <select id="selectInfoByCourse" parameterType="int" resultType="kr.co.tobe.vo.CourseVO">
         SELECT * 
         FROM course
-        WHERE course_no = #{infoCourseNo}
+        WHERE course_no = #{infoCourse_no}
     </select>
 	
+	<select id="courseDetail" parameterType="kr.co.tobe.vo.CourseVO" resultType="kr.co.tobe.vo.CourseVO">
+        SELECT *
+        FROM course
+        WHERE course_no = #{course_no};
+    </select>
+    
 </mapper>
