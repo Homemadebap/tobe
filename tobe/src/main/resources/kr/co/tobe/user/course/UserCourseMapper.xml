@@ -156,10 +156,10 @@
 	</select>
     
     <!-- 강좌 문의 작성 -->
-    <select id="selectInfoByCourse" parameterType="kr.co.tobe.vo.CourseVO" resultType="kr.co.tobe.vo.CourseVO">
+    <select id="selectInfoByCourse" parameterType="int" resultType="kr.co.tobe.vo.CourseVO">
         SELECT * 
         FROM course
-        WHERE course_no = #{infoCourseNo}
+        WHERE course_no = #{infoCourse_no}
     </select>
 	
 	<select id="courseDetail" parameterType="kr.co.tobe.vo.CourseVO" resultType="kr.co.tobe.vo.CourseVO">
