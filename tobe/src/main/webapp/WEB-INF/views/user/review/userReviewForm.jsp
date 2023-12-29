@@ -12,6 +12,8 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
     <script src="/tobe/smarteditor/js/HuskyEZCreator.js"></script>
     <link rel="stylesheet" href="/tobe/css/user_Header_Footer.css" />
+    <link rel="stylesheet" href="/tobe/css/bbs_user.css"/>
+    
     <script>
     var oEditors = [];
     $(function() {
@@ -49,16 +51,11 @@
 	width: 75rem;
 	height: 50rem;
 }
-
-.size {
-	width: 70rem;
-	margin: 0 auto;
+.size{
+	
 }
-.board_write{
-	width: 80%;
 
-}
- .rating {
+.rating {
 	direction: rtl;
     text-align: left;
     font-size: 25px;
@@ -83,7 +80,7 @@
 }
 
 .star:checked ~ .label::before {
-    color: black;
+    color:#FACC2E;
 }
 
 </style>
@@ -94,76 +91,71 @@
 			<%@include file="/WEB-INF/views/user/common/userHeader.jsp"%>
 		</div>
         <div class="main">
-            <div class="size">
-                <h3 class="sub_title">수강후기 작성</h3>
-    
-                <div class="bbs">
-                <form method="post" name="frm" id="frm" action="insert.do" enctype="multipart/form-data" >
-                	  <input type="hidden" name="course_no" value="${infoCourse_no}">
-                	  <input type="hidden" name="detail_no" value="${infoDetail_no}">
-                    <table class="board_write">
-                  
-                        <tbody>
-                        <tr>
-                        	<th>제목</th>
-                            <td>
-                                <input type="text" name="r_title" id="r_title" style="width:100%;"value=""/>
-                            </td>
-                        </tr>
-                        <tr>
-                        	<th>작성자</th>
-                            <td>
-                                <!-- <input type="text" name="course" id="course" style="width:100%;"value="${infoCourseName } "/> -->
-                                ${loginInfo.name }
-                            </td>
-                        </tr>
-                        <tr>
-                        	<th>강좌명</th>
-                            <td>
-                                <!-- <input type="text" name="course" id="course" style="width:100%;"value="${infoCourseName } "/> -->
-                                ${infoCourseName }
-                            </td>
-                        </tr>
-                        <tr>
-                        	<th>별점</th>
-                        	<td>
-								<div class="rating"> 
-								    <input type="radio" name="star" class="star" id="star5" value="5" onclick="updateInputValue(this);">
-								    <label for="star5" class="label"></label>
-								
-								    <input type="radio" name="star" class="star" id="star4" value="4" onclick="updateInputValue(this);">
-								    <label for="star4" class="label"></label>
-								
-								    <input type="radio" name="star" class="star" id="star3" value="3" onclick="updateInputValue(this);">
-								    <label for="star3" class="label"></label>
-								
-								    <input type="radio" name="star" class="star" id="star2" value="2" onclick="updateInputValue(this);">
-								    <label for="star2" class="label"></label>
-								
-								    <input type="radio" name="star" class="star" id="star1" value="1" onclick="updateInputValue(this);">
-								    <label for="star1" class="label"></label>
-								</div>
-							</td>	
-							<!-- 별점을 담을 input 태그 -->
-							<input type="hidden" id="r_rating" name="r_rating" value="">
-							
-                        </tr>                      
-                        <tr>
-                        	<th>내용</th>
-                            <td>
-                                <textarea name="r_content" id="r_content" style="width:100%;"></textarea>
-                            </td>
-                        </tr>
-                        <tr>
-                        	<td>
-                         	<div class="btnSet"  style="text-align:right;">
-                        	<a class="btn" href="javascript:goSave();">저장</a>
-                        	<a href="javascript:;" class="btn" onclick="history.back();">취소</a></div>
-                        	</div></td>
-                        </tr>
-                        </tbody>
-                    </table>
-                
+        	<div class="sub">
+	            <div class="size">
+    	            <h3 class="sub_title">수강후기 작성</h3>
+               		<div class="bbs">
+                	<form method="post" name="frm" id="frm" action="insert.do" enctype="multipart/form-data" >
+	                	<input type="hidden" name="course_no" value="${infoCourse_no}">
+	                	<input type="hidden" name="detail_no" value="${infoDetail_no}">
+                    	<table class="board_write">
+	                        <tbody>
+		                        <tr>
+		                        	<th>제목</th>
+		                            <td>
+		                                <input type="text" name="r_title" id="r_title" style="width:100%;"value=""/>
+		                            </td>
+		                        </tr>
+		                        <tr>
+		                        	<th>작성자</th>
+		                            <td>
+		                                <!-- <input type="text" name="course" id="course" style="width:100%;"value="${infoCourseName } "/> -->
+		                                ${loginInfo.name }
+		                            </td>
+		                        </tr>
+		                        <tr>
+		                        	<th>강좌명</th>
+		                            <td>
+		                                <!-- <input type="text" name="course" id="course" style="width:100%;"value="${infoCourseName } "/> -->
+		                                ${infoCourseName }
+		                            </td>
+		                        </tr>
+		                        <tr>
+		                        	<th>별점</th>
+		                        	<td>
+										<div class="rating"> 
+										    <input type="radio" name="star" class="star" id="star5" value="5" onclick="updateInputValue(this);">
+										    <label for="star5" class="label"></label>
+										
+										    <input type="radio" name="star" class="star" id="star4" value="4" onclick="updateInputValue(this);">
+										    <label for="star4" class="label"></label>
+										
+										    <input type="radio" name="star" class="star" id="star3" value="3" onclick="updateInputValue(this);">
+										    <label for="star3" class="label"></label>
+										
+										    <input type="radio" name="star" class="star" id="star2" value="2" onclick="updateInputValue(this);">
+										    <label for="star2" class="label"></label>
+										
+										    <input type="radio" name="star" class="star" id="star1" value="1" onclick="updateInputValue(this);">
+										    <label for="star1" class="label"></label>
+										</div>
+									</td>	
+									<!-- 별점을 담을 input 태그 -->
+									<input type="hidden" id="r_rating" name="r_rating" value=""/>
+									
+		                        </tr>                      
+		                        <tr>
+		                        	<th>내용</th>
+		                            <td>
+		                                <textarea name="r_content" id="r_content" style="width:100%;"></textarea>
+		                            </td>
+		                        </tr>
+	                        </tbody>
+                    	</table>
+                        <div class="btnSet"  style="text-align:right;">
+                       		<a class="btn" href="javascript:goSave();">저장</a>
+                       		<a href="javascript:;" class="btn" onclick="history.back();">취소</a></div>
+                       	</div>
                     </form>
                 </div>
             </div>
@@ -172,5 +164,6 @@
 			<%@include file="/WEB-INF/views/user/common/userFooter.jsp"%>
 		</div>
     </div>
+  </div>
 </body> 
 </html>

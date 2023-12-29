@@ -48,7 +48,7 @@ public class UserCustomerServiceImpl implements UserCustomerService {
 	@Override
 	public int qnaInsert(QnaVO vo) {
 		int r = mapper.qnaInsert(vo);
-		if (r > 0) mapper.updateGno(vo.getQna_no());
+		//if (r > 0) mapper.updateGno(vo.getQna_no());
 		return r;
 	}
 

@@ -16,7 +16,7 @@ public interface UserCustomerMapper {
 	int qnaUpdate(QnaVO vo);
 	int qnaDelete(int no);
 	int qnaInsert(QnaVO vo);
-	int updateGno(int no);
+	//int updateGno(int no);
 	
 	int qnaCount(QnaVO vo);
 	List<QnaVO> qnaList(QnaVO vo);
