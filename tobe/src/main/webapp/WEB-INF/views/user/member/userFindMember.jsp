@@ -72,46 +72,70 @@ list-style:none;
 .head{
 display:flex;
 flex-direction:row;
-justify-content:space-around;
+justify-content:center;
+font-weight:bolder;
 }
 .id_title, .pwd_title{
 cursor:pointer;
 }
-.second{
-margin-left:-15px;
+.second, .third{
+margin-left:-40px;
+text-align:center;
 }
 .id_form li{
 float:left;
+margin-top:15px;
 
+}
+.pwd_form li{
+float:left;
 }
 .check_btn{
 margin-top:10px;
 width:273px;
 background-color:black;
 color:white;
+width:429px;
+height:35px;
+text-align:center;
+cursor:pointer;
+
 }
+
 #email_bx{
 margin-bottom:20px;
 }
 fieldset{
+display:flex;
 margin-top:20px;
+flex-direction:column;
 }
 .ok_btn{
 margin-top:10px;
 width:273px;
 background-color:black;
 color:white;
+width:429px;
+height:35px;
+text-align:center;
+cursor:pointer;
+}
+.main{
+width:27rem;
+height:60rem;
 }
 </style>
 </head>
 
 <body>
+<div class="main">
 
-<form action="userFindMember.do" method="post" id="board1" name="board1" onsubmit="return checkId()">
+	<form action="userFindMember.do" method="post" id="board1" name="board1" onsubmit="return checkId()">
 		
+	
 		<div class="head">
-			<div class="id_title">아이디 찾기&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|</div>
-			<div class="pwd_title">비밀번호 찾기</div>
+			<div class="id_title">아이디 찾기&nbsp;&nbsp;&nbsp;|</div>
+			<div class="pwd_title">&nbsp;&nbsp;&nbsp;비밀번호 찾기</div>
 		</div>
 			
 				<div class="id_contents" id="id_data">
@@ -120,37 +144,42 @@ color:white;
 					</ul>				
 					<fieldset class="id_form">
 						<ul>
-							<li>이름</li>
+							<li>이름&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
 							<li><input type="text" name="name" id="name" ></li>
 						</ul>
 						<ul>
-							<li>이메일 주소</li>
+							<li>이메일&nbsp;&nbsp;</li>
 							<li id="email_bx"><input type="email" name="email" id="email" ></li>
 						</ul>					
 					</fieldset>
-					<div class="check_btn"><input type="submit" value="다음"></div>
+					<div class="check_btn"><label><input type="submit" value="다음" style="background-color:transparent; border:0px transparent solid; color:white; font-weight:bolder; font-size:20px;"></label></div>
 				</div>
-</form>
+			
+	</form>
 			
 	<form action="userFindPwdNext.do" method="post" id="board2" name="board2" onsubmit="return checkPwd()">
 		<div class="pwd_contents" id="pwd_data" style="display: none;">
-			<fieldset clss="pwd_form">
+			<ul class="third">
+				<li style="list-style: none;">회원가입 시 등록하신 정보로<br>비밀번호를 확인하실 수 있습니다.</li>
+			</ul>
+			<fieldset class="pwd_form">
 				<ul>
-					<li>이름</li>
+					<li>이름&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
 					<li><input type="text" name="name" id="name2"></li>
 				</ul>
 				<ul>
-					<li>아이디</li>
+					<li>아이디&nbsp;&nbsp;</li>
 					<li><input type="id" name="id" id="id2"></li>
 				</ul>
 				<ul>
-					<li>이메일</li>
+					<li>이메일&nbsp;&nbsp;</li>
 					<li><input type="email" name="email" id="email2"></li>
 				</ul>
 			</fieldset>						
-			<div class="ok_btn"><input type="submit" value="확인"/></div>
+			<label><div class="ok_btn"><input type="submit" value="확인" style="background-color:transparent; border:0px transparent solid; color:white; font-weight:bolder; font-size:20px;"/></div></label>
 		</div>
 	</form>
+</div>
 
 
 

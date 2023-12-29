@@ -182,7 +182,7 @@ a:visited {
 	border:1px solid black;
 	border-radius:15px;
 	text-align:center;
-	width:250px;
+	width:350px;
 	}
 .login_form .login_btn{
 	background:#E4E6D9; 
@@ -192,6 +192,16 @@ a:visited {
 	text-align:center; 
 	color:white;
 	font-weight:bold;
+	margin-top:30px;
+}
+p{
+margin-bottom:20px;
+}
+input#id{
+margin-top:30px;
+}
+input#pwd{
+margin-top:10px;
 }
 	
 .top{
@@ -214,7 +224,7 @@ list-style:none;
 border:none;
 background-color:rgba(0,0,0,0);
 font-size:10px;
-margin-left:75px;
+margin-left:120px;
 cursor: pointer;
 }
 
@@ -242,13 +252,13 @@ margin:0 10px;
 	                        <div class="box">
 	                            <div class="login_form">
 	                                <ul class="no_dot">	                                	
-	                                    <li class="top" style="font-size:30px; font-weight:bold">TOBE</li>	                                
+	                                    <li class="top" style="font-size:40px; font-weight:bold">TOBE</li>	                                
 	                                    <li><input type="text" id="id" name="id" placeholder="아이디" style="width:200px; font-size: 1rem;"></li>
 	                                    <li><input type="password" id="pwd" name="pwd" placeholder="비밀번호" style="width:200px; font-size: 1rem;"></li>
 	                                    <ul class="change">
 		                                    <!-- <li><label  style="font-size: 0.75rem;"><input type="checkbox" name="reg1" id="reg1" style="width:10px; height:10px;"/>아이디저장</label></li>  -->
 		                                    <!-- <li><a href="userFindMember.do" class="btn" style="font-size:10px">아이디|비밀번호 찾기</a></li>  -->
-		                                    <li float="left"><input class="id_pwd" type="button" value="아이디 | 비밀번호 찾기" onclick="window.open('userFindMember.do','window_name','width=500,height=600');"></li>
+		                                    <li float="left"><input class="id_pwd" type="button" value="아이디 | 비밀번호 찾기" onclick="window.open('userFindMember.do','window_name','width=450,height=600');"></li>
 	                                    </ul>
 	                                </ul>
 	                               	<input class= "login_btn" type="submit" value="로그인"/>

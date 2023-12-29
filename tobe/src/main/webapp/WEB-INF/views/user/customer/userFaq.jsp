@@ -93,7 +93,15 @@
 .page li {
 	display: inline-block;
 }
-
+#click1:hover, #click2:hover, #click3:hover{
+    color: #49654E;
+    font-weight: bolder;
+    cursor:pointer; 
+    background-color: #F1F8E0;
+}
+#click3{
+    background-color: #F1F8E0;
+}
 </style>
 <script>
 	$(function() {
@@ -121,15 +129,15 @@
 			<div class="main">
 				<table class="select">
 					<tr>
-						<td>
+						<td id="click1">
 							<p>공지사항</p>
 							<a href="/tobe/user/customer/userCustomer.do"><img src="/tobe/img/chiefAdmin_notice.png"></a>
 						</td>
-						<td>
+						<td id="click2">
 							<p>1:1 문의사항</p>
 							<a href="/tobe/user/customer/userQna.do"><img src="/tobe/img/chiefAdmin_qna.png"></a>
 						</td>
-						<td>
+						<td id="click3">
 							<p>FAQ</p>
 							<a href="/tobe/user/customer/userFaq.do"><img src="/tobe/img/chiefAdmin_faq.png"></a>
 						</td>
