@@ -212,7 +212,7 @@ function re() {
 				</tr>
 				 <c:forEach var="cart" items="${basket}">
 				 <tr>
-				 	<td><img src="/tobe/img/course_img/${vo.teacher_img_org}" style="width:100px; height:100px"></td>
+				 	<td><img src="/tobe/img/course_img/${cart.teacher_img_org}" style="width:100px; height:100px"></td>
 				
 					<td>
 						  학원명 : ${CodeToString.educationToString(cart.education)}<br>

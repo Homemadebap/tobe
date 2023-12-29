@@ -257,7 +257,7 @@ border:solid 1px #A4A4A4;
 					</tr>
 					</table>
 			   	 	<div class="searchOrReset">
-						<input type="reset" >
+						<input type="reset" value="초기화" onclick="window.location.href='/tobe/chiefAdmin/email/chiefMemberListEmail.do'">
 						<input type="submit" id="" value="검색">
 					</div>  
 				</form>
