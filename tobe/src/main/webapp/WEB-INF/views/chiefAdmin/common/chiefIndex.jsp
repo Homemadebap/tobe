@@ -146,9 +146,9 @@ div {
 	         <div id="a">
 	            <a href="/tobe/chiefAdmin/member/chiefMemberIndex.do" id="aa"><font size=1px;>회원관리→ </font></a>
 	            <div id="wrap">
-		            <div id="cnt" style="position:absolute; top: 7rem; left: 17rem; font-size: 5rem; color: #A9E2F3">23</div>
+		            <div id="cnt" style="position:absolute; top: 7rem; left: 18rem; font-size: 5rem; color: #A9E2F3">1</div>
 		            <div id="today" style="position:absolute; top: 13.5rem; left: 16rem; font-size: 1rem;">오늘 신규 회원 수</div>
-		            <div id="all" style="position:absolute; top: 16rem; left: 17rem; font-size: 1rem;">총 회원 36,715</div> 
+		            <div id="all" style="position:absolute; top: 16rem; left: 17rem; font-size: 1rem;">총 회원 ${totalCount}</div> 
 	            </div>
 	         </div>
 	         <div id="b">
@@ -206,7 +206,7 @@ div {
 	         </div>
 	         <div id="a">
 	            <a href="/tobe/chiefAdmin/sales/chiefSalesIndex.do" id="aa"><font size=1px;>정산관리→ </font></a>
-	         	<div style="position:absolute; top: 29rem; left: 58rem; font-size: 2rem; color: #7401DF">10,000,000</div>
+	         	<div style="position:absolute; top: 29rem; left: 59rem; font-size: 2rem; color: #7401DF">4,778,150</div>
 	         	<div style="position:absolute; top: 33rem; left: 60rem; font-size: 1rem;">이번 달 매출</div>                             
 	         </div>
 	      </div>   
