@@ -108,104 +108,119 @@ function ProcessOrder() {
 </head>
 <style>
 
-	.cart_wrap {
-		    height:500px;
-	    width:100%;
-	    position: relative;
-	    top: 13rem;
-	}
-	.cart{
-		width:70%;	
-		float:left;
-	}
-	.payment{
-		width:30%;	
-		float:left;
-	}
-	
+.cart_wrap {
+	height:52rem;
+    width:75rem;
+    
+}
+.cart_box {
+	width: 70rem;
+	height: 27rem;
+	margin: 0 2.5rem;
+}
+.cart{
+	width:80%;	
+	float:left;
+	padding: 0 2rem;
+}
+.payment{
+	width:20%;	
+	float:left;
+	padding-left: 30px;
+}
+.cart {
+	overflow-y:scroll;
+}
 </style>
 <body>	
 	<div class="wrap">
-		<%@ include file="/WEB-INF/views/user/common/userHeader.jsp" %>
+		<div class="headerBox">
+			<%@include file="/WEB-INF/views/user/common/userHeader.jsp"%>
+		</div>
+		
 		<div class="cart_wrap">
-			<div class = "cart">
-				<h3 class="title">장바구니<span>(${cart.total })</span></h3>
-				<table class="cart_product">
-					<colgroup>
-						<col style="width: 30px">
-						<col style="width: 300px">
-						<col style="width: 300px">
-						<col style="width: 100px">
-					</colgroup>
-					<thead>
-						<tr>
-							<th><span >
-	            	 	       	<input type="checkbox" name="checkAll" class="check_all" onclick="BasketAllSelect(this);">
-	                		     <label for="checkAll">&nbsp;</label> </span>
-							</th>
-							<th></th>
-							<th>강좌정보</th>
-							<th>강좌금액</th>
-						</tr>
-					</thead>
-					<tbody>
-						<c:forEach var= "vo" items="${cart.list }"> 
-						<!-- <c:set var="education" value="${CodeToString.educationToString(vo.education)}" />
-							<c:set var="subject" value="${CodeToString.subjectToString(vo.subject)}" />
-							<c:set var="area" value="${CodeToString.areaToString(vo.area)}" />
-							<c:set var="branch" value="${CodeToString.branchToString(vo.branch)}" />
-							<c:set var="date" value="${CodeToString.dateToStirng(vo.mon, vo.tue, vo.wed, vo.thu, vo.fri, vo.sat, vo.sun)}" /> -->
+			<div class="cart_box">
+				<div class = "cart">
+					<h3 class="title">장바구니<span>(${cart.total })</span></h3>
+					<table class="cart_product">
+						<colgroup>
+							<col style="width: 30px">
+							<col style="width: 250px">
+							<col style="width: 375px">
+							<col style="width: 125px">
+						</colgroup>
+						<thead>
 							<tr>
-							  <td class="input_btn" ><span>
-							  <input  type="checkbox" class="input_button small" name="cart_no" data-no="${vo.cart_no }" value="${vo.price }" onclick="MathPrice(this);"><label for="checkbox2">&nbsp;</label></span></td>
-							  <td class="img">
-								  <img src="/tobe/img/course_img/${vo.teacher_img_org}" style="width:100px; height:100px">
-							  </td>
-							  <td class="product"> 
-							  	
-							  	학원명 : ${CodeToString.educationToString(vo.education)}<br>
-							  	과정명 : ${vo.cname}<br>
-							  	과목 : ${CodeToString.subjectToString(vo.subject)}<br>
-							  	지역 : ${CodeToString.areaToString(vo.area)} <br>
-							  	지점 : ${CodeToString.branchToString(vo.branch)} <br>
-								시간 : ${vo.time} <br>
-							  	요일 : ${CodeToString.dateToStirng(vo.mon, vo.tue, vo.wed, vo.thu, vo.fri, vo.sat, vo.sun)}<br></td>
-							  <td class="price">${vo.price }</td>
+								<th><span >
+		            	 	       	<input type="checkbox" name="checkAll" class="check_all" onclick="BasketAllSelect(this);">
+		                		     <label for="checkAll">&nbsp;</label> </span>
+								</th>
+								<th></th>
+								<th>강좌정보</th>
+								<th>강좌금액</th>
 							</tr>
-						</c:forEach>
-					</tbody>
-				</table>
-				<div class="bx_btn">
-					<button type="button" name="button1" class="btn" onclick="removeSelectedItems();">선택상품삭제</button>
-                    <button type="button" name="button2" class="btn gray"><a href="/tobe/user/course/userCourseIndex.do">쇼핑계속하기</a></button>
+						</thead>
+						<tbody>
+							<c:forEach var= "vo" items="${cart.list }"> 
+							<!-- <c:set var="education" value="${CodeToString.educationToString(vo.education)}" />
+								<c:set var="subject" value="${CodeToString.subjectToString(vo.subject)}" />
+								<c:set var="area" value="${CodeToString.areaToString(vo.area)}" />
+								<c:set var="branch" value="${CodeToString.branchToString(vo.branch)}" />
+								<c:set var="date" value="${CodeToString.dateToStirng(vo.mon, vo.tue, vo.wed, vo.thu, vo.fri, vo.sat, vo.sun)}" /> -->
+								<tr>
+								  <td class="input_btn" ><span>
+								  <input  type="checkbox" class="input_button small" name="cart_no" data-no="${vo.cart_no }" value="${vo.price }" onclick="MathPrice(this);"><label for="checkbox2">&nbsp;</label></span></td>
+								  <td class="img" style="padding: 0 55px;">
+									  <img src="/tobe/img/course_img/${vo.teacher_img_org}" style="width:100px; height:100px;">
+								  </td>
+								  <td class="product"> 
+								  	
+								  	학원명 : ${CodeToString.educationToString(vo.education)}<br>
+								  	과정명 : ${vo.cname}<br>
+								  	과목 : ${CodeToString.subjectToString(vo.subject)}<br>
+								  	지역 : ${CodeToString.areaToString(vo.area)} <br>
+								  	지점 : ${CodeToString.branchToString(vo.branch)} <br>
+									시간 : ${vo.time} <br>
+								  	요일 : ${CodeToString.dateToStirng(vo.mon, vo.tue, vo.wed, vo.thu, vo.fri, vo.sat, vo.sun)}<br></td>
+								  <td class="price" style="text-align:center;">${vo.price }</td>
+								</tr>
+							</c:forEach>
+						</tbody>
+					</table>
+					<div class="bx_btn">
+						<button type="button" name="button1" class="btn" onclick="removeSelectedItems();">선택상품삭제</button>
+	                    <a href="/tobe/user/course/userCourseIndex.do"><button type="button" name="button2" class="btn gray">쇼핑계속하기</button></a>
+					</div>
 				</div>
-			</div>
-			<div class="payment">
-				<h3>최종결제금액</h3>
-		         <ul>
-		             <li>
-		                 <strong>총 상품 금액 </strong>
-		                 <p id="paytotal"></p>
-		             </li>
-		             <li>
-	                     <strong>사용 가능한 포인트</strong>
-	                     <p id="point">${loginInfo.point }원</p>
-		             </li>
-		             <li>
-		                 <strong>총 결제금액</strong>
-		                 <p id="payfinal"></p>
-		             </li>
-		             <li>
-		                 <strong>적립예정 포인트</strong>
-		                 <p id="payfinalbyP"></p>
-		             </li>
-		         </ul>
-	         	<button type="button" name="button3" onclick="ProcessOrder();" class="btn_order">선택상품 주문하기</button>
-			
-			</div>
-		</div>   
+				<div class="payment">
+					<h3>최종결제금액</h3>
+			         <ul>
+			             <li>
+			                 <strong>총 상품 금액 </strong>
+			                 <p id="paytotal"></p>
+			             </li>
+			             <li>
+		                     <strong>사용 가능한 포인트</strong>
+		                     <p id="point">${loginInfo.point }원</p>
+			             </li>
+			             <li>
+			                 <strong>총 결제금액</strong>
+			                 <p id="payfinal"></p>
+			             </li>
+			             <li>
+			                 <strong>적립예정 포인트</strong>
+			                 <p id="payfinalbyP"></p>
+			             </li>
+			         </ul>
+		         	<button type="button" name="button3" onclick="ProcessOrder();" class="btn_order">선택상품 주문하기</button>
+				
+				</div>
+			</div>   
+		</div>
         
+	<div class="footerBox">
 		<%@include file="/WEB-INF/views/user/common/userFooter.jsp"%>
+	</div>
 	</div>
 		
 </body>
