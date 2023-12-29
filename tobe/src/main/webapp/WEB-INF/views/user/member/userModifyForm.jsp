@@ -47,6 +47,11 @@
 				$("#name").focus();
 				return;
 			}
+			if ($("#birthday").val() == '') {
+    			alert('생년월일을 입력하세요');
+    			$("#birthday").focus();
+    			return;
+    		}
 			// 전송
 			$("#frm").submit();
 			}
@@ -195,7 +200,7 @@
 	
 .modifyForm {
 	position: absolute;
-	width: 40rem;
+	width: 46rem;
 	top: 27.5rem;
 	left: 19rem;
 	color: #49654E;
@@ -238,8 +243,67 @@
     left: 15rem;
     color: #49654E;
 }
-	
-	
+
+table{
+		border: 1px solid;
+		width: 1080px;
+		border-collapse:collapse;
+		}
+		th, td{
+		border:1px solid;
+		font-size:15px;
+		border-width: thin;
+		}
+		th{
+		background-color:#E4E6D9;
+		text-align:left;
+		}
+		.board_write{
+		width:740px;
+		}
+		.wrap {
+		width: 85rem;
+		height: 70rem;
+		margin: 0 auto;
+		position: relative;
+		}
+		
+		.btnSet_clear{
+		text-align:right;
+		}
+		.btnSet_clear .btn{
+		background-color:#49654E;
+		border:solid;
+		border-radius:7px;
+		border-width:thin;
+		font-size:15px;
+		color:white;
+		display:inline-block;
+		width:75px;
+		text-align:center;
+		text-decoration-line:none;
+		margin-top:15px;
+		}
+		
+		table th{
+		color:#44546A;
+		font-weight:bolder;
+		}
+		a:link{
+		color:black;
+		}
+		a#zipNum{
+		background-color:#E7E7E7;
+		border:solid;
+		border-radius:7px;
+		border-width:thin;
+		font-size:13px;
+		text-decoration-line:none;
+		border-color:#D9D9D9;
+		color:#44546A;
+		}
+
+
 </style>
 
 
@@ -282,36 +346,37 @@
 			<div class="modifyForm">
 				<h2 class="sub_title">회원정보 수정</h2>
                 <form name="frm" id="frm" method="post" action="userModify.do">
-	                <table class="board_write">
+	                <table class="board_write" cellspacing = "0" >
 	                    <colgroup>
 	                        <col width="20%" />
 	                        <col width="80%" />
 	                    </colgroup>
 	                    <tbody>
 	                    	<tr>
-	                    		<th>이름</th>
-	                    		<td><input type="text" name="name" id="name" class="input" style="float:left;" value="${user.name }" readonly><td></td>
+	                    		<th>&nbsp;이름</th>
+	                    		<!-- <td><input type="text" name="name" id="name" class="input" style="float:left;" value="${user.name }" readonly><td></td> -->	                    		
+	                    		<td style="font-weight:bolder;">${user.name }</td>
 	                    	</tr>
 	                        <tr>
-	                            <th>아이디</th>
+	                            <th>&nbsp;아이디</th>
 	                            <!--<td><input type="text" name="id" id="id" style="float:left;" value="${vo.id }"></td>-->
-	                            <td>${user.id }</td>
+	                            <td style="font-weight:bolder;">${user.id }</td>
 
 	                        </tr>
 	                        <tr>
-	                            <th>비밀번호</th>
-	                            <td><input type="password" name="pwd" id="pwd" class="input" style="float:left;"><span class="ptxt">비밀번호는 숫자, 영문 조합으로 8자 이상으로 입력해주세요.</span> </td>
+	                            <th>&nbsp;비밀번호</th>
+	                            <td><input type="password" name="pwd" id="pwd"  style="float:left;"><div class="ptxt" style="font-size:15px;">비밀번호는 숫자, 영문 조합으로 8자 이상으로 입력해주세요.</div> </td>
 	                        </tr>
 	                        <tr>
-	                            <th>비밀번호 확인</th>
+	                            <th>&nbsp;비밀번호 확인</th>
 	                            <td><input type="password" name="pwd_check" id="pwd_check" style="float:left;"></td>
 	                        </tr>
 	                        <tr>
-	                            <th>이메일</th> 
-                                <td><input type="text" name="email" id="email" style="float:left;"></td>
+	                            <th>&nbsp;이메일</th> 
+                                <td><input type="text" name="email" id="email" style="float:left;" value="${user.email }"></td>
 	                        </tr>
 	                        <tr>
-	                            <th>성별</th>
+	                            <th>&nbsp;성별</th>
 	                            <td>
 	                            <select name="gender" id="gender">
 	                            <option value="1">남성</option>
@@ -320,33 +385,33 @@
 	                            </td>
 	                        </tr>
 	                        <tr>
-	                            <th>생년월일</th>
-	                            <td><input type="text" name="birthday" id="birthday"style="float:left;" value="${vo.birthday }"> </td>
+	                            <th>&nbsp;생년월일</th>
+	                            <td><input type="text" name="birthday" id="birthday" style="float:left;" value="${user.birthday }"> </td>
 	                        </tr>
 	                        <tr>
-	                            <th>휴대폰 번호</th>
+	                            <th>&nbsp;휴대폰 번호</th>
 	                            <td>
-	                                <input type="text" name="hp" id="hp" maxlength="15" style="float:left;" value="${vo.hp }">
+	                                <input type="text" name="hp" id="hp" maxlength="15" style="float:left;" value="${user.hp }">
 	                            </td>
 	                        </tr>
 	                        <tr>
-	                            <th>주소</th>
+	                            <th>&nbsp;주소</th>
 	                            
 	                            <td>
 	                                <input type="text" name="zipcode" id="zipcode" maxlength="6" style="float:left;" value="${user.zipcode }">
-	                                <span class="email_check"><a href="javascript:zipcode();"  class="btn" style="float:left; width:auto; clear:none;">우편번호</a></span>
+	                                <span class="email_check"><a href="javascript:zipcode();"  class="btn" style="float:left; width:auto; clear:none;" id="zipNum">우편번호</a></span>
 	                            </td>
 	                        </tr>
+
 	                     	<tr>
-	                     		<th>상세 주소</th>
+	                     		<th>&nbsp;상세 주소</th>
 	                            <td>
 	                                <input type="text" name="addr1" id="addr1" maxlength="15" style="float:left;" value="${user.addr1 }">
-	                            </td>
-	                        </tr>
-	                        	<td>
+	                   
 	                                <input type="text" name="addr2" id="addr2" maxlength="15" style="float:left;" value="${user.addr2 }">
 	                            </td>
 	                        </tr>
+	                       
 	                    </tbody>
 	                </table>
 	                    <input type="hidden" name="cmd" value="write.do"/>
@@ -355,7 +420,7 @@
 	                    <!-- 이메일 부분 해야함 -->
 	                    <!-- input type="reset" id="resetBtn" value="취소"/> -->
                 </form>
-            		<div class="btnSet clear">
+            		<div class="btnSet_clear">
                     	<div><a href="javascript:;" class="btn" onclick="goSave();">수정완료</a> <a href="javascript:;" class="btn" onclick="history.back();">취소</a></div>
                 	</div>
 			</div>

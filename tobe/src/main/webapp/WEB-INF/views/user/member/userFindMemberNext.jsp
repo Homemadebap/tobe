@@ -88,7 +88,7 @@ text-align:center;
 			<form action="userFindMember.do" method="post" id="board1" name="board1" onsubmit="">
 				<div class="id_contents" id="id_data">  -->
 
-					<div>
+					<div style="font-weight:bolder">
 						<div style="list-style: none;">이메일로 <br> 가입한 계정이 있습니다.<br><br><br>
 						아이디 : ${user.id }</div>
 					</div>				

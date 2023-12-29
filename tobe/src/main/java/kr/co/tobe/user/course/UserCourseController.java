@@ -247,103 +247,19 @@ public class UserCourseController {
 	}
 	
 
-//	@GetMapping("/user/course/userCourseAskForm.do")
-//	public String write(
-//	        @RequestParam("infoCourse_no") String infoCourse_no,
-//	        @RequestParam("infoDetail_no") String infoDetail_no,
-//	        @RequestParam("infoCourseName") String infoCourseName,
-//	        Model model,
-//	        HttpSession sess
-//		){
-//	    MemberVO user = (MemberVO) sess.getAttribute("loginInfo");
-//
-//	    // 새로운 CqnaVO 인스턴스를 생성하고 속성을 설정합니다
-//	    CqnaVO vo = new CqnaVO();
-//	    vo.setCourse_no(Integer.parseInt(infoCourse_no));
-//	    vo.setMember_no(user.getMember_no());
-//	    vo.setCq_title("원하는 제목"); // 원하는 제목으로 설정하세요
-//	    vo.setCq_content("원하는 내용"); // 원하는 내용으로 설정하세요
-//
-//	    // 서비스의 cQnaInsert 메서드를 호출하여 CqnaVO를 삽입합니다
-//	    int result = service.cQnaInsert(vo);
-//
-//	    // 뷰에서 사용할 모델에 속성을 추가합니다
-//	    model.addAttribute("infoCourse_no", vo.getCourse_no());
-//	    model.addAttribute("infoDetail_no", infoDetail_no); // infoDetail_no가 변경되지 않았다고 가정합니다
-//	    model.addAttribute("infoCourseName", infoCourseName);
-//
-//	    return "/user/course/userCourseAskForm";
-//	}
 
-//	@GetMapping("/user/course/userCourseAskForm.do")
-//	public String write( @RequestParam("infoCourse_no") String infoCourse_no,
-//				@RequestParam("infoDetail_no") String infoDetail_no,
-//				@RequestParam("infoCourseName") String infoCourseName,
-//				Model model, HttpSession sess ) {
-//		MemberVO user = (MemberVO)sess.getAttribute("loginInfo");
-//
-//		 	CqnaVO vo = new CqnaVO();
-//		    vo.setCourse_no(infoCourse_no);
-//		    vo.setDetail_no(infoDetail_no);
-//		    vo.setCourseName(infoCourseName);
-//		    vo.setMember_no(user.getMember_no());
-//
-//		    // 서비스의 cQnaInsert 메서드 호출
-//		    int result = qnaService.cQnaInsert(vo);
-//
-//		    // write 메서드에서 사용할 vo를 model에 추가
-//		    model.addAttribute("infoCourse_no", vo.getInfoCourse_no());
-//		    model.addAttribute("infoDetail_no", vo.getInfoDetail_no());
-//		    model.addAttribute("infoCourseName", vo.getInfoCourseName());
-//		  
-//		    return "/user/course/userCourseAskForm";
-//		model.addAttribute("infoCourse_no", infoCourse_no);
-//		model.addAttribute("infoDetail_no", infoDetail_no);
-//		model.addAttribute("infoCourseName", infoCourseName );
-//      
-//		return "/user/course/userCourseAskForm";
-//	}
-	
-	
-//	@GetMapping("/user/course/userCourseAskForm.do")
-//    public String userCourseAskForm(
-//            @RequestParam(name = "infoCourse_no", required = false) String infoCourseNo,
-//            @RequestParam(name = "infoCourseName", required = false) String infoCourseName,
-//            Model model
-//    ) {
-//        // infoCourse_no와 infoCourseName을 이용하여 특정 정보 조회
-//        CourseVO info = service.getInfoByCourse(infoCourseNo, infoCourseName);
-//
-//        // 조회 결과를 모델에 추가
-//        model.addAttribute("info", info);
-//        model.addAttribute("infoCourseNo", infoCourseNo);  
-//        model.addAttribute("infoCourseName", infoCourseName); 
-//        // 작성하기 폼으로 이동
-//        return "user/course/userCourseAskForm";
-//    }
-	
-//	@GetMapping("/user/course/userCourseAskForm.do")
-//	public String edit(Model model, @RequestParam String infoCourse_no) {
-//		if (infoCourse_no.isEmpty()) {
-//	        // 빈 문자열 처리 또는 예외 처리
-//	    } else {
-//	        try {
-//	            int courseNo = Integer.parseInt(infoCourse_no);
-//	            CourseVO vo = new CourseVO();
-//	            vo.setCourse_no(courseNo);
-//	            model.addAttribute("vo", service.getInfoByCourse(vo, false)); 
-//	        } catch (NumberFormatException e) {
-//	            // 숫자로 변환할 수 없는 문자열이 입력된 경우 처리
-//	        }
-//	    }
-//		return "user/course/userCourseAskForm";
-//	}
 	
 	@GetMapping("/user/course/userCourseAskForm.do")
-	public String edit(Model model, CourseVO vo) {
-		model.addAttribute("vo", service.getInfoByCourse(vo, false)); 
-		
+	public String getInfoByCourse(Model model, @RequestParam("course_no") int course_no) {
+		model.addAttribute("vo", service.getInfoByCourse(course_no, false)); 
 		return "user/course/userCourseAskForm";
 	}
+	
+	@GetMapping("/user/course/userCourseDetailList.do")
+    public String getcourseDetail(Model model, @RequestParam("course_no") int course_no) {
+        CourseVO courseInfo = service.getlectureDetail(course_no);
+        model.addAttribute("courseInfo", courseInfo);
+        return "/user/course/userCourseDetailList";
+    }
 	   
 }
