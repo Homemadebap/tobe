@@ -14,10 +14,8 @@
     <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
-    <link rel="stylesheet" href="/project/css/reset.css"/>
-    <link rel="stylesheet" href="/project/css/style.css"/>
-    <script src="/project/js/script.js"></script>
-    <script src="/project/js/main.js"></script>
+    <script src="/tobe/js/script.js"></script>
+    <script src="/tobe/js/main.js"></script>
 </head>
 <script>
    $(function(){
@@ -56,15 +54,23 @@
 
 #best{
    margin: 1rem auto;
-   padding: 0 6rem;
+   padding: 0 2rem;
+   
 }
 
 
-.bst{
-   border: solid 1px;
+.bst1{
    width: 500px;
    height: 200px;
    display: inline-block;
+   margin: 0 0 0 20px;
+}
+
+.bst2{
+   width: 500px;
+   height: 200px;
+   display: inline-block;
+   margin: 0 0 0 100px;
 }
 
 b {
@@ -121,6 +127,9 @@ strong{
 #rt3>img{
 	margin: 10px 3px 0 160px;
 }
+#ff{
+	margin: 0 0 0 159px;
+}
 </style>
 
 <body>
@@ -142,11 +151,21 @@ strong{
 		</div>
 
 	   <div id="best">
-	      <div class="bst">
-	          리뷰 많은 강좌
+	      <div class="bst1">
+	          <div style="left:-50px;">
+	          	<b id="ff">리뷰 많은 강좌</b><br>
+	          		<div style="margin-bottom:20px;"></div>
+	          	<img src="/tobe/img/course_img/hackers_민지원.png" width="150" height="150" style="margin-right:10px;">
+	          	<img src="/tobe/img/course_img/pagoda_황경진.png" width="150" height="150" style="margin-right:5px;">
+	          	<img src="/tobe/img/course_img/ybm_이은설.png" width="150" height="150" >
+	          </div>
 	      </div>
-	      <div class="bst">
-	          베스트 강좌 
+	      <div class="bst2">
+	          <b id="ff">베스트 강좌 </b><br>
+	          	<div style="margin-bottom:20px;"></div>
+	          <img src="/tobe/img/course_img/pagoda_오드리.png" width="150" height="150" style="margin-right:5px;">
+	          <img src="/tobe/img/course_img/ybm_정하나.png" width="150" height="150" style="margin-right:10px;">
+          	  <img src="/tobe/img/course_img/hackers_서유진.png" width="150" height="150">
 	      </div>
 	   </div>
    

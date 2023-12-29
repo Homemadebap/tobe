@@ -101,4 +101,10 @@ public class ChiefCustomerServiceImpl implements ChiefCustomerService {
 		return mapper.replyInsert(vo);
 	}
 
+	@Override
+	public Map<String, Object> qnaList(QnaVO vo) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

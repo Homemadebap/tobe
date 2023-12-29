@@ -165,6 +165,11 @@ $('.viewRe').click(function () {
 		border-radius: 5px;
 		font-size: 13px;
 }
+
+.list{
+	width : 100% ;
+	align-items: center;
+}
 </style>
 </head>
 <body>
@@ -216,12 +221,13 @@ $('.viewRe').click(function () {
             <div class="bbs">
                 <table class="list">
                     <caption>게시판 목록</caption>
-                    <colgroup>
-                        <col width="80px" />
-                        <col width="*" />
-                        <col width="100px" />
-                        <col width="100px" />
-                    </colgroup>
+                     <colgroup>
+                           <col width="15%" />
+                           <col width="40%" />
+                           <col width="15%" />
+                           <col width="15%" />
+                           <col width="15%" />
+                       </colgroup>
                     <thead>
                         <tr>
                             <th>번호</th>
