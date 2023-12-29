@@ -150,6 +150,7 @@ function ProcessOrder() {
 	width:  15rem;
 	border-top: 1px solid #ddd;
 	margin-left : 50px;
+	text-align:center;
 	
 }
 
