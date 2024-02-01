@@ -68,11 +68,11 @@
 		   $("#endday").focus();
 		   return false;
 	   }
-	   if ($("#file").val() == "") {
+	   /*if ($("#file").val() == "") {
 		   alert('강사사진을 첨부하세요');
 		   $("#file").focus();
 		   return false;
-	   }
+	   }*/
 
    	oEditors.getById['detail'].exec('UPDATE_CONTENTS_FIELD',[]); /*getById에 컬럼명또는 아이디*/
    	
